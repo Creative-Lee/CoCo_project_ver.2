@@ -1,0 +1,10 @@
+.jumbotron {
+    text-align: center;
+    background-image: url('../src/img/coco로고.jpg');   
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+.item {
+    text-align: center;
+}
