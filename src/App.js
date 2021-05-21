@@ -1,11 +1,11 @@
 import './App.css';
-import { Navbar,Nav,NavDropdown,Jumbotron,Button,Container,Row,Col} from 'react-bootstrap';
+import { Navbar,Nav,Jumbotron,Button,Container,Row,Col} from 'react-bootstrap';
 import React, { useState } from 'react'
 import data from './data';
 
 function App() {
 
-  let [items,setItems] = useState(data)
+  let [items,setItems] = useState( data )
 
   return (
     <div className="App">
@@ -37,7 +37,7 @@ function App() {
         <Row>
           {
             items.map((a,i)=>{
-              return <List items={a} i={i}/> 
+              return <List items={items[i]} i={i} key={i}/> 
             })
           }
         </Row>
@@ -50,7 +50,7 @@ function App() {
 function List(props){
   return(
   <Col className="item" md="3">
-    <img src={ 'https://codingapple1.github.io/shop/shoes' + (props.i+1) + '.jpg' } width="100%"/>
+    <img src={ 'https://codingapple1.github.io/shop/shoes' + (props.i+1) + '.jpg' } width="100%" />
     <h5>{props.items.title}</h5>
     <p>{props.items.price}￦</p>
   </Col>
