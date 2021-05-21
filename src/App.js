@@ -1,12 +1,8 @@
 import './App.css';
 import { Navbar,Nav,NavDropdown,Jumbotron,Button,Container,Row,Col} from 'react-bootstrap';
-import React, { useState } from 'react'
-import data from './data';
+
 
 function App() {
-
-  let [items,setItems] = useState(data)
-
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
@@ -17,7 +13,14 @@ function App() {
             <Nav.Link href="#home">Men's</Nav.Link>
             <Nav.Link href="#link">Women's</Nav.Link>
             <Nav.Link href="#link">이벤트</Nav.Link>
-            <Nav.Link href="#link">고객센터</Nav.Link>       
+            <Nav.Link href="#link">고객센터</Nav.Link>
+            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+            </NavDropdown>
           </Nav>         
         </Navbar.Collapse>
       </Navbar>
@@ -35,27 +38,40 @@ function App() {
       
       <Container>
         <Row>
-          {
-            items.map((a,i)=>{
-              return <List items={a} i={i}/> 
-            })
-          }
+          <Col className="item" md="2">
+            <img src="/assets/행님.jpg" width="100%" heigh />
+            <h5>c</h5>
+            <p>제품설명</p>
+          </Col>
+          <Col className="item" md="2">
+            <img src="/assets/행님.jpg" width="100%" heigh />
+            <h5>제품명</h5>
+            <p>제품설명</p>
+          </Col>
+          <Col className="item" md="2">
+            <img src="/assets/행님.jpg" width="100%" heigh />
+            <h5>제품명</h5>
+            <p>제품설명</p>
+          </Col>
+          <Col className="item" md="2">
+            <img src="/assets/행님.jpg" width="100%" heigh />
+            <h5>제품명</h5>
+            <p>제품설명</p>
+          </Col>
+          <Col className="item" md="2">
+            <img src="/assets/행님.jpg" width="100%" heigh />
+            <h5>제품명</h5>
+            <p>제품설명</p>
+          </Col>
+          <Col className="item" md="2">
+            <img src="/assets/행님.jpg" width="100%" heigh />
+            <h5>제품명</h5>
+            <p>제품설명</p>
+          </Col>
         </Row>
       </Container>
     </div>
   );
-  
-} 
-
-function List(props){
-  return(
-  <Col className="item" md="3">
-    <img src={ 'https://codingapple1.github.io/shop/shoes' + (props.i+1) + '.jpg' } width="100%"/>
-    <h5>{props.items.title}</h5>
-    <p>{props.items.price}￦</p>
-  </Col>
-  )
 }
-
 
 export default App;
