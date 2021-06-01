@@ -2,7 +2,7 @@ import './App.css';
 import { Navbar,Nav,Jumbotron,Button,Container,Row,Col} from 'react-bootstrap';
 import React, { useState } from 'react'
 import data from './data';
-
+import Detail from './Component/Detail'
 import { Link, Route, Switch }  from 'react-router-dom';
 
 
@@ -17,16 +17,16 @@ function App() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="#home">Men's</Nav.Link>
-            <Nav.Link href="#link">Women's</Nav.Link>
-            <Nav.Link href="#link">이벤트</Nav.Link>
-            <Nav.Link href="#link">고객센터</Nav.Link>       
+            <Nav.Link><Link to="/main">Men's</Link></Nav.Link>
+            <Nav.Link><Link to="/main/detail">Women's</Link></Nav.Link>
+            <Nav.Link>이벤트</Nav.Link>
+            <Nav.Link>고객센터</Nav.Link>       
           </Nav>         
         </Navbar.Collapse>
       </Navbar>
 
-      
-      <Route exact path="/">
+      <Switch> 
+      <Route exact path="/main">
         <Jumbotron className="jumbotron">
         <h1>고덕점 & 온라인몰 OPEN 기념 이벤트!</h1>
         <p>
@@ -50,23 +50,14 @@ function App() {
         </Container>
       </Route>
 
-
-      <Route path="/detail">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
-            </div>
-            <div className="col-md-6 mt-4">
-              <h4 className="pt-5">상품명</h4>
-              <p>상품설명</p>
-              <p>120000원</p>
-              <button className="btn btn-danger">주문하기</button> 
-            </div>
-          </div>
-        </div> 
+      <Route path="/main/detail">
+        <Detail/>
       </Route>
 
+      <Route path="/:id">
+        <div> 아무거나 입력해도 나올겁니다.</div>
+      </Route>
+      </Switch>
     </div>
   );
   
