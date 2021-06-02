@@ -29,7 +29,6 @@ let data = [
 ] 
 export default data;
 
-
 //내보내고 싶다면
 // let love = "true";
 // export default love;

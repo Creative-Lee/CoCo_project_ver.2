@@ -26,7 +26,7 @@ function App() {
       </Navbar>
 
       <Switch> 
-      <Route exact path="/main">
+      <Route exact path="/main">        
         <Jumbotron className="jumbotron">
         <h1>고덕점 & 온라인몰 OPEN 기념 이벤트!</h1>
         <p>
@@ -50,13 +50,10 @@ function App() {
         </Container>
       </Route>
 
-      <Route path="/main/detail">
-        <Detail/>
+      <Route path="/main/detail/:id">
+        <Detail items={items}/>
       </Route>
-
-      <Route path="/:id">
-        <div> 아무거나 입력해도 나올겁니다.</div>
-      </Route>
+      
       </Switch>
     </div>
   );
