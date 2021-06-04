@@ -50,7 +50,7 @@ function App() {
         </Container>
       </Route>
 
-      <Route path="/main/detail/:id">
+      <Route path="/main/detail/:item_id">
         <Detail items={items}/>
       </Route>
       

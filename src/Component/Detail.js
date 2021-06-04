@@ -4,11 +4,12 @@ import { useHistory, useParams } from 'react-router-dom';
 function Detail(props){
 
     let history = useHistory();
-    let { id } = useParams();
+    let { item_id } = useParams();
 
     let matchItems = props.items.find(function(itemsData){
-        if(itemsData.id == id)
+        if(itemsData.item_id == item_id){
         return true;
+        }    
     });
 
     return (
