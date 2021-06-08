@@ -1,20 +1,30 @@
 import React, { useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom';
+import styled from 'styled-components'
+
+let 박스 = styled.div`
+    padding : 20px;
+`;
+let 타이틀 = styled.h4`
+    font-size : 25px;
+    color : ${ props => props.색상 }
+`;
+
+
 
 function Detail(props){
 
     let history = useHistory();
     let { item_id } = useParams();
 
-    let matchItems = props.items.find(function(itemsData){
-        if(itemsData.item_id == item_id){
-        return true;
-        }    
-    });
+    let matchItems = props.items.find(x => x.item_id == item_id);
 
     return (
         <div className="container">
-            <div className="row">
+            <박스> 
+                <타이틀 색상="blue">Detail</타이틀>
+            </박스>
+            <box className="row">
                     <div className="col-md-6">
                     <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
                     </div>
@@ -27,7 +37,7 @@ function Detail(props){
                         history.goBack();
                     }} >뒤로가기</button> 
                 </div>
-            </div>
+            </box>
         </div> 
     )
 }
