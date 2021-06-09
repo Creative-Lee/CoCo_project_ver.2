@@ -1,0 +1,52 @@
+@import './_reset.scss';
+
+$이것은사스문법 : #ff0000;
+
+.red{
+    color: $이것은사스문법;
+}
+
+div.container h4 {
+    color: blue;
+}
+
+div.container p {
+    color: green;
+}
+
+div.container {
+    h4{
+        color: blue;
+    }
+    p {
+        color: black;
+    }
+}
+
+
+
+@mixin 기본틀() {
+    background: #eeeeee;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width:100%;
+    margin: auto;
+}
+
+.my-alert {
+    @include 기본틀();
+}
+
+.my-alert2 {
+    @extend .my-alert;
+    background: #ffe592;
+}
+
+
+.my-alert p {
+    margin-bottom: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
