@@ -29,11 +29,12 @@ let data = [
 ] 
 export default data;
 
-//내보내고 싶다면
+// 내보내고 싶다면
 // let love = "true";
 // export default love;
 
-//내보낼 변수가 많다면
+// 내보낼 변수가 많다면
+
 // let name = "kim";
 // let name2 = "park";
 
