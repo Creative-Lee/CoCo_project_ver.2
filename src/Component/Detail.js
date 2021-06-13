@@ -3,10 +3,10 @@ import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components'
 import '../Detail.scss';
 
-let 박스 = styled.div`
+let Box = styled.div`
     padding : 20px;
 `;
-let 타이틀 = styled.h4`
+let Title = styled.h4`
     font-size : 25px;
     color : ${ props => props.색상 }
 `;
@@ -22,16 +22,16 @@ function Detail(props){
 
     return (
         <div className="container">
-            <박스> 
-                <타이틀 className="red" >Detail</타이틀>
-            </박스>
+            <Box> 
+                <Title className="red" >Detail</Title>
+            </Box>
             <div className="my-alert">
                 <p>낫 이너프 재고</p>
             </div>
-            <box className="row">
-                    <div className="col-md-6">
-                    <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
-                    </div>
+
+            <div className="col-md-6">
+                        <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
+            </div>
                 <div className="col-md-6 mt-4">
                     <h4 className="pt-5">{matchItems.title}</h4>
                     <p>{matchItems.content}</p>
@@ -39,9 +39,9 @@ function Detail(props){
                     <button className="btn btn-danger">주문하기</button> 
                     <button className="btn btn-danger" onClick={() =>{
                         history.goBack();
-                    }} >뒤로가기</button> 
+                    }} >뒤로가기
+                    </button> 
                 </div>
-            </box>
         </div> 
     )
 }
