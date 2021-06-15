@@ -16,8 +16,6 @@ let Title = styled.h4`
 function Detail(props){
 
     let [alertState,setAlertState] = useState(true);
-    let [inputData,setInputData] = useState();
-
 
     useEffect(()=>{
         let alertTimer = setTimeout(()=>{ setAlertState(false) } , 2000)         
@@ -35,9 +33,7 @@ function Detail(props){
                 <Title className="red" >Detail</Title>
             </Box>
         
-        <input onChange={(e)=> {setInputData(e.target.value)}} />
-        {inputData}
-        
+
             {
                 alertState === true
                 ?   (<div className="my-alert">

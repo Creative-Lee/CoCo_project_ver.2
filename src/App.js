@@ -4,11 +4,12 @@ import React, { useState } from 'react'
 import data from './data';
 import Detail from './Component/Detail'
 import { Link, Route, Switch }  from 'react-router-dom';
-
+import axios from 'axios';
 
 function App() {
 
-  let [items,setItems] = useState( data )
+  let [items,setItems] = useState( data );
+  let [wait,setWait] = useState(false);
 
   return (
     <div className="App">
@@ -47,6 +48,30 @@ function App() {
               })
             }
           </Row>
+
+          <button className="btn btn-primary" onClick={()=>{
+            setWait(true);
+            axios.get('https://codingapple1.github.io/shop/data2.json')
+            .then((result)=>{ 
+              setWait(false);
+              setItems([...items, ...result.data]);
+              
+            }) //성공시
+            .catch(()=>{
+              setWait(false);
+              console.log('we fail')
+            }) //실패시 
+
+          }} >더보기</button>
+
+            { 
+              wait === true  
+              ? <div className="wait"> 
+                <p>로딩중입니댱</p> 
+                </div>  
+              :null 
+            }     
+
         </Container>
       </Route>
 
@@ -63,7 +88,7 @@ function App() {
 function Card(props){
   return(
   <Col className="item" md="3">
-    <img src={ 'https://codingapple1.github.io/shop/shoes' + (props.i+1) + '.jpg' } width="100%" />
+    <img src={`https://codingapple1.github.io/shop/shoes${props.i+1}.jpg`} width="100%" />
     <h5>{props.items.title}</h5>
     <p>{props.items.price}￦</p>
   </Col>

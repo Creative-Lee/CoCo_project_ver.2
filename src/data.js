@@ -19,12 +19,6 @@ let data = [
         title : "Grey Yordan",
         content : "Born in the States",
         price : 130000
-    },
-    {
-        item_id : 3,
-        title : "Captin Coco",
-        content : "Born in mars",
-        price : 999999
     }
 ] 
 export default data;
