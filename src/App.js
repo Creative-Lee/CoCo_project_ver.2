@@ -10,6 +10,7 @@ function App() {
 
   let [items,setItems] = useState( data );
   let [wait,setWait] = useState(false);
+  let [stock,setStock] = useState([11,12,13])
 
   return (
     <div className="App">
@@ -55,8 +56,8 @@ function App() {
             .then((result)=>{ 
               setWait(false);
               setItems([...items, ...result.data]);
-              
             }) //성공시
+
             .catch(()=>{
               setWait(false);
               console.log('we fail')
@@ -76,7 +77,7 @@ function App() {
       </Route>
 
       <Route path="/main/detail/:item_id">
-        <Detail items={items}/>
+        <Detail items={items} stock={stock} setStock={setStock}/>
       </Route>
       
       </Switch>

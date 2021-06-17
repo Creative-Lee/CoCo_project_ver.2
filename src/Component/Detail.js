@@ -23,9 +23,15 @@ function Detail(props){
     },[]);
 
     let history = useHistory();
-    let { item_id } = useParams();
 
+    let { item_id } = useParams();
     let matchItems = props.items.find(x => x.item_id == item_id);
+
+    function stockChange(item_id){
+        let copyStock = [...props.stock];
+        copyStock[Number(item_id)] = copyStock[Number(item_id)] -1
+        props.setStock(copyStock);
+    }
 
     return (
         <div className="container">
@@ -33,7 +39,6 @@ function Detail(props){
                 <Title className="red" >Detail</Title>
             </Box>
         
-
             {
                 alertState === true
                 ?   (<div className="my-alert">
@@ -43,19 +48,28 @@ function Detail(props){
             }
         
             <div className="col-md-6">
-                        <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
+            <img src={`https://codingapple1.github.io/shop/shoes${Number(item_id)+1}.jpg`} width="100%" />
             </div>
+
                 <div className="col-md-6 mt-4">
                     <h4 className="pt-5">{matchItems.title}</h4>
                     <p>{matchItems.content}</p>
                     <p>{matchItems.price}￦</p>
-                    <button className="btn btn-danger">주문하기</button> 
-                    <button className="btn btn-danger" onClick={() =>{
-                        history.goBack();
-                    }} >뒤로가기
-                    </button> 
+
+                    <Stock stock={props.stock} item_id={item_id}></Stock>
+
+                    <button className="btn btn-danger" onClick={ ()=>{ stockChange(item_id) } }> 주문하기 </button> 
+                    <button className="btn btn-danger" onClick={() =>{history.goBack()}} >뒤로가기 </button> 
                 </div>
         </div> 
+    )
+}
+
+
+
+function Stock(props){ 
+    return (
+    <p>현재 재고 {props.stock[Number(props.item_id)]}개 남았습니다.</p>
     )
 }
 
