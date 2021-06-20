@@ -4,6 +4,7 @@
 }
 
 .jumbotron {
+    margin-top: 0;
     text-align: center;
     background-image: url('../src/img/coco로고.jpg');   
     background-size: cover;
@@ -21,4 +22,38 @@
     max-width: 500px;
     width:100%;
     margin: auto;
+}
+
+.header {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+}
+
+.fix-nav{
+    position: relative;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    height: 81px;
+    padding: 10px 60px 10px 60px;
+
+    transition: top .1s;
+    background-color: #fff;
+    border-bottom: 1px solid #ededed;
+
+}
+
+.child_nav{  
+    position: relative; 
+    
+    padding: 5px 60px 5px 60px;
+    transition: top .1s;
+    background-color: #fff;
+    border-bottom: 1px solid #ededed;
+}
+
+.child_nav_li{
+    padding-left: 10px;
+    padding-right: 10px;
 }

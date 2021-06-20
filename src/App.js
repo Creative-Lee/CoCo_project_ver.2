@@ -1,5 +1,5 @@
 import './App.css';
-import data from './data';
+import data from './data';  
 import Detail from './Component/Detail';
 import axios from 'axios';
 
@@ -20,18 +20,36 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar bg="light" expand="lg">
+      <header className="header">
+      <div className="fix-nav-wrap">
+      <Navbar className="fix-nav" bg="light" expand="md">
         <Navbar.Brand href="/">Fromcoco124th</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link as={Link} to="/detail/0">Men's</Nav.Link>
-            <Nav.Link as={Link} to="/detail/1">Women's</Nav.Link> 
-            <Nav.Link>이벤트</Nav.Link>
-            <Nav.Link>고객센터</Nav.Link>       
+          <Nav className="mr-auto ">
+            <Nav.Link as='a' href="/detail/0"> Man</Nav.Link>
+            <Nav.Link as={Link} to="/detail/1">Women</Nav.Link> 
+            <Nav.Link>커뮤니티</Nav.Link>                
           </Nav>         
         </Navbar.Collapse>
       </Navbar>
+      </div>
+
+    <div className="child_nav-wrap">
+      <Nav className="child_nav" defaultActiveKey="/" as="ul">
+      <Nav.Item className="child_nav_li" as="li">
+        <Nav.Link href="/">홈</Nav.Link>
+      </Nav.Item>
+      <Nav.Item className="child_nav_li" as="li">
+        <Nav.Link eventKey="link-1">코디추천</Nav.Link>
+      </Nav.Item>
+      <Nav.Item className="child_nav_li" as="li">
+        <Nav.Link eventKey="link-2">Link</Nav.Link>
+      </Nav.Item>
+    </Nav>
+    </div>
+    </header>
+
 
       <Switch> 
       <Route exact path="/">        
@@ -50,8 +68,6 @@ function App() {
     
         <StockContext.Provider value={stock}>
         <Container>
-
-        
           <Row>
             {
               items.map((a,i)=>{
@@ -59,8 +75,6 @@ function App() {
               })
             }
           </Row>
-      
-
           <button className="btn btn-primary" onClick={()=>{
             setWait(true);
             axios.get('https://codingapple1.github.io/shop/data2.json')
@@ -73,7 +87,6 @@ function App() {
               setWait(false);
               console.log('we fail')
             }) //실패시 
-
           }} >더보기</button>
 
             { 
@@ -83,6 +96,7 @@ function App() {
                 </div>  
               :null 
             }     
+            
         </Container>
         </StockContext.Provider>
       
@@ -109,6 +123,7 @@ function Card(props){
       <img src={`https://codingapple1.github.io/shop/shoes${props.i+1}.jpg`} width="100%" />
       <h5>{props.items.title}</h5>
       <p>{props.items.price}￦</p>
+      <p>{props.items.stock}개 남았습니다!</p>
       <p>남은 수량: {stock[props.i]}</p>   
     </Col>
   )
