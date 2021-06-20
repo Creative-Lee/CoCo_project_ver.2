@@ -1,26 +1,32 @@
 import './App.css';
-import { Navbar,Nav,Jumbotron,Button,Container,Row,Col} from 'react-bootstrap';
-import React, { useState } from 'react'
 import data from './data';
-import Detail from './Component/Detail'
-import { Link, Route, Switch }  from 'react-router-dom';
+import Detail from './Component/Detail';
 import axios from 'axios';
+
+import React, { useState , useContext } from 'react';
+
+import { Link, Route, Switch }  from 'react-router-dom';
+import { Navbar,Nav,Jumbotron,Button,Container,Row,Col} from 'react-bootstrap';
+
+
+export let StockContext = React.createContext();
 
 function App() {
 
   let [items,setItems] = useState( data );
   let [wait,setWait] = useState(false);
+
   let [stock,setStock] = useState([11,12,13])
 
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">Fromcoco124th</Navbar.Brand>
+        <Navbar.Brand href="/">Fromcoco124th</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link as={Link} to="/">Men's</Nav.Link>
-            <Nav.Link as={Link} to="/main/detail">Women's</Nav.Link> 
+            <Nav.Link as={Link} to="/detail/0">Men's</Nav.Link>
+            <Nav.Link as={Link} to="/detail/1">Women's</Nav.Link> 
             <Nav.Link>이벤트</Nav.Link>
             <Nav.Link>고객센터</Nav.Link>       
           </Nav>         
@@ -40,15 +46,20 @@ function App() {
           <Button variant="primary">more event..</Button>
         </p>
         </Jumbotron>
+
     
+        <StockContext.Provider value={stock}>
         <Container>
+
+        
           <Row>
             {
               items.map((a,i)=>{
-                return <Card items={a} i={i} key={i}/> 
+                return (<Card items={a} i={i} key={i}/>)
               })
             }
           </Row>
+      
 
           <button className="btn btn-primary" onClick={()=>{
             setWait(true);
@@ -72,12 +83,15 @@ function App() {
                 </div>  
               :null 
             }     
-
         </Container>
+        </StockContext.Provider>
+      
       </Route>
 
-      <Route path="/main/detail/:item_id">
-        <Detail items={items} stock={stock} setStock={setStock}/>
+      <Route path="/detail/:item_id">
+          <StockContext.Provider value={stock}> 
+            <Detail items={items} stock={stock} setStock={setStock}/>
+          </StockContext.Provider>
       </Route>
       
       </Switch>
@@ -87,14 +101,19 @@ function App() {
 } 
 
 function Card(props){
+
+  let stock = useContext(StockContext);
+
   return(
-  <Col className="item" md="3">
-    <img src={`https://codingapple1.github.io/shop/shoes${props.i+1}.jpg`} width="100%" />
-    <h5>{props.items.title}</h5>
-    <p>{props.items.price}￦</p>
-  </Col>
+    <Col className="item" md="3">
+      <img src={`https://codingapple1.github.io/shop/shoes${props.i+1}.jpg`} width="100%" />
+      <h5>{props.items.title}</h5>
+      <p>{props.items.price}￦</p>
+      <p>남은 수량: {stock[props.i]}</p>   
+    </Col>
   )
 }
+
 
 
 export default App;
