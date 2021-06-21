@@ -1,5 +1,7 @@
 import './App.css';
-import data from './data';  
+
+import Cart from './Component/Cart';
+import productData from './productData'
 import Detail from './Component/Detail';
 import axios from 'axios';
 
@@ -13,7 +15,7 @@ export let StockContext = React.createContext();
 
 function App() {
 
-  let [items,setItems] = useState( data );
+  let [productData_ , setProductData_] = useState(productData)
   let [wait,setWait] = useState(false);
 
   let [stock,setStock] = useState([11,12,13])
@@ -70,8 +72,8 @@ function App() {
         <Container>
           <Row>
             {
-              items.map((a,i)=>{
-                return (<Card items={a} i={i} key={i}/>)
+              productData_.map((a,i)=>{
+                return (<Card productData_={a} i={i} key={i}/>)
               })
             }
           </Row>
@@ -80,7 +82,7 @@ function App() {
             axios.get('https://codingapple1.github.io/shop/data2.json')
             .then((result)=>{ 
               setWait(false);
-              setItems([...items, ...result.data]);
+              setProductData_([...productData_, ...result.data]);
             }) //성공시
 
             .catch(()=>{
@@ -104,8 +106,12 @@ function App() {
 
       <Route path="/detail/:item_id">
           <StockContext.Provider value={stock}> 
-            <Detail items={items} stock={stock} setStock={setStock}/>
+            <Detail productData_={productData_} stock={stock} setStock={setStock}/>
           </StockContext.Provider>
+      </Route>
+
+      <Route path='/cart'>
+        <Cart></Cart>
       </Route>
       
       </Switch>
@@ -121,9 +127,9 @@ function Card(props){
   return(
     <Col className="item" md="3">
       <img src={`https://codingapple1.github.io/shop/shoes${props.i+1}.jpg`} width="100%" />
-      <h5>{props.items.title}</h5>
-      <p>{props.items.price}￦</p>
-      <p>{props.items.stock}개 남았습니다!</p>
+      <h5>{props.productData_.title}</h5>
+      <p>{props.productData_.price}￦</p>
+      <p>{props.productData_.stock}개 남았습니다!</p>
       <p>남은 수량: {stock[props.i]}</p>   
     </Col>
   )

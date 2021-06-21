@@ -1,5 +1,4 @@
-
-let data = [
+let productData = [
     {
         item_id : 0,
         title : "White and Black",
@@ -24,15 +23,4 @@ let data = [
         stock : 150
     }
 ] 
-export default data;
-
-// 내보내고 싶다면
-// let love = "true";
-// export default love;
-
-// 내보낼 변수가 많다면
-
-// let name = "kim";
-// let name2 = "park";
-
-// export {name,name2};
+export default productData;

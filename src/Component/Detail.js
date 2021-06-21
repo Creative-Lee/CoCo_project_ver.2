@@ -35,8 +35,8 @@ function Detail(props){
     let history = useHistory();
 
     let { item_id } = useParams();
-    let matchItems = props.items.find((itemsData)=>{
-        return itemsData.item_id == item_id
+    let matchItems = props.productData_.find((productData_)=>{
+        return productData_.item_id == item_id
     })
     
 

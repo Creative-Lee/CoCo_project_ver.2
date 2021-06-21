@@ -1,15 +1,45 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import './index.css';
+
+import ReactDOM from 'react-dom';
 import  {BrowserRouter}  from 'react-router-dom';
+
+
+
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+
+let cartProduct = createStore(()=>{
+  return [{
+    id : 0 , 
+    name : 'shoes' ,
+    price : 120000,
+    quan : 2
+  },
+  {
+    id: 1 , 
+    name : 'pants',
+    price : 110000,
+    quan : 3
+  },
+  {
+    id: 2 , 
+    name : 'shirt',
+    price : 100000,
+    quan : 4
+  }
+]
+});
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+        <Provider store={cartProduct}>
+          <App />
+        </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
