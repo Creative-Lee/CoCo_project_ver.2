@@ -12,8 +12,10 @@ import  {BrowserRouter}  from 'react-router-dom';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 
-let cartProduct = createStore(()=>{
-  return [{
+
+
+let initState = [
+  {
     id : 0 , 
     name : 'shoes' ,
     price : 120000,
@@ -32,7 +34,34 @@ let cartProduct = createStore(()=>{
     quan : 4
   }
 ]
-});
+
+function reducer(state = initState , action){
+  if( action.type === '수량증가'){
+    let copyState = [...state];
+    copyState[0].quan++;
+    return copyState
+  }
+
+  else if( action.type === '수량감소' ){
+    let copyState = [...state];
+    
+    if(copyState[0].quan === 0 ){
+      return state
+    }
+    else{
+      copyState[0].quan--;
+      return copyState
+    }
+    
+  }
+
+  else {
+    return state
+  }
+}
+
+const cartProduct = createStore(reducer);
+
 
 ReactDOM.render(
   <React.StrictMode>

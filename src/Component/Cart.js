@@ -15,11 +15,19 @@ function Cart(props){
                 </tr>
                 </thead>
                 <tbody>
-                
                 {
                     props.cartProduct.map((a,i)=>{
                         return(
-                            <CartTd cartProduct={a}></CartTd>
+                                <tr key={i}>
+                                    <td>{ a.name }</td>
+                                    <td>{ a.price }</td>
+                                    <td>{ a.quan }</td>
+                                    <td>
+                                        <button onClick={ ()=>{ props.dispatch({ type : '수량증가' }) } }>+</button>
+                                        <button onClick={ ()=>{ props.dispatch({ type : '수량감소' }) } }>-</button>
+                                    </td>  
+                                    <td></td>
+                                </tr>
                         )  
                     })
                 }
@@ -28,23 +36,13 @@ function Cart(props){
     )
 }
 
-function CartTd(props){
-    return (
-        <tr>
-            <td>{ props.cartProduct.name }</td>
-            <td>{ props.cartProduct.price }</td>
-            <td>{ props.cartProduct.quan }</td>
-            <td>{ 0 }</td>
-            <td>{ 0 }</td>
-        </tr>
-    )
-}
 
 //redux
-function cartProduct(cartProduct){
+function store데이터를_props로_변환해주는_함수(store에_만든state){
     return {
-        cartProduct : cartProduct
+        cartProduct : store에_만든state // store에_만든state를 cartProduct라는 이름으로 props 해서 쓸래요
     }
 };
-export default connect(cartProduct)(Cart)
+
+export default connect(store데이터를_props로_변환해주는_함수)(Cart)
 //redux
