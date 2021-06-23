@@ -1,16 +1,12 @@
 import React from 'react';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
 import './index.css';
-
 import ReactDOM from 'react-dom';
 import  {BrowserRouter}  from 'react-router-dom';
-
-
-
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { combineReducers, createStore } from 'redux'
+//Action types
 
 
 
@@ -35,6 +31,10 @@ let initState = [
   }
 ]
 
+let initAlertState = true;
+
+
+
 function reducer(state = initState , action){
   if( action.type === '수량증가'){
     let copyState = [...state];
@@ -52,7 +52,6 @@ function reducer(state = initState , action){
       copyState[0].quan--;
       return copyState
     }
-    
   }
 
   else {
@@ -60,13 +59,25 @@ function reducer(state = initState , action){
   }
 }
 
-const cartProduct = createStore(reducer);
+function reducer2(state = initAlertState , action){
+  if( action.type  === '닫기버튼클릭' ){
+    state = false;
+    return state;
+  }
+  else{
+    return state;
+  }
+}
+
+
+const store = createStore(combineReducers({ reducer , reducer2 }));
+
 
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-        <Provider store={cartProduct}>
+        <Provider store={store}>
           <App />
         </Provider>
     </BrowserRouter>
