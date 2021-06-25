@@ -1,6 +1,8 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 import { connect } from "react-redux";
+import { increase , decrease } from '../modules/cartQuan';
+import { close } from '../modules/close';
 
 function Cart(props) {
   return (
@@ -23,20 +25,8 @@ function Cart(props) {
                 <td>{a.price}</td>
                 <td>{a.quan}</td>
                 <td>
-                  <button
-                    onClick={() => {
-                      props.dispatch({ type: "수량증가" });
-                    }}
-                  >
-                    +
-                  </button>
-                  <button
-                    onClick={() => {
-                      props.dispatch({ type: "수량감소" });
-                    }}
-                  >
-                    -
-                  </button>
+                  <button onClick={ () => { props.dispatch( increase() ) }} > + </button>
+                  <button onClick={ () => { props.dispatch( decrease() ) }} > - </button>
                 </td>
                 <td></td>
               </tr>
@@ -48,7 +38,7 @@ function Cart(props) {
         props.alertState === true
         ? (<div className="my-alert2">
           <p>지금 바로사면 20%할인해드림 개꿀 !</p>
-          <button onClick={ () => { props.dispatch({ type : '닫기버튼클릭' }) }} >닫기</button>
+          <button onClick={ () => { props.dispatch( close() ) }} > 닫기 </button>
         </div>)
         : null
       }
@@ -59,8 +49,8 @@ function Cart(props) {
 //redux
 function store데이터를_props로_변환해주는_함수(store안에_모든_state) {
   return {
-    cartProduct: store안에_모든_state.reducer, // store안에 모든 state에서 reducer1번에 해당하는 state를 cartProduct라는 이름으로 props 해서 쓸래요
-    alertState: store안에_모든_state.reducer2,
+    cartProduct: store안에_모든_state.cartQuan, // store안에 모든 state에서 reducer1번에 해당하는 state를 cartProduct라는 이름으로 props 해서 쓸래요
+    alertState: store안에_모든_state.alertClose
   };
 }
 
