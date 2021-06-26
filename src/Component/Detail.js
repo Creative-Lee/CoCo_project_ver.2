@@ -5,8 +5,11 @@ import styled from 'styled-components'
 import '../Detail.scss';
 import {StockContext} from '../App'
 
-import { CSSTransition } from 'react-transition-group';
 
+import { CSSTransition } from 'react-transition-group';
+import { connect } from 'react-redux';
+
+import addData from '../modules/cartQuan'
 
 let Box = styled.div`
     padding : 20px;
@@ -69,7 +72,12 @@ function Detail(props){
                     <p>{matchItems.price}￦</p>
                     <p>현재 재고 {stock[Number(item_id)]}개 남았습니다.</p>
                     
-                    <button className="btn btn-danger" onClick={() => { stockChange(item_id) } }> 주문하기 </button> 
+
+                    <button className="btn btn-danger" onClick={() => {
+                        stockChange(item_id);
+                        props.dispatch({ type : "ADD_DATA" , data : {id: 3, name: 'DoDo', price: 990000, quan: 5 } }  ) ;
+                        history.push('/cart')
+                    }}> 주문하기 </button> 
                     <button className="btn btn-danger" onClick={() => { history.goBack() }} >뒤로가기 </button> 
                 </div>
 
@@ -116,4 +124,13 @@ function TabContent(props){
     }
 }
 
-export default Detail ;
+
+function store데이터를_props로_변환해주는_함수(store안에_모든_state) {
+    console.log(store안에_모든_state);
+    return {
+        cartProduct: store안에_모든_state.cartQuan, // store안에 모든 state에서 reducer1번에 해당하는 state를 cartProduct라는 이름으로 props 해서 쓸래요
+        alertState: store안에_모든_state.alertClose
+    };
+  }
+export default connect(store데이터를_props로_변환해주는_함수)(Detail);
+

@@ -25,10 +25,10 @@ function Cart(props) {
                 <td>{a.price}</td>
                 <td>{a.quan}</td>
                 <td>
-                  <button onClick={ () => { props.dispatch( increase() ) }} > + </button>
-                  <button onClick={ () => { props.dispatch( decrease() ) }} > - </button>
+                  <button onClick={ () => { props.dispatch( increase(i) ) }} > + </button>
+                  <button onClick={ () => { props.dispatch( decrease(i) ) }} > - </button>
                 </td>
-                <td></td>
+                <td>{a.price * a.quan}</td>
               </tr>
             );
           })}

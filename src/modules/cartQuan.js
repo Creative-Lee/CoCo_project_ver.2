@@ -2,16 +2,20 @@
 // Ducks 패턴을 따를땐 액션의 이름에 접두사를 넣어주세요.
 // 이렇게 하면 다른 모듈과 액션 이름이 중복되는 것을 방지 할 수 있습니다.
 
+const ADD_DATA = 'cartQuan/ADD_DATA';
 const INCREASE = 'cartQuan/INCREASE';
 const DECREASE = 'cartQuan/DECREASE';
+
 
 
 /* 액션 생성함수 만들기 */
 // 액션 생성함수를 만들고 export 키워드를 사용해서 내보내주세요.
 
 
-export const increase = () => ({ type : INCREASE });
-export const decrease = () => ({ type : DECREASE });
+export const addData = data => ({ type : ADD_DATA , data : data }) 
+export const increase = i => ({ type : INCREASE , i });
+export const decrease = i => ({ type : DECREASE , i });
+
 
 
 /* 초기 상태 선언 */
@@ -34,7 +38,7 @@ const initState = [
         name: 'shirt',
         price: 100000,
         quan: 4,
-    },
+    }
 ];
 
 
@@ -44,17 +48,21 @@ const initState = [
 export default function cartQuan(state = initState, action) {
     let copyState = [...state];
     switch (action.type) {
+        case ADD_DATA:
+            copyState.push(action.data);
+            return copyState;
+
         case INCREASE:
-          copyState[0].quan = copyState[0].quan++ ;
-          return copyState; 
+            copyState[action.i].quan ++ ;
+            return copyState; 
 
         case DECREASE:
-            if(copyState[0].quan === 0){
-              return state;
+            if(copyState[action.i].quan === 0){
+                return state;
             }
             else {
-              copyState[0].quan = copyState[0].quan-- ;
-              return copyState;
+                copyState[action.i].quan --  ;
+                return copyState;
             };
 
         default : 
