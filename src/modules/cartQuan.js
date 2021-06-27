@@ -12,7 +12,11 @@ const DECREASE = 'cartQuan/DECREASE';
 // 액션 생성함수를 만들고 export 키워드를 사용해서 내보내주세요.
 
 
-export const addData = data => ({ type : ADD_DATA , data : data }) 
+export const addData = data => ({ 
+    type : ADD_DATA ,
+    payLoad : {data} 
+                                
+                                }) 
 export const increase = i => ({ type : INCREASE , i });
 export const decrease = i => ({ type : DECREASE , i });
 
@@ -49,7 +53,7 @@ export default function cartQuan(state = initState, action) {
     let copyState = [...state];
     switch (action.type) {
         case ADD_DATA:
-            copyState.push(action.data);
+            copyState.push(action.payload);
             return copyState;
 
         case INCREASE:

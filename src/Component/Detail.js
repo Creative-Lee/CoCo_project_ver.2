@@ -43,9 +43,9 @@ function Detail(props){
     })
     
 
-    function stockChange(item_id){
+    function stockChange(){
         let copyStock = [...props.stock];
-        copyStock[Number(item_id)] = copyStock[Number(item_id)] -1
+        copyStock[props.productData_.item_id] = copyStock[props.productData_.item_id] -1
         props.setStock(copyStock);
     }
 
@@ -64,18 +64,18 @@ function Detail(props){
             }
         
             <div className="col-md-6">
-            <img src={`https://codingapple1.github.io/shop/shoes${Number(item_id)+1}.jpg`} width="100%" />
+            <img src={`https://codingapple1.github.io/shop/shoes${matchItems.item_id+1}.jpg`} width="100%" />
             </div>
                 <div className="col-md-6 mt-4">
                     <h4 className="pt-5">{matchItems.title}</h4>
                     <p>{matchItems.content}</p>
                     <p>{matchItems.price}￦</p>
-                    <p>현재 재고 {stock[Number(item_id)]}개 남았습니다.</p>
+                    <p>현재 재고 {stock[matchItems.item_id]}개 남았습니다.</p>
                     
 
                     <button className="btn btn-danger" onClick={() => {
-                        stockChange(item_id);
-                        props.dispatch({ type : "ADD_DATA" , data : {id: 3, name: 'DoDo', price: 990000, quan: 5 } }  ) ;
+                        stockChange();
+                        props.dispatch( addData( {id: 3, name: 'DoDo', price: 990000, quan: 5 } ) ) ;
                         history.push('/cart')
                     }}> 주문하기 </button> 
                     <button className="btn btn-danger" onClick={() => { history.goBack() }} >뒤로가기 </button> 
@@ -131,6 +131,6 @@ function store데이터를_props로_변환해주는_함수(store안에_모든_st
         cartProduct: store안에_모든_state.cartQuan, // store안에 모든 state에서 reducer1번에 해당하는 state를 cartProduct라는 이름으로 props 해서 쓸래요
         alertState: store안에_모든_state.alertClose
     };
-  }
+}
 export default connect(store데이터를_props로_변환해주는_함수)(Detail);
 

@@ -7,7 +7,7 @@ import axios from 'axios';
 
 import React, { useState , useContext } from 'react';
 
-import { Link, Route, Switch }  from 'react-router-dom';
+import { Link, Route, Switch, useHistory, }  from 'react-router-dom';
 import { Navbar,Nav,Jumbotron,Button,Container,Row,Col} from 'react-bootstrap';
 
 
@@ -18,7 +18,10 @@ function App() {
   let [productData_ , setProductData_] = useState(productData)
   let [wait,setWait] = useState(false);
 
-  let [stock,setStock] = useState([11,12,13])
+  let [stock,setStock] = useState([3,6,9]);
+  let [buttonState,setButtonState] = useState(0);
+
+ 
 
   return (
     <div className="App">
@@ -77,19 +80,27 @@ function App() {
               })
             }
           </Row>
-          <button className="btn btn-primary" onClick={()=>{
-            setWait(true);
-            axios.get('https://codingapple1.github.io/shop/data2.json')
-            .then((result)=>{ 
-              setWait(false);
-              setProductData_([...productData_, ...result.data]);
-            }) //성공시
 
-            .catch(()=>{
-              setWait(false);
-              console.log('we fail')
-            }) //실패시 
-          }} >더보기</button>
+          {
+            buttonState < 1 
+            ?(<button className="btn btn-primary" onClick={()=>{
+              setWait(true);
+              setButtonState(buttonState+1);
+              axios.get('https://codingapple1.github.io/shop/data2.json')
+              .then((result)=>{ 
+                setWait(false);
+                setProductData_([...productData_, ...result.data]);
+                console.log(productData_[3]) 
+              }) //성공시
+
+              .catch(()=>{
+                setWait(false);
+                console.log('we fail')
+              }) //실패시 
+            }} >더보기</button>
+            )
+            :null          
+          }
 
             { 
               wait === true  
@@ -122,15 +133,16 @@ function App() {
 
 function Card(props){
 
-  let stock = useContext(StockContext);
-
+  
+  let history = useHistory();
   return(
-    <Col className="item" md="3">
+
+    <Col className="item" md="3" onClick={ ()=> { history.push(`/detail/${props.productData_.item_id}`)} }>      
       <img src={`https://codingapple1.github.io/shop/shoes${props.i+1}.jpg`} width="100%" />
       <h5>{props.productData_.title}</h5>
+      <p>{props.productData_.content}</p>
       <p>{props.productData_.price}￦</p>
       <p>{props.productData_.stock}개 남았습니다!</p>
-      <p>남은 수량: {stock[props.i]}</p>   
     </Col>
   )
 }
