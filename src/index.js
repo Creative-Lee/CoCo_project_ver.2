@@ -13,7 +13,6 @@ import rootReducer from './modules/index';
 
 const store = createStore(rootReducer);
 
-console.log(store.getState());
 
 
 

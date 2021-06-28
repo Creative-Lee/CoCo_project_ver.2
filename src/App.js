@@ -89,15 +89,16 @@ function App() {
               axios.get('https://codingapple1.github.io/shop/data2.json')
               .then((result)=>{ 
                 setWait(false);
-                setProductData_([...productData_, ...result.data]);
-                console.log(productData_[3]) 
+                setProductData_([...productData_ , ...result.data]);
+                
               }) //성공시
 
               .catch(()=>{
                 setWait(false);
                 console.log('we fail')
               }) //실패시 
-            }} >더보기</button>
+            }} >
+              더보기</button>
             )
             :null          
           }
@@ -117,7 +118,7 @@ function App() {
 
       <Route path="/detail/:item_id">
           <StockContext.Provider value={stock}> 
-            <Detail productData_={productData_} stock={stock} setStock={setStock}/>
+            <Detail productData_={productData_} setProductData_={setProductData_} stock={stock} setStock={setStock}/>
           </StockContext.Provider>
       </Route>
 
@@ -133,11 +134,12 @@ function App() {
 
 function Card(props){
 
-  
+  console.log(props); 
   let history = useHistory();
+  console.log(productData);
   return(
 
-    <Col className="item" md="3" onClick={ ()=> { history.push(`/detail/${props.productData_.item_id}`)} }>      
+    <Col className="item" md="3" onClick={ ()=> { history.push(`/detail/${props.productData_.id}`)} }>      
       <img src={`https://codingapple1.github.io/shop/shoes${props.i+1}.jpg`} width="100%" />
       <h5>{props.productData_.title}</h5>
       <p>{props.productData_.content}</p>

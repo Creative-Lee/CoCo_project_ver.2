@@ -1,15 +1,17 @@
 import React, { useState , useEffect , useContext} from 'react'
 import { useHistory, useParams } from 'react-router-dom';
+
 import { Nav } from 'react-bootstrap';
-import styled from 'styled-components'
-import '../Detail.scss';
-import {StockContext} from '../App'
-
-
 import { CSSTransition } from 'react-transition-group';
+import styled from 'styled-components'
+
 import { connect } from 'react-redux';
 
-import addData from '../modules/cartQuan'
+import axios from 'axios';
+
+import {StockContext} from '../App'
+
+import {addData} from '../modules/cartQuan'
 
 let Box = styled.div`
     padding : 20px;
@@ -31,21 +33,22 @@ function Detail(props){
     
 
     useEffect(()=>{
-        let alertTimer = setTimeout(()=>{ setAlertState(false) } , 2000)         
-        return ()=>{clearTimeout(alertTimer)}
+        let stockAlert = setTimeout(()=>{
+            setAlertState(false); } , 2000);
+
+        return ()=>{clearTimeout(stockAlert)};
     },[]);
 
     let history = useHistory();
 
     let { item_id } = useParams();
     let matchItems = props.productData_.find((productData_)=>{
-        return productData_.item_id == item_id
+        return productData_.id == item_id
     })
     
-
     function stockChange(){
         let copyStock = [...props.stock];
-        copyStock[props.productData_.item_id] = copyStock[props.productData_.item_id] -1
+        copyStock[props.productData_.id] = copyStock[props.productData_.id] -1
         props.setStock(copyStock);
     }
 
@@ -64,18 +67,18 @@ function Detail(props){
             }
         
             <div className="col-md-6">
-            <img src={`https://codingapple1.github.io/shop/shoes${matchItems.item_id+1}.jpg`} width="100%" />
+            <img src={`https://codingapple1.github.io/shop/shoes${matchItems.id+1}.jpg`} width="100%" />
             </div>
                 <div className="col-md-6 mt-4">
                     <h4 className="pt-5">{matchItems.title}</h4>
                     <p>{matchItems.content}</p>
                     <p>{matchItems.price}￦</p>
-                    <p>현재 재고 {stock[matchItems.item_id]}개 남았습니다.</p>
+                    <p>현재 재고 {stock[matchItems.id]}개 남았습니다.</p>
                     
 
                     <button className="btn btn-danger" onClick={() => {
                         stockChange();
-                        props.dispatch( addData( {id: 3, name: 'DoDo', price: 990000, quan: 5 } ) ) ;
+                        props.dispatch( addData( {id: matchItems.id , name: matchItems.title , price: 111000 , quan: 1}) ) ;
                         history.push('/cart')
                     }}> 주문하기 </button> 
                     <button className="btn btn-danger" onClick={() => { history.goBack() }} >뒤로가기 </button> 
@@ -126,7 +129,6 @@ function TabContent(props){
 
 
 function store데이터를_props로_변환해주는_함수(store안에_모든_state) {
-    console.log(store안에_모든_state);
     return {
         cartProduct: store안에_모든_state.cartQuan, // store안에 모든 state에서 reducer1번에 해당하는 state를 cartProduct라는 이름으로 props 해서 쓸래요
         alertState: store안에_모든_state.alertClose

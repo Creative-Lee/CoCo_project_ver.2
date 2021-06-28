@@ -3,6 +3,7 @@ import { Table } from "react-bootstrap";
 import { connect } from "react-redux";
 import { increase , decrease } from '../modules/cartQuan';
 import { close } from '../modules/close';
+import '../Detail.scss'
 
 function Cart(props) {
   return (
@@ -25,8 +26,8 @@ function Cart(props) {
                 <td>{a.price}</td>
                 <td>{a.quan}</td>
                 <td>
-                  <button onClick={ () => { props.dispatch( increase(i) ) }} > + </button>
-                  <button onClick={ () => { props.dispatch( decrease(i) ) }} > - </button>
+                  <button onClick={ () => { props.dispatch( increase(a.id) ) }} > + </button>
+                  <button onClick={ () => { props.dispatch( decrease(a.id) ) }} > - </button>
                 </td>
                 <td>{a.price * a.quan}</td>
               </tr>
