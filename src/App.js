@@ -138,7 +138,6 @@ function Card(props){
   let history = useHistory();
   console.log(productData);
   return(
-
     <Col className="item" md="3" onClick={ ()=> { history.push(`/detail/${props.productData_.id}`)} }>      
       <img src={`https://codingapple1.github.io/shop/shoes${props.i+1}.jpg`} width="100%" />
       <h5>{props.productData_.title}</h5>

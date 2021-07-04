@@ -78,7 +78,7 @@ function Detail(props){
 
                     <button className="btn btn-danger" onClick={() => {
                         stockChange();
-                        props.dispatch( addData( {id: matchItems.id , name: matchItems.title , price: 111000 , quan: 1}) ) ;
+                        props.dispatch( addData( {id: matchItems.id , name: matchItems.title , price: matchItems.price , quan: 1}) ) ;
                         history.push('/cart')
                     }}> 주문하기 </button> 
                     <button className="btn btn-danger" onClick={() => { history.goBack() }} >뒤로가기 </button> 

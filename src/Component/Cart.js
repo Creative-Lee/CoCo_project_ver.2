@@ -1,7 +1,7 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 import { connect } from "react-redux";
-import { increase , decrease } from '../modules/cartQuan';
+import { increase , decrease , deleteData  } from '../modules/cartQuan';
 import { close } from '../modules/close';
 import '../Detail.scss'
 
@@ -11,6 +11,7 @@ function Cart(props) {
       <Table responsive="md">
         <thead>
           <tr>
+            <th>#</th>
             <th>상품명</th>
             <th>가격</th>
             <th>수량</th>
@@ -19,17 +20,21 @@ function Cart(props) {
           </tr>
         </thead>
         <tbody>
-          {props.cartProduct.map((a, i) => {
+          {props.cartInner.map((a, i) => {
             return (
               <tr key={i}>
+                <td>{a.id}</td>
                 <td>{a.name}</td>
                 <td>{a.price}</td>
                 <td>{a.quan}</td>
                 <td>
-                  <button onClick={ () => { props.dispatch( increase(a.id) ) }} > + </button>
-                  <button onClick={ () => { props.dispatch( decrease(a.id) ) }} > - </button>
+                  <button onClick={ () => { props.dispatch( increase(i) ) }} > + </button>
+                  <button onClick={ () => { props.dispatch( decrease(i) ) }} > - </button>
                 </td>
                 <td>{a.price * a.quan}</td>
+                <td>
+                  <button onClick={ () => { props.dispatch( deleteData(i) )}}> 삭제 </button>
+                </td>
               </tr>
             );
           })}
@@ -50,7 +55,7 @@ function Cart(props) {
 //redux
 function store데이터를_props로_변환해주는_함수(store안에_모든_state) {
   return {
-    cartProduct: store안에_모든_state.cartQuan, // store안에 모든 state에서 reducer1번에 해당하는 state를 cartProduct라는 이름으로 props 해서 쓸래요
+    cartInner: store안에_모든_state.cartQuan, // store안에 모든 state에서 reducer1번에 해당하는 state를 cartProduct라는 이름으로 props 해서 쓸래요
     alertState: store안에_모든_state.alertClose
   };
 }
