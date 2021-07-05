@@ -5,8 +5,10 @@
 // 이렇게 하면 다른 모듈과 액션 이름이 중복되는 것을 방지 할 수 있습니다.
 
 
+
 const ADD_DATA = 'cartQuan/ADD_DATA';
 const DELETE_DATA = 'cartQuan/DELETE_DATA'
+
 const INCREASE = 'cartQuan/INCREASE';
 const DECREASE = 'cartQuan/DECREASE';
 
@@ -17,6 +19,7 @@ const DECREASE = 'cartQuan/DECREASE';
 
 export const addData = data => ({ type : ADD_DATA , payload : data });
 export const deleteData = data => ({ type : DELETE_DATA , payload : data }); 
+
 export const increase = i => ({ type : INCREASE , payload : i });
 export const decrease = i => ({ type : DECREASE , payload : i });
 
@@ -29,14 +32,16 @@ const initState = []
     /* 리듀서 선언 */   
 // 리듀서는 export default 로 내보내주세요.
 
-export default function cartQuan(state = initState, action) {
+export default function cartQuan(state = initState, action ) {
     let copyState = [...state];
 
     switch (action.type){
+
         case ADD_DATA:
             let overlapNum = state.findIndex( (a)=>{ return a.id === action.payload.id} )
             if(overlapNum >= 0){
-                copyState[overlapNum].quan++;
+                alert('장바구니에 이미 같은 품목이 있습니다.')
+                // copyState[overlapNum].quan++;
                 return copyState;
             }
             else{
@@ -46,7 +51,6 @@ export default function cartQuan(state = initState, action) {
         case DELETE_DATA:
             copyState.splice(action.payload,1);
             return copyState;
-
 
         case INCREASE:
             copyState[action.payload].quan ++ ;

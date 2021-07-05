@@ -56,7 +56,8 @@ function Cart(props) {
 function store데이터를_props로_변환해주는_함수(store안에_모든_state) {
   return {
     cartInner: store안에_모든_state.cartQuan, // store안에 모든 state에서 reducer1번에 해당하는 state를 cartProduct라는 이름으로 props 해서 쓸래요
-    alertState: store안에_모든_state.alertClose
+    alertState: store안에_모든_state.alertClose,
+    detailInner: store안에_모든_state.detailQuan
   };
 }
 

@@ -7,11 +7,13 @@ import styled from 'styled-components'
 
 import { connect } from 'react-redux';
 
-import axios from 'axios';
+
 
 import {StockContext} from '../App'
 
-import {addData} from '../modules/cartQuan'
+import { addData } from '../modules/cartQuan'
+import { increase , decrease , initialize  } from '../modules/detailQuan'
+
 
 let Box = styled.div`
     padding : 20px;
@@ -30,13 +32,16 @@ function Detail(props){
     let [tap,setTap] = useState(0)
     let [aniState,setAniState] = useState(false); 
     let [alertState,setAlertState] = useState(true);
-    
+
 
     useEffect(()=>{
         let stockAlert = setTimeout(()=>{
             setAlertState(false); } , 2000);
 
-        return ()=>{clearTimeout(stockAlert)};
+        return ()=>{
+            clearTimeout(stockAlert);
+            props.dispatch( initialize() ) 
+        }
     },[]);
 
     let history = useHistory();
@@ -46,6 +51,13 @@ function Detail(props){
         return productData_.id == item_id
     })
     
+    function question(){
+        let result =  window.confirm("선택하신 상품이 장바구니에 담겼습니다.장바구니로 갈텨??")
+        if(result){
+            history.push('/cart')
+        }       
+    }
+
     function stockChange(){
         let copyStock = [...props.stock];
         copyStock[props.productData_.id] = copyStock[props.productData_.id] -1
@@ -68,19 +80,30 @@ function Detail(props){
         
             <div className="col-md-6">
             <img src={`https://codingapple1.github.io/shop/shoes${matchItems.id+1}.jpg`} width="100%" />
-            </div>
+            </div>  
+              
                 <div className="col-md-6 mt-4">
                     <h4 className="pt-5">{matchItems.title}</h4>
                     <p>{matchItems.content}</p>
                     <p>{matchItems.price}￦</p>
                     <p>현재 재고 {stock[matchItems.id]}개 남았습니다.</p>
                     
+                    <div>
+                        구매수량 : {props.detailInner}  
+                        <input type="button" value="+" onClick={()=>{ 
+                            props.dispatch( increase() ) 
+                            }}/>
+                        <input type="button" value="-" onClick={()=>{
+                            props.dispatch( decrease() )
+                            }}/>
+                    </div>
 
                     <button className="btn btn-danger" onClick={() => {
-                        stockChange();
-                        props.dispatch( addData( {id: matchItems.id , name: matchItems.title , price: matchItems.price , quan: 1}) ) ;
-                        history.push('/cart')
-                    }}> 주문하기 </button> 
+                        props.dispatch( addData( {id: matchItems.id , name: matchItems.title , price: matchItems.price , quan: props.detailInner}) ) ;
+                        question();        
+                    }}> 장바구니 </button> 
+                
+                
                     <button className="btn btn-danger" onClick={() => { history.goBack() }} >뒤로가기 </button> 
                 </div>
 
@@ -130,8 +153,9 @@ function TabContent(props){
 
 function store데이터를_props로_변환해주는_함수(store안에_모든_state) {
     return {
-        cartProduct: store안에_모든_state.cartQuan, // store안에 모든 state에서 reducer1번에 해당하는 state를 cartProduct라는 이름으로 props 해서 쓸래요
-        alertState: store안에_모든_state.alertClose
+        cartInner: store안에_모든_state.cartQuan, // store안에 모든 state에서 reducer1번에 해당하는 state를 cartProduct라는 이름으로 props 해서 쓸래요
+        alertState: store안에_모든_state.alertClose,
+        detailInner: store안에_모든_state.detailQuan
     };
 }
 export default connect(store데이터를_props로_변환해주는_함수)(Detail);
