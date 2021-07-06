@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import {StockContext} from '../App'
 
 import { addData } from '../modules/cartQuan'
-import { increase , decrease , initialize  } from '../modules/detailQuan'
+import { increase , decrease , quan_Initialize  } from '../modules/detailQuan'
 
 
 let Box = styled.div`
@@ -40,7 +40,7 @@ function Detail(props){
 
         return ()=>{
             clearTimeout(stockAlert);
-            props.dispatch( initialize() ) 
+            props.dispatch( quan_Initialize() ) 
         }
     },[]);
 
@@ -71,17 +71,16 @@ function Detail(props){
             </Box>
         
             {
-                alertState === true
-                ?   (<div className="my-alert">
-                        <p>낫 이너프 재고</p>
-                    </div>)
-                :   null
+                alertState === true &&  
+                (<div className="my-alert">
+                    <p>낫 이너프 재고</p>
+                </div>)
             }
         
             <div className="col-md-6">
             <img src={`https://codingapple1.github.io/shop/shoes${matchItems.id+1}.jpg`} width="100%" />
             </div>  
-              
+            
                 <div className="col-md-6 mt-4">
                     <h4 className="pt-5">{matchItems.title}</h4>
                     <p>{matchItems.content}</p>
@@ -154,7 +153,6 @@ function TabContent(props){
 function store데이터를_props로_변환해주는_함수(store안에_모든_state) {
     return {
         cartInner: store안에_모든_state.cartQuan, // store안에 모든 state에서 reducer1번에 해당하는 state를 cartProduct라는 이름으로 props 해서 쓸래요
-        alertState: store안에_모든_state.alertClose,
         detailInner: store안에_모든_state.detailQuan
     };
 }

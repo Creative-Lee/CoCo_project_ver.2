@@ -5,7 +5,7 @@
 
 const INCREASE =  'detailQuan/INCREASE';
 const DECREASE =  'detailQuan/DECREASE';
-const INITIALIZE = 'detailQuan/INITIALIZE';  
+const QUAN_INITIALIZE = 'detailQuan/QUAN_INITIALIZE';  
 
 
 
@@ -15,7 +15,7 @@ const INITIALIZE = 'detailQuan/INITIALIZE';
 
 export const increase = () => ({ type : INCREASE });
 export const decrease = () => ({ type : DECREASE });
-export const initialize = () => ({ type : INITIALIZE })
+export const quan_Initialize = () => ({ type : QUAN_INITIALIZE })
 
 
 /* 초기 상태 선언 */
@@ -34,7 +34,7 @@ export default function detailQuan(state = initState, action){
         return state
 
       case DECREASE:
-        if( state === 1){
+        if( state === 1 ){
           return state
         }
         else{
@@ -42,7 +42,7 @@ export default function detailQuan(state = initState, action){
           return state
         }
 
-      case INITIALIZE:
+      case QUAN_INITIALIZE:
         state = 1;
         return state;
               
