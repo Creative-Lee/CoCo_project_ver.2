@@ -1,9 +1,16 @@
 import './App.css';
 
-import Cart from './Component/Cart';
+import Cart from './Component/Cart'; //잠시 비사용중
+import CartContainer from './containers/CartContainer'; // 대신 사용중
+
 import productData from './productData'
-import Detail from './Component/Detail';
+import Detail from './Component/Detail'; //잠시 비사용중
+import DetailContainer from './containers/DetailContainer';// 대신 사용중
+
 import axios from 'axios';
+
+
+
 
 import React, { useState , useContext } from 'react';
 
@@ -21,7 +28,7 @@ function App() {
   let [stock,setStock] = useState([3,6,9]);
   let [buttonState,setButtonState] = useState(0);
 
- 
+
 
   return (
     <div className="App">
@@ -118,12 +125,12 @@ function App() {
 
       <Route path="/detail/:item_id">
           <StockContext.Provider value={stock}> 
-            <Detail productData_={productData_} setProductData_={setProductData_} stock={stock} setStock={setStock}/>
+            <DetailContainer productData_={productData_} setProductData_={setProductData_} stock={stock} setStock={setStock}/>
           </StockContext.Provider>
       </Route>
 
       <Route path='/cart'>
-        <Cart></Cart>
+        <CartContainer/>
       </Route>
       
       </Switch>

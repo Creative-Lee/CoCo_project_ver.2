@@ -40,8 +40,7 @@ export default function cartQuan(state = initState, action ) {
         case ADD_DATA:
             let overlapNum = state.findIndex( (a)=>{ return a.id === action.payload.id} )
             if(overlapNum >= 0){
-                alert('장바구니에 이미 같은 품목이 있습니다.')
-                // copyState[overlapNum].quan++;
+                alert('장바구니에 이미 같은 품목이 있습니다.')                
                 return copyState;
             }
             else{

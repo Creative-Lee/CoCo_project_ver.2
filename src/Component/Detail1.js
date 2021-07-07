@@ -5,14 +5,12 @@ import { Nav } from 'react-bootstrap';
 import { CSSTransition } from 'react-transition-group';
 import styled from 'styled-components'
 
-import { connect } from 'react-redux';
 
 
 
 import {StockContext} from '../App'
 
 import { addData } from '../modules/cartQuan'
-import { increase , decrease , quan_Initialize  } from '../modules/detailQuan'
 
 
 let Box = styled.div`
@@ -40,7 +38,7 @@ function Detail(props){
 
         return ()=>{
             clearTimeout(stockAlert);
-            props.dispatch( quan_Initialize() ) 
+            props.onQuan_Initialize()
         }
     },[]);
 
@@ -89,16 +87,12 @@ function Detail(props){
                     
                     <div>
                         구매수량 : {props.detailInner}  
-                        <input type="button" value="+" onClick={()=>{ 
-                            props.dispatch( increase() ) 
-                            }}/>
-                        <input type="button" value="-" onClick={()=>{
-                            props.dispatch( decrease() )
-                            }}/>
+                        <input type="button" value="+" onClick={ props.onIncrease }/>
+                        <input type="button" value="-" onClick={ props.onDecrease }/>
                     </div>
 
                     <button className="btn btn-danger" onClick={() => {
-                        props.dispatch( addData( {id: matchItems.id , name: matchItems.title , price: matchItems.price , quan: props.detailInner}) ) ;
+                        props.dispatch( addData( {id: matchItems.id , name: matchItems.title , price: matchItems.price , quan: props.detailQuan}) ) ;
                         question();        
                     }}> 장바구니 </button> 
                 
@@ -140,18 +134,11 @@ function TabContent(props){
 
     return (
         <div>
-          { tabUI[ props.tap ] }
+            { tabUI[ props.tap ] }
         </div>
     )
     
 }
 
-
-function store데이터를_props로_변환해주는_함수(store안에_모든_state) {
-    return {
-        cartInner: store안에_모든_state.cartQuan, // store안에 모든 state에서 reducer1번에 해당하는 state를 cartProduct라는 이름으로 props 해서 쓸래요
-        detailInner: store안에_모든_state.detailQuan
-    };
-}
-export default connect(store데이터를_props로_변환해주는_함수)(Detail);
+export default Detail;
 
