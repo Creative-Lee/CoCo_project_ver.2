@@ -3,10 +3,10 @@ import { Table } from "react-bootstrap";
 
 import '../Detail.scss'
 
-function Cart(cartQuan , onIncrease, onDecrease, onDeleteData) {
-
+function Cart({cartQuan , onIncrease, onDecrease, onDeleteData}) {
+  
   let [ discountAlert , setDiscountAlert ] = useState(true)
-
+  
   return (
     <div>
       <Table responsive="md">
@@ -29,12 +29,12 @@ function Cart(cartQuan , onIncrease, onDecrease, onDeleteData) {
                 <td>{a.price}</td>
                 <td>{a.quan}</td>
                 <td>
-                  <button onClick={ onIncrease } > + </button>
-                  <button onClick={ onDecrease } > - </button>
+                  <button onClick={ ()=> { onIncrease(i) } } > + </button>
+                  <button onClick={ ()=> { onDecrease(i) } } > - </button>
                 </td>
                 <td>{a.price * a.quan}</td>
                 <td>
-                  <button onClick={ onDeleteData }> 삭제 </button>
+                  <button onClick={ ()=> { onDeleteData(i) } }> 삭제 </button>
                 </td>
               </tr>
             );

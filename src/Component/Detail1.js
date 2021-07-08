@@ -8,9 +8,8 @@ import styled from 'styled-components'
 
 
 
-import {StockContext} from '../App'
 
-import { addData } from '../modules/cartQuan'
+
 
 
 let Box = styled.div`
@@ -23,9 +22,10 @@ let Title = styled.h4`
 
 
 
-function Detail(props){
+function Detail({ detailQuan, 
+    onQuan_Initialize, onIncrease, onDecrease, onAddData,
+    productData_ , stock, }){
 
-    let stock = useContext(StockContext) ;
 
     let [tap,setTap] = useState("info")
     let [aniState,setAniState] = useState(false); 
@@ -38,28 +38,23 @@ function Detail(props){
 
         return ()=>{
             clearTimeout(stockAlert);
-            props.onQuan_Initialize()
+            onQuan_Initialize()
         }
     },[]);
 
     let history = useHistory();
 
     let { item_id } = useParams();
-    let matchItems = props.productData_.find((productData_)=>{
+    let matchItems = productData_.find((productData_)=>{
         return productData_.id == item_id
     })
     
     function question(){
+        
         let result =  window.confirm("선택하신 상품이 장바구니에 담겼습니다.장바구니로 갈텨??")
         if(result){
             history.push('/cart')
         }       
-    }
-
-    function stockChange(){
-        let copyStock = [...props.stock];
-        copyStock[props.productData_.id] = copyStock[props.productData_.id] -1
-        props.setStock(copyStock);
     }
 
     return (
@@ -86,13 +81,13 @@ function Detail(props){
                     <p>현재 재고 {stock[matchItems.id]}개 남았습니다.</p>
                     
                     <div>
-                        구매수량 : {props.detailInner}  
-                        <input type="button" value="+" onClick={ props.onIncrease }/>
-                        <input type="button" value="-" onClick={ props.onDecrease }/>
+                        구매수량 : {detailQuan}  
+                        <input type="button" value="+" onClick={ onIncrease }/>
+                        <input type="button" value="-" onClick={ onDecrease }/>
                     </div>
 
                     <button className="btn btn-danger" onClick={() => {
-                        props.dispatch( addData( {id: matchItems.id , name: matchItems.title , price: matchItems.price , quan: props.detailQuan}) ) ;
+                        onAddData( {id: matchItems.id , name: matchItems.title , price: matchItems.price , quan: detailQuan});
                         question();        
                     }}> 장바구니 </button> 
                 
@@ -113,15 +108,16 @@ function Detail(props){
                 </Nav>
 
                 <CSSTransition in={aniState} classNames="wow" timeout={500}>
-                <TabContent tap={tap} setAniState={setAniState} />
+                <TabContent 
+                    tap={tap} setAniState={setAniState}
+                />
                 </CSSTransition>
-
         </div> 
     )
 }
 
 
-function TabContent(props){
+function TabContent({tap , setAniState}){
     let tabUI = {
             info : <p>상품정보</p>,
             review : <p>고객리뷰</p>,
@@ -129,12 +125,12 @@ function TabContent(props){
     }
 
     useEffect(()=>{
-        props.setAniState(true)
+        setAniState(true)
     })
 
     return (
         <div>
-            { tabUI[ props.tap ] }
+            { tabUI[ tap ] }
         </div>
     )
     

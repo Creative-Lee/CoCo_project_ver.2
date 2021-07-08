@@ -2,9 +2,9 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Detail from '../Component/Detail1'
 import { increase , decrease , quan_Initialize  } from '../modules/detailQuan';
+import { addData } from '../modules/cartQuan'
 
-
-function DetailContainer(){
+function DetailContainer({productData_ , stock }){
   // useSelector는 리덕스 스토어의 상태를 조회하는 Hook입니다.
   // state의 값은 store.getState() 함수를 호출했을 때 나타나는 결과물과 동일합니다.
   const detailQuan  = useSelector( state =>  state.detailQuan ) 
@@ -17,13 +17,22 @@ function DetailContainer(){
   const onQuan_Initialize = () => dispatch(quan_Initialize());
   const onIncrease = () => dispatch(increase());
   const onDecrease = () => dispatch(decrease());
+
+  const onAddData = (data) => dispatch(addData(data)); // cartQuan에서 가져옴
     
   return (
-    <Detail 
-    detialQuan={detailQuan}
+    <Detail   
+    detailQuan={detailQuan}
+
+    onQuan_Initialize={onQuan_Initialize}
     onIncrease={onIncrease}
     onDecrease={onDecrease}
-    onQuan_Initialize={onQuan_Initialize}
+
+    onAddData={onAddData} // cartQuan에서 가져옴
+
+    productData_={productData_} 
+    stock={stock} 
+  
     /> 
   )
 }
