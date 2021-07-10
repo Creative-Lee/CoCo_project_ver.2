@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
 import rootReducer from './modules/index';
-//Action types
+
 
 const store = createStore(rootReducer);
 
