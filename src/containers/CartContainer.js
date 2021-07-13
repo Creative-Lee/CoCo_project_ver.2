@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Cart from '../Component/Cart1'
+import Cart from '../Components/Cart'
 import { increase , decrease , deleteData} from '../modules/cartQuan';
 
 
