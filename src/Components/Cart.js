@@ -1,12 +1,14 @@
 import React, {useState} from "react";
 import { Table } from "react-bootstrap";
 
+
 import '../Detail.scss'
 
-function Cart({cartQuan , onIncrease, onDecrease, onDeleteData}) {
+
+function Cart({cartQuan , onIncrease, onDecrease, onDeleteData }) {
   
   let [ discountAlert , setDiscountAlert ] = useState(true)
-  
+
   return (
     <div>
       <Table responsive="md">
@@ -41,7 +43,7 @@ function Cart({cartQuan , onIncrease, onDecrease, onDeleteData}) {
           })}
         </tbody>
       </Table>
-
+  
       {
         discountAlert === true &&
         (<div className="my-alert2">

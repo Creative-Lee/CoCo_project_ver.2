@@ -1,12 +1,9 @@
 import './App.css';
 
-import Cart from './Component/Cart'; //잠시 비사용중
 import CartContainer from './containers/CartContainer'; // 대신 사용중
-
-import productData from './productData'
-import Detail from './Component/Detail'; //잠시 비사용중
 import DetailContainer from './containers/DetailContainer';// 대신 사용중
 
+import productData from './productData'
 import axios from 'axios';
 
 
@@ -141,9 +138,7 @@ function App() {
 
 function Card(props){
 
-  console.log(props); 
   let history = useHistory();
-  console.log(productData);
   return(
     <Col className="item" md="3" onClick={ ()=> { history.push(`/detail/${props.productData_.id}`)} }>      
       <img src={`https://codingapple1.github.io/shop/shoes${props.i+1}.jpg`} width="100%" />

@@ -11,7 +11,7 @@ const QUAN_INITIALIZE = 'detailQuan/QUAN_INITIALIZE';
 
 
 /* 액션 생성함수 만들기 */
-// 액션 생성함수를 만들고 export 키워드를 사용해서 내보내주세요.
+// 액션 생성함수를 만들고 export를 사용해서 내보내주세요.
 
 export const increase = () => ({ type : INCREASE });
 export const decrease = () => ({ type : DECREASE });

@@ -7,11 +7,6 @@ import styled from 'styled-components'
 
 
 
-
-
-
-
-
 let Box = styled.div`
     padding : 20px;
 `;
@@ -24,7 +19,8 @@ let Title = styled.h4`
 
 function Detail({ detailQuan, 
     onQuan_Initialize, onIncrease, onDecrease, onAddData,
-    productData_ , stock, }){
+    productData_ , stock  
+}){
 
 
     let [tap,setTap] = useState("info")
