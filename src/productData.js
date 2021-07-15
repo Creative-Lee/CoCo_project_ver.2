@@ -21,6 +21,6 @@ let productData = [
         content : "Born in the States",
         price : 130000,
         stock : 150
-    }
+    }  
 ] 
 export default productData;

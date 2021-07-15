@@ -10,11 +10,6 @@ import styled from 'styled-components'
 let Box = styled.div`
     padding : 20px;
 `;
-let Title = styled.h4`
-    font-size : 25px;
-    color : ${ props => props.색상 }
-`;
-
 
 
 function Detail({ detailQuan, 
@@ -55,10 +50,6 @@ function Detail({ detailQuan,
 
     return (
         <div className="container">
-            <Box> 
-                <Title className="red" >Detail</Title>
-            </Box>
-        
             {
                 alertState === true &&  
                 (<div className="my-alert">
