@@ -14,7 +14,7 @@ let Box = styled.div`
 
 function Detail({ detailQuan, 
     onQuan_Initialize, onIncrease, onDecrease, onAddData,
-    productData_ , stock  
+    productData_ ,
 }){
 
 
@@ -44,7 +44,7 @@ function Detail({ detailQuan,
         
         let result =  window.confirm("선택하신 상품이 장바구니에 담겼습니다.장바구니로 갈텨??")
         if(result){
-            history.push('/cart')
+            history.push('/coco124/cart')
         }       
     }
 
@@ -65,8 +65,7 @@ function Detail({ detailQuan,
                     <h4 className="pt-5">{matchItems.title}</h4>
                     <p>{matchItems.content}</p>
                     <p>{matchItems.price}￦</p>
-                    <p>현재 재고 {stock[matchItems.id]}개 남았습니다.</p>
-                    
+
                     <div>
                         구매수량 : {detailQuan}  
                         <input type="button" value="+" onClick={ onIncrease }/>
@@ -76,9 +75,8 @@ function Detail({ detailQuan,
                     <button className="btn btn-danger" onClick={() => {
                         onAddData( {id: matchItems.id , name: matchItems.title , price: matchItems.price , quan: detailQuan});
                         question();        
-                    }}> 장바구니 </button> 
-                
-                
+                    }}> 장바구니 
+                    </button> 
                     <button className="btn btn-danger" onClick={() => { history.goBack() }} >뒤로가기 </button> 
                 </div>
 

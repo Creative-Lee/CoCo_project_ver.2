@@ -9,7 +9,7 @@ import axios from 'axios';
 
 
 
-import React, { useState , useContext } from 'react';
+import React, { useState } from 'react';
 
 import { Link, Route, Switch, useHistory, }  from 'react-router-dom';
 import { Navbar,Nav,Jumbotron,Button,Container,Row,Col} from 'react-bootstrap';
@@ -20,11 +20,9 @@ export let StockContext = React.createContext();
 function App() {
 
   let [productData_ , setProductData_] = useState(productData)
+
   let [wait,setWait] = useState(false);
-
-  let [stock,setStock] = useState([3,6,9]);
   let [buttonState,setButtonState] = useState(0);
-
 
 
   return (
@@ -32,12 +30,12 @@ function App() {
       <header className="header">
       <div className="fix-nav-wrap">
       <Navbar className="fix-nav" bg="light" expand="md">
-        <Navbar.Brand href="/">Fromcoco124th</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/coco124">Fromcoco124th</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto ">
-            <Nav.Link as='a' href="/detail/0"> Man</Nav.Link>
-            <Nav.Link as={Link} to="/detail/1">Women</Nav.Link> 
+            <Nav.Link as={Link} to="/coco124/detail/0">Man</Nav.Link>
+            <Nav.Link as={Link} to="/coco124/detail/1">Women</Nav.Link> 
             <Nav.Link>커뮤니티</Nav.Link>                
           </Nav>         
         </Navbar.Collapse>
@@ -45,23 +43,29 @@ function App() {
       </div>
 
     <div className="child_nav-wrap">
-      <Nav className="child_nav" defaultActiveKey="/" as="ul">
-      <Nav.Item className="child_nav_li" as="li">
-        <Nav.Link href="/">홈</Nav.Link>
-      </Nav.Item>
-      <Nav.Item className="child_nav_li" as="li">
-        <Nav.Link eventKey="link-1">코디추천</Nav.Link>
-      </Nav.Item>
-      <Nav.Item className="child_nav_li" as="li">
-        <Nav.Link eventKey="link-2">Link</Nav.Link>
-      </Nav.Item>
-    </Nav>
+      <Navbar bg="white" expand="md">
+        <Container>
+          <Navbar.Brand as={Link} to="/coco124">Fromcoco124th</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="#link">Link</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </div>
+
+
     </header>
 
 
+
+
+
       <Switch> 
-      <Route exact path="/">        
+      <Route exact path="/coco124" basename="/coco124">        
         <Jumbotron className="jumbotron">
         <h1>고덕점 & 온라인몰 OPEN 기념 이벤트!</h1>
         <p>
@@ -74,8 +78,6 @@ function App() {
         </p>
         </Jumbotron>
 
-    
-        <StockContext.Provider value={stock}>
         <Container>
           <Row>
             {
@@ -116,17 +118,13 @@ function App() {
             }     
             
         </Container>
-        </StockContext.Provider>
-      
       </Route>
 
-      <Route path="/detail/:item_id">
-          <StockContext.Provider value={stock}> 
-            <DetailContainer productData_={productData_} setProductData_={setProductData_} stock={stock} setStock={setStock}/>
-          </StockContext.Provider>
+      <Route path="/coco124/detail/:item_id" basename="/coco124/detail/:item_id">
+            <DetailContainer productData_={productData_} setProductData_={setProductData_}/>
       </Route>
 
-      <Route path='/cart'>
+      <Route path='/coco124/cart' basename="/coco124/cart">
         <CartContainer/>
       </Route>
       
@@ -140,12 +138,11 @@ function Card(props){
 
   let history = useHistory();
   return(
-    <Col className="item" md="3" onClick={ ()=> { history.push(`/detail/${props.productData_.id}`)} }>      
+    <Col className="item" md="4" onClick={ ()=> { history.push(`/coco124/detail/${props.productData_.id}`)} }>      
       <img src={`https://codingapple1.github.io/shop/shoes${props.i+1}.jpg`} width="100%" />
       <h5>{props.productData_.title}</h5>
       <p>{props.productData_.content}</p>
       <p>{props.productData_.price}￦</p>
-      <p>{props.productData_.stock}개 남았습니다!</p>
     </Col>
   )
 }
