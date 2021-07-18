@@ -9,6 +9,8 @@
     background-size: cover;
     background-position: center right;  
     color: white;
+    max-height: 350px ;
+    padding: 5% 5% ;
 }
 
 
@@ -26,26 +28,29 @@
     
 }
 
-.header {
-    box-sizing: border-box;
-}
+
 
 .top-navigation {   
     border-bottom: 1px solid #ededed;  
-    height: 70px;
-    margin: 0 auto;
-    padding : 0 10% ;  
+  
+    box-sizing: border-box;
 }
 
 .bottom-navigation{    
     border-bottom: 1px solid #ededed;
     font-size: 13px;
-    margin: 0 auto;
-    padding : 0 10% ;    
     
+    box-sizing: border-box;
 }
 
 .nav-menu {
     text-align: left;    
 }
 
+
+
+@media (min-width: 768px) {
+    
+  
+
+}

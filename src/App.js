@@ -1,4 +1,5 @@
-import './App.css';
+import './App.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import CartContainer from './containers/CartContainer'; // 대신 사용중
 import DetailContainer from './containers/DetailContainer';// 대신 사용중
@@ -27,29 +28,36 @@ function App() {
 
   return (
     <div className="App">
+
       <header className="header">
-
-      <Container className="top-navbar">
+      <div className="top-navigation">
+        <Container>
         <Navbar bg="white" expand="md">
-          <Navbar.Brand as={Link} to="/coco124">Fromcoco124th</Navbar.Brand>
-          <Navbar.Toggle className="burger" aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="nav-menu">
-              <Nav.Link as={Link} to="/coco124/detail/0">Man</Nav.Link>
-              <Nav.Link as={Link} to="/coco124/detail/1">Women</Nav.Link> 
-              <Nav.Link as={Link} to="/coco124/detail/2">커뮤니티</Nav.Link>                
-            </Nav>         
-          </Navbar.Collapse>
+          <Navbar.Toggle  aria-controls="basic-navbar-nav"/>
+         
+          <Navbar.Brand className="hoho" as={Link} to="/coco124">Fromcoco124th</Navbar.Brand>
+          
+            <Navbar.Collapse className="burger" id="basic-navbar-nav">
+              <Nav className="nav-menu">
+                <Nav.Link as={Link} to="/coco124/detail/0">Man</Nav.Link>
+                <Nav.Link as={Link} to="/coco124/detail/1">Women</Nav.Link> 
+                <Nav.Link as={Link} to="/coco124/detail/2">커뮤니티</Nav.Link>                
+              </Nav>         
+            </Navbar.Collapse>
         </Navbar>
-      </Container>
+        </Container>
+      </div>
 
-    
-        <Navbar className="bottom-navbar"bg="white" expand="md">
-          <Navbar.Brand as={Link} to="/coco124">Fromcoco124th</Navbar.Brand>
-            <Nav.Link as={Link} to="/coco124">Fromcoco124th</Nav.Link>
-            <Nav.Link as={Link} to="/coco124">Fromcoco124th</Nav.Link>
+      <div className="bottom-navigation" >
+        <Navbar bg="white" expand="md">
+              <Nav className="nav-menu">
+                <Nav.Link as={Link} to="/coco124/detail/0">Man</Nav.Link>
+                <Nav.Link as={Link} to="/coco124/detail/1">Women</Nav.Link> 
+                <Nav.Link as={Link} to="/coco124/detail/2">커뮤니티</Nav.Link>                
+              </Nav>         
         </Navbar>
-     
+      </div>
+
 
     </header>
 
@@ -130,7 +138,7 @@ function Card(props){
 
   let history = useHistory();
   return(
-    <Col className="card" md="4" onClick={ ()=> { history.push(`/coco124/detail/${props.productData_.id}`)} }>      
+    <Col className="product" md="4" onClick={ ()=> { history.push(`/coco124/detail/${props.productData_.id}`)} }>      
       <img src={`https://codingapple1.github.io/shop/shoes${props.i+1}.jpg`} width="100%" />
       <h5>{props.productData_.title}</h5>
       <p>{props.productData_.content}</p>
