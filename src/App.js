@@ -28,38 +28,30 @@ function App() {
   return (
     <div className="App">
       <header className="header">
-      <div className="fix-nav-wrap">
-      <Navbar className="fix-nav" bg="light" expand="md">
-        <Navbar.Brand as={Link} to="/coco124">Fromcoco124th</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto ">
-            <Nav.Link as={Link} to="/coco124/detail/0">Man</Nav.Link>
-            <Nav.Link as={Link} to="/coco124/detail/1">Women</Nav.Link> 
-            <Nav.Link>커뮤니티</Nav.Link>                
-          </Nav>         
-        </Navbar.Collapse>
-      </Navbar>
-      </div>
 
-    <div className="child_nav-wrap">
-      <Navbar bg="white" expand="md">
-        <Container>
+      <Container className="top-navbar">
+        <Navbar bg="white" expand="md">
           <Navbar.Brand as={Link} to="/coco124">Fromcoco124th</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle className="burger" aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-            </Nav>
+            <Nav className="nav-menu">
+              <Nav.Link as={Link} to="/coco124/detail/0">Man</Nav.Link>
+              <Nav.Link as={Link} to="/coco124/detail/1">Women</Nav.Link> 
+              <Nav.Link as={Link} to="/coco124/detail/2">커뮤니티</Nav.Link>                
+            </Nav>         
           </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </div>
+        </Navbar>
+      </Container>
 
+    
+        <Navbar className="bottom-navbar"bg="white" expand="md">
+          <Navbar.Brand as={Link} to="/coco124">Fromcoco124th</Navbar.Brand>
+            <Nav.Link as={Link} to="/coco124">Fromcoco124th</Nav.Link>
+            <Nav.Link as={Link} to="/coco124">Fromcoco124th</Nav.Link>
+        </Navbar>
+     
 
     </header>
-
 
 
 
@@ -138,7 +130,7 @@ function Card(props){
 
   let history = useHistory();
   return(
-    <Col className="item" md="4" onClick={ ()=> { history.push(`/coco124/detail/${props.productData_.id}`)} }>      
+    <Col className="card" md="4" onClick={ ()=> { history.push(`/coco124/detail/${props.productData_.id}`)} }>      
       <img src={`https://codingapple1.github.io/shop/shoes${props.i+1}.jpg`} width="100%" />
       <h5>{props.productData_.title}</h5>
       <p>{props.productData_.content}</p>

@@ -103,7 +103,7 @@ function Detail({ detailQuan,
 
 
 function TabContent({tap , setAniState}){
-    let tabUI = {
+    const tabUI = {
             info : <p>상품정보</p>,
             review : <p>고객리뷰</p>,
             question : <p>문의사항</p>

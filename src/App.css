@@ -1,17 +1,16 @@
 .App {
     text-align: center;
-    
 }
 
 .jumbotron {
     margin-top: 0px;
     text-align: center;
     background-image: url('../src/img/coco로고.jpg');   
-    background-size: contain;
-    background-position: center;
+    background-size: cover;
+    background-position: center right;  
     color: white;
 }
-.item {
+.card {
     text-align: center;
 }
 
@@ -26,32 +25,17 @@
 
 .header {
     box-sizing: border-box;
-    position: relative;
-    display: block;
 }
 
-.fix-nav{
-    position: relative;
-    width: 100%;
-    top: 0;
-    z-index: 999;
-    height: 81px;
-    padding: 10px 60px 10px 60px;
-    transition: top .1s;
-    background-color: #fff;
+.top-navbar {   
+    border-bottom: 1px solid #ededed;  
+}
+
+.bottom-navbar{    
     border-bottom: 1px solid #ededed;
-
+    font-size: 13px;    
 }
 
-.child_nav-wrap{  
-    position: relative;   
-    padding: 5px 60px 0px 60px;  
-    background-color: #fff;
-    border-bottom: 1px solid #ededed;
-    
-}
-
-.child_nav_li{
-    padding-left: 10px;
-    padding-right: 10px;
+.nav-menu a {
+    margin-left: 20px;
 }
