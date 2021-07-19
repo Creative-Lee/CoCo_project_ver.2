@@ -2,6 +2,7 @@ import './App.scss';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 import coconut from './img/coconut.jpg'
 
 import CartContainer from './containers/CartContainer'; 
@@ -30,8 +31,8 @@ function App() {
 
       <header className="header">
 
-      <Navbar bg="light">
-        <img src={coconut} alt="menu" className="nav__hamburger" />
+      <Navbar id="top-navbar"  bg="light">
+        <img src={coconut} alt="menu" className="nav__hamburger"></img>
         <Container>
           <Navbar.Brand id="top-nav__brand" as={Link} to="/coco124">fromcoco 124th</Navbar.Brand>
             <Nav id="yammy" className="me-auto">
@@ -43,17 +44,19 @@ function App() {
       </Navbar>
     </header>
 
+
+
       <Switch> 
       <Route exact path="/coco124" basename="/coco124">        
         <Jumbotron className="jumbotron">
         <h1>고덕점 & 온라인몰 OPEN 기념 이벤트!</h1>
+          <p className="event-inner">
+            고객님들의 성원에 힘입어 프롬코코가 고덕에도 오픈했습니다!!😍😍😍😍 <br />
+            코코상이 쏜다! 
+            지금 회원가입 시 제한없이 사용 가능한 3000point 지급 !           
+          </p>
         <p>
-          고객님들의 성원에 힘입어 프롬코코가 고덕에도 오픈했습니다!!😍😍😍😍 <br />
-          코코상이 쏜다! 
-          지금 회원가입 시 제한없이 사용 가능한 3000point 지급 !           
-        </p>
-        <p>
-          <Button variant="primary">more event..</Button>
+          <Button variant="outline-light" size="sm">more event..</Button>
         </p>
         </Jumbotron>
 
@@ -96,6 +99,7 @@ function App() {
               :null 
             }     
             
+
         </Container>
       </Route>
 

@@ -8,9 +8,12 @@
     background-image: url('../src/img/coco로고.jpg');   
     background-size: cover;
     background-position: center right;  
-    color: white;
-    max-height: 350px ;
-    padding: 5% 5% ;
+    color: white;   
+    padding: 3% 5% ;
+
+    h1{
+        font-weight: bold;
+    }
 }
 
 
@@ -31,6 +34,9 @@
     display: none;
 }
 
+#top-nav__brand{
+    font-weight: 600;
+}
 
 @media (max-width: 768px) {
     #yammy{
@@ -40,9 +46,29 @@
         margin : 0 auto;
     }
     .nav__hamburger{
-        display:initial;
+        display: initial;
         width: 30px;
         height: 30px;
+        margin-left: 10px;
         cursor: pointer;
+    }
+
+    .jumbotron {
+        padding: 5% 5% ;
+        .event-inner{
+            display: none;
+        }
+
+        h1 {
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+
+@media (max-width: 576px) {
+    #top-nav__brand{
+        margin : 0 auto 0 ;
     }
 }
