@@ -42,10 +42,13 @@
     font-size: 13px;
     margin: 0 auto;
     padding : 0 10% ;    
-    
+    max-height : 50px;
 }
 
 .nav-menu {
     text-align: left;    
 }
 
+@media (min-width: 768px) {
+    
+}

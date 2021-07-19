@@ -1,14 +1,14 @@
 import './App.scss';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import CartContainer from './containers/CartContainer'; // 대신 사용중
-import DetailContainer from './containers/DetailContainer';// 대신 사용중
+import coconut from './img/coconut.jpg'
+
+import CartContainer from './containers/CartContainer'; 
+import DetailContainer from './containers/DetailContainer';
 
 import productData from './productData'
 import axios from 'axios';
-
-
-
 
 import React, { useState } from 'react';
 
@@ -16,12 +16,11 @@ import { Link, Route, Switch, useHistory, }  from 'react-router-dom';
 import { Navbar,Nav,Jumbotron,Button,Container,Row,Col} from 'react-bootstrap';
 
 
-export let StockContext = React.createContext();
 
 function App() {
 
+ 
   let [productData_ , setProductData_] = useState(productData)
-
   let [wait,setWait] = useState(false);
   let [buttonState,setButtonState] = useState(0);
 
@@ -30,39 +29,19 @@ function App() {
     <div className="App">
 
       <header className="header">
-      <div className="top-navigation">
+
+      <Navbar bg="light">
+        <img src={coconut} alt="menu" className="nav__hamburger" />
         <Container>
-        <Navbar bg="white" expand="md">
-          <Navbar.Toggle  aria-controls="basic-navbar-nav"/>
-         
-          <Navbar.Brand className="hoho" as={Link} to="/coco124">Fromcoco124th</Navbar.Brand>
-          
-            <Navbar.Collapse className="burger" id="basic-navbar-nav">
-              <Nav className="nav-menu">
-                <Nav.Link as={Link} to="/coco124/detail/0">Man</Nav.Link>
-                <Nav.Link as={Link} to="/coco124/detail/1">Women</Nav.Link> 
-                <Nav.Link as={Link} to="/coco124/detail/2">커뮤니티</Nav.Link>                
-              </Nav>         
-            </Navbar.Collapse>
-        </Navbar>
+          <Navbar.Brand id="top-nav__brand" as={Link} to="/coco124">fromcoco 124th</Navbar.Brand>
+            <Nav id="yammy" className="me-auto">
+              <Nav.Link as={Link} to="/coco124/detail/0">yammy</Nav.Link>
+              <Nav.Link as={Link} to="/coco124/detail/1">yammy</Nav.Link>
+              <Nav.Link as={Link} to="/coco124/detail/2">yammy</Nav.Link>
+            </Nav>
         </Container>
-      </div>
-
-      <div className="bottom-navigation" >
-        <Navbar bg="white" expand="md">
-              <Nav className="nav-menu">
-                <Nav.Link as={Link} to="/coco124/detail/0">Man</Nav.Link>
-                <Nav.Link as={Link} to="/coco124/detail/1">Women</Nav.Link> 
-                <Nav.Link as={Link} to="/coco124/detail/2">커뮤니티</Nav.Link>                
-              </Nav>         
-        </Navbar>
-      </div>
-
-
+      </Navbar>
     </header>
-
-
-
 
       <Switch> 
       <Route exact path="/coco124" basename="/coco124">        
@@ -146,6 +125,8 @@ function Card(props){
     </Col>
   )
 }
+
+
 
 
 
