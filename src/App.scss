@@ -25,40 +25,46 @@
     margin: auto;
 }
 
-.product {
-    text-align: center;
+#top-navbar{
+    border-bottom: solid 1px #eeeeee;
 }
 
-.nav__hamburger{
+.top-nav__hamburger{
     display: none;
 }
 
-.top-navbar__brand{
-    font-weight: 600;
+#top-nav__brand{
+    font-weight: 600;   
 }
 
-.nav-top {
-    font-size: 15px;
+
+#top-nav {
+    font-size: 17px;
     font-weight: 600;
-   
 }
 
 
 
 @media (max-width: 768px) {
   
-    .nav__hamburger{
+    .top-nav__hamburger{
         display: initial;
         width: 30px;
         height: 30px;
         margin-left: 10px;
         cursor: pointer;
     }
-    .top-navbar__brand{
+
+    #top-nav__brand{
         margin : 0 auto;
     }
-    .nav-top{
+
+    #top-nav{
         display:none;
+    }
+
+    #top-nav__container{
+        padding-left: 0;
     }
    
 
@@ -77,7 +83,7 @@
 
 
 @media (max-width: 576px) {
-    .top-navbar__brand{
-        margin : 0 auto 0 ;
+    #top-nav__brand{
+        margin : 0 auto ;
     }
 }
