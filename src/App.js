@@ -1,6 +1,6 @@
 import './App.scss';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 import coconut from './img/coconut.jpg'
@@ -31,14 +31,14 @@ function App() {
 
       <header className="header">
 
-      <Navbar id="top-navbar"  bg="light">
+      <Navbar bg="light">
         <img src={coconut} alt="menu" className="nav__hamburger"></img>
         <Container>
-          <Navbar.Brand id="top-nav__brand" as={Link} to="/coco124">fromcoco 124th</Navbar.Brand>
-            <Nav id="yammy" className="me-auto">
-              <Nav.Link as={Link} to="/coco124/detail/0">yammy</Nav.Link>
-              <Nav.Link as={Link} to="/coco124/detail/1">yammy</Nav.Link>
-              <Nav.Link as={Link} to="/coco124/detail/2">yammy</Nav.Link>
+          <Navbar.Brand className="top-navbar__brand" as={Link} to="/coco124">fromcoco 124th</Navbar.Brand>
+            <Nav className="top" className="me-auto"  >
+              <Nav.Link as={Link} to="/coco124/detail/0">men</Nav.Link>
+              <Nav.Link as={Link} to="/coco124/detail/1">lady</Nav.Link>
+              <Nav.Link as={Link} to="/coco124/detail/2">unisex</Nav.Link>
             </Nav>
         </Container>
       </Navbar>

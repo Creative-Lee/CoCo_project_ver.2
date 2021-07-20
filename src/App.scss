@@ -16,7 +16,6 @@
     }
 }
 
-
 .wait {
     background: #eeeeee;
     padding: 20px;
@@ -34,17 +33,20 @@
     display: none;
 }
 
-#top-nav__brand{
+.top-navbar__brand{
     font-weight: 600;
 }
 
+.nav-top {
+    font-size: 15px;
+    font-weight: 600;
+   
+}
+
+
+
 @media (max-width: 768px) {
-    #yammy{
-        display:none;
-    }
-    #top-nav__brand{
-        margin : 0 auto;
-    }
+  
     .nav__hamburger{
         display: initial;
         width: 30px;
@@ -52,6 +54,13 @@
         margin-left: 10px;
         cursor: pointer;
     }
+    .top-navbar__brand{
+        margin : 0 auto;
+    }
+    .nav-top{
+        display:none;
+    }
+   
 
     .jumbotron {
         padding: 5% 5% ;
@@ -68,7 +77,7 @@
 
 
 @media (max-width: 576px) {
-    #top-nav__brand{
+    .top-navbar__brand{
         margin : 0 auto 0 ;
     }
 }
