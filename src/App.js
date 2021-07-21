@@ -14,11 +14,17 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 import { Link, Route, Switch, useHistory, }  from 'react-router-dom';
-import { Navbar,Nav,Jumbotron,Button,Container,Row,Col} from 'react-bootstrap';
+import { Navbar,Nav,Jumbotron,Button,Container,Row,Col,Offcanvas} from 'react-bootstrap';
 
 
 
 function App() {
+
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
  
   let [productData_ , setProductData_] = useState(productData)
@@ -32,7 +38,7 @@ function App() {
       <header className="header">
 
       <Navbar id="top-navbar" bg="light">
-        <img src={coconut} alt="menu" className="top-nav__hamburger"></img>
+        <img src={coconut} alt="menu" className="top-nav__hamburger" onClick={handleShow}></img>
         <Container id="top-nav__container">
           <Navbar.Brand id="top-nav__brand" as={Link} to="/coco124">fromcoco 124th</Navbar.Brand>
             <Nav id="top-nav"  className="me-auto" >
@@ -45,11 +51,21 @@ function App() {
 
     </header>
 
+    <Offcanvas show={show} onHide={handleClose}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          Some text as placeholder. In real life you can have the elements you
+          have chosen. Like, text, images, lists, etc.
+        </Offcanvas.Body>
+      </Offcanvas>
+
 
 
       <Switch> 
       <Route exact path="/coco124" basename="/coco124">        
-        <Jumbotron className="jumbotron">
+        {/* <Jumbotron className="jumbotron">
         <h1>고덕점 & 온라인몰 OPEN 기념 이벤트!</h1>
           <p className="event-inner">
             고객님들의 성원에 힘입어 프롬코코가 고덕에도 오픈했습니다!!😍😍😍😍 <br />
@@ -59,7 +75,7 @@ function App() {
         <p>
           <Button variant="outline-light" size="sm">more event..</Button>
         </p>
-        </Jumbotron>
+        </Jumbotron> */}
 
         <Container>
           <Row>
