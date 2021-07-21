@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import coconut from './img/coconut.jpg'
+import banner1 from './img/직사각배너.jpg'
+import banner2 from './img/정사각배너.jpg'
 
 import CartContainer from './containers/CartContainer'; 
 import DetailContainer from './containers/DetailContainer';
@@ -11,10 +13,10 @@ import DetailContainer from './containers/DetailContainer';
 import productData from './productData'
 import axios from 'axios';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Link, Route, Switch, useHistory, }  from 'react-router-dom';
-import { Navbar,Nav,Jumbotron,Button,Container,Row,Col,Offcanvas} from 'react-bootstrap';
+import { Navbar,Nav,CloseButton,Button,Container,Row,Col,Offcanvas} from 'react-bootstrap';
 
 
 
@@ -31,52 +33,61 @@ function App() {
   let [wait,setWait] = useState(false);
   let [buttonState,setButtonState] = useState(0);
 
+  const [topBanner,setTopBanner] = useState(false);
+
+  useEffect(()=>{
+    setTopBanner(true);
+  },[])
 
   return (
     <div className="App">
-
+      {
+        topBanner === true &&
+        <div className="top-banner">
+          <CloseButton variant="banner" onClick={()=>{setTopBanner(false)}}/>
+          <p id="top-banner__inner">
+            {/* <img src={coconut} alt="banner" className="top-banner__icon"></img> */}
+            🤑 Fromcoco 첫 방문 기념 1만원 할인 혜택 🤑
+          </p>
+        </div>
+      
+      }
+    
       <header className="header">
-
-      <Navbar id="top-navbar" bg="light">
-        <img src={coconut} alt="menu" className="top-nav__hamburger" onClick={handleShow}></img>
-        <Container id="top-nav__container">
-          <Navbar.Brand id="top-nav__brand" as={Link} to="/coco124">fromcoco 124th</Navbar.Brand>
-            <Nav id="top-nav"  className="me-auto" >
+      <Navbar id="top-navbar">
+        <img src={coconut} alt="menu" className="top-navbar__hamburger" onClick={handleShow}></img>
+        <Container id="top-navbar__container">
+          <Navbar.Brand id="top-navbar__brand" as={Link} to="/coco124">Fromcoco 124th</Navbar.Brand>
+            <Nav id="top-navbar__nav"  className="me-auto" >
               <Nav.Link as={Link} to="/coco124/detail/0">men</Nav.Link>
               <Nav.Link as={Link} to="/coco124/detail/1">lady</Nav.Link>
               <Nav.Link as={Link} to="/coco124/detail/2">unisex</Nav.Link>
             </Nav>
         </Container>
       </Navbar>
-
     </header>
 
-    <Offcanvas show={show} onHide={handleClose}>
+    <Offcanvas id="hidden-menu" show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+          <Offcanvas.Title>Fromcoco 124th</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
+          <h1>여기에는 뭐든지 들어갑니다.</h1>
+          <Nav id="hidden-menu__nav">
+              <Nav.Link as={Link} to="/coco124/detail/0">men</Nav.Link>
+              <Nav.Link as={Link} to="/coco124/detail/1">lady</Nav.Link>
+              <Nav.Link as={Link} to="/coco124/detail/2">unisex</Nav.Link>
+              <Nav.Link as={Link} to="/coco124/detail/2">unisex</Nav.Link>
+              <Nav.Link as={Link} to="/coco124/detail/2">unisex</Nav.Link>
+              <Nav.Link as={Link} to="/coco124/detail/2">unisex</Nav.Link>
+          </Nav>
         </Offcanvas.Body>
       </Offcanvas>
 
 
 
       <Switch> 
-      <Route exact path="/coco124" basename="/coco124">        
-        {/* <Jumbotron className="jumbotron">
-        <h1>고덕점 & 온라인몰 OPEN 기념 이벤트!</h1>
-          <p className="event-inner">
-            고객님들의 성원에 힘입어 프롬코코가 고덕에도 오픈했습니다!!😍😍😍😍 <br />
-            코코상이 쏜다! 
-            지금 회원가입 시 제한없이 사용 가능한 3000point 지급 !           
-          </p>
-        <p>
-          <Button variant="outline-light" size="sm">more event..</Button>
-        </p>
-        </Jumbotron> */}
-
+      <Route exact path="/coco124" basename="/coco124">       
         <Container>
           <Row>
             {
@@ -108,14 +119,13 @@ function App() {
             :null          
           }
 
-            { 
-              wait === true  
-              ? <div className="wait"> 
-                <p>로딩중입니댱</p> 
-                </div>  
-              :null 
-            }     
-            
+          { 
+            wait === true && 
+            <div className="wait"> 
+              <p>로딩중입니댱</p> 
+            </div>  
+          }     
+          
 
         </Container>
       </Route>

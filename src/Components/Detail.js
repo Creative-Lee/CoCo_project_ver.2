@@ -7,16 +7,11 @@ import styled from 'styled-components'
 
 
 
-let Box = styled.div`
-    padding : 20px;
-`;
-
 
 function Detail({ detailQuan, 
     onQuan_Initialize, onIncrease, onDecrease, onAddData,
     productData_ ,
 }){
-
 
     let [tap,setTap] = useState("info")
     let [aniState,setAniState] = useState(false); 

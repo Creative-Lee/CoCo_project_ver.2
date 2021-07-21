@@ -1,20 +1,76 @@
+// #================= 폰트 ===================#
+@font-face {
+    font-family: "Spoqa Han Sans Neo";
+    font-weight: 100;
+    src: url("./fonts/SpoqaHanSansNeo-Thin.otf") format("opentype"),
+        url("./fonts/SpoqaHanSansNeo-Thin.woff") format("woff"),
+        url("./fonts/SpoqaHanSansNeo-Thin.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Spoqa Han Sans Neo";
+    font-weight: 300;
+    src: url("./fonts/SpoqaHanSansNeo-Light.otf") format("opentype"),
+        url("./fonts/SpoqaHanSansNeo-Light.woff") format("woff"),
+        url("./fonts/SpoqaHanSansNeo-Light.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Spoqa Han Sans Neo";
+    font-weight: 400;
+    src: url("./fonts/SpoqaHanSansNeo-Regular.otf") format("opentype"),
+        url("./fonts/SpoqaHanSansNeo-Regular.woff") format("woff"),
+        url("./fonts/SpoqaHanSansNeo-Regular.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Spoqa Han Sans Neo";
+    font-weight: 700;
+    src: url("./fonts/SpoqaHanSansNeo-Bold.otf") format("opentype"),
+        url("./fonts/SpoqaHanSansNeo-Bold.woff") format("woff"),
+        url("./fonts/SpoqaHanSansNeo-Bold.woff2") format("woff2");
+}
+// #================= 폰트 끝 ===============#
+
+
+
 .App {
     text-align: center;
+    font-family: "Spoqa Han Sans Neo";
 }
 
-.jumbotron {
-    margin-top: 0px;
-    text-align: center;
-    background-image: url('../src/img/coco로고.jpg');   
-    background-size: cover;
-    background-position: center right;  
-    color: white;   
-    padding: 3% 5% ;
-
-    h1{
-        font-weight: bold;
+.top-banner{
+    width: 100%;
+    height: 65px;
+    border-bottom: 1px solid #eeeeee;
+    background :  rgb(154, 222, 248);
+    cursor: pointer;
+    
+    p {
+        font-size : 20px;
+        font-weight: 600;
+        color: rgb(22, 63, 97);  
+        letter-spacing: 1px;
+        word-spacing: 2px;
+        padding-top:  20px ;
     }
+    
 }
+.top-banner:hover{
+    background : skyblue;
+}
+
+.btn-close-banner{
+    margin :  10px 10px 0 0 ;
+    float: right;
+}
+.btn-close-banner:hover{
+    background-color: rgb(111, 170, 194);    
+}
+
+
+.top-banner__icon{
+    width: 5%;    
+}   
+
+
 
 .wait {
     background: #eeeeee;
@@ -29,25 +85,46 @@
     border-bottom: solid 1px #eeeeee;
 }
 
-.top-nav__hamburger{
+.top-navbar__hamburger{
     display: none;
 }
 
-#top-nav__brand{
+#top-navbar__brand{
     font-weight: 600;   
 }
 
 
-#top-nav {
+#top-navbar__nav {
+    background : white;
     font-size: 17px;
     font-weight: 600;
 }
 
+.product {
+    cursor: pointer;
+}
 
 
+// #================= md ===================#
 @media (max-width: 768px) {
-  
-    .top-nav__hamburger{
+    .top-banner{
+        height: 50px;       
+        padding-left: 15px;
+        p {
+            margin: 0;
+            font-size : 15px;           
+            letter-spacing: 0px;
+            word-spacing: 1px;
+            padding-top:  15px ;
+        }
+    }
+
+    .btn-close-banner{
+        margin : 3px 3px 0 0;
+       
+    }
+
+    .top-navbar__hamburger{
         display: initial;
         width: 30px;
         height: 30px;
@@ -55,35 +132,29 @@
         cursor: pointer;
     }
 
-    #top-nav__brand{
+    #top-navbar__brand{
         margin : 0 auto;
     }
 
-    #top-nav{
+    #top-navbar__nav{
         display:none;
     }
 
-    #top-nav__container{
+    #top-navbar__container{
         padding-left: 0;
     }
-   
 
-    .jumbotron {
-        padding: 5% 5% ;
-        .event-inner{
-            display: none;
-        }
-
-        h1 {
-            font-size: 25px;
-            margin-bottom: 20px;
-        }
+    #hidden-menu{
+        width: 70%;
     }
+
+
 }
+// #================= md 끝 ===================#
 
 
 @media (max-width: 576px) {
-    #top-nav__brand{
+    #top-navbar__brand{
         margin : 0 auto ;
     }
 }
