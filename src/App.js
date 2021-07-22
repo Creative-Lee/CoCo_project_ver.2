@@ -16,17 +16,17 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 import { Link, Route, Switch, useHistory, }  from 'react-router-dom';
-import { Navbar,Nav,CloseButton,Button,Container,Row,Col,Offcanvas} from 'react-bootstrap';
+import { Navbar,Nav,CloseButton,Button,Container,Row,Col,Offcanvas,Carousel} from 'react-bootstrap';
 
 
 
 function App() {
 
 
-  const [show, setShow] = useState(false);
+  const [hiddenMenuShow, setHiddenMenuShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const hiddenMenuClose = () => setHiddenMenuShow(false);
+  const hiddenMenuOpen = () => setHiddenMenuShow(true);
 
  
   let [productData_ , setProductData_] = useState(productData)
@@ -44,18 +44,15 @@ function App() {
       {
         topBanner === true &&
         <div className="top-banner">
-          <CloseButton variant="banner" onClick={()=>{setTopBanner(false)}}/>
-          <p id="top-banner__inner">
-            {/* <img src={coconut} alt="banner" className="top-banner__icon"></img> */}
-            🤑 Fromcoco 첫 방문 기념 1만원 할인 혜택 🤑
-          </p>
+          <CloseButton variant="top-banner" onClick={()=>{setTopBanner(false)}}/>
+          <p className="top-banner__inner">🤑 Fromcoco 첫 구매라면 최대 10,000원 할인! 🤑</p>
+          <p className="top-banner__inner-hidden">🤑 첫 구매라면 최대 10,000원 할인! 🤑</p>
         </div>
-      
       }
     
       <header className="header">
       <Navbar id="top-navbar">
-        <img src={coconut} alt="menu" className="top-navbar__hamburger" onClick={handleShow}></img>
+        <img src={coconut} alt="menu" className="top-navbar__hamburger" onClick={hiddenMenuOpen}></img>
         <Container id="top-navbar__container">
           <Navbar.Brand id="top-navbar__brand" as={Link} to="/coco124">Fromcoco 124th</Navbar.Brand>
             <Nav id="top-navbar__nav"  className="me-auto" >
@@ -64,13 +61,56 @@ function App() {
               <Nav.Link as={Link} to="/coco124/detail/2">unisex</Nav.Link>
             </Nav>
         </Container>
-      </Navbar>
+      </Navbar> 
     </header>
 
-    <Offcanvas id="hidden-menu" show={show} onHide={handleClose}>
+    <article>
+      <Carousel>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="holder.js/800x400?text=First slide&bg=373940"
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="holder.js/800x400?text=Second slide&bg=282c34"
+            alt="Second slide"
+          />
+
+          <Carousel.Caption>
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="holder.js/800x400?text=Third slide&bg=20232a"
+            alt="Third slide"
+          />
+
+          <Carousel.Caption>
+            <h3>Third slide label</h3>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+    </article>
+
+
+    <Offcanvas id="hidden-menu" show={hiddenMenuShow} onHide={hiddenMenuClose}>
+
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Fromcoco 124th</Offcanvas.Title>
         </Offcanvas.Header>
+
         <Offcanvas.Body>
           <h1>여기에는 뭐든지 들어갑니다.</h1>
           <Nav id="hidden-menu__nav">
@@ -82,40 +122,43 @@ function App() {
               <Nav.Link as={Link} to="/coco124/detail/2">unisex</Nav.Link>
           </Nav>
         </Offcanvas.Body>
-      </Offcanvas>
+    </Offcanvas>
 
 
 
       <Switch> 
-      <Route exact path="/coco124" basename="/coco124">       
+      <Route exact path="/coco124/shoes" basename="/coco124/shoes">       
         <Container>
           <Row>
             {
               productData_.map((a,i)=>{
-                return (<Card productData_={a} i={i} key={i}/>)
+                return (<Shoes productData_={a} i={i} key={i}/>)
               })
             }
           </Row>
 
           {
             buttonState < 1 
-            ?(<button className="btn btn-primary" onClick={()=>{
+            
+            ? (<button className="btn btn-primary" onClick={()=>{
               setWait(true);
               setButtonState(buttonState+1);
               axios.get('https://codingapple1.github.io/shop/data2.json')
+
+              //성공시
               .then((result)=>{ 
                 setWait(false);
                 setProductData_([...productData_ , ...result.data]);
-                
-              }) //성공시
+              }) 
+              //성공시
 
+              //실패시
               .catch(()=>{
-                setWait(false);
-                console.log('we fail')
-              }) //실패시 
-            }} >
-              더보기</button>
-            )
+                setWait(false);                
+              }) 
+               //실패시
+            }}>더보기</button> )
+
             :null          
           }
 
@@ -130,7 +173,7 @@ function App() {
         </Container>
       </Route>
 
-      <Route path="/coco124/detail/:item_id" basename="/coco124/detail/:item_id">
+      <Route path="/coco124/shoes/detail/:item_id" basename="/coco124/shoes/detail/:item_id">
             <DetailContainer productData_={productData_} setProductData_={setProductData_}/>
       </Route>
 
@@ -144,7 +187,7 @@ function App() {
   
 } 
 
-function Card(props){
+function Shoes(props){
 
   let history = useHistory();
   return(
