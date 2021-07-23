@@ -6,6 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import coconut from './img/coconut.jpg'
 import banner1 from './img/직사각배너.jpg'
 import banner2 from './img/정사각배너.jpg'
+import 까리 from './img/까리.jpg'
+import 까리2 from './img/까리2.jpg'
+import 마술사 from './img/마술사.jpg'
 
 import CartContainer from './containers/CartContainer'; 
 import DetailContainer from './containers/DetailContainer';
@@ -65,39 +68,36 @@ function App() {
     </header>
 
     <article>
-      <Carousel>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="holder.js/800x400?text=First slide&bg=373940"
+      <Carousel id="hell">
+        <Carousel.Item interval={2000}>
+          <img 
+            src={까리}
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>First slide label</h3>
+            <h3>패션의 모든 것</h3>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="holder.js/800x400?text=Second slide&bg=282c34"
+
+        <Carousel.Item interval={2000}>
+          <img 
+            src={까리2}
             alt="Second slide"
           />
-
           <Carousel.Caption>
-            <h3>Second slide label</h3>
+            <h3>남자의 모든 것</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="holder.js/800x400?text=Third slide&bg=20232a"
+
+        <Carousel.Item interval={2000}>
+          <img 
+            src={마술사}
             alt="Third slide"
           />
-
           <Carousel.Caption>
-            <h3>Third slide label</h3>
+            <h3>멋의 모든 것</h3>
             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
           </Carousel.Caption>
         </Carousel.Item>
