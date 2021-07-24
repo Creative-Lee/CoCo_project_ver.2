@@ -6,9 +6,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import coconut from './img/coconut.jpg'
 import banner1 from './img/직사각배너.jpg'
 import banner2 from './img/정사각배너.jpg'
+import 나이뽀 from './img/나이뽀.jpg'
 import 까리 from './img/까리.jpg'
 import 까리2 from './img/까리2.jpg'
 import 마술사 from './img/마술사.jpg'
+import 바프1 from './img/바프1.jpg'
+import 바프2 from './img/바프2.jpg'
+import 바프4 from './img/바프4.jpg'
+import 바프5 from './img/바프5.jpg'
+import 바프6 from './img/바프6.jpg'
+import 바프7 from './img/바프7.jpg'
 
 import CartContainer from './containers/CartContainer'; 
 import DetailContainer from './containers/DetailContainer';
@@ -59,51 +66,110 @@ function App() {
         <Container id="top-navbar__container">
           <Navbar.Brand id="top-navbar__brand" as={Link} to="/coco124">Fromcoco 124th</Navbar.Brand>
             <Nav id="top-navbar__nav"  className="me-auto" >
-              <Nav.Link as={Link} to="/coco124/detail/0">men</Nav.Link>
-              <Nav.Link as={Link} to="/coco124/detail/1">lady</Nav.Link>
-              <Nav.Link as={Link} to="/coco124/detail/2">unisex</Nav.Link>
+              <Nav.Link as={Link} to="/coco124/shoes/detail/0">men</Nav.Link>
+              <Nav.Link as={Link} to="/coco124/shoes/detail/1">lady</Nav.Link>
+              <Nav.Link as={Link} to="/coco124/shoes/detail/2">unisex</Nav.Link>              
             </Nav>
         </Container>
       </Navbar> 
     </header>
 
     <article>
-      <Carousel id="hell">
-        <Carousel.Item interval={2000}>
-          <img 
-            src={까리}
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>패션의 모든 것</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
+    <Container>    
+      <Row>
+      <Col md="9">
+        <Carousel className="main-carousel">           
+          <Carousel.Item interval={2000} >
+            <img 
+              src={나이뽀}
+              alt="First slide"
+            />
+            <Carousel.Caption>
+              <h3>패션의 모든 것</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+      
+          <Carousel.Item interval={2000} >
+            <img 
+              src={까리2}
+              alt="Second slide"
+            />
+            <Carousel.Caption>
+              <h3>남자의 모든 것</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
 
-        <Carousel.Item interval={2000}>
-          <img 
-            src={까리2}
-            alt="Second slide"
-          />
-          <Carousel.Caption>
-            <h3>남자의 모든 것</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
+          <Carousel.Item interval={2000} >
+            <img 
+              src={마술사}
+              alt="Third slide"
+            />
+            <Carousel.Caption>
+              <h3>멋의 모든 것</h3>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
 
-        <Carousel.Item interval={2000}>
-          <img 
-            src={마술사}
-            alt="Third slide"
-          />
-          <Carousel.Caption>
-            <h3>멋의 모든 것</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
+          <Carousel.Item interval={2000} >
+            <img 
+              src={바프1}
+              alt="forth slide"
+            />
+            <Carousel.Caption>
+              <h3>멋의 모든 것</h3>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+
+          </Carousel>
+        </Col>
+
+        <Col md="3">
+        <Carousel className="right-carousel">           
+          <Carousel.Item interval={2000} >
+            <img 
+              src={바프2}
+              alt="First slide"
+            />
+          </Carousel.Item>
+
+          <Carousel.Item interval={2000} >
+            <img 
+              src={바프4}
+              alt="First slide"
+            />
+          </Carousel.Item>
+
+          <Carousel.Item interval={2000} >
+            <img 
+              src={바프5}
+              alt="First slide"
+            />
+          </Carousel.Item>
+
+          <Carousel.Item interval={2000} >
+            <img 
+              src={바프6}
+              alt="First slide"
+            />
+          </Carousel.Item>
+
+          <Carousel.Item interval={2000} >
+            <img 
+              src={바프7}
+              alt="First slide"
+            />
+            </Carousel.Item>
+          </Carousel>
+        </Col>
+      </Row>
+
+      </Container>
+     
     </article>
-
+  
 
     <Offcanvas id="hidden-menu" show={hiddenMenuShow} onHide={hiddenMenuClose}>
 
