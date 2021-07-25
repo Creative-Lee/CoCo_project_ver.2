@@ -72,7 +72,7 @@ function Detail({ detailQuan,
                         question();        
                     }}> 장바구니 
                     </button> 
-                    <button className="btn btn-danger" onClick={() => { history.goBack() }} >뒤로가기 </button> 
+                    <button className="btn btn-danger" onClick={() => { history.goBack() }} >목록으로</button> 
                 </div>
 
                 <Nav className="mt-5" variant="tabs" defaultActiveKey="link-0">

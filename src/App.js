@@ -16,6 +16,7 @@ import 바프4 from './img/바프4.jpg'
 import 바프5 from './img/바프5.jpg'
 import 바프6 from './img/바프6.jpg'
 import 바프7 from './img/바프7.jpg'
+import 코코로고 from './img/코코 로고.png'
 
 import CartContainer from './containers/CartContainer'; 
 import DetailContainer from './containers/DetailContainer';
@@ -64,113 +65,19 @@ function App() {
       <Navbar id="top-navbar">
         <img src={coconut} alt="menu" className="top-navbar__hamburger" onClick={hiddenMenuOpen}></img>
         <Container id="top-navbar__container">
-          <Navbar.Brand id="top-navbar__brand" as={Link} to="/coco124">Fromcoco 124th</Navbar.Brand>
+          <Navbar.Brand id="top-navbar__brand" as={Link} to="/coco124"><img src={코코로고} className="top-navbar__logo"/></Navbar.Brand>
             <Nav id="top-navbar__nav"  className="me-auto" >
-              <Nav.Link as={Link} to="/coco124/shoes/detail/0">men</Nav.Link>
-              <Nav.Link as={Link} to="/coco124/shoes/detail/1">lady</Nav.Link>
-              <Nav.Link as={Link} to="/coco124/shoes/detail/2">unisex</Nav.Link>              
+              <Nav.Link as={Link} to="/coco124">community</Nav.Link>
+              <Nav.Link as={Link} to="/coco124/clothes">clothes</Nav.Link>
+              <Nav.Link as={Link} to="/coco124/shoes">shoes</Nav.Link>              
             </Nav>
+            <input type="text"/ >
         </Container>
+        
       </Navbar> 
     </header>
 
-    <article>
-    <Container>    
-      <Row>
-      <Col md="9">
-        <Carousel className="main-carousel">           
-          <Carousel.Item interval={2000} >
-            <img 
-              src={나이뽀}
-              alt="First slide"
-            />
-            <Carousel.Caption>
-              <h3>패션의 모든 것</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-      
-          <Carousel.Item interval={2000} >
-            <img 
-              src={까리2}
-              alt="Second slide"
-            />
-            <Carousel.Caption>
-              <h3>남자의 모든 것</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-
-          <Carousel.Item interval={2000} >
-            <img 
-              src={마술사}
-              alt="Third slide"
-            />
-            <Carousel.Caption>
-              <h3>멋의 모든 것</h3>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-
-          <Carousel.Item interval={2000} >
-            <img 
-              src={바프1}
-              alt="forth slide"
-            />
-            <Carousel.Caption>
-              <h3>멋의 모든 것</h3>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-
-          </Carousel>
-        </Col>
-
-        <Col md="3">
-        <Carousel className="right-carousel">           
-          <Carousel.Item interval={2000} >
-            <img 
-              src={바프2}
-              alt="First slide"
-            />
-          </Carousel.Item>
-
-          <Carousel.Item interval={2000} >
-            <img 
-              src={바프4}
-              alt="First slide"
-            />
-          </Carousel.Item>
-
-          <Carousel.Item interval={2000} >
-            <img 
-              src={바프5}
-              alt="First slide"
-            />
-          </Carousel.Item>
-
-          <Carousel.Item interval={2000} >
-            <img 
-              src={바프6}
-              alt="First slide"
-            />
-          </Carousel.Item>
-
-          <Carousel.Item interval={2000} >
-            <img 
-              src={바프7}
-              alt="First slide"
-            />
-            </Carousel.Item>
-          </Carousel>
-        </Col>
-      </Row>
-
-      </Container>
-     
-    </article>
-  
-
+    {/* #================= 히든메뉴 ===================# */}
     <Offcanvas id="hidden-menu" show={hiddenMenuShow} onHide={hiddenMenuClose}>
 
         <Offcanvas.Header closeButton>
@@ -189,10 +96,77 @@ function App() {
           </Nav>
         </Offcanvas.Body>
     </Offcanvas>
+    {/* #================= 히든메뉴 ===================# */}
 
+    <Switch> 
+      <Route exact path="/coco124" basename="/coco124">     
 
+    <div className="home-header">
+    <Container>    
+      <Row>
+      <Col md="9">
+        <div className="main-content">
+          <img className="main-content__img" src={까리2} alt="big brother"/>
+          <div className="main-content__text">
+            <h2>무한매력 코코상</h2>
+            <span>Fromcoco 124th의 CEO 코코상 그의 성공비결을 취재하다</span>          
+            <br/>
+            <p>__directed by Lee</p>          
+          </div>
+          <Button variant="go-in">장바구니</Button>
+        </div>
+       </Col>
 
-      <Switch> 
+        <Col md="3">
+        <Carousel className="right-carousel">           
+          <Carousel.Item interval={2300} >
+            <img 
+              src={바프2}
+              alt="First slide"
+            />
+          </Carousel.Item>
+
+          <Carousel.Item interval={2300} >
+            <img 
+              src={바프4}
+              alt="First slide"
+            />
+          </Carousel.Item>
+
+          <Carousel.Item interval={2300} >
+            <img 
+              src={바프5}
+              alt="First slide"
+            />
+          </Carousel.Item>
+
+          <Carousel.Item interval={2300} >
+            <img 
+              src={바프6}
+              alt="First slide"
+            />
+          </Carousel.Item>
+
+          <Carousel.Item interval={2300} >
+            <img 
+              src={바프7}
+              alt="First slide"
+            />
+            </Carousel.Item>
+          </Carousel>
+        </Col>
+      </Row>
+      <Row>
+        <Col md="3">1</Col>
+        <Col md="3">2</Col>
+        <Col md="3">3</Col>
+        <Col md="3">4</Col>
+      </Row>
+      </Container>
+    </div>
+  </Route>
+
+      
       <Route exact path="/coco124/shoes" basename="/coco124/shoes">       
         <Container>
           <Row>
@@ -205,7 +179,6 @@ function App() {
 
           {
             buttonState < 1 
-            
             ? (<button className="btn btn-primary" onClick={()=>{
               setWait(true);
               setButtonState(buttonState+1);
@@ -216,13 +189,12 @@ function App() {
                 setWait(false);
                 setProductData_([...productData_ , ...result.data]);
               }) 
-              //성공시
-
+              
               //실패시
               .catch(()=>{
                 setWait(false);                
               }) 
-               //실패시
+              
             }}>더보기</button> )
 
             :null          
@@ -233,9 +205,7 @@ function App() {
             <div className="wait"> 
               <p>로딩중입니댱</p> 
             </div>  
-          }     
-          
-
+          } 
         </Container>
       </Route>
 
@@ -257,7 +227,7 @@ function Shoes(props){
 
   let history = useHistory();
   return(
-    <Col className="product" md="4" onClick={ ()=> { history.push(`/coco124/detail/${props.productData_.id}`)} }>      
+    <Col className="product" md="4" onClick={ ()=> { history.push(`/coco124/shoes/detail/${props.productData_.id}`)} }>      
       <img src={`https://codingapple1.github.io/shop/shoes${props.i+1}.jpg`} width="100%" />
       <h5>{props.productData_.title}</h5>
       <p>{props.productData_.content}</p>

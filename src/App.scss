@@ -34,17 +34,28 @@
 .App {
     text-align: center;
     font-family: "Spoqa Han Sans Neo";
+
 }
+
+.home-header .container  {
+    max-width : 1140px; 
+    width : calc(100% - 80px);
+}
+#top-navbar__container{
+    max-width : 1140px; 
+    width : calc(100% - 80px); 
+}
+
 
 .top-banner{
     width: 100%;
-    height: 55px;
+    height: 50px;
     border-bottom: 1px solid #eeeeee;
     background :  rgb(154, 222, 248);
     cursor: pointer;
     
     p {      
-        font-size : 20px;
+        font-size : 17px;
         font-weight: 600;
         color: rgb(22, 63, 97);  
         letter-spacing: 1px;
@@ -69,11 +80,6 @@
 }
 
 
-.top-banner__icon{
-    width: 5%;    
-}   
-
-
 
 .wait {
     background: #eeeeee;
@@ -84,72 +90,113 @@
     margin: auto;
 }
 
+
+
 #top-navbar{
     height: 80px;
     border-bottom: solid 1px #eeeeee;
+}
+.top-navbar__logo{
+    width: 135px;
+    margin-right: 22px;
 }
 
 .top-navbar__hamburger{
     display: none;
 }
 
-#top-navbar__brand{
-    font-weight: 600;   
-}
-
 
 #top-navbar__nav {
-    background : white;
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 600;
+    a{    
+        color: rgb(83, 83, 83);
+        margin-right: 15px;
+    }
+    a:hover {
+        color: rgb(154, 222, 248);
+
+    }
 }
 
-.main-carousel{
-    padding-top: 30px;
-
-    img {
-        width:100%;
-        border-radius: 10px;
-    }
-    .carousel-inner{
-        border-radius: 10px;
-    }
-    .carousel-item {
-        transition: transform ease-in-out 0.4s
-    }
+.main-content{
+    width: 100%;
+    margin-top: 30px;    
+    border-radius: 10px; 
+    overflow: hidden;
+    position: relative; 
 }
+.main-content__img{
+    border-radius: 10px; 
+    width: 100%;
+    transform: scale(1.0);
+    transition: transform ease 0.2s;  
+    vertical-align:bottom; 
+    }
+
+.main-content__img:hover {    
+    transform: scale(1.05);     
+    transition: transform ease 0.2s;
+}
+
+.main-content__text{
+    position: absolute;
+    bottom: 5%; 
+    left: 4%;
+    align-items: left;
+    text-align: left;
+    
+    h2{
+        color: white;
+        font-size: 30px;
+        font-weight: 600;
+        word-spacing: 1px;
+        background-color :#111111;
+        display:block;
+    }
+    span{
+        color: white;
+        font-size: 15px;
+        font-weight: 500;
+        word-spacing: 1px;
+        background-color :#111111;
+        display:block;
+    }
+    p{
+        color: white;
+        font-size: 12px;
+        font-weight: 500;
+        word-spacing: 1px;
+        background-color :#111111;
+        display:block;
+    }
+    
+}
+
 
 .right-carousel{
     padding-top: 30px;
 
     img {
-        width: 100%;
+        width: 100%;        
         border-radius: 10px;
+        transform: scale(1.0);
+        transition: transform ease 0.3s;
     }
     img:hover {    
-        transform: scale(1.05);     
+        transform: scale(1.1);     
         transition: transform ease 0.3s;
     }
     .carousel-inner{
-        border-radius: 10px; 
-        height: 460px;
+        border-radius: 10px;      
     }
 
     .carousel-item {
-        transition: transform ease-in-out 0.4s
-    }
-    .carousel-control-prev{
-        align-items: flex-end;
-        padding-bottom: 3%;
-    }
-    .carousel-indicators {
-        margin-bottom: 5%;
-    }
+        transition: transform ease-in-out 0.5s
+    }   
 }
 
-
     
-
 
 
 

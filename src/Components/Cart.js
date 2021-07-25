@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Table } from "react-bootstrap";
+import { Table,Container } from "react-bootstrap";
 
 
 import '../Detail.scss'
@@ -11,15 +11,17 @@ function Cart({cartQuan , onIncrease, onDecrease, onDeleteData }) {
 
   return (
     <div>
+      <Container>
       <Table responsive="md">
         <thead>
           <tr>
-            <th>#</th>
+            <th>품번</th>
             <th>상품명</th>
             <th>가격</th>
             <th>수량</th>
             <th>수량변경</th>
             <th>총금액</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -43,6 +45,7 @@ function Cart({cartQuan , onIncrease, onDecrease, onDeleteData }) {
           })}
         </tbody>
       </Table>
+      </Container>
   
       {
         discountAlert === true &&
