@@ -71,7 +71,7 @@ function App() {
               <Nav.Link as={Link} to="/coco124/clothes">clothes</Nav.Link>
               <Nav.Link as={Link} to="/coco124/shoes">shoes</Nav.Link>              
             </Nav>
-            <input type="text"/ >
+            <input type="text"/>
         </Container>
         
       </Navbar> 
@@ -106,14 +106,16 @@ function App() {
       <Row>
       <Col md="9">
         <div className="main-content">
-          <img className="main-content__img" src={까리2} alt="big brother"/>
-          <div className="main-content__text">
-            <h2>무한매력 코코상</h2>
-            <span>Fromcoco 124th의 CEO 코코상 그의 성공비결을 취재하다</span>          
-            <br/>
-            <p>__directed by Lee</p>          
+          <div className="main-content__img-wrap">
+            <img className="main-content__img" src={까리2} alt="big brother"/>
           </div>
-          <Button variant="go-in">장바구니</Button>
+          <div className="main-content__text">            
+            <span className="main-content__text-01">무한매력의 코코상!</span>          
+            <span className="main-content__text-02">Fromcoco 124th의 CEO 코코상 그의 성공비결을 취재하다</span>          
+            <br/>
+            <span className="main-content__text-03">__directed by Mr.Lee</span>          
+          </div>
+         
         </div>
        </Col>
 
