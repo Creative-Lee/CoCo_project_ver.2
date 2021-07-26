@@ -104,20 +104,27 @@ function App() {
     <div className="home-header">
     <Container>    
       <Row>
-      <Col md="9">
-        <div className="main-content">
-          <div className="main-content__img-wrap">
-            <img className="main-content__img" src={까리2} alt="big brother"/>
+    <Col md="9">
+      <div className="main-content"> 
+        <a className="main-content__link">
+          <div className="main-content__img-wrap"> 3
+            <img className="main-content__img" src={까리2} alt="big brother"/> 
           </div>
-          <div className="main-content__text">            
-            <span className="main-content__text-01">무한매력의 코코상!</span>          
-            <span className="main-content__text-02">Fromcoco 124th의 CEO 코코상 그의 성공비결을 취재하다</span>          
-            <br/>
-            <span className="main-content__text-03">__directed by Mr.Lee</span>          
+
+          <div className="main-content__text-wrap">
+            <div className="main-content__text">
+              <span className="main-content__text-01">무한매력의 코코상!</span>          
+              <span className="main-content__text-02">Fromcoco 124th의 CEO 코코상 그의 성공비결을 취재하다</span>          
+              <br/>
+              <span className="main-content__text-03">__directed by Mr.Lee</span>  
+            </div>
+            <div className="main-content__text-more">
+              보러가기
+            </div>
           </div>
-         
-        </div>
-       </Col>
+        </a> 
+      </div>
+    </Col>
 
         <Col md="3">
         <Carousel className="right-carousel">           
