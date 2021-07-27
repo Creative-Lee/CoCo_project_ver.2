@@ -139,7 +139,7 @@
     right: 0;
     bottom: 0;   
     height: 200px;
-    background: linear-gradient(180deg,transparent,rgba(0, 0, 0, 0.7));
+    background: linear-gradient(180deg,transparent,rgba(0, 0, 0, 0.8));
     pointer-events: none;
 }
 
@@ -215,8 +215,8 @@
     }
     .main-content__text-more{
         display:block; 
-        text-align: center;
-        background-color: transparent;
+
+        text-align: center;   
         color: white;   
         font-size: 15px;    
         font-weight: 500;        
@@ -236,27 +236,24 @@
 
 
 .right-carousel{   
-    
-    img {   
+
+    img {          
         width: 100%; 
         border-radius: 7px;
         transform: scale(1.0);
-        transition: transform ease 0.3s;
-        object-fit:cover;
+        transition: transform ease 0.3s;        
     }
     img:hover {    
         transform: scale(1.1);     
         transition: transform ease 0.3s;
     }
     .carousel-inner{
+        position: relative;
         border-radius: 7px;
-        
-       
+        z-index: 1;  
     }
-
     .carousel-item {
         transition: transform ease-in-out 0.5s;
-        
     }   
 }
 
