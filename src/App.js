@@ -33,18 +33,24 @@ import { Navbar,Nav,CloseButton,Button,Container,Row,Col,Offcanvas,Carousel} fro
 
 function App() {
 
-
   const [hiddenMenuShow, setHiddenMenuShow] = useState(false);
 
   const hiddenMenuClose = () => setHiddenMenuShow(false);
   const hiddenMenuOpen = () => setHiddenMenuShow(true);
 
- 
   let [productData_ , setProductData_] = useState(productData)
   let [wait,setWait] = useState(false);
   let [buttonState,setButtonState] = useState(0);
 
   const [topBanner,setTopBanner] = useState(false);
+
+  const [moreStyle,setMoreStyle] = useState(false);
+  const fuckk = () => {    
+    if(moreStyle){
+      return {backgroundColor : "white" , color: "black"}
+    }
+  };
+  
 
   useEffect(()=>{
     setTopBanner(true);
@@ -104,29 +110,33 @@ function App() {
     <div className="home-header">
     <Container>    
       <Row>
-    <Col md="9">
-      <div className="main-content"> 
-        <a className="main-content__link">
-          <div className="main-content__img-wrap"> 3
+    <Col md="8">
+      <div className="main-content" >
+                                      
+        <a className="main-content__link" href="https://www.instagram.com/minsunki6613/" target="_blank"> 
+          <div className="main-content__img-wrap"
+          onMouseOver={()=>{setMoreStyle(true)}}
+          onMouseOut={()=>{setMoreStyle(false)}}>
             <img className="main-content__img" src={까리2} alt="big brother"/> 
           </div>
 
           <div className="main-content__text-wrap">
             <div className="main-content__text">
               <span className="main-content__text-01">무한매력의 코코상!</span>          
-              <span className="main-content__text-02">Fromcoco 124th의 CEO 코코상 그의 성공비결을 취재하다</span>          
+              <span className="main-content__text-02">CEO 코코상 그의 성공비결을 취재하다</span>          
               <br/>
               <span className="main-content__text-03">__directed by Mr.Lee</span>  
             </div>
-            <div className="main-content__text-more">
+            <div className="main-content__text-more" style={fuckk()}>
               보러가기
             </div>
           </div>
+
         </a> 
       </div>
     </Col>
 
-        <Col md="3">
+        <Col md="4">
         <Carousel className="right-carousel">           
           <Carousel.Item interval={2300} >
             <img 
