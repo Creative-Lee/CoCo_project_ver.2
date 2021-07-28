@@ -4,18 +4,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import coconut from './img/coconut.jpg'
-import banner1 from './img/직사각배너.jpg'
-import banner2 from './img/정사각배너.jpg'
+import 직사각배너 from './img/직사각배너.jpg'
+import 정사각배너 from './img/정사각배너.jpg'
 import 나이뽀 from './img/나이뽀.jpg'
 import 까리 from './img/까리.jpg'
 import 까리2 from './img/까리2.jpg'
 import 마술사 from './img/마술사.jpg'
-import 바프1 from './img/바프1.jpg'
-import 바프2 from './img/바프2.jpg'
-import 바프4 from './img/바프4.jpg'
-import 바프5 from './img/바프5.jpg'
-import 바프6 from './img/바프6.jpg'
-import 바프7 from './img/바프7.jpg'
+import 바프1 from './img/바프/바프1.jpg'
+import 바프2 from './img/바프16.9/바프2.jpg'
+import 바프4 from './img/바프16.9/바프4.jpg'
+import 바프5 from './img/바프16.9/바프5.jpg'
+import 바프6 from './img/바프16.9/바프6.jpg'
+import 바프7 from './img/바프16.9/바프7.jpg'
 import 코코로고 from './img/코코 로고.png'
 
 import CartContainer from './containers/CartContainer'; 
@@ -45,12 +45,6 @@ function App() {
   const [topBanner,setTopBanner] = useState(false);
 
   const [moreStyle,setMoreStyle] = useState(false);
-  const fuckk = () => {    
-    if(moreStyle){
-      return {backgroundColor : "white" , color: "black"}
-    }
-  };
-  
 
   useEffect(()=>{
     setTopBanner(true);
@@ -110,7 +104,7 @@ function App() {
     <div className="home-header">
     <Container>    
       <Row>
-    <Col md="8">
+    <Col md="9">
       <div className="main-content" >
                                       
         <a className="main-content__link" href="https://www.instagram.com/minsunki6613/" target="_blank"> 
@@ -127,7 +121,11 @@ function App() {
               <br/>
               <span className="main-content__text-03">__directed by Mr.Lee</span>  
             </div>
-            <div className="main-content__text-more" style={fuckk()}>
+            <div className="main-content__text-more" style={
+              moreStyle == true 
+              ? {backgroundColor : "white" , color: "black"}
+              :null
+            }>
               보러가기
             </div>
           </div>
@@ -136,7 +134,7 @@ function App() {
       </div>
     </Col>
 
-        <Col md="4">
+        <Col md="3">
         <Carousel className="right-carousel">           
           <Carousel.Item interval={2300} >
             <img 
@@ -173,6 +171,11 @@ function App() {
             />
             </Carousel.Item>
           </Carousel>
+        <div className="mini">
+          <div className="mini-banner__img-wrap">
+            <img className="mini-banner__img" src={정사각배너}/>
+          </div>
+        </div>
         </Col>
       </Row>
       <Row>

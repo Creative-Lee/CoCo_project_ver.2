@@ -35,18 +35,18 @@
     text-align: center;
     font-family: "Spoqa Han Sans Neo";
 
+    .container  {
+        max-width : 1140px; 
+        width : calc(100% - 80px);       
+    }
+
 }
 
 .home-header .container  {
     max-width : 1140px; 
     width : calc(100% - 80px);
-    margin-top: 30px;
+    margin-top: 30px;    
 }
-#top-navbar__container{
-    max-width : 1140px; 
-    width : calc(100% - 80px); 
-}
-
 
 .top-banner{
     width: 100%;
@@ -257,8 +257,35 @@
     }   
 }
 
-    
+.mini{
+    position: relative;
+    margin-top: 10px;   
+    border-radius: 7px;
+    width: 100%;
+    overflow: hidden;
+}
+.mini-banner__img-wrap::before{
+    content: "";
+    display: block;
+    padding-bottom: calc(57%)
+}
+.mini-banner__img-wrap{
+    position: relative;
+    transform: scale(1.0);
+    transition: transform ease 0.2
+}
+.mini-banner__img-wrap:hover{
+    transform: scale(1.08);
+    transition: transform ease 0.2;
+}
 
+.mini-banner__img{
+    position: absolute;    
+    left: 0;
+    top: 0;
+    width: 100%;
+    border-radius: 7px;
+}
 
 
 .product {
