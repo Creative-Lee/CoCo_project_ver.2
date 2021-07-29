@@ -116,7 +116,34 @@
     }
     a:hover {
         color: rgb(154, 222, 248);
+    }  
+    .active{
+        color: rgb(154, 222, 248);
+        background: none;
+    }
+}
 
+
+
+
+#bottom-navbar {
+    height: 50px;
+    border-bottom: solid 1px #eeeeee;
+}
+#bottom-navbar__nav{
+    font-size: 16px;
+    font-weight: 600;
+
+    a{    
+        color: rgb(83, 83, 83);
+        margin-right: 15px;
+    }
+    a:hover {
+        color: rgb(154, 222, 248);
+    }  
+    .active{
+        color: rgb(154, 222, 248);
+        background: none;
     }
 }
 
@@ -152,7 +179,7 @@
 }
 .main-content__img-wrap:hover{  
     transform: scale(1.08) ;
-    transition: transform ease 0.2s;
+    transition: transform ease 0.15s;
 }
 
 .main-content__img-wrap::before{
@@ -259,32 +286,35 @@
 
 .mini{
     position: relative;
-    margin-top: 10px;   
+    margin-top: 12px;   
     border-radius: 7px;
     width: 100%;
     overflow: hidden;
+    bottom: 0; 
 }
 .mini-banner__img-wrap::before{
     content: "";
     display: block;
-    padding-bottom: calc(57%)
+    padding-bottom: calc(100%/16*9);
 }
 .mini-banner__img-wrap{
     position: relative;
     transform: scale(1.0);
-    transition: transform ease 0.2
+    transition: transform ease 0.2s
 }
 .mini-banner__img-wrap:hover{
     transform: scale(1.08);
-    transition: transform ease 0.2;
+    transition: transform ease 0.15s;
 }
 
 .mini-banner__img{
     position: absolute;    
     left: 0;
-    top: 0;
+    top: auto;
+    bottom: 0;
     width: 100%;
     border-radius: 7px;
+
 }
 
 

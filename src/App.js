@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import coconut from './img/coconut.jpg'
 import 직사각배너 from './img/직사각배너.jpg'
-import 정사각배너 from './img/정사각배너.jpg'
+import 정사각배너 from './img/정사각배너16.9.jpg'
 import 나이뽀 from './img/나이뽀.jpg'
 import 까리 from './img/까리.jpg'
 import 까리2 from './img/까리2.jpg'
@@ -46,6 +46,8 @@ function App() {
 
   const [moreStyle,setMoreStyle] = useState(false);
 
+  const [isActive,setIsActive] = useState("active")
+
   useEffect(()=>{
     setTopBanner(true);
   },[])
@@ -66,16 +68,27 @@ function App() {
         <img src={coconut} alt="menu" className="top-navbar__hamburger" onClick={hiddenMenuOpen}></img>
         <Container id="top-navbar__container">
           <Navbar.Brand id="top-navbar__brand" as={Link} to="/coco124"><img src={코코로고} className="top-navbar__logo"/></Navbar.Brand>
-            <Nav id="top-navbar__nav"  className="me-auto" >
-              <Nav.Link as={Link} to="/coco124">community</Nav.Link>
-              <Nav.Link as={Link} to="/coco124/clothes">clothes</Nav.Link>
-              <Nav.Link as={Link} to="/coco124/shoes">shoes</Nav.Link>              
-            </Nav>
-            <input type="text"/>
+            <Nav id="top-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
+              <Nav.Link eventKey="1" as={Link} to="/coco124">community</Nav.Link>
+              <Nav.Link eventKey="2" as={Link} to="/coco124/clothes" >clothes</Nav.Link>
+              <Nav.Link eventKey="3" as={Link} to="/coco124/shoes">shoes</Nav.Link>              
+            </Nav>          
         </Container>
-        
       </Navbar> 
+
+      <Navbar id="bottom-navbar">
+        <Container id="bottom-navbar__container">
+            <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
+              <Nav.Link eventKey="1" as={Link} to="/coco124">community</Nav.Link>
+              <Nav.Link eventKey="2" as={Link} to="/coco124/clothes" >clothes</Nav.Link>
+              <Nav.Link eventKey="3" as={Link} to="/coco124/shoes">shoes</Nav.Link>              
+            </Nav>          
+        </Container>
+      </Navbar> 
+ 
     </header>
+
+
 
     {/* #================= 히든메뉴 ===================# */}
     <Offcanvas id="hidden-menu" show={hiddenMenuShow} onHide={hiddenMenuClose}>
