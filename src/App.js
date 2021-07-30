@@ -46,7 +46,7 @@ function App() {
 
   const [moreStyle,setMoreStyle] = useState(false);
 
-  const [isActive,setIsActive] = useState("active")
+  const [navNumber,setNavNumber] = useState("community");
 
   useEffect(()=>{
     setTopBanner(true);
@@ -69,23 +69,15 @@ function App() {
         <Container id="top-navbar__container">
           <Navbar.Brand id="top-navbar__brand" as={Link} to="/coco124"><img src={코코로고} className="top-navbar__logo"/></Navbar.Brand>
             <Nav id="top-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
-              <Nav.Link eventKey="1" as={Link} to="/coco124">community</Nav.Link>
-              <Nav.Link eventKey="2" as={Link} to="/coco124/clothes" >clothes</Nav.Link>
-              <Nav.Link eventKey="3" as={Link} to="/coco124/shoes">shoes</Nav.Link>              
+              <Nav.Link eventKey="1" as={Link} to="/coco124" onClick={()=>{setNavNumber("community")}}>community</Nav.Link>
+              <Nav.Link eventKey="2" as={Link} to="/coco124/clothes"onClick={()=>{setNavNumber("clothes")}} >clothes</Nav.Link>
+              <Nav.Link eventKey="3" as={Link} to="/coco124/shoes" onClick={()=>{setNavNumber("shoes")}}>shoes</Nav.Link>              
             </Nav>          
         </Container>
       </Navbar> 
-
-      <Navbar id="bottom-navbar">
-        <Container id="bottom-navbar__container">
-            <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
-              <Nav.Link eventKey="1" as={Link} to="/coco124">community</Nav.Link>
-              <Nav.Link eventKey="2" as={Link} to="/coco124/clothes" >clothes</Nav.Link>
-              <Nav.Link eventKey="3" as={Link} to="/coco124/shoes">shoes</Nav.Link>              
-            </Nav>          
-        </Container>
-      </Navbar> 
- 
+      {/* #================= bottom nav ===================# */}
+      <BottomNav navNumber={navNumber}/>
+      {/* #================= bottom nav ===================# */}
     </header>
 
 
@@ -271,8 +263,44 @@ function Shoes(props){
   )
 }
 
-
-
+function BottomNav({navNumber}){
+  const bottomNav = {
+    community : <Navbar id="bottom-navbar">
+                  <Container id="bottom-navbar__container">
+                    <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
+                      <Nav.Link eventKey="1" as={Link} to="/coco124">이곳은</Nav.Link>
+                      <Nav.Link eventKey="2" as={Link} to="/coco124/clothes" >커뮤니티</Nav.Link>
+                      <Nav.Link eventKey="3" as={Link} to="/coco124/shoes">공간입니다</Nav.Link>              
+                      </Nav>          
+                  </Container>
+                </Navbar>  ,
+    clothes :   <Navbar id="bottom-navbar">
+                  <Container id="bottom-navbar__container">
+                    <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
+                      <Nav.Link eventKey="1" as={Link} to="/coco124">아직</Nav.Link>
+                      <Nav.Link eventKey="2" as={Link} to="/coco124/clothes" >코코의</Nav.Link>
+                      <Nav.Link eventKey="3" as={Link} to="/coco124/shoes">옷장이</Nav.Link>              
+                      <Nav.Link eventKey="4" as={Link} to="/coco124/shoes">채워지지</Nav.Link>              
+                      <Nav.Link eventKey="5" as={Link} to="/coco124/shoes">않았어요</Nav.Link>              
+                    </Nav>          
+                  </Container>
+                </Navbar>,
+    shoes :     <Navbar id="bottom-navbar">
+                  <Container id="bottom-navbar__container">
+                    <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
+                      <Nav.Link eventKey="1" as={Link} to="/coco124">코코의</Nav.Link>
+                      <Nav.Link eventKey="2" as={Link} to="/coco124/clothes">신발장도</Nav.Link>
+                      <Nav.Link eventKey="3" as={Link} to="/coco124/shoes">부족해요</Nav.Link>              
+                    </Nav>          
+                  </Container>
+                </Navbar>
+}
+  return(
+    <>
+      {bottomNav[navNumber]}
+    </>
+  )
+}
 
 
 export default App;

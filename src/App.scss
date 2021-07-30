@@ -52,13 +52,13 @@
     width: 100%;
     height: 50px;
     border-bottom: 1px solid #eeeeee;
-    background :  rgb(154, 222, 248);
+    background :  rgb(70, 198, 248);
     cursor: pointer;
     
     p {      
         font-size : 17px;
         font-weight: 600;
-        color: rgb(22, 63, 97);  
+        color: rgb(255, 255, 255);  
         letter-spacing: 1px;
         word-spacing: 2px;
         padding-top: 15px ;
@@ -115,10 +115,10 @@
         margin-right: 15px;
     }
     a:hover {
-        color: rgb(154, 222, 248);
+        color: rgb(89, 203, 248); 
     }  
     .active{
-        color: rgb(154, 222, 248);
+        color: rgb(89, 203, 248);    
         background: none;
     }
 }
@@ -131,20 +131,35 @@
     border-bottom: solid 1px #eeeeee;
 }
 #bottom-navbar__nav{
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
 
     a{    
-        color: rgb(83, 83, 83);
-        margin-right: 15px;
+        color: rgb(83, 83, 83);       
+        position: relative;  
+        margin: 0 1px  ;      
     }
     a:hover {
-        color: rgb(154, 222, 248);
-    }  
+        color: rgb(89, 203, 248);
+        }
     .active{
-        color: rgb(154, 222, 248);
+        color: rgb(89, 203, 248);
         background: none;
     }
+    .active::after{
+        content: "";
+        display: block;        
+        height: 2px;   
+        background-color: rgb(89, 203, 248);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        margin : 3px
+    }   
+}
+#bottom-navbar__container{
+    padding: 0;
 }
 
 
