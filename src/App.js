@@ -54,6 +54,7 @@ function App() {
 
   return (
     <div className="App">
+    {/* #================= 최상단 배너 ===================# */}
       {
         topBanner === true &&
         <div className="top-banner">
@@ -62,22 +63,26 @@ function App() {
           <p className="top-banner__inner-hidden">🤑 첫 구매라면 최대 10,000원 할인! 🤑</p>
         </div>
       }
-    
-      <header className="header">
+    {/* #================= 최상단 배너 ===================# */}
+
+    <header className="header">
       <Navbar id="top-navbar">
         <img src={coconut} alt="menu" className="top-navbar__hamburger" onClick={hiddenMenuOpen}></img>
         <Container id="top-navbar__container">
-          <Navbar.Brand id="top-navbar__brand" as={Link} to="/coco124"><img src={코코로고} className="top-navbar__logo"/></Navbar.Brand>
-            <Nav id="top-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
-              <Nav.Link eventKey="1" as={Link} to="/coco124" onClick={()=>{setNavNumber("community")}}>community</Nav.Link>
-              <Nav.Link eventKey="2" as={Link} to="/coco124/clothes"onClick={()=>{setNavNumber("clothes")}} >clothes</Nav.Link>
-              <Nav.Link eventKey="3" as={Link} to="/coco124/shoes" onClick={()=>{setNavNumber("shoes")}}>shoes</Nav.Link>              
-            </Nav>          
+          <Navbar.Brand id="top-navbar__brand" href="/coco124">
+            <img src={코코로고} className="top-navbar__logo"/>
+          </Navbar.Brand>
+          <Nav id="top-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
+            <Nav.Link eventKey="1" href="/coco124" onClick={()=>{setNavNumber("community")}}>community</Nav.Link>
+            <Nav.Link eventKey="2" as={Link} to="/coco124/clothes" onClick={()=>{setNavNumber("clothes")}} >clothes</Nav.Link>
+            <Nav.Link eventKey="3" as={Link} to="/coco124/shoes" onClick={()=>{setNavNumber("shoes")}}>shoes</Nav.Link>              
+          </Nav>          
         </Container>
-      </Navbar> 
-      {/* #================= bottom nav ===================# */}
+      </Navbar>
+
+    {/* #================= bottom nav ===================# */}
       <BottomNav navNumber={navNumber}/>
-      {/* #================= bottom nav ===================# */}
+    {/* #================= bottom nav ===================# */}
     </header>
 
 
@@ -109,7 +114,7 @@ function App() {
     <div className="home-header">
     <Container>    
       <Row>
-    <Col md="9">
+      <Col md="9">
       <div className="main-content" >
                                       
         <a className="main-content__link" href="https://www.instagram.com/minsunki6613/" target="_blank"> 
@@ -190,11 +195,56 @@ function App() {
         <Col md="3">4</Col>
       </Row>
       </Container>
+      <footer className="footer">
+        <Container>
+          <Row>
+            <Col>
+              <div className="footer-inner">
+                <div className="footer-inner__top">
+                  <div className="footer-inner__top-customer">
+                    <div className="footer-inner__top-customer-01">고객센터⚡</div>
+                    <div className="footer-inner__top-customer-02">1577-1577</div>
+                    <div className="footer-inner__top-customer-03">평일 09:00 ~ 18:00 (주말 & 공유일제외)</div>
+                  </div>
+                  <div className="footer-inner__top-CEO">
+                    <div>account number</div>
+                    <div>우리은행: 010-1234-5678</div>
+                    <div>예금주: 민선기</div>
+                  </div>
+                </div>
+                <div className="footer-inner__mid">
+                  <Nav as='ul' className="me-auto">
+                    <Nav.Link as='li'><a href='/' target="_blank">브랜드 스토리</a></Nav.Link>
+                    <Nav.Link as='li'><a href='/' target="_blank">이용약관</a></Nav.Link>
+                    <Nav.Link as='li'><a href='/' target="_blank">채용정보</a></Nav.Link>              
+                    <Nav.Link as='li'><a href='/' target="_blank">궁금하면</a></Nav.Link>              
+                    <Nav.Link as='li'><a href='/' target="_blank">아무거나</a></Nav.Link>              
+                    <Nav.Link as='li'><a href='/' target="_blank">눌러보세요</a></Nav.Link>              
+                    <Nav.Link as='li'><a href='/' target="_blank">으헤헤</a></Nav.Link>              
+                  </Nav>    
+                </div>
+                <div className="footer-inner__bottom">
+                  <Nav as='ul' className="me-auto">
+                      <Nav as='li'>상호명: 프롬코코124번가</Nav>
+                      <Nav as='li'>이메일(고객문의): fromcoco124@gmail.com</Nav>
+                      <Nav as='li'>사업자등록번호: 000-11-2222222</Nav>              
+                      <Nav as='li'>주소: 경기도 평택시 서재로 26-124</Nav>              
+                      <Nav as='li'>대표이사: 민선기</Nav>              
+                  </Nav>
+                </div>
+                <div className="footer-inner__copyright">
+                  <p>Copyright 2021. Fromcoco 124th, Co. Ltd. All rights reserved</p>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </footer>
     </div>
   </Route>
 
       
-      <Route exact path="/coco124/shoes" basename="/coco124/shoes">       
+      <Route exact path="/coco124/shoes/new" basename="/coco124/shoes/new">       
         <Container>
           <Row>
             {
@@ -251,7 +301,6 @@ function App() {
 } 
 
 function Shoes(props){
-
   let history = useHistory();
   return(
     <Col className="product" md="4" onClick={ ()=> { history.push(`/coco124/shoes/detail/${props.productData_.id}`)} }>      
@@ -268,32 +317,37 @@ function BottomNav({navNumber}){
     community : <Navbar id="bottom-navbar">
                   <Container id="bottom-navbar__container">
                     <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
-                      <Nav.Link eventKey="1" as={Link} to="/coco124">이곳은</Nav.Link>
-                      <Nav.Link eventKey="2" as={Link} to="/coco124/clothes" >커뮤니티</Nav.Link>
-                      <Nav.Link eventKey="3" as={Link} to="/coco124/shoes">공간입니다</Nav.Link>              
+                      <Nav.Link eventKey="1" as={Link} to="/coco124">홈</Nav.Link>
+                      <Nav.Link eventKey="2" as={Link} to="/coco124/following">팔로잉</Nav.Link>
+                      <Nav.Link eventKey="3" as={Link} to="/coco124/picture">사진</Nav.Link>
+                      <Nav.Link eventKey="4" as={Link} to="/coco124/event">Summer Event🔥</Nav.Link>              
                       </Nav>          
                   </Container>
                 </Navbar>  ,
+
     clothes :   <Navbar id="bottom-navbar">
                   <Container id="bottom-navbar__container">
                     <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
-                      <Nav.Link eventKey="1" as={Link} to="/coco124">아직</Nav.Link>
-                      <Nav.Link eventKey="2" as={Link} to="/coco124/clothes" >코코의</Nav.Link>
-                      <Nav.Link eventKey="3" as={Link} to="/coco124/shoes">옷장이</Nav.Link>              
-                      <Nav.Link eventKey="4" as={Link} to="/coco124/shoes">채워지지</Nav.Link>              
-                      <Nav.Link eventKey="5" as={Link} to="/coco124/shoes">않았어요</Nav.Link>              
+                      <Nav.Link eventKey="1" as={Link} to="/coco124/clothes/new">NEW~10%</Nav.Link>
+                      <Nav.Link eventKey="2" as={Link} to="/coco124/clothes/casual">캐쥬얼</Nav.Link>
+                      <Nav.Link eventKey="3" as={Link} to="/coco124/clothes/amekaji">아메카지</Nav.Link>
+                      <Nav.Link eventKey="4" as={Link} to="/coco124/clothes/street">스트릿</Nav.Link>              
+                      <Nav.Link eventKey="5" as={Link} to="/coco124/clothes/minimal">미니멀</Nav.Link>              
+                      <Nav.Link eventKey="6" as={Link} to="/coco124/clothes/summer">hot summer🔥</Nav.Link>              
                     </Nav>          
                   </Container>
                 </Navbar>,
+
     shoes :     <Navbar id="bottom-navbar">
                   <Container id="bottom-navbar__container">
                     <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
-                      <Nav.Link eventKey="1" as={Link} to="/coco124">코코의</Nav.Link>
-                      <Nav.Link eventKey="2" as={Link} to="/coco124/clothes">신발장도</Nav.Link>
-                      <Nav.Link eventKey="3" as={Link} to="/coco124/shoes">부족해요</Nav.Link>              
+                      <Nav.Link eventKey="1" as={Link} to="/coco124/shoes/new">NEW~10%</Nav.Link>
+                      <Nav.Link eventKey="2" as={Link} to="/coco124/shoes/sneakers">스니커즈</Nav.Link>
+                      <Nav.Link eventKey="3" as={Link} to="/coco124/shoes/loafer">로퍼</Nav.Link>
+                      <Nav.Link eventKey="4" as={Link} to="/coco124/shoes/oxford">옥스퍼드</Nav.Link>              
                     </Nav>          
                   </Container>
-                </Navbar>
+                </Navbar>    
 }
   return(
     <>
