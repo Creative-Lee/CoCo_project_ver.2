@@ -41,9 +41,9 @@ function BottomNav({navNumber}){
                 </Navbar>    
 }
   return(
-    <>
+    <div>
       {bottomNav[navNumber]}
-    </>
+    </div>
   )
 }
 export default BottomNav;

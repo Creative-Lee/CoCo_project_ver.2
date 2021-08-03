@@ -6,20 +6,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import coconut from './img/coconut.jpg'
 import 직사각배너 from './img/직사각배너.jpg'
 import 정사각배너 from './img/정사각배너16.9.jpg'
-import 나이뽀 from './img/나이뽀.jpg'
-import 까리 from './img/까리.jpg'
-import 까리2 from './img/까리2.jpg'
-import 마술사 from './img/마술사.jpg'
-import 바프1 from './img/바프/바프1.jpg'
+import 나이뽀 from './img/형님사진/나이뽀.jpg'
+import 까리 from './img/형님사진/까리.jpg'
+import 까리2 from './img/형님사진/까리2.jpg'
+import 마술사 from './img/형님사진/마술사.jpg'
 import 바프2 from './img/바프16.9/바프2.jpg'
 import 바프4 from './img/바프16.9/바프4.jpg'
 import 바프5 from './img/바프16.9/바프5.jpg'
 import 바프6 from './img/바프16.9/바프6.jpg'
 import 바프7 from './img/바프16.9/바프7.jpg'
 import 코코로고 from './img/코코 로고.png'
+import 인스타로고 from './img/인스타로고.png'
+
 
 import CartContainer from './containers/CartContainer'; 
 import DetailContainer from './containers/DetailContainer';
+import TopNav from './Components/TopNav';
 import BottomNav from './Components/BottomNav';
 import productData from './productData'
 import axios from 'axios';
@@ -54,6 +56,7 @@ function App() {
 
   return (
     <div className="App">
+
     {/* #================= 최상단 배너 ===================# */}
       {
         topBanner === true &&
@@ -65,8 +68,14 @@ function App() {
       }
     {/* #================= 최상단 배너 ===================# */}
 
+
     <header className="header">
-      <Navbar id="top-navbar">
+      <TopNav 
+      hiddenMenuOpen={hiddenMenuOpen}
+      setNavNumber={setNavNumber} 
+      coconut={coconut} 
+      코코로고={코코로고}/>
+      {/* <Navbar id="top-navbar">
         <img src={coconut} alt="menu" className="top-navbar__hamburger" onClick={hiddenMenuOpen}></img>
         <Container id="top-navbar__container">
           <Navbar.Brand id="top-navbar__brand" href="/coco124">
@@ -78,8 +87,7 @@ function App() {
             <Nav.Link eventKey="3" as={Link} to="/coco124/shoes/new" onClick={()=>{setNavNumber("shoes")}}>shoes</Nav.Link>              
           </Nav>          
         </Container>
-      </Navbar>
-
+      </Navbar> */}
     {/* #================= bottom nav ===================# */}
       <BottomNav navNumber={navNumber}/>
     {/* #================= bottom nav ===================# */}
@@ -190,7 +198,9 @@ function App() {
         </Col>
       </Row>
       <Row>
-        <Col md="3">1</Col>
+        <Col md="3">
+          1
+        </Col>
         <Col md="3">2</Col>
         <Col md="3">3</Col>
         <Col md="3">4</Col>
@@ -264,10 +274,11 @@ function App() {
                     <div className="footer-inner__top-customer-02">1577-1577</div>
                     <div className="footer-inner__top-customer-03">평일 09:00 ~ 18:00 (주말 & 공유일제외)</div>
                   </div>
-                  <div className="footer-inner__top-number">
-                    <div className="footer-inner__top-number-01">계좌번호 👇</div>
-                    <div className="footer-inner__top-number-02">우리은행: 010-1234-5678</div>
-                    <div className="footer-inner__top-number-03">예금주: 민선기</div>
+                  <div className="footer-inner__top-instar">
+                      <div className="footer-inner__top-instar-01">주인장의 사생활이 궁금하다면👀</div>   
+                      <a href="https://www.instagram.com/minsunki6613/" target="_blank">
+                        <span>minsunki6613</span>{' '} <img src={인스타로고}/>
+                      </a> 
                   </div>
                 </div>
                 <div className="footer-inner__mid">
@@ -275,11 +286,12 @@ function App() {
                     <Nav.Link as='li'><a href='/' target="_blank">브랜드 스토리</a></Nav.Link>
                     <Nav.Link as='li'><a href='/' target="_blank">이용약관</a></Nav.Link>
                     <Nav.Link as='li'><a href='/' target="_blank">채용정보</a></Nav.Link>              
-                    <Nav.Link as='li'><a href='/' target="_blank">궁금하면</a></Nav.Link>              
-                    <Nav.Link as='li'><a href='/' target="_blank">아무거나</a></Nav.Link>              
+                    <Nav.Link as='li'><a href='/' target="_blank">개인정보처리방침</a></Nav.Link>              
+                    <Nav.Link as='li'><a href='/' target="_blank">코코상의 비밀</a></Nav.Link>              
                     <Nav.Link as='li'><a href='/' target="_blank">눌러보세요</a></Nav.Link>              
                     <Nav.Link as='li'><a href='/' target="_blank">으헤헤</a></Nav.Link>              
-                  </Nav>    
+                    <Nav.Link as='li'><a href='/' target="_blank">비밀이지롱</a></Nav.Link>              
+                  </Nav> 
                 </div>
                 <div className="footer-inner__bottom">
                   <Nav as='ul' className="me-auto">
@@ -288,8 +300,14 @@ function App() {
                       <Nav as='li'>사업자등록번호: 000-11-2222222</Nav>              
                       <Nav as='li'>주소: 경기도 평택시 서재로 26-124</Nav>              
                       <Nav as='li'>대표이사: 민선기</Nav>              
+                      <Nav as='li'>별명: 코코상</Nav>              
+                      <Nav as='li'>특징: 근엄한 관종</Nav>              
                   </Nav>
                 </div>
+                <div className="footer-inner__woori">
+                  <div className="footer-inner__woori-01">우리은행 채무지급보증 안내: 프롬코코 124번가는 고객님이 현금 결제한 금액에 대해 우리은행과 채무지급보증 계약을 체결 할랑말랑 합니다. 안전거래는 나중에 보장해 드릴게유. </div>
+                </div>
+
                 <div className="footer-inner__copyright">
                   <p>Copyright 2021. Fromcoco 124th, Co. Ltd. All rights reserved</p>
                 </div>
