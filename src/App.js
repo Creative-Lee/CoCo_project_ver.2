@@ -20,7 +20,7 @@ import 코코로고 from './img/코코 로고.png'
 
 import CartContainer from './containers/CartContainer'; 
 import DetailContainer from './containers/DetailContainer';
-
+import BottomNav from './Components/BottomNav';
 import productData from './productData'
 import axios from 'axios';
 
@@ -75,7 +75,7 @@ function App() {
           <Nav id="top-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
             <Nav.Link eventKey="1" href="/coco124" onClick={()=>{setNavNumber("community")}}>community</Nav.Link>
             <Nav.Link eventKey="2" as={Link} to="/coco124/clothes" onClick={()=>{setNavNumber("clothes")}} >clothes</Nav.Link>
-            <Nav.Link eventKey="3" as={Link} to="/coco124/shoes" onClick={()=>{setNavNumber("shoes")}}>shoes</Nav.Link>              
+            <Nav.Link eventKey="3" as={Link} to="/coco124/shoes/new" onClick={()=>{setNavNumber("shoes")}}>shoes</Nav.Link>              
           </Nav>          
         </Container>
       </Navbar>
@@ -107,6 +107,7 @@ function App() {
         </Offcanvas.Body>
     </Offcanvas>
     {/* #================= 히든메뉴 ===================# */}
+ 
 
     <Switch> 
       <Route exact path="/coco124" basename="/coco124">     
@@ -195,51 +196,7 @@ function App() {
         <Col md="3">4</Col>
       </Row>
       </Container>
-      <footer className="footer">
-        <Container>
-          <Row>
-            <Col>
-              <div className="footer-inner">
-                <div className="footer-inner__top">
-                  <div className="footer-inner__top-customer">
-                    <div className="footer-inner__top-customer-01">고객센터⚡</div>
-                    <div className="footer-inner__top-customer-02">1577-1577</div>
-                    <div className="footer-inner__top-customer-03">평일 09:00 ~ 18:00 (주말 & 공유일제외)</div>
-                  </div>
-                  <div className="footer-inner__top-CEO">
-                    <div>account number</div>
-                    <div>우리은행: 010-1234-5678</div>
-                    <div>예금주: 민선기</div>
-                  </div>
-                </div>
-                <div className="footer-inner__mid">
-                  <Nav as='ul' className="me-auto">
-                    <Nav.Link as='li'><a href='/' target="_blank">브랜드 스토리</a></Nav.Link>
-                    <Nav.Link as='li'><a href='/' target="_blank">이용약관</a></Nav.Link>
-                    <Nav.Link as='li'><a href='/' target="_blank">채용정보</a></Nav.Link>              
-                    <Nav.Link as='li'><a href='/' target="_blank">궁금하면</a></Nav.Link>              
-                    <Nav.Link as='li'><a href='/' target="_blank">아무거나</a></Nav.Link>              
-                    <Nav.Link as='li'><a href='/' target="_blank">눌러보세요</a></Nav.Link>              
-                    <Nav.Link as='li'><a href='/' target="_blank">으헤헤</a></Nav.Link>              
-                  </Nav>    
-                </div>
-                <div className="footer-inner__bottom">
-                  <Nav as='ul' className="me-auto">
-                      <Nav as='li'>상호명: 프롬코코124번가</Nav>
-                      <Nav as='li'>이메일(고객문의): fromcoco124@gmail.com</Nav>
-                      <Nav as='li'>사업자등록번호: 000-11-2222222</Nav>              
-                      <Nav as='li'>주소: 경기도 평택시 서재로 26-124</Nav>              
-                      <Nav as='li'>대표이사: 민선기</Nav>              
-                  </Nav>
-                </div>
-                <div className="footer-inner__copyright">
-                  <p>Copyright 2021. Fromcoco 124th, Co. Ltd. All rights reserved</p>
-                </div>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </footer>
+
     </div>
   </Route>
 
@@ -295,6 +252,52 @@ function App() {
       </Route>
       
       </Switch>
+      
+      <footer className="footer">
+        <Container>
+          <Row>
+            <Col>
+              <div className="footer-inner">
+                <div className="footer-inner__top">
+                  <div className="footer-inner__top-customer">
+                    <div className="footer-inner__top-customer-01">고객센터⚡</div>
+                    <div className="footer-inner__top-customer-02">1577-1577</div>
+                    <div className="footer-inner__top-customer-03">평일 09:00 ~ 18:00 (주말 & 공유일제외)</div>
+                  </div>
+                  <div className="footer-inner__top-number">
+                    <div className="footer-inner__top-number-01">계좌번호 👇</div>
+                    <div className="footer-inner__top-number-02">우리은행: 010-1234-5678</div>
+                    <div className="footer-inner__top-number-03">예금주: 민선기</div>
+                  </div>
+                </div>
+                <div className="footer-inner__mid">
+                  <Nav as='ul' className="me-auto">
+                    <Nav.Link as='li'><a href='/' target="_blank">브랜드 스토리</a></Nav.Link>
+                    <Nav.Link as='li'><a href='/' target="_blank">이용약관</a></Nav.Link>
+                    <Nav.Link as='li'><a href='/' target="_blank">채용정보</a></Nav.Link>              
+                    <Nav.Link as='li'><a href='/' target="_blank">궁금하면</a></Nav.Link>              
+                    <Nav.Link as='li'><a href='/' target="_blank">아무거나</a></Nav.Link>              
+                    <Nav.Link as='li'><a href='/' target="_blank">눌러보세요</a></Nav.Link>              
+                    <Nav.Link as='li'><a href='/' target="_blank">으헤헤</a></Nav.Link>              
+                  </Nav>    
+                </div>
+                <div className="footer-inner__bottom">
+                  <Nav as='ul' className="me-auto">
+                      <Nav as='li'>상호명: 프롬코코124번가</Nav>
+                      <Nav as='li'>이메일(고객문의): fromcoco124@gmail.com</Nav>
+                      <Nav as='li'>사업자등록번호: 000-11-2222222</Nav>              
+                      <Nav as='li'>주소: 경기도 평택시 서재로 26-124</Nav>              
+                      <Nav as='li'>대표이사: 민선기</Nav>              
+                  </Nav>
+                </div>
+                <div className="footer-inner__copyright">
+                  <p>Copyright 2021. Fromcoco 124th, Co. Ltd. All rights reserved</p>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </footer>
     </div>
   );
   
@@ -303,56 +306,12 @@ function App() {
 function Shoes(props){
   let history = useHistory();
   return(
-    <Col className="product" md="4" onClick={ ()=> { history.push(`/coco124/shoes/detail/${props.productData_.id}`)} }>      
+    <Col className="product" md='3' onClick={ ()=> { history.push(`/coco124/shoes/detail/${props.productData_.id}`)} }>      
       <img src={`https://codingapple1.github.io/shop/shoes${props.i+1}.jpg`} width="100%" />
       <h5>{props.productData_.title}</h5>
       <p>{props.productData_.content}</p>
       <p>{props.productData_.price}￦</p>
     </Col>
-  )
-}
-
-function BottomNav({navNumber}){
-  const bottomNav = {
-    community : <Navbar id="bottom-navbar">
-                  <Container id="bottom-navbar__container">
-                    <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
-                      <Nav.Link eventKey="1" as={Link} to="/coco124">홈</Nav.Link>
-                      <Nav.Link eventKey="2" as={Link} to="/coco124/following">팔로잉</Nav.Link>
-                      <Nav.Link eventKey="3" as={Link} to="/coco124/picture">사진</Nav.Link>
-                      <Nav.Link eventKey="4" as={Link} to="/coco124/event">Summer Event🔥</Nav.Link>              
-                      </Nav>          
-                  </Container>
-                </Navbar>  ,
-
-    clothes :   <Navbar id="bottom-navbar">
-                  <Container id="bottom-navbar__container">
-                    <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
-                      <Nav.Link eventKey="1" as={Link} to="/coco124/clothes/new">NEW~10%</Nav.Link>
-                      <Nav.Link eventKey="2" as={Link} to="/coco124/clothes/casual">캐쥬얼</Nav.Link>
-                      <Nav.Link eventKey="3" as={Link} to="/coco124/clothes/amekaji">아메카지</Nav.Link>
-                      <Nav.Link eventKey="4" as={Link} to="/coco124/clothes/street">스트릿</Nav.Link>              
-                      <Nav.Link eventKey="5" as={Link} to="/coco124/clothes/minimal">미니멀</Nav.Link>              
-                      <Nav.Link eventKey="6" as={Link} to="/coco124/clothes/summer">hot summer🔥</Nav.Link>              
-                    </Nav>          
-                  </Container>
-                </Navbar>,
-
-    shoes :     <Navbar id="bottom-navbar">
-                  <Container id="bottom-navbar__container">
-                    <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
-                      <Nav.Link eventKey="1" as={Link} to="/coco124/shoes/new">NEW~10%</Nav.Link>
-                      <Nav.Link eventKey="2" as={Link} to="/coco124/shoes/sneakers">스니커즈</Nav.Link>
-                      <Nav.Link eventKey="3" as={Link} to="/coco124/shoes/loafer">로퍼</Nav.Link>
-                      <Nav.Link eventKey="4" as={Link} to="/coco124/shoes/oxford">옥스퍼드</Nav.Link>              
-                    </Nav>          
-                  </Container>
-                </Navbar>    
-}
-  return(
-    <>
-      {bottomNav[navNumber]}
-    </>
   )
 }
 

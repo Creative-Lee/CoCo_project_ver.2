@@ -372,9 +372,22 @@
     color : rgb(133, 133, 133);
 }
 
-.footer-inner__top-CEO{
+.footer-inner__top-number{
     text-align: left;
     margin-right: 5px ;
+
+    .footer-inner__top-number-01{
+        font-size: 13   px;
+        text-align: center;
+    }
+    .footer-inner__top-number-02{
+        font-size: 17px;
+        font-weight: 600;
+    }
+    .footer-inner__top-number-03{
+        font-size: 13px;
+    }
+
 }
 
 
