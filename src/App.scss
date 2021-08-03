@@ -34,7 +34,7 @@
 .App {
     text-align: center;
     font-family: "Spoqa Han Sans Neo";
-
+    height: 100%;
     .container  {
         max-width : 1140px; 
         width : calc(100% - 80px);       
@@ -42,11 +42,7 @@
 
 }
 
-.home-header .container  {
-    max-width : 1140px; 
-    width : calc(100% - 80px);
-    margin-top: 30px;    
-}
+
 
 .top-banner{
     width: 100%;
@@ -91,86 +87,100 @@
     margin: auto;
 }
 
-.header{
-    position: relative;
-    display: block;   
+.header{    
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0px;
+    z-index: 997;
 }
+.top-navbar--wrap{
+    height: auto;
+    position: relative;   
+    #top-navbar{
+        height: 80px;
+        background :white;
+        border-bottom: solid 1px #eeeeee; 
 
-
-#top-navbar{
-    height: 80px;
-    border-bottom: solid 1px #eeeeee;
-
-    #top-navbar__brand{
-        img{
-            width: 135px;
-            margin-right: 22px;
+    
+        #top-navbar__brand{
+            img{
+                width: 135px;
+                margin-right: 22px;
+            }
+        }
+    
+        #top-navbar__nav {
+            font-size: 20px;
+            font-weight: 600;
+            a{    
+                color: rgb(83, 83, 83);
+                margin-right: 15px;
+            }
+            a:hover {
+                color: rgb(89, 203, 248); 
+            }  
+            .active{
+                color: rgb(89, 203, 248);    
+                background: none;
+            }
         }
     }
-
-    #top-navbar__nav {
-        font-size: 20px;
-        font-weight: 600;
-        a{    
-            color: rgb(83, 83, 83);
-            margin-right: 15px;
-        }
-        a:hover {
-            color: rgb(89, 203, 248); 
-        }  
-        .active{
-            color: rgb(89, 203, 248);    
-            background: none;
-        }
-    }
 }
-
-
 .top-navbar__hamburger{
     display: none;
 }
 
 
-
-
-
+.bottom-navbar--wrap{
+    position: relative;
+}
 
 #bottom-navbar {
     height: 50px;
-    border-bottom: solid 1px #eeeeee;
-}
-#bottom-navbar__nav{
-    font-size: 15px;
-    font-weight: 600;
+    background :white;
+    border-bottom: solid 1px #eeeeee;  
+    
 
-    a{    
-        color: rgb(83, 83, 83);       
-        position: relative;  
-        margin: 0 2px  ;      
+    #bottom-navbar__container{
+        padding: 0;
     }
-    a:hover {
-        color: rgb(89, 203, 248);
+
+    #bottom-navbar__nav{
+        font-size: 15px;
+        font-weight: 600;
+    
+        a{    
+            color: rgb(83, 83, 83);       
+            position: relative;  
+            margin: 0 2px  ;      
         }
-    .active{
-        color: rgb(89, 203, 248);
-        background: none;
+        a:hover {
+            color: rgb(89, 203, 248);
+            }
+        .active{
+            color: rgb(89, 203, 248);
+            background: none;
+        }
+        .active::after{
+            content: "";
+            display: block;        
+            height: 2px;   
+            background-color: rgb(89, 203, 248);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin : 3px
+        }   
     }
-    .active::after{
-        content: "";
-        display: block;        
-        height: 2px;   
-        background-color: rgb(89, 203, 248);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        margin : 3px
-    }   
-}
-#bottom-navbar__container{
-    padding: 0;
+
 }
 
+.home-header {
+    margin-top :30px
+}
 
 .main-content{    
     border-radius: 7px; 

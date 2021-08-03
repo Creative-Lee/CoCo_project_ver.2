@@ -21,8 +21,8 @@ import 인스타로고 from './img/인스타로고.png'
 
 import CartContainer from './containers/CartContainer'; 
 import DetailContainer from './containers/DetailContainer';
-import TopNav from './Components/TopNav';
-import BottomNav from './Components/BottomNav';
+import TopNav from './Components/layout/TopNav';
+import BottomNav from './Components/layout/BottomNav';
 import productData from './productData'
 import axios from 'axios';
 
@@ -67,30 +67,10 @@ function App() {
         </div>
       }
     {/* #================= 최상단 배너 ===================# */}
-
-
+    
     <header className="header">
-      <TopNav 
-      hiddenMenuOpen={hiddenMenuOpen}
-      setNavNumber={setNavNumber} 
-      coconut={coconut} 
-      코코로고={코코로고}/>
-      {/* <Navbar id="top-navbar">
-        <img src={coconut} alt="menu" className="top-navbar__hamburger" onClick={hiddenMenuOpen}></img>
-        <Container id="top-navbar__container">
-          <Navbar.Brand id="top-navbar__brand" href="/coco124">
-            <img src={코코로고} className="top-navbar__logo"/>
-          </Navbar.Brand>
-          <Nav id="top-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
-            <Nav.Link eventKey="1" href="/coco124" onClick={()=>{setNavNumber("community")}}>community</Nav.Link>
-            <Nav.Link eventKey="2" as={Link} to="/coco124/clothes" onClick={()=>{setNavNumber("clothes")}} >clothes</Nav.Link>
-            <Nav.Link eventKey="3" as={Link} to="/coco124/shoes/new" onClick={()=>{setNavNumber("shoes")}}>shoes</Nav.Link>              
-          </Nav>          
-        </Container>
-      </Navbar> */}
-    {/* #================= bottom nav ===================# */}
+      <TopNav hiddenMenuOpen={hiddenMenuOpen} setNavNumber={setNavNumber} coconut={coconut} 코코로고={코코로고}/>
       <BottomNav navNumber={navNumber}/>
-    {/* #================= bottom nav ===================# */}
     </header>
 
 
@@ -140,11 +120,8 @@ function App() {
               <br/>
               <span className="main-content__text-03">__directed by Mr.Lee</span>  
             </div>
-            <div className="main-content__text-more" style={
-              moreStyle == true 
-              ? {backgroundColor : "white" , color: "black"}
-              :null
-            }>
+            <div className="main-content__text-more"
+              style={ moreStyle == true ? {backgroundColor : "white" , color: "black"} :null }>
               보러가기
             </div>
           </div>
@@ -197,13 +174,80 @@ function App() {
         </div>
         </Col>
       </Row>
+
+
+
+      {/* #================= XXX ===================# */}
       <Row>
+      <Col md="9">
+      <div className="main-content" >
+                                      
+        <a className="main-content__link" href="https://www.instagram.com/minsunki6613/" target="_blank"> 
+          <div className="main-content__img-wrap"
+          onMouseOver={()=>{setMoreStyle(true)}}
+          onMouseOut={()=>{setMoreStyle(false)}}>
+            <img className="main-content__img" src={까리2} alt="big brother"/> 
+          </div>
+
+          <div className="main-content__text-wrap">
+            <div className="main-content__text">
+              <span className="main-content__text-01">무한매력의 코코상!</span>          
+              <span className="main-content__text-02">CEO 코코상 그의 성공비결을 취재하다</span>          
+              <br/>
+              <span className="main-content__text-03">__directed by Mr.Lee</span>  
+            </div>
+            <div className="main-content__text-more"
+              style={ moreStyle == true ? {backgroundColor : "white" , color: "black"} :null }>
+              보러가기
+            </div>
+          </div>
+
+        </a> 
+      </div>
+    </Col>
         <Col md="3">
-          1
+        <Carousel className="right-carousel">           
+          <Carousel.Item interval={2300} >
+            <img 
+              src={바프2}
+              alt="First slide"
+            />
+          </Carousel.Item>
+
+          <Carousel.Item interval={2300} >
+            <img 
+              src={바프4}
+              alt="First slide"
+            />
+          </Carousel.Item>
+
+          <Carousel.Item interval={2300} >
+            <img 
+              src={바프5}
+              alt="First slide"
+            />
+          </Carousel.Item>
+
+          <Carousel.Item interval={2300} >
+            <img 
+              src={바프6}
+              alt="First slide"
+            />
+          </Carousel.Item>
+
+          <Carousel.Item interval={2300} >
+            <img 
+              src={바프7}
+              alt="First slide"
+            />
+            </Carousel.Item>
+          </Carousel>
+        <div className="mini">
+          <div className="mini-banner__img-wrap">
+            <img className="mini-banner__img" src={정사각배너}/>
+          </div>
+        </div>
         </Col>
-        <Col md="3">2</Col>
-        <Col md="3">3</Col>
-        <Col md="3">4</Col>
       </Row>
       </Container>
 

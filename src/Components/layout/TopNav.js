@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function TopNav({hiddenMenuOpen,setNavNumber,coconut,코코로고}){
 return (
+    <div className="top-navbar--wrap">
       <Navbar id="top-navbar">
         <img src={coconut} alt="menu" className="top-navbar__hamburger" onClick={hiddenMenuOpen}></img>
         <Container id="top-navbar__container">
@@ -19,6 +20,7 @@ return (
           </Nav>          
         </Container>
       </Navbar>
+    </div>
   )
 }
 
