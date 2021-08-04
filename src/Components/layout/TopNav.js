@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-function TopNav({hiddenMenuOpen,setNavNumber,coconut,코코로고}){
+function TopNav({hiddenMenuOpen,setNavSelect,coconut,코코로고}){
 return (
     <div className="top-navbar--wrap">
       <Navbar id="top-navbar">
@@ -14,9 +14,9 @@ return (
             <img src={코코로고} className="top-navbar__logo"/>
           </Navbar.Brand>
           <Nav id="top-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
-            <Nav.Link eventKey="1" href="/coco124" onClick={()=>{setNavNumber("community")}}>community</Nav.Link>
-            <Nav.Link eventKey="2" as={Link} to="/coco124/clothes" onClick={()=>{setNavNumber("clothes")}} >clothes</Nav.Link>
-            <Nav.Link eventKey="3" as={Link} to="/coco124/shoes/new" onClick={()=>{setNavNumber("shoes")}}>shoes</Nav.Link>              
+            <Nav.Link eventKey="1" href="/coco124" onClick={()=>{setNavSelect("community")}}>community</Nav.Link>
+            <Nav.Link eventKey="2" as={Link} to="/coco124/clothes" onClick={()=>{setNavSelect("clothes")}} >clothes</Nav.Link>
+            <Nav.Link eventKey="3" as={Link} to="/coco124/shoes/new" onClick={()=>{setNavSelect("shoes")}}>shoes</Nav.Link>              
           </Nav>          
         </Container>
       </Navbar>

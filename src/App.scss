@@ -83,7 +83,7 @@
     padding: 20px;
     border-radius: 5px;
     max-width: 500px;
-    width:100%;
+    width: 100%;
     margin: auto;
 }
 
@@ -93,11 +93,12 @@
     flex-direction: column;
     position: sticky;
     top: 0px;
-    z-index: 997;
+    z-index: 555;
 }
 .top-navbar--wrap{
-    height: auto;
-    position: relative;   
+    position: relative;
+    z-index: 999;
+
     #top-navbar{
         height: 80px;
         background :white;
@@ -132,51 +133,54 @@
     display: none;
 }
 
-
 .bottom-navbar--wrap{
     position: relative;
-}
+    top: 0px;
+    z-index: 998;
+    transition: top ease 0.15s;
 
-#bottom-navbar {
-    height: 50px;
-    background :white;
-    border-bottom: solid 1px #eeeeee;  
+    #bottom-navbar {
+        height: 50px;
+        background :white;
+        border-bottom: solid 1px #eeeeee;  
+        
     
-
-    #bottom-navbar__container{
-        padding: 0;
-    }
-
-    #bottom-navbar__nav{
-        font-size: 15px;
-        font-weight: 600;
-    
-        a{    
-            color: rgb(83, 83, 83);       
-            position: relative;  
-            margin: 0 2px  ;      
+        #bottom-navbar__container{
+            padding: 0;
         }
-        a:hover {
-            color: rgb(89, 203, 248);
+    
+        #bottom-navbar__nav{
+            font-size: 15px;
+            font-weight: 600;
+        
+            a{    
+                color: rgb(83, 83, 83);       
+                position: relative;  
+                margin: 0 2px  ;      
             }
-        .active{
-            color: rgb(89, 203, 248);
-            background: none;
+            a:hover {
+                color: rgb(89, 203, 248);
+                }
+            .active{
+                color: rgb(89, 203, 248);
+                background: none;
+            }
+            .active::after{
+                content: "";
+                display: block;        
+                height: 2px;   
+                background-color: rgb(89, 203, 248);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                margin : 3px
+            }   
         }
-        .active::after{
-            content: "";
-            display: block;        
-            height: 2px;   
-            background-color: rgb(89, 203, 248);
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            margin : 3px
-        }   
     }
-
+    
 }
+
 
 .home-header {
     margin-top :30px

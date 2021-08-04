@@ -3,7 +3,7 @@ import { Nav,Container,Navbar} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function BottomNav({navNumber}){
+function BottomNav({navSelect , navWheelStyle}){
   const bottomNav = {
     community : <Navbar id="bottom-navbar">
                   <Container id="bottom-navbar__container">
@@ -41,8 +41,8 @@ function BottomNav({navNumber}){
             </Navbar>
 }
   return(
-    <div className="bottom-navbar--wrap">
-      {bottomNav[navNumber]}
+    <div className="bottom-navbar--wrap" style={navWheelStyle == true ? {top : "-50px"} : null }>
+      {bottomNav[navSelect]}
     </div>
   )
 }

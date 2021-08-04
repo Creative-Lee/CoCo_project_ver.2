@@ -1,7 +1,5 @@
 import './App.scss';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 import coconut from './img/coconut.jpg'
 import 직사각배너 from './img/직사각배너.jpg'
@@ -43,20 +41,27 @@ function App() {
   let [productData_ , setProductData_] = useState(productData)
   let [wait,setWait] = useState(false);
   let [buttonState,setButtonState] = useState(0);
-
   const [topBanner,setTopBanner] = useState(false);
-
   const [moreStyle,setMoreStyle] = useState(false);
+  const [navSelect,setNavSelect] = useState("community");
 
-  const [navNumber,setNavNumber] = useState("community");
+  const [navWheelStyle,setNavWheelStyle] = useState(false);
+
+  const wheelUpDown = (e) => {
+    if(e.deltaY > 0){
+      setNavWheelStyle(true);
+    }
+    else{
+      setNavWheelStyle(false);
+    }
+}
 
   useEffect(()=>{
     setTopBanner(true);
   },[])
 
   return (
-    <div className="App">
-
+    <div className="App" onWheel={wheelUpDown}>     
     {/* #================= 최상단 배너 ===================# */}
       {
         topBanner === true &&
@@ -66,14 +71,11 @@ function App() {
           <p className="top-banner__inner-hidden">🤑 첫 구매라면 최대 10,000원 할인! 🤑</p>
         </div>
       }
-    {/* #================= 최상단 배너 ===================# */}
-    
+
     <header className="header">
-      <TopNav hiddenMenuOpen={hiddenMenuOpen} setNavNumber={setNavNumber} coconut={coconut} 코코로고={코코로고}/>
-      <BottomNav navNumber={navNumber}/>
+      <TopNav navWheelStyle={navWheelStyle} hiddenMenuOpen={hiddenMenuOpen} setNavSelect={setNavSelect} coconut={coconut} 코코로고={코코로고}/>
+      <BottomNav navWheelStyle={navWheelStyle} navSelect={navSelect}/>
     </header>
-
-
 
     {/* #================= 히든메뉴 ===================# */}
     <Offcanvas id="hidden-menu" show={hiddenMenuShow} onHide={hiddenMenuClose}>
@@ -94,17 +96,14 @@ function App() {
           </Nav>
         </Offcanvas.Body>
     </Offcanvas>
-    {/* #================= 히든메뉴 ===================# */}
- 
 
     <Switch> 
       <Route exact path="/coco124" basename="/coco124">     
-
-    <div className="home-header">
-    <Container>    
-      <Row>
-      <Col md="9">
-      <div className="main-content" >
+      <div className="home-header">
+      <Container>    
+        <Row>
+        <Col md="9">
+        <div className="main-content" >
                                       
         <a className="main-content__link" href="https://www.instagram.com/minsunki6613/" target="_blank"> 
           <div className="main-content__img-wrap"
@@ -130,81 +129,6 @@ function App() {
       </div>
     </Col>
 
-        <Col md="3">
-        <Carousel className="right-carousel">           
-          <Carousel.Item interval={2300} >
-            <img 
-              src={바프2}
-              alt="First slide"
-            />
-          </Carousel.Item>
-
-          <Carousel.Item interval={2300} >
-            <img 
-              src={바프4}
-              alt="First slide"
-            />
-          </Carousel.Item>
-
-          <Carousel.Item interval={2300} >
-            <img 
-              src={바프5}
-              alt="First slide"
-            />
-          </Carousel.Item>
-
-          <Carousel.Item interval={2300} >
-            <img 
-              src={바프6}
-              alt="First slide"
-            />
-          </Carousel.Item>
-
-          <Carousel.Item interval={2300} >
-            <img 
-              src={바프7}
-              alt="First slide"
-            />
-            </Carousel.Item>
-          </Carousel>
-        <div className="mini">
-          <div className="mini-banner__img-wrap">
-            <img className="mini-banner__img" src={정사각배너}/>
-          </div>
-        </div>
-        </Col>
-      </Row>
-
-
-
-      {/* #================= XXX ===================# */}
-      <Row>
-      <Col md="9">
-      <div className="main-content" >
-                                      
-        <a className="main-content__link" href="https://www.instagram.com/minsunki6613/" target="_blank"> 
-          <div className="main-content__img-wrap"
-          onMouseOver={()=>{setMoreStyle(true)}}
-          onMouseOut={()=>{setMoreStyle(false)}}>
-            <img className="main-content__img" src={까리2} alt="big brother"/> 
-          </div>
-
-          <div className="main-content__text-wrap">
-            <div className="main-content__text">
-              <span className="main-content__text-01">무한매력의 코코상!</span>          
-              <span className="main-content__text-02">CEO 코코상 그의 성공비결을 취재하다</span>          
-              <br/>
-              <span className="main-content__text-03">__directed by Mr.Lee</span>  
-            </div>
-            <div className="main-content__text-more"
-              style={ moreStyle == true ? {backgroundColor : "white" , color: "black"} :null }>
-              보러가기
-            </div>
-          </div>
-
-        </a> 
-      </div>
-    </Col>
         <Col md="3">
         <Carousel className="right-carousel">           
           <Carousel.Item interval={2300} >
@@ -250,7 +174,6 @@ function App() {
         </Col>
       </Row>
       </Container>
-
     </div>
   </Route>
 
