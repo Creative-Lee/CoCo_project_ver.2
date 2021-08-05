@@ -1,10 +1,9 @@
-let productData = [
+const shoesData = [
     {
         id : 0,
         title : "White and Black",
         content : "Born in France",
         price : 120000,
-        stock : 50
     },
 
     {
@@ -12,7 +11,6 @@ let productData = [
         title : "Red Knit",
         content : "Born in Seoul",
         price : 110000,
-        stock : 100
     },
 
     {
@@ -20,7 +18,6 @@ let productData = [
         title : "Grey Yordan",
         content : "Born in the States",
         price : 130000,
-        stock : 150
     }  
 ] 
-export default productData;
+export default shoesData;

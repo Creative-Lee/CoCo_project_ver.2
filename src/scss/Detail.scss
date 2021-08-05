@@ -1,12 +1,11 @@
 @import './_reset.scss';
 
-$이것은사스문법 : #F1F000;
 
+
+$이것은사스문법 : #F1F000;
 .red{
     color: $이것은사스문법;
 }
-
-
 
 @mixin 기본틀() {
     background: #eeeeee;
@@ -39,5 +38,5 @@ $이것은사스문법 : #F1F000;
 
 .wow-enter-active {
     opacity: 1;
-    transition: all 500ms;
+    transition: all 0.5s;
 }

@@ -1,13 +1,17 @@
-import React, {useState} from "react";
+import React, {useState , useEffect} from "react";
 import { Table,Container } from "react-bootstrap";
 
 
-import '../Detail.scss'
+
 
 
 function Cart({cartQuan , onIncrease, onDecrease, onDeleteData }) {
   
-  let [ discountAlert , setDiscountAlert ] = useState(true)
+  let [ discountAlert , setDiscountAlert ] = useState(false)
+
+  useEffect(()=>{
+    setDiscountAlert(true)
+  },[])
 
   return (
     <div>

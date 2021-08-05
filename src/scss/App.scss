@@ -1,34 +1,4 @@
-// #================= 폰트 ===================#
-@font-face {
-    font-family: "Spoqa Han Sans Neo";
-    font-weight: 100;
-    src: url("./fonts/SpoqaHanSansNeo-Thin.otf") format("opentype"),
-        url("./fonts/SpoqaHanSansNeo-Thin.woff") format("woff"),
-        url("./fonts/SpoqaHanSansNeo-Thin.woff2") format("woff2");
-}
-@font-face {
-    font-family: "Spoqa Han Sans Neo";
-    font-weight: 300;
-    src: url("./fonts/SpoqaHanSansNeo-Light.otf") format("opentype"),
-        url("./fonts/SpoqaHanSansNeo-Light.woff") format("woff"),
-        url("./fonts/SpoqaHanSansNeo-Light.woff2") format("woff2");
-}
-@font-face {
-    font-family: "Spoqa Han Sans Neo";
-    font-weight: 400;
-    src: url("./fonts/SpoqaHanSansNeo-Regular.otf") format("opentype"),
-        url("./fonts/SpoqaHanSansNeo-Regular.woff") format("woff"),
-        url("./fonts/SpoqaHanSansNeo-Regular.woff2") format("woff2");
-}
-@font-face {
-    font-family: "Spoqa Han Sans Neo";
-    font-weight: 700;
-    src: url("./fonts/SpoqaHanSansNeo-Bold.otf") format("opentype"),
-        url("./fonts/SpoqaHanSansNeo-Bold.woff") format("woff"),
-        url("./fonts/SpoqaHanSansNeo-Bold.woff2") format("woff2");
-}
-// #================= 폰트 끝 ===============#
-
+@import './fonts.scss' ;
 
 
 .App {
@@ -292,7 +262,7 @@
         padding: 18px 0 17px 0;
         margin-left: 15px;
         z-index: 999;
-        transition: background, color ease 0.2s ;        
+        transition: background, color ease 0.2s ;  
     }
     
 }
@@ -357,6 +327,24 @@
 
 .product {
     cursor: pointer;
+	.product__img-wrap{
+		border : solid 1px #eeeeee;
+		// box-shadow: 1px 1px 2px rgb(212, 212, 212);
+		border-radius: 5px;
+		background: #cecece;
+	}
+  .product__img{		
+		display: block;	
+		width: 100%;
+  }
+	.product__text-wrap{
+		display: flex;
+		flex-direction: column;
+		text-align: left;
+	}
+  .product__text--title{
+		font-size: 12px;
+	}
 }
 
 

@@ -3,40 +3,37 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import { Nav } from 'react-bootstrap';
 import { CSSTransition } from 'react-transition-group';
-
+import '../scss/Detail.scss'
 
 
 
 
 function Detail({ detailQuan, 
-    onQuan_Initialize, onIncrease, onDecrease, onAddData,
-    productData_ ,
+  onQuan_Initialize, onIncrease, onDecrease, onAddData,
+  shoesData 
 }){
 
-    let [tap,setTap] = useState("info")
-    let [aniState,setAniState] = useState(false); 
-    let [alertState,setAlertState] = useState(true);
+  const [tap,setTap] = useState("info")
+  const [aniState,setAniState] = useState(false); 
+  const [alertState,setAlertState] = useState(true);
 
-
-    useEffect(()=>{
-        let stockAlert = setTimeout(()=>{
-            setAlertState(false); } , 2000);
-
-        return ()=>{
-            clearTimeout(stockAlert);
-            onQuan_Initialize()
-        }
-    },[]);
+  useEffect(()=>{
+    let stockAlert = setTimeout(()=>{setAlertState(false)} , 2000);
+    
+		return ()=>{
+      clearTimeout(stockAlert);
+      onQuan_Initialize()
+    }
+  },[]);
 
     let history = useHistory();
 
-    let { item_id } = useParams();
-    let matchItems = productData_.find((productData_)=>{
-        return productData_.id == item_id
+    const { item_id } = useParams();
+    let matchItems = shoesData.find((shoesData)=>{
+        return shoesData.id == item_id
     })
     
     function question(){
-        
         let result =  window.confirm("선택하신 상품이 장바구니에 담겼습니다.장바구니로 갈텨??")
         if(result){
             history.push('/coco124/cart')
@@ -75,15 +72,15 @@ function Detail({ detailQuan,
                     <button className="btn btn-danger" onClick={() => { history.goBack() }} >목록으로</button> 
                 </div>
 
-                <Nav className="mt-5" variant="tabs" defaultActiveKey="link-0">
+                <Nav className="mt-5" variant="tabs" defaultActiveKey="0">
                 <Nav.Item>
-                    <Nav.Link eventKey="link-0" onClick={() => { setTap("info"); setAniState(false) }}>상세정보</Nav.Link>
+                    <Nav.Link eventKey="0" onClick={() => { setTap("info"); setAniState(false) }}>상세정보</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link eventKey="link-1" onClick={() => { setTap("review"); setAniState(false) }}>고객리뷰</Nav.Link>
+                    <Nav.Link eventKey="1" onClick={() => { setTap("review"); setAniState(false) }}>고객리뷰</Nav.Link>
                 </Nav.Item>    
                 <Nav.Item>
-                    <Nav.Link eventKey="link-2" onClick={() => { setTap("question"); setAniState(false) }}>문의사항</Nav.Link>
+                    <Nav.Link eventKey="2" onClick={() => { setTap("question"); setAniState(false) }}>문의사항</Nav.Link>
                 </Nav.Item>                  
                 </Nav>
 
@@ -99,7 +96,7 @@ function Detail({ detailQuan,
 
 function TabContent({tap , setAniState}){
     const tabUI = {
-            info : <p>상품정보</p>,
+            info : <p>상세정보</p>,
             review : <p>고객리뷰</p>,
             question : <p>문의사항</p>
     }

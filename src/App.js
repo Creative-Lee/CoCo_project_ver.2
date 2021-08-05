@@ -1,4 +1,4 @@
-import './App.scss';
+import './scss/App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import coconut from './img/coconut.jpg'
@@ -21,7 +21,8 @@ import CartContainer from './containers/CartContainer';
 import DetailContainer from './containers/DetailContainer';
 import TopNav from './Components/layout/TopNav';
 import BottomNav from './Components/layout/BottomNav';
-import productData from './productData'
+
+import _shoesData from './Data/productData/shoesData/shoesData.js'
 import axios from 'axios';
 
 import React, { useEffect, useState } from 'react';
@@ -38,7 +39,7 @@ function App() {
   const hiddenMenuClose = () => setHiddenMenuShow(false);
   const hiddenMenuOpen = () => setHiddenMenuShow(true);
 
-  let [productData_ , setProductData_] = useState(productData)
+  let [shoesData , setshoesData] = useState(_shoesData)
   let [wait,setWait] = useState(false);
   let [buttonState,setButtonState] = useState(0);
   const [topBanner,setTopBanner] = useState(false);
@@ -61,8 +62,8 @@ function App() {
   },[])
 
   return (
-    <div className="App" onWheel={wheelUpDown}>     
-    {/* #================= 최상단 배너 ===================# */}
+    <div className="App" onWheel={wheelUpDown}>  
+      {/* # 최상단 배너 # */} 
       {
         topBanner === true &&
         <div className="top-banner">
@@ -70,15 +71,14 @@ function App() {
           <p className="top-banner__inner">🤑 Fromcoco 첫 구매라면 최대 10,000원 할인! 🤑</p>
           <p className="top-banner__inner-hidden">🤑 첫 구매라면 최대 10,000원 할인! 🤑</p>
         </div>
-      }
+      } 
 
     <header className="header">
       <TopNav navWheelStyle={navWheelStyle} hiddenMenuOpen={hiddenMenuOpen} setNavSelect={setNavSelect} coconut={coconut} 코코로고={코코로고}/>
       <BottomNav navWheelStyle={navWheelStyle} navSelect={navSelect}/>
     </header>
 
-    {/* #================= 히든메뉴 ===================# */}
-    <Offcanvas id="hidden-menu" show={hiddenMenuShow} onHide={hiddenMenuClose}>
+    <Offcanvas id="hidden-menu" show={hiddenMenuShow} onHide={hiddenMenuClose}>   {/* # 모바일네브 # */}
 
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Fromcoco 124th</Offcanvas.Title>
@@ -98,7 +98,7 @@ function App() {
     </Offcanvas>
 
     <Switch> 
-      <Route exact path="/coco124" basename="/coco124">     
+      <Route exact path="/coco124" basename="/coco124"> {/*# 메인페이지 # */}
       <div className="home-header">
       <Container>    
         <Row>
@@ -177,14 +177,13 @@ function App() {
     </div>
   </Route>
 
-      
-      <Route exact path="/coco124/shoes/new" basename="/coco124/shoes/new">       
+      <Route exact path="/coco124/shoes/new" basename="/coco124/shoes/new">
         <Container>
           <Row>
             {
-              productData_.map((a,i)=>{
-                return (<Shoes productData_={a} i={i} key={i}/>)
-              })
+              shoesData.map((a,i)=>{
+                return (<Shoes shoesData={a} i={i} key={i}/>)
+              })  
             }
           </Row>
 
@@ -198,7 +197,7 @@ function App() {
               //성공시
               .then((result)=>{ 
                 setWait(false);
-                setProductData_([...productData_ , ...result.data]);
+                setshoesData([...shoesData , ...result.data]);
               }) 
               
               //실패시
@@ -220,8 +219,20 @@ function App() {
         </Container>
       </Route>
 
+      {/* <Route exact path="/coco124/clothes/new" basename="/coco124/clothes/new">
+        <Container>
+          <Row>
+            {
+              shoesData.map((a,i)=>{
+                return (<Shoes shoesData={a} i={i} key={i}/>)
+              })  
+            }
+          </Row>
+        </Container>
+      </Route> */}
+
       <Route path="/coco124/shoes/detail/:item_id" basename="/coco124/shoes/detail/:item_id">
-            <DetailContainer productData_={productData_} setProductData_={setProductData_}/>
+            <DetailContainer shoesData={shoesData} setshoesData={setshoesData}/>
       </Route>
 
       <Route path='/coco124/cart' basename="/coco124/cart">
@@ -288,14 +299,17 @@ function App() {
   
 } 
 
-function Shoes(props){
+function Shoes({shoesData,i}){
   let history = useHistory();
   return(
-    <Col className="product" md='3' onClick={ ()=> { history.push(`/coco124/shoes/detail/${props.productData_.id}`)} }>      
-      <img src={`https://codingapple1.github.io/shop/shoes${props.i+1}.jpg`} width="100%" />
-      <h5>{props.productData_.title}</h5>
-      <p>{props.productData_.content}</p>
-      <p>{props.productData_.price}￦</p>
+    <Col className="product" md='3' onClick={ ()=> { history.push(`/coco124/shoes/detail/${shoesData.id}`)} }>      
+      <div className="product__img-wrap">        
+        <img className="product__img" src={`https://codingapple1.github.io/shop/shoes${i+1}.jpg`}/>
+      </div> 
+      <div className="product__text-wrap">
+        <h1 className="product__text--title">{shoesData.title}</h1>
+        <p className="product__text--price">{shoesData.price}￦</p>
+      </div>
     </Col>
   )
 }
