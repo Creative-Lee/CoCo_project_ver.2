@@ -304,10 +304,10 @@ function Shoes({shoesData,i}){
   return(
     <Col className="product" md='3' onClick={ ()=> { history.push(`/coco124/shoes/detail/${shoesData.id}`)} }>      
       <div className="product__img-wrap">        
-        <img className="product__img" src={`https://codingapple1.github.io/shop/shoes${i+1}.jpg`}/>
+        <img className="product__img" src={process.env.PUBLIC_URL + `/assets/shoe${i + 1}.jpg`} alt="Product"/>
       </div> 
       <div className="product__text-wrap">
-        <h1 className="product__text--title">{shoesData.title}</h1>
+        <h1 className="product__text--title">{shoesData.title}</h1> 
         <p className="product__text--price">{shoesData.price}￦</p>
       </div>
     </Col>
