@@ -1,0 +1,40 @@
+.top-navbar--wrap {
+  position: relative;
+  z-index: 999;
+  
+  #top-navbar__container{
+    margin-top: 0px;
+  }
+  
+  #top-navbar {
+    height: 80px;
+    background: white;
+    border-bottom: solid 1px #eeeeee;
+
+    #top-navbar__brand {
+      img {
+        width: 135px;
+        margin-right: 22px;
+      }
+    }
+
+    #top-navbar__nav {
+      font-size: 20px;
+      font-weight: 600;
+      a {
+        color: rgb(83, 83, 83);
+        margin-right: 15px;
+      }
+      a:hover {
+        color: rgb(89, 203, 248);
+      }
+      .active {
+        color: rgb(89, 203, 248);
+        background: none;
+      }
+    }
+  }
+}
+.top-navbar__hamburger {
+  display: none;
+}

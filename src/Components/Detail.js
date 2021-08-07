@@ -3,7 +3,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import { Nav } from 'react-bootstrap';
 import { CSSTransition } from 'react-transition-group';
-import '../scss/Detail.scss'
+
 
 
 
@@ -41,36 +41,38 @@ function Detail({ detailQuan,
     }
 
     return (
-        <div className="container">
-            {
+        <div className="container"> 
+          <div className="row">        
+            <div className="col-md-6">
+                <img src={process.env.PUBLIC_URL + `/assets/shoe/shoe${matchItems.id + 1}.jpg`} width="100%" />
+            </div>  
+            <div className="col-md-6">
+              <h4 className="pt-5">{matchItems.title}</h4>
+              <p>{matchItems.content}</p>
+              <p>{matchItems.price}￦</p>
+
+              <div>
+                  구매수량 : {detailQuan}  
+                  <input type="button" value="+" onClick={ onIncrease }/>
+                  <input type="button" value="-" onClick={ onDecrease }/>
+              </div>
+
+              <button className="btn btn-danger" onClick={() => {
+                  onAddData( {id: matchItems.id , name: matchItems.title , price: matchItems.price , quan: detailQuan});
+                  question();        
+              }}> 장바구니 
+              </button> 
+              <button className="btn btn-danger" onClick={() => { history.goBack() }} >목록으로</button> 
+              
+              {
                 alertState === true &&  
                 (<div className="my-alert">
                     <p>낫 이너프 재고</p>
                 </div>)
-            }
-        
-            <div className="col-md-6">
-            <img src={`https://codingapple1.github.io/shop/shoes${matchItems.id+1}.jpg`} width="100%" />
-            </div>  
-            
-                <div className="col-md-6 mt-4">
-                    <h4 className="pt-5">{matchItems.title}</h4>
-                    <p>{matchItems.content}</p>
-                    <p>{matchItems.price}￦</p>
+              }
 
-                    <div>
-                        구매수량 : {detailQuan}  
-                        <input type="button" value="+" onClick={ onIncrease }/>
-                        <input type="button" value="-" onClick={ onDecrease }/>
-                    </div>
-
-                    <button className="btn btn-danger" onClick={() => {
-                        onAddData( {id: matchItems.id , name: matchItems.title , price: matchItems.price , quan: detailQuan});
-                        question();        
-                    }}> 장바구니 
-                    </button> 
-                    <button className="btn btn-danger" onClick={() => { history.goBack() }} >목록으로</button> 
-                </div>
+              </div>  
+          </div>
 
                 <Nav className="mt-5" variant="tabs" defaultActiveKey="0">
                 <Nav.Item>

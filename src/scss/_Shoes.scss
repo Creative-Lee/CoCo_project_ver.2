@@ -1,0 +1,38 @@
+.shoes {
+  cursor: pointer;
+  
+  .shoes__img-wrap { 
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .shoes__img {
+    display: block;
+    width: 100%;
+    transform: scale(1);
+    transition: transform ease 0.1s;
+
+    &:hover{
+      transform: scale(1.15);
+      transition: transform ease 0.1s;
+    }
+  }
+  .shoes__text-wrap {
+    padding: 8px 5px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    .shoes__text--brand {
+      font-size: 11px;
+      margin : 0;
+      padding: 0;
+      color: #969696;
+    }
+    .shoes__text--title {
+      font-size: 12px;
+      margin : 0;
+      padding: 0;
+    }
+  }
+  
+}

@@ -1,10 +1,6 @@
 import React, {useState , useEffect} from "react";
 import { Table,Container } from "react-bootstrap";
 
-
-
-
-
 function Cart({cartQuan , onIncrease, onDecrease, onDeleteData }) {
   
   let [ discountAlert , setDiscountAlert ] = useState(false)

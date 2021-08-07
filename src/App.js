@@ -19,10 +19,14 @@ import 인스타로고 from './img/인스타로고.png'
 
 import CartContainer from './containers/CartContainer'; 
 import DetailContainer from './containers/DetailContainer';
+
 import TopNav from './Components/layout/TopNav';
 import BottomNav from './Components/layout/BottomNav';
 
+import Shoes from './Components/Shoes';
 import _shoesData from './Data/productData/shoesData/shoesData.js'
+
+
 import axios from 'axios';
 
 import React, { useEffect, useState } from 'react';
@@ -55,7 +59,7 @@ function App() {
     else{
       setNavWheelStyle(false);
     }
-}
+  }
 
   useEffect(()=>{
     setTopBanner(true);
@@ -97,72 +101,71 @@ function App() {
         </Offcanvas.Body>
     </Offcanvas>
 
-    <Switch> 
-      <Route exact path="/coco124" basename="/coco124"> {/*# 메인페이지 # */}
-      <div className="home-header">
-      <Container>    
-        <Row>
+  <Switch> 
+  <Route exact path="/coco124" basename="/coco124"> {/*# 메인페이지 # */}
+
+  <article className="home-header">
+    <Container>    
+      <Row>
         <Col md="9">
-        <div className="main-content" >
-                                      
-        <a className="main-content__link" href="https://www.instagram.com/minsunki6613/" target="_blank"> 
-          <div className="main-content__img-wrap"
-          onMouseOver={()=>{setMoreStyle(true)}}
-          onMouseOut={()=>{setMoreStyle(false)}}>
-            <img className="main-content__img" src={까리2} alt="big brother"/> 
-          </div>
+          <div className="main-content" >
+            <a className="main-content__link" href="https://www.instagram.com/minsunki6613/" target="_blank"> 
+              <div className="main-content__img-wrap"
+                onMouseOver={()=>{setMoreStyle(true)}}
+                onMouseOut={()=>{setMoreStyle(false)}}>
+                  <img className="main-content__img" src={까리2} alt="big brother"/> 
+              </div>
 
-          <div className="main-content__text-wrap">
-            <div className="main-content__text">
-              <span className="main-content__text-01">무한매력의 코코상!</span>          
-              <span className="main-content__text-02">CEO 코코상 그의 성공비결을 취재하다</span>          
-              <br/>
-              <span className="main-content__text-03">__directed by Mr.Lee</span>  
-            </div>
-            <div className="main-content__text-more"
-              style={ moreStyle == true ? {backgroundColor : "white" , color: "black"} :null }>
-              보러가기
-            </div>
+              <div className="main-content__text-wrap">
+                <div className="main-content__text">
+                  <span className="main-content__text-01">무한매력의 코코상!</span>          
+                  <span className="main-content__text-02">CEO 코코상 그의 성공비결을 취재하다</span>          
+                  <br/>
+                  <span className="main-content__text-03">__directed by Mr.Lee</span>  
+                </div>
+                <div className="main-content__text-more"
+                  style={ moreStyle == true ? {backgroundColor : "white" , color: "black"} :null }>
+                  보러가기
+                </div>
+              </div>
+            </a> 
           </div>
-
-        </a> 
-      </div>
-    </Col>
+        </Col>
 
         <Col md="3">
         <Carousel className="right-carousel">           
-          <Carousel.Item interval={2300} >
+          <Carousel.Item>
             <img 
               src={바프2}
-              alt="First slide"
+              alt="1th slide"
             />
           </Carousel.Item>
 
-          <Carousel.Item interval={2300} >
+          <Carousel.Item>
             <img 
               src={바프4}
-              alt="First slide"
+              alt="2nd slide"
             />
           </Carousel.Item>
 
-          <Carousel.Item interval={2300} >
+          <Carousel.Item>
             <img 
               src={바프5}
-              alt="First slide"
+              alt="3rd slide"
             />
           </Carousel.Item>
 
-          <Carousel.Item interval={2300} >
+          <Carousel.Item>
             <img 
               src={바프6}
-              alt="First slide"
+              alt="4th slide"
             />
           </Carousel.Item>
 
-          <Carousel.Item interval={2300} >
+          <Carousel.Item>
             <img 
               src={바프7}
-              alt="First slide"
+              alt="5th slide"
             />
             </Carousel.Item>
           </Carousel>
@@ -174,7 +177,7 @@ function App() {
         </Col>
       </Row>
       </Container>
-    </div>
+    </article>
   </Route>
 
       <Route exact path="/coco124/shoes/new" basename="/coco124/shoes/new">
@@ -299,20 +302,9 @@ function App() {
   
 } 
 
-function Shoes({shoesData,i}){
-  let history = useHistory();
-  return(
-    <Col className="product" md='3' onClick={ ()=> { history.push(`/coco124/shoes/detail/${shoesData.id}`)} }>      
-      <div className="product__img-wrap">        
-        <img className="product__img" src={process.env.PUBLIC_URL + `/assets/shoe${i + 1}.jpg`} alt="Product"/>
-      </div> 
-      <div className="product__text-wrap">
-        <h1 className="product__text--title">{shoesData.title}</h1> 
-        <p className="product__text--price">{shoesData.price}￦</p>
-      </div>
-    </Col>
-  )
-}
+
+
+
 
 
 export default App;
