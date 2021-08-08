@@ -24,7 +24,7 @@ import TopNav from './Components/layout/TopNav';
 import BottomNav from './Components/layout/BottomNav';
 
 import Shoes from './Components/Shoes';
-import _shoesData from './Data/productData/shoesData/shoesData.js'
+import _allData from './Data/productData/allData.js'
 
 
 import axios from 'axios';
@@ -43,7 +43,7 @@ function App() {
   const hiddenMenuClose = () => setHiddenMenuShow(false);
   const hiddenMenuOpen = () => setHiddenMenuShow(true);
 
-  let [shoesData , setshoesData] = useState(_shoesData)
+  
   let [wait,setWait] = useState(false);
   let [buttonState,setButtonState] = useState(0);
   const [topBanner,setTopBanner] = useState(false);
@@ -51,7 +51,6 @@ function App() {
   const [navSelect,setNavSelect] = useState("community");
 
   const [navWheelStyle,setNavWheelStyle] = useState(false);
-
   const wheelUpDown = (e) => {
     if(e.deltaY > 0){
       setNavWheelStyle(true);
@@ -60,6 +59,13 @@ function App() {
       setNavWheelStyle(false);
     }
   }
+
+  const [allData , setAllData] = useState(_allData)
+  const [targetProduct,setTargetProduct] = useState("shoes");
+  const productType = product => product.type == targetProduct
+  const filterdProduct = allData.filter(productType);  
+    
+  
 
   useEffect(()=>{
     setTopBanner(true);
@@ -184,13 +190,13 @@ function App() {
         <Container>
           <Row>
             {
-              shoesData.map((a,i)=>{
-                return (<Shoes shoesData={a} i={i} key={i}/>)
+              filterdProduct.map((a,i)=>{
+                return (<Shoes filterdData={a} i={i} key={i}/>)
               })  
             }
           </Row>
 
-          {
+          {/* {
             buttonState < 1 
             ? (<button className="btn btn-primary" onClick={()=>{
               setWait(true);
@@ -211,31 +217,19 @@ function App() {
             }}>더보기</button> )
 
             :null          
-          }
+          } */}
 
-          { 
+          {/* { 
             wait === true && 
             <div className="wait"> 
               <p>로딩중입니댱</p> 
             </div>  
-          } 
+          }  */}
         </Container>
       </Route>
 
-      {/* <Route exact path="/coco124/clothes/new" basename="/coco124/clothes/new">
-        <Container>
-          <Row>
-            {
-              shoesData.map((a,i)=>{
-                return (<Shoes shoesData={a} i={i} key={i}/>)
-              })  
-            }
-          </Row>
-        </Container>
-      </Route> */}
-
       <Route path="/coco124/shoes/detail/:item_id" basename="/coco124/shoes/detail/:item_id">
-            <DetailContainer shoesData={shoesData} setshoesData={setshoesData}/>
+            <DetailContainer shoesData={allData} setshoesData={setAllData}/>
       </Route>
 
       <Route path='/coco124/cart' basename="/coco124/cart">

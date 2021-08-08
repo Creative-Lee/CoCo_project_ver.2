@@ -1,7 +1,7 @@
 import React, { useState , useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom';
 
-import { Nav } from 'react-bootstrap';
+import { Navbar,Nav,CloseButton,Button,Container,Row,Col,Offcanvas,Carousel} from 'react-bootstrap';
 import { CSSTransition } from 'react-transition-group';
 
 
@@ -39,30 +39,32 @@ function Detail({ detailQuan,
             history.push('/coco124/cart')
         }       
     }
-
+		
     return (
-        <div className="container"> 
-          <div className="row">        
-            <div className="col-md-6">
-                <img src={process.env.PUBLIC_URL + `/assets/shoe/shoe${matchItems.id + 1}.jpg`} width="100%" />
-            </div>  
-            <div className="col-md-6">
-              <h4 className="pt-5">{matchItems.title}</h4>
-              <p>{matchItems.content}</p>
-              <p>{matchItems.price}￦</p>
+      <Container>
+        <Row>        
+          <Col md="6">
+						<div>
+              <img src={process.env.PUBLIC_URL + `/assets/shoe/shoe${matchItems.id + 1}.jpg`} width="100%" />
+						</div>
+          </Col>  
+          <Col md="6">
+						<div>
+							<h4>{matchItems.title}</h4>
+							<p>{matchItems.price}￦</p>
+						</div>	
 
-              <div>
-                  구매수량 : {detailQuan}  
-                  <input type="button" value="+" onClick={ onIncrease }/>
-                  <input type="button" value="-" onClick={ onDecrease }/>
-              </div>
+            <div>
+              구매수량 : {detailQuan}  
+              <input type="button" value="+" onClick={ onIncrease }/>
+              <input type="button" value="-" onClick={ onDecrease }/>
+            </div>
 
-              <button className="btn btn-danger" onClick={() => {
+              <Button onClick={() => {
                   onAddData( {id: matchItems.id , name: matchItems.title , price: matchItems.price , quan: detailQuan});
                   question();        
-              }}> 장바구니 
-              </button> 
-              <button className="btn btn-danger" onClick={() => { history.goBack() }} >목록으로</button> 
+              }}> 장바구니 </Button> 
+              <Button onClick={() => { history.goBack() }} >목록으로</Button> 
               
               {
                 alertState === true &&  
@@ -71,8 +73,8 @@ function Detail({ detailQuan,
                 </div>)
               }
 
-              </div>  
-          </div>
+            </Col>  
+          </Row>
 
                 <Nav className="mt-5" variant="tabs" defaultActiveKey="0">
                 <Nav.Item>
@@ -91,7 +93,7 @@ function Detail({ detailQuan,
                     tap={tap} setAniState={setAniState}
                 />
                 </CSSTransition>
-        </div> 
+        </Container> 
     )
 }
 
