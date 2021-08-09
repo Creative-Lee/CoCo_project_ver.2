@@ -10,7 +10,7 @@ import { CSSTransition } from 'react-transition-group';
 
 function Detail({ detailQuan, 
   onQuan_Initialize, onIncrease, onDecrease, onAddData,
-  shoesData 
+  allData , setAllData 
 }){
 
   const [tap,setTap] = useState("info")
@@ -28,10 +28,8 @@ function Detail({ detailQuan,
 
     let history = useHistory();
 
-    const { item_id } = useParams();
-    let matchItems = shoesData.find((shoesData)=>{
-        return shoesData.id == item_id
-    })
+    const { data_id } = useParams();
+    let matchItems = allData.find( allData => allData.id == data_id)
     
     function question(){
         let result =  window.confirm("선택하신 상품이 장바구니에 담겼습니다.장바구니로 갈텨??")

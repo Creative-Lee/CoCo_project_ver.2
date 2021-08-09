@@ -9,11 +9,11 @@
     display: block;
     width: 100%;
     transform: scale(1);
-    transition: transform ease 0.1s;
+    transition: transform ease 0.2s;
 
     &:hover{
       transform: scale(1.15);
-      transition: transform ease 0.1s;
+      transition: transform ease 0.2s;
     }
   }
   .shoes__text-wrap {

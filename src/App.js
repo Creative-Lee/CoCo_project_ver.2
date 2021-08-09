@@ -23,7 +23,7 @@ import DetailContainer from './containers/DetailContainer';
 import TopNav from './Components/layout/TopNav';
 import BottomNav from './Components/layout/BottomNav';
 
-import Shoes from './Components/Shoes';
+import Product from './Components/Product';
 import _allData from './Data/productData/allData.js'
 
 
@@ -61,10 +61,10 @@ function App() {
   }
 
   const [allData , setAllData] = useState(_allData)
-  const [targetProduct,setTargetProduct] = useState("shoes");
+  const [targetProduct,setTargetProduct] = useState("");
   const productType = product => product.type == targetProduct
   const filterdProduct = allData.filter(productType);  
-    
+  
   
 
   useEffect(()=>{
@@ -84,7 +84,7 @@ function App() {
       } 
 
     <header className="header">
-      <TopNav navWheelStyle={navWheelStyle} hiddenMenuOpen={hiddenMenuOpen} setNavSelect={setNavSelect} coconut={coconut} 코코로고={코코로고}/>
+      <TopNav setTargetProduct={setTargetProduct} navWheelStyle={navWheelStyle} hiddenMenuOpen={hiddenMenuOpen} setNavSelect={setNavSelect} coconut={coconut} 코코로고={코코로고}/>
       <BottomNav navWheelStyle={navWheelStyle} navSelect={navSelect}/>
     </header>
 
@@ -186,12 +186,27 @@ function App() {
     </article>
   </Route>
 
+    <Route exact path="/coco124/clothes/new" basename="/coco124/clothes/new">
+      <Container>
+        <Row>
+
+        </Row>
+        <Row>
+          {
+            filterdProduct.map((a,i)=>{
+              return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+            })  
+          }
+        </Row>
+      </Container>
+    </Route>
+
       <Route exact path="/coco124/shoes/new" basename="/coco124/shoes/new">
         <Container>
           <Row>
             {
               filterdProduct.map((a,i)=>{
-                return (<Shoes filterdData={a} i={i} key={i}/>)
+                return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
               })  
             }
           </Row>
@@ -228,8 +243,8 @@ function App() {
         </Container>
       </Route>
 
-      <Route path="/coco124/shoes/detail/:item_id" basename="/coco124/shoes/detail/:item_id">
-            <DetailContainer shoesData={allData} setshoesData={setAllData}/>
+      <Route path="/coco124/detail/:data_id" basename="/coco124/detail/:data_id">
+            <DetailContainer allData={allData} setAllData={setAllData}/>
       </Route>
 
       <Route path='/coco124/cart' basename="/coco124/cart">

@@ -3,13 +3,13 @@ import { useHistory } from 'react-router';
 import {Col} from 'react-bootstrap';
 
 
-function Shoes({filterdData,i}){
+function Product({filterdData,i,targetProduct }){
   let history = useHistory();
   
   return(
-    <Col className="shoes" md='3' onClick={ ()=> { history.push(`/coco124/shoes/detail/${filterdData.id}`)} }>      
+    <Col className="shoes" md='3' onClick={ ()=> { history.push(`/coco124/detail/${filterdData.id}`)} }>      
       <div className="shoes__img-wrap">        
-        <img className="shoes__img" src={process.env.PUBLIC_URL + `/assets/shoe/shoe${i + 1}.jpg`} alt="shoes"/>
+        <img className="shoes__img" src={process.env.PUBLIC_URL + `/assets/${targetProduct}/${targetProduct}${i + 1}.jpg`} alt="product"/>
       </div> 
       <div className="shoes__text-wrap">
         <p className="shoes__text--brand">{filterdData.brand}</p>
@@ -20,4 +20,4 @@ function Shoes({filterdData,i}){
   )
 }
 
-export default Shoes;
+export default Product;
