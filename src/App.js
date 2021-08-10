@@ -62,7 +62,7 @@ function App() {
 
   const [allData , setAllData] = useState(_allData)
   const [targetProduct,setTargetProduct] = useState("");
-  const productType = product => product.type == targetProduct
+  const productType = product => product.type === targetProduct
   const filterdProduct = allData.filter(productType);  
   
   

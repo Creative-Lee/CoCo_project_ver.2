@@ -1,11 +1,11 @@
-.shoes {
+.product {
   cursor: pointer;
   
-  .shoes__img-wrap { 
+  .product__img-wrap { 
     border-radius: 5px;
     overflow: hidden;
   }
-  .shoes__img {
+  .product__img {
     display: block;
     width: 100%;
     transform: scale(1);
@@ -16,19 +16,19 @@
       transition: transform ease 0.2s;
     }
   }
-  .shoes__text-wrap {
+  .product__text-wrap {
     padding: 8px 5px;
     display: flex;
     flex-direction: column;
     text-align: left;
 
-    .shoes__text--brand {
+    .product__text--brand {
       font-size: 11px;
       margin : 0;
       padding: 0;
       color: #969696;
     }
-    .shoes__text--title {
+    .product__text--title {
       font-size: 12px;
       margin : 0;
       padding: 0;
