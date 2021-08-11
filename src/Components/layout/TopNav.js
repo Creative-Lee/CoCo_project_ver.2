@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-function TopNav({hiddenMenuOpen,setNavSelect,setTargetProduct,coconut,코코로고}){
+function TopNav({hiddenMenuOpen,setNavSelect,setTargetProduct,setTargetCategory , coconut,코코로고}){
   
 return (
     <div className="top-navbar--wrap">
@@ -18,9 +18,11 @@ return (
             <Nav.Link eventKey="1" as={Link} to="/coco124"
               onClick={()=>{setNavSelect("community")}}>community</Nav.Link>
             <Nav.Link eventKey="2" as={Link} to="/coco124/clothes/new"
-              onClick={()=>{setNavSelect("clothes"); setTargetProduct("clothes")}} >clothes</Nav.Link>
+              onClick={()=>{setNavSelect("clothes"); setTargetProduct("clothes") ; {setTargetCategory("new")}}}>clothes
+              </Nav.Link>
             <Nav.Link eventKey="3" as={Link} to="/coco124/shoes/new"
-              onClick={()=>{setNavSelect("shoes"); setTargetProduct("shoes")}}>shoes</Nav.Link>              
+              onClick={()=>{setNavSelect("shoes"); setTargetProduct("shoes") ; {setTargetCategory("new")}}}>shoes
+              </Nav.Link>              
           </Nav>          
         </Container>
       </Navbar>

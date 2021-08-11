@@ -60,10 +60,16 @@ function App() {
     }
   }
 
+
+  
   const [allData , setAllData] = useState(_allData)
-  const [targetProduct,setTargetProduct] = useState("");
-  const productType = product => product.type === targetProduct
-  const filterdProduct = allData.filter(productType);  
+  const [targetProduct,setTargetProduct] = useState("shoes");
+  const [targetCategory,setTargetCategory] = useState("");
+
+  const category = product => product.type === targetCategory;
+  const filterdProduct = allData.clothes.filter(category);  
+
+  console.log(targetCategory , targetProduct , filterdProduct)
   
   
 
@@ -84,8 +90,8 @@ function App() {
       } 
 
     <header className="header">
-      <TopNav setTargetProduct={setTargetProduct} navWheelStyle={navWheelStyle} hiddenMenuOpen={hiddenMenuOpen} setNavSelect={setNavSelect} coconut={coconut} 코코로고={코코로고}/>
-      <BottomNav navWheelStyle={navWheelStyle} navSelect={navSelect}/>
+      <TopNav setTargetCategory={setTargetCategory} setTargetProduct={setTargetProduct} navWheelStyle={navWheelStyle} hiddenMenuOpen={hiddenMenuOpen} setNavSelect={setNavSelect} coconut={coconut} 코코로고={코코로고}/>
+      <BottomNav setTargetCategory={setTargetCategory} navWheelStyle={navWheelStyle} navSelect={navSelect}/>
     </header>
 
     <Offcanvas id="hidden-menu" show={hiddenMenuShow} onHide={hiddenMenuClose}>   {/* # 모바일네브 # */}
@@ -187,10 +193,62 @@ function App() {
   </Route>
 
     <Route exact path="/coco124/clothes/new" basename="/coco124/clothes/new">
-      <Container>
+      <Container>    
         <Row>
-
+          {
+            filterdProduct.map((a,i)=>{
+              return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+            })  
+          }
         </Row>
+      </Container>
+    </Route>
+    <Route exact path="/coco124/clothes/cityboy" basename="/coco124/clothes/cityboy">
+      <Container>    
+        <Row>
+          {
+            filterdProduct.map((a,i)=>{
+              return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+            })  
+          }
+        </Row>
+      </Container>
+    </Route>
+    <Route exact path="/coco124/clothes/amekaji" basename="/coco124/clothes/amekaji">
+      <Container>    
+        <Row>
+          {
+            filterdProduct.map((a,i)=>{
+              return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+            })  
+          }
+        </Row>
+      </Container>
+    </Route>
+    <Route exact path="/coco124/clothes/street" basename="/coco124/clothes/street">
+      <Container>    
+        <Row>
+          {
+            filterdProduct.map((a,i)=>{
+              return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+            })  
+          }
+        </Row>
+      </Container>
+    </Route>
+    <Route exact path="/coco124/clothes/minimal" basename="/coco124/clothes/minimal">
+      <Container>    
+        <Row>
+          {
+            filterdProduct.map((a,i)=>{
+              return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+            })  
+          }
+        </Row>
+      </Container>
+    </Route>
+    <Route exact path="/coco124/clothes/summer" basename="/coco124/clothes/summer">
+      <Container>    
         <Row>
           {
             filterdProduct.map((a,i)=>{
@@ -201,7 +259,7 @@ function App() {
       </Container>
     </Route>
 
-      <Route exact path="/coco124/shoes/new" basename="/coco124/shoes/new">
+    <Route exact path="/coco124/shoes/new" basename="/coco124/shoes/new">
         <Container>
           <Row>
             {
@@ -242,6 +300,40 @@ function App() {
           }  */}
         </Container>
       </Route>
+    <Route exact path="/coco124/shoes/sneakers" basename="/coco124/shoes/sneakers">
+      <Container>    
+        <Row>
+          {
+            filterdProduct.map((a,i)=>{
+              return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+            })  
+          }
+        </Row>
+      </Container>
+    </Route>
+    <Route exact path="/coco124/shoes/loafer" basename="/coco124/shoes/loafer">
+      <Container>    
+        <Row>
+          {
+            filterdProduct.map((a,i)=>{
+              return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+            })  
+          }
+        </Row>
+      </Container>
+    </Route>
+    <Route exact path="/coco124/shoes/oxford" basename="/coco124/shoes/oxford">
+      <Container>    
+        <Row>
+          {
+            filterdProduct.map((a,i)=>{
+              return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+            })  
+          }
+        </Row>
+      </Container>
+    </Route>
+
 
       <Route path="/coco124/detail/:data_id" basename="/coco124/detail/:data_id">
             <DetailContainer allData={allData} setAllData={setAllData}/>
