@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Nav,Container,Navbar} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function BottomNav({navSelect , navWheelStyle , setTargetCategory}){
-  const bottomNav = {
+function BottomNav({navSelect , navWheelStyle , setTargetCategory }){
+  
+    const bottomNav = {
     community : <Navbar id="bottom-navbar">
                   <Container id="bottom-navbar__container">
                     <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
@@ -18,7 +19,7 @@ function BottomNav({navSelect , navWheelStyle , setTargetCategory}){
 
     clothes :  <Navbar id="bottom-navbar">
                 <Container id="bottom-navbar__container">
-                  <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
+                  <Nav id="bottom-navbar__nav" className="me-auto" variant="pills">
                     <Nav.Link eventKey="1" as={Link} to="/coco124/clothes/new"
                     onClick={()=>{setTargetCategory("new")}}>NEW~10%
                     </Nav.Link>
@@ -43,7 +44,7 @@ function BottomNav({navSelect , navWheelStyle , setTargetCategory}){
 
     shoes : <Navbar id="bottom-navbar">
               <Container id="bottom-navbar__container">
-                <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
+                <Nav id="bottom-navbar__nav" className="me-auto" variant="pills">
                   <Nav.Link eventKey="1" as={Link} to="/coco124/shoes/new"
                   onClick={()=>{setTargetCategory("new")}}>NEW~10%
                   </Nav.Link>

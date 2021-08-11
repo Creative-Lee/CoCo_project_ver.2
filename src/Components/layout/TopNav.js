@@ -16,7 +16,7 @@ return (
           </Navbar.Brand>
           <Nav id="top-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
             <Nav.Link eventKey="1" as={Link} to="/coco124"
-              onClick={()=>{setNavSelect("community")}}>community</Nav.Link>
+              onClick={()=>{setNavSelect("community")  }}>community</Nav.Link>
             <Nav.Link eventKey="2" as={Link} to="/coco124/clothes/new"
               onClick={()=>{setNavSelect("clothes"); setTargetProduct("clothes") ; {setTargetCategory("new")}}}>clothes
               </Nav.Link>

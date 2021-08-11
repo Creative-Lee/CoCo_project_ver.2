@@ -50,6 +50,7 @@ function App() {
   const [moreStyle,setMoreStyle] = useState(false);
   const [navSelect,setNavSelect] = useState("community");
 
+
   const [navWheelStyle,setNavWheelStyle] = useState(false);
   const wheelUpDown = (e) => {
     if(e.deltaY > 0){
@@ -67,9 +68,10 @@ function App() {
   const [targetCategory,setTargetCategory] = useState("");
 
   const category = product => product.type === targetCategory;
-  const filterdProduct = allData.clothes.filter(category);  
+  const filterdClothes = allData.clothes.filter(category);
+  const filterdShoes = allData.shoes.filter(category);
 
-  console.log(targetCategory , targetProduct , filterdProduct)
+
   
   
 
@@ -90,7 +92,7 @@ function App() {
       } 
 
     <header className="header">
-      <TopNav setTargetCategory={setTargetCategory} setTargetProduct={setTargetProduct} navWheelStyle={navWheelStyle} hiddenMenuOpen={hiddenMenuOpen} setNavSelect={setNavSelect} coconut={coconut} 코코로고={코코로고}/>
+      <TopNav  setTargetCategory={setTargetCategory} setTargetProduct={setTargetProduct} navWheelStyle={navWheelStyle} hiddenMenuOpen={hiddenMenuOpen} setNavSelect={setNavSelect} coconut={coconut} 코코로고={코코로고}/>
       <BottomNav setTargetCategory={setTargetCategory} navWheelStyle={navWheelStyle} navSelect={navSelect}/>
     </header>
 
@@ -196,7 +198,7 @@ function App() {
       <Container>    
         <Row>
           {
-            filterdProduct.map((a,i)=>{
+            filterdClothes.map((a,i)=>{
               return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
             })  
           }
@@ -207,7 +209,7 @@ function App() {
       <Container>    
         <Row>
           {
-            filterdProduct.map((a,i)=>{
+            filterdClothes.map((a,i)=>{
               return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
             })  
           }
@@ -218,7 +220,7 @@ function App() {
       <Container>    
         <Row>
           {
-            filterdProduct.map((a,i)=>{
+            filterdClothes.map((a,i)=>{
               return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
             })  
           }
@@ -229,7 +231,7 @@ function App() {
       <Container>    
         <Row>
           {
-            filterdProduct.map((a,i)=>{
+            filterdClothes.map((a,i)=>{
               return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
             })  
           }
@@ -240,7 +242,7 @@ function App() {
       <Container>    
         <Row>
           {
-            filterdProduct.map((a,i)=>{
+            filterdClothes.map((a,i)=>{
               return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
             })  
           }
@@ -251,7 +253,7 @@ function App() {
       <Container>    
         <Row>
           {
-            filterdProduct.map((a,i)=>{
+            filterdClothes.map((a,i)=>{
               return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
             })  
           }
@@ -263,7 +265,7 @@ function App() {
         <Container>
           <Row>
             {
-              filterdProduct.map((a,i)=>{
+              filterdShoes.map((a,i)=>{
                 return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
               })  
             }
@@ -304,7 +306,7 @@ function App() {
       <Container>    
         <Row>
           {
-            filterdProduct.map((a,i)=>{
+              filterdShoes.map((a,i)=>{
               return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
             })  
           }
@@ -315,7 +317,7 @@ function App() {
       <Container>    
         <Row>
           {
-            filterdProduct.map((a,i)=>{
+              filterdShoes.map((a,i)=>{
               return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
             })  
           }
@@ -326,7 +328,7 @@ function App() {
       <Container>    
         <Row>
           {
-            filterdProduct.map((a,i)=>{
+              filterdShoes.map((a,i)=>{
               return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
             })  
           }
