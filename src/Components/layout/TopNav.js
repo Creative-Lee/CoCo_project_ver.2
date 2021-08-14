@@ -4,15 +4,15 @@ import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-function TopNav({hiddenMenuOpen,setNavSelect,setTargetProduct,setTargetCategory , coconut,코코로고}){
+function TopNav({hiddenMenuOpen,setNavSelect,setTargetProduct,setTargetCategory , coconut,코코로고,쩡로고1,쩡로고2}){
   
 return (
     <div className="top-navbar--wrap">
       <Navbar id="top-navbar">
         <img src={coconut} alt="menu" className="top-navbar__hamburger" onClick={hiddenMenuOpen}></img>
         <Container id="top-navbar__container">
-          <Navbar.Brand id="top-navbar__brand" as={Link} to="/coco124">
-            <img src={코코로고} className="top-navbar__logo"/>
+          <Navbar.Brand id="top-navbar__brand" href="/coco124">
+            <img src={쩡로고2} className="top-navbar__logo"/>
           </Navbar.Brand>
           <Nav id="top-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
             <Nav.Link eventKey="1" as={Link} to="/coco124"

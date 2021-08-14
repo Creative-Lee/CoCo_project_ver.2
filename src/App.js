@@ -14,6 +14,8 @@ import 바프5 from './img/바프16.9/바프5.jpg'
 import 바프6 from './img/바프16.9/바프6.jpg'
 import 바프7 from './img/바프16.9/바프7.jpg'
 import 코코로고 from './img/코코 로고.png'
+import 쩡로고1 from './img/쩡로고1.png'
+import 쩡로고2 from './img/쩡로고2.png'
 import 인스타로고 from './img/인스타로고.png'
 
 
@@ -47,7 +49,7 @@ function App() {
   let [wait,setWait] = useState(false);
   let [buttonState,setButtonState] = useState(0);
   const [topBanner,setTopBanner] = useState(false);
-  const [moreStyle,setMoreStyle] = useState(false);
+  const [moreDivStyle,setMoreDivStyle] = useState(false);
   const [navSelect,setNavSelect] = useState("community");
 
 
@@ -92,7 +94,7 @@ function App() {
       } 
 
     <header className="header">
-      <TopNav  setTargetCategory={setTargetCategory} setTargetProduct={setTargetProduct} navWheelStyle={navWheelStyle} hiddenMenuOpen={hiddenMenuOpen} setNavSelect={setNavSelect} coconut={coconut} 코코로고={코코로고}/>
+      <TopNav  setTargetCategory={setTargetCategory} setTargetProduct={setTargetProduct} navWheelStyle={navWheelStyle} hiddenMenuOpen={hiddenMenuOpen} setNavSelect={setNavSelect} coconut={coconut} 코코로고={코코로고} 쩡로고1={쩡로고1} 쩡로고2={쩡로고2}/>
       <BottomNav setTargetCategory={setTargetCategory} navWheelStyle={navWheelStyle} navSelect={navSelect}/>
     </header>
 
@@ -125,8 +127,8 @@ function App() {
           <div className="main-content" >
             <a className="main-content__link" href="https://www.instagram.com/minsunki6613/" target="_blank"> 
               <div className="main-content__img-wrap"
-                onMouseOver={()=>{setMoreStyle(true)}}
-                onMouseOut={()=>{setMoreStyle(false)}}>
+                onMouseOver={()=>{setMoreDivStyle(true)}}
+                onMouseOut={()=>{setMoreDivStyle(false)}}>
                   <img className="main-content__img" src={까리2} alt="big brother"/> 
               </div>
 
@@ -137,8 +139,8 @@ function App() {
                   <br/>
                   <span className="main-content__text-03">__directed by Mr.Lee</span>  
                 </div>
-                <div className="main-content__text-more"
-                  style={ moreStyle == true ? {backgroundColor : "white" , color: "black"} :null }>
+                <div className="main-content__text--more"
+                  style={ moreDivStyle == true ? {backgroundColor : "white" , color: "black"} :null }>
                   보러가기
                 </div>
               </div>
