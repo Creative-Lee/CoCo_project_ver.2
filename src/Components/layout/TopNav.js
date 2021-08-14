@@ -4,7 +4,11 @@ import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
+<<<<<<< HEAD
 function TopNav({hiddenMenuOpen,setNavSelect,setTargetProduct,setTargetCategory , coconut,코코로고,쩡로고1,쩡로고2}){
+=======
+function TopNav({setNavWheelStyle, hiddenMenuOpen,setNavSelect,setTargetProduct,setTargetCategory , coconut,코코로고}){
+>>>>>>> 03acb2489efebaad93118cf5353ee821a9746486
   
 return (
     <div className="top-navbar--wrap">
@@ -16,12 +20,12 @@ return (
           </Navbar.Brand>
           <Nav id="top-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
             <Nav.Link eventKey="1" as={Link} to="/coco124"
-              onClick={()=>{setNavSelect("community")  }}>community</Nav.Link>
+              onClick={()=>{setNavSelect("community"); setNavWheelStyle(false)  }}>community</Nav.Link>
             <Nav.Link eventKey="2" as={Link} to="/coco124/clothes/new"
-              onClick={()=>{setNavSelect("clothes"); setTargetProduct("clothes") ; {setTargetCategory("new")}}}>clothes
+              onClick={()=>{setNavSelect("clothes"); setTargetProduct("clothes") ; {setTargetCategory("new")}; setNavWheelStyle(false)}}>clothes
               </Nav.Link>
             <Nav.Link eventKey="3" as={Link} to="/coco124/shoes/new"
-              onClick={()=>{setNavSelect("shoes"); setTargetProduct("shoes") ; {setTargetCategory("new")}}}>shoes
+              onClick={()=>{setNavSelect("shoes"); setTargetProduct("shoes") ; {setTargetCategory("new")}; setNavWheelStyle(false)}}>shoes
               </Nav.Link>              
           </Nav>          
         </Container>

@@ -55,7 +55,12 @@ function App() {
 
   const [navWheelStyle,setNavWheelStyle] = useState(false);
   const wheelUpDown = (e) => {
-    if(e.deltaY > 0){
+    let fullHeight = document.documentElement.scrollHeight
+    let viewHeight = document.documentElement.clientHeight
+    console.log(fullHeight , viewHeight)
+
+    if(e.deltaY > 0 && (fullHeight !== viewHeight)){
+      
       setNavWheelStyle(true);
     }
     else{
@@ -94,7 +99,11 @@ function App() {
       } 
 
     <header className="header">
+<<<<<<< HEAD
       <TopNav  setTargetCategory={setTargetCategory} setTargetProduct={setTargetProduct} navWheelStyle={navWheelStyle} hiddenMenuOpen={hiddenMenuOpen} setNavSelect={setNavSelect} coconut={coconut} 코코로고={코코로고} 쩡로고1={쩡로고1} 쩡로고2={쩡로고2}/>
+=======
+      <TopNav setNavWheelStyle={setNavWheelStyle}  setTargetCategory={setTargetCategory} setTargetProduct={setTargetProduct} navWheelStyle={navWheelStyle} hiddenMenuOpen={hiddenMenuOpen} setNavSelect={setNavSelect} coconut={coconut} 코코로고={코코로고}/>
+>>>>>>> 03acb2489efebaad93118cf5353ee821a9746486
       <BottomNav setTargetCategory={setTargetCategory} navWheelStyle={navWheelStyle} navSelect={navSelect}/>
     </header>
 
