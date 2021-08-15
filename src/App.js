@@ -99,11 +99,17 @@ function App() {
       } 
 
     <header className="header">
-<<<<<<< HEAD
-      <TopNav  setTargetCategory={setTargetCategory} setTargetProduct={setTargetProduct} navWheelStyle={navWheelStyle} hiddenMenuOpen={hiddenMenuOpen} setNavSelect={setNavSelect} coconut={coconut} 코코로고={코코로고} 쩡로고1={쩡로고1} 쩡로고2={쩡로고2}/>
-=======
-      <TopNav setNavWheelStyle={setNavWheelStyle}  setTargetCategory={setTargetCategory} setTargetProduct={setTargetProduct} navWheelStyle={navWheelStyle} hiddenMenuOpen={hiddenMenuOpen} setNavSelect={setNavSelect} coconut={coconut} 코코로고={코코로고}/>
->>>>>>> 03acb2489efebaad93118cf5353ee821a9746486
+      <TopNav
+      setNavWheelStyle={setNavWheelStyle}
+      setTargetCategory={setTargetCategory} 
+      setTargetProduct={setTargetProduct} 
+      navWheelStyle={navWheelStyle} 
+      hiddenMenuOpen={hiddenMenuOpen} 
+      setNavSelect={setNavSelect} 
+      coconut={coconut} 
+      코코로고={코코로고}
+      쩡로고1={쩡로고1}
+      쩡로고2={쩡로고2}/>
       <BottomNav setTargetCategory={setTargetCategory} navWheelStyle={navWheelStyle} navSelect={navSelect}/>
     </header>
 

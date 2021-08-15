@@ -4,11 +4,7 @@ import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-<<<<<<< HEAD
-function TopNav({hiddenMenuOpen,setNavSelect,setTargetProduct,setTargetCategory , coconut,코코로고,쩡로고1,쩡로고2}){
-=======
-function TopNav({setNavWheelStyle, hiddenMenuOpen,setNavSelect,setTargetProduct,setTargetCategory , coconut,코코로고}){
->>>>>>> 03acb2489efebaad93118cf5353ee821a9746486
+function TopNav({setNavWheelStyle, hiddenMenuOpen,setNavSelect,setTargetProduct,setTargetCategory , coconut,코코로고,쩡로고1,쩡로고2}){
   
 return (
     <div className="top-navbar--wrap">
