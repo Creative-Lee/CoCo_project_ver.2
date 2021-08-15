@@ -41,7 +41,6 @@ import { Navbar,Nav,CloseButton,Button,Container,Row,Col,Offcanvas,Carousel} fro
 function App() {
 
   const [hiddenMenuShow, setHiddenMenuShow] = useState(false);
-
   const hiddenMenuClose = () => setHiddenMenuShow(false);
   const hiddenMenuOpen = () => setHiddenMenuShow(true);
 
@@ -50,36 +49,41 @@ function App() {
   let [buttonState,setButtonState] = useState(0);
   const [topBanner,setTopBanner] = useState(false);
   const [moreDivStyle,setMoreDivStyle] = useState(false);
-  const [navSelect,setNavSelect] = useState("community");
+  const [selectedNav,setSelectedNav] = useState("community");
 
 
   const [navWheelStyle,setNavWheelStyle] = useState(false);
-  const wheelUpDown = (e) => {
-    let fullHeight = document.documentElement.scrollHeight
-    let viewHeight = document.documentElement.clientHeight
-    console.log(fullHeight , viewHeight)
 
-    if(e.deltaY > 0 && (fullHeight !== viewHeight)){
-      
+  const totalHeight = document.documentElement.scrollHeight
+  const viewportHeight = document.documentElement.clientHeight
+  const currentHeight = window.scrollY
+
+  const wheelUpDown = (e) => {
+    if(e.deltaY > 0 && (totalHeight !== viewportHeight)){
       setNavWheelStyle(true);
     }
     else{
       setNavWheelStyle(false);
     }
   }
-
-
   
   const [allData , setAllData] = useState(_allData)
-  const [targetProduct,setTargetProduct] = useState("shoes");
-  const [targetCategory,setTargetCategory] = useState("");
+   // 상품 전체 데이터
 
-  const category = product => product.type === targetCategory;
+  const [targetProduct,setTargetProduct] = useState("clothes");
+  // 타겟 상품군 /  "clothes" ,"shoes" 
+  // 이미지를 위해 만듬 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+  const [targetCategory,setTargetCategory] = useState(""); 
+  // 타겟 상품 카테고리
+
+  const category = product => product.category === targetCategory;
+  // 데이터 파일 내 상품의 카테고리와 타겟 카테고리 일치 비교 콜백함수
+
   const filterdClothes = allData.clothes.filter(category);
   const filterdShoes = allData.shoes.filter(category);
-
-
-  
+  // 각 상품군의 배열에서 필터링된 데이터가 담긴 배열들 
+  // 이 배열에 map()을 사용해서 Product 컴포넌트를 반복시킨다.
   
 
   useEffect(()=>{
@@ -105,12 +109,15 @@ function App() {
       setTargetProduct={setTargetProduct} 
       navWheelStyle={navWheelStyle} 
       hiddenMenuOpen={hiddenMenuOpen} 
-      setNavSelect={setNavSelect} 
-      coconut={coconut} 
-      코코로고={코코로고}
-      쩡로고1={쩡로고1}
+      setSelectedNav={setSelectedNav}
+      coconut={coconut}     
       쩡로고2={쩡로고2}/>
-      <BottomNav setTargetCategory={setTargetCategory} navWheelStyle={navWheelStyle} navSelect={navSelect}/>
+      <BottomNav 
+      setTargetCategory={setTargetCategory} 
+      navWheelStyle={navWheelStyle}
+      selectedNav={selectedNav} 
+      setSelectedNav={setSelectedNav}
+      />
     </header>
 
     <Offcanvas id="hidden-menu" show={hiddenMenuShow} onHide={hiddenMenuClose}>   {/* # 모바일네브 # */}

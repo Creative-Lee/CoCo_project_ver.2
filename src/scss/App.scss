@@ -9,7 +9,7 @@
 .App {
   text-align: center;
   font-family: 'Spoqa Han Sans Neo';
-  height: 100%;
+  height: auto;
   .container {
     max-width: 1140px;
     width: calc(100% - 80px);
@@ -37,6 +37,7 @@
     display: none;
   }
 }
+
 .top-banner:hover {
   background: skyblue;
 }
@@ -60,8 +61,6 @@
 
 .header {
   height: auto;
-  display: flex;
-  flex-direction: column;
   position: sticky;
   top: 0px;
   z-index: 555;

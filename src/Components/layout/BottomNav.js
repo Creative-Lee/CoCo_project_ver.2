@@ -3,7 +3,7 @@ import { Nav,Container,Navbar} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function BottomNav({navSelect , navWheelStyle , setTargetCategory }){
+function BottomNav({selectedNav ,setSelectedNav , navWheelStyle , setTargetCategory }){
   
     const bottomNav = {
     community : <Navbar id="bottom-navbar">
@@ -21,22 +21,34 @@ function BottomNav({navSelect , navWheelStyle , setTargetCategory }){
                 <Container id="bottom-navbar__container">
                   <Nav id="bottom-navbar__nav" className="me-auto" variant="pills">
                     <Nav.Link eventKey="1" as={Link} to="/coco124/clothes/new"
-                    onClick={()=>{setTargetCategory("new")}}>NEW~10%
+                    onClick={()=>{                      
+                      setTargetCategory("new");
+                      }}>NEW~10%
                     </Nav.Link>
                     <Nav.Link eventKey="2" as={Link} to="/coco124/clothes/cityboy"
-                    onClick={()=>{setTargetCategory("cityboy")}}>시티보이
+                    onClick={()=>{
+                      setTargetCategory("cityboy");
+                      }}>시티보이
                     </Nav.Link>
                     <Nav.Link eventKey="3" as={Link} to="/coco124/clothes/amekaji"
-                    onClick={()=>{setTargetCategory("amekaji")}}>아메카지
+                    onClick={()=>{
+                      setTargetCategory("amekaji");
+                      }}>아메카지
                     </Nav.Link>
                     <Nav.Link eventKey="4" as={Link} to="/coco124/clothes/street"
-                    onClick={()=>{setTargetCategory("street")}}>스트릿
+                    onClick={()=>{
+                      setTargetCategory("street");
+                      }}>스트릿
                     </Nav.Link>              
                     <Nav.Link eventKey="5" as={Link} to="/coco124/clothes/minimal"
-                    onClick={()=>{setTargetCategory("minimal")}}>미니멀
+                    onClick={()=>{
+                      setTargetCategory("minimal");
+                      }}>미니멀
                     </Nav.Link>              
                     <Nav.Link eventKey="6" as={Link} to="/coco124/clothes/summer"
-                    onClick={()=>{setTargetCategory("summer")}}>hot summer🔥
+                    onClick={()=>{
+                      setTargetCategory("summer");
+                      }}>hot summer🔥
                     </Nav.Link>              
                   </Nav>          
                 </Container>
@@ -63,7 +75,7 @@ function BottomNav({navSelect , navWheelStyle , setTargetCategory }){
 }
   return(
     <div className="bottom-navbar--wrap" style={navWheelStyle == true ? {top : "-50px"} : null }>
-      {bottomNav[navSelect]}
+      {bottomNav[selectedNav]}
     </div>
   )
 }
