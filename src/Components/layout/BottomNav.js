@@ -3,51 +3,61 @@ import { Nav,Container,Navbar} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function BottomNav({selectedNav ,setSelectedNav , navWheelStyle , setTargetCategory }){
-  
+function BottomNav({ activeController,selectedNav ,setSelectedNav , navWheelStyle , targetCategory, setTargetCategory , setTargetProduct}){
+  //dddddddddddddddddddddddddddddddddddddddd
+  useEffect(()=>{
+    activeController();
+  },[targetCategory])
+
     const bottomNav = {
     community : <Navbar id="bottom-navbar">
                   <Container id="bottom-navbar__container">
                     <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
-                      <Nav.Link eventKey="1" as={Link} to="/coco124">홈</Nav.Link>
-                      <Nav.Link eventKey="2" as={Link} to="/coco124/following">팔로잉</Nav.Link>
-                      <Nav.Link eventKey="3" as={Link} to="/coco124/picture">사진</Nav.Link>
-                      <Nav.Link eventKey="4" as={Link} to="/coco124/event">Summer Event🔥</Nav.Link>              
-                      </Nav>          
+                      <Nav.Link id="bottom-navbar__nav-link-01" eventKey="1" as={Link} to="/coco124">홈</Nav.Link>
+                      <Nav.Link id="bottom-navbar__nav-link-01" eventKey="2" as={Link} to="/coco124/following">팔로잉</Nav.Link>
+                      <Nav.Link id="bottom-navbar__nav-link-01" eventKey="3" as={Link} to="/coco124/picture">사진</Nav.Link>
+                      <Nav.Link id="bottom-navbar__nav-link-01" eventKey="4" as={Link} to="/coco124/event" >Summer Event🔥</Nav.Link>              
+                    </Nav>          
                   </Container>
                 </Navbar>,
 
     clothes :  <Navbar id="bottom-navbar">
                 <Container id="bottom-navbar__container">
                   <Nav id="bottom-navbar__nav" className="me-auto" variant="pills">
-                    <Nav.Link eventKey="1" as={Link} to="/coco124/clothes/new"
+                    <Nav.Link id="bottom-navbar__nav-link-02" eventKey="1" as={Link} to="/coco124/clothes/new"
                     onClick={()=>{                      
-                      setTargetCategory("new");
+                      setTargetCategory("new")
+                      setTargetProduct("clothes");                    
                       }}>NEW~10%
                     </Nav.Link>
-                    <Nav.Link eventKey="2" as={Link} to="/coco124/clothes/cityboy"
+                    <Nav.Link id="bottom-navbar__nav-link-02" eventKey="2" as={Link} to="/coco124/clothes/cityboy"
                     onClick={()=>{
-                      setTargetCategory("cityboy");
+                      setTargetCategory("cityboy")
+                      setTargetProduct("clothes");
                       }}>시티보이
                     </Nav.Link>
-                    <Nav.Link eventKey="3" as={Link} to="/coco124/clothes/amekaji"
+                    <Nav.Link id="bottom-navbar__nav-link-02" eventKey="3" as={Link} to="/coco124/clothes/amekaji"
                     onClick={()=>{
-                      setTargetCategory("amekaji");
+                      setTargetCategory("amekaji")
+                      setTargetProduct("clothes");
                       }}>아메카지
                     </Nav.Link>
-                    <Nav.Link eventKey="4" as={Link} to="/coco124/clothes/street"
+                    <Nav.Link id="bottom-navbar__nav-link-02" eventKey="4" as={Link} to="/coco124/clothes/street"
                     onClick={()=>{
-                      setTargetCategory("street");
+                      setTargetCategory("street")
+                      setTargetProduct("clothes");
                       }}>스트릿
                     </Nav.Link>              
-                    <Nav.Link eventKey="5" as={Link} to="/coco124/clothes/minimal"
+                    <Nav.Link id="bottom-navbar__nav-link-02" eventKey="5" as={Link} to="/coco124/clothes/minimal"
                     onClick={()=>{
-                      setTargetCategory("minimal");
+                      setTargetCategory("minimal")
+                      setTargetProduct("clothes");
                       }}>미니멀
                     </Nav.Link>              
-                    <Nav.Link eventKey="6" as={Link} to="/coco124/clothes/summer"
+                    <Nav.Link id="bottom-navbar__nav-link-02" eventKey="6" as={Link} to="/coco124/clothes/summer"
                     onClick={()=>{
-                      setTargetCategory("summer");
+                      setTargetCategory("summer")
+                      setTargetProduct("clothes");
                       }}>hot summer🔥
                     </Nav.Link>              
                   </Nav>          
@@ -57,17 +67,29 @@ function BottomNav({selectedNav ,setSelectedNav , navWheelStyle , setTargetCateg
     shoes : <Navbar id="bottom-navbar">
               <Container id="bottom-navbar__container">
                 <Nav id="bottom-navbar__nav" className="me-auto" variant="pills">
-                  <Nav.Link eventKey="1" as={Link} to="/coco124/shoes/new"
-                  onClick={()=>{setTargetCategory("new")}}>NEW~10%
+                  <Nav.Link id="bottom-navbar__nav-link-03" eventKey="1" as={Link} to="/coco124/shoes/new"
+                    onClick={()=>{
+                      setTargetCategory("new");
+                      setTargetProduct("shoes")
+                    }}>NEW~10%
                   </Nav.Link>
-                  <Nav.Link eventKey="2" as={Link} to="/coco124/shoes/sneakers"
-                  onClick={()=>{setTargetCategory("sneakers")}}>스니커즈
+                  <Nav.Link id="bottom-navbar__nav-link-03" eventKey="2" as={Link} to="/coco124/shoes/sneakers"
+                    onClick={()=>{
+                      setTargetCategory("sneakers");
+                      setTargetProduct("shoes")
+                    }}>스니커즈
                   </Nav.Link>
-                  <Nav.Link eventKey="3" as={Link} to="/coco124/shoes/loafer"
-                  onClick={()=>{setTargetCategory("loafer")}}>로퍼
+                  <Nav.Link id="bottom-navbar__nav-link-03" eventKey="3" as={Link} to="/coco124/shoes/loafer"
+                    onClick={()=>{
+                      setTargetCategory("loafer");
+                      setTargetProduct("shoes")
+                    }}>로퍼
                   </Nav.Link>
-                  <Nav.Link eventKey="4" as={Link} to="/coco124/shoes/oxford"
-                  onClick={()=>{setTargetCategory("oxford")}}>옥스퍼드
+                  <Nav.Link id="bottom-navbar__nav-link-03" eventKey="4" as={Link} to="/coco124/shoes/oxford"
+                    onClick={()=>{
+                      setTargetCategory("oxford");
+                      setTargetProduct("shoes")
+                    }}>옥스퍼드
                   </Nav.Link>              
                 </Nav>          
               </Container>

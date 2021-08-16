@@ -49,15 +49,14 @@ function App() {
   let [buttonState,setButtonState] = useState(0);
   const [topBanner,setTopBanner] = useState(false);
   const [moreDivStyle,setMoreDivStyle] = useState(false);
+
   const [selectedNav,setSelectedNav] = useState("community");
 
-
   const [navWheelStyle,setNavWheelStyle] = useState(false);
-
   const totalHeight = document.documentElement.scrollHeight
   const viewportHeight = document.documentElement.clientHeight
   const currentHeight = window.scrollY
-
+  
   const wheelUpDown = (e) => {
     if(e.deltaY > 0 && (totalHeight !== viewportHeight)){
       setNavWheelStyle(true);
@@ -71,8 +70,8 @@ function App() {
    // 상품 전체 데이터
 
   const [targetProduct,setTargetProduct] = useState("clothes");
-  // 타겟 상품군 /  "clothes" ,"shoes" 
-  // 이미지를 위해 만듬 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+  // 타겟 상품군 /  "clothes" ,"shoes"    
+  // 이미지를 위해 만듬 ㅡㅡㅡ  원래는 allData. 다음에 넣고싶었음
 
   const [targetCategory,setTargetCategory] = useState(""); 
   // 타겟 상품 카테고리
@@ -84,6 +83,42 @@ function App() {
   const filterdShoes = allData.shoes.filter(category);
   // 각 상품군의 배열에서 필터링된 데이터가 담긴 배열들 
   // 이 배열에 map()을 사용해서 Product 컴포넌트를 반복시킨다.
+  
+  function activeController(){
+    const community = document.getElementById("top-navbar__nav-link-01")
+    const clothes = document.getElementById("top-navbar__nav-link-02")
+    const shoes = document.getElementById("top-navbar__nav-link-03")
+    const communityChild = document.getElementById("bottom-navbar__nav-link-01")
+    const clothesChild = document.getElementById("bottom-navbar__nav-link-02")
+    const shoesChild = document.getElementById("bottom-navbar__nav-link-03")
+
+    if(communityChild.classList.contains("active")){
+      if(community.classList.contains("active")){
+        return ;
+      }
+      community.classList.add("active")
+      clothes.classList.remove("active")
+      shoes.classList.remove("active")
+    }
+
+    if(clothesChild.classList.contains("active")){
+      if(clothes.classList.contains("active")){
+        return ;
+      }
+      clothes.classList.add("active")
+      community.classList.remove("active")
+      shoes.classList.remove("active")
+    }
+
+    if(shoesChild.classList.contains("active")){
+      if(shoes.classList.contains("active")){
+        return ;
+      }
+      shoes.classList.add("active")
+      clothes.classList.remove("active")
+      community.classList.remove("active")
+    }
+  }
   
 
   useEffect(()=>{
@@ -112,7 +147,10 @@ function App() {
       setSelectedNav={setSelectedNav}
       coconut={coconut}     
       쩡로고2={쩡로고2}/>
-      <BottomNav 
+      <BottomNav
+      activeController={activeController} 
+      setTargetProduct={setTargetProduct}
+      targetCategory={targetCategory}
       setTargetCategory={setTargetCategory} 
       navWheelStyle={navWheelStyle}
       selectedNav={selectedNav} 
