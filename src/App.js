@@ -84,46 +84,53 @@ function App() {
   // 각 상품군의 배열에서 필터링된 데이터가 담긴 배열들 
   // 이 배열에 map()을 사용해서 Product 컴포넌트를 반복시킨다.
   
+
+  
   function activeController(){
     const community = document.getElementById("top-navbar__nav-link-01")
     const clothes = document.getElementById("top-navbar__nav-link-02")
     const shoes = document.getElementById("top-navbar__nav-link-03")
-    const communityChild = document.getElementById("bottom-navbar__nav-link-01")
-    const clothesChild = document.getElementById("bottom-navbar__nav-link-02")
-    const shoesChild = document.getElementById("bottom-navbar__nav-link-03")
-
-    if(communityChild.classList.contains("active")){
+    const childArray =  [...document.getElementById("bottom-navbar__nav").children]
+    
+    if(childArray[0].id === "bottom-navbar__nav-link-01"){
       if(community.classList.contains("active")){
-        return ;
+        return;
       }
-      community.classList.add("active")
-      clothes.classList.remove("active")
-      shoes.classList.remove("active")
+      community.classList.add("active");
+      clothes.classList.remove("active");
+      shoes.classList.remove("active");
     }
 
-    if(clothesChild.classList.contains("active")){
+    if(childArray[0].id === "bottom-navbar__nav-link-02"){
       if(clothes.classList.contains("active")){
-        return ;
+        return;
       }
-      clothes.classList.add("active")
-      community.classList.remove("active")
-      shoes.classList.remove("active")
+      clothes.classList.add("active");
+      community.classList.remove("active");
+      shoes.classList.remove("active");
     }
 
-    if(shoesChild.classList.contains("active")){
+    if(childArray[0].id === "bottom-navbar__nav-link-03"){
       if(shoes.classList.contains("active")){
-        return ;
+        return;
       }
-      shoes.classList.add("active")
-      clothes.classList.remove("active")
-      community.classList.remove("active")
+      shoes.classList.add("active");
+      clothes.classList.remove("active");
+      community.classList.remove("active");
     }
+    
+      
+    // const activeDetector = element => element.classList.contains("active")
+
+    // const activeChild = childArray.filter(activeDetector)
+    
   }
   
 
   useEffect(()=>{
     setTopBanner(true);
   },[])
+    
 
   return (
     <div className="App" onWheel={wheelUpDown}>  

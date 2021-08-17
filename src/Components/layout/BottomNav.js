@@ -4,15 +4,13 @@ import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function BottomNav({ activeController,selectedNav ,setSelectedNav , navWheelStyle , targetCategory, setTargetCategory , setTargetProduct}){
-  //dddddddddddddddddddddddddddddddddddddddd
-  useEffect(()=>{
-    activeController();
-  },[targetCategory])
-
+  
+  
     const bottomNav = {
     community : <Navbar id="bottom-navbar">
                   <Container id="bottom-navbar__container">
-                    <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
+                    <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills"
+                      onClick={()=>{activeController()}}>
                       <Nav.Link id="bottom-navbar__nav-link-01" eventKey="1" as={Link} to="/coco124">홈</Nav.Link>
                       <Nav.Link id="bottom-navbar__nav-link-01" eventKey="2" as={Link} to="/coco124/following">팔로잉</Nav.Link>
                       <Nav.Link id="bottom-navbar__nav-link-01" eventKey="3" as={Link} to="/coco124/picture">사진</Nav.Link>
@@ -23,9 +21,10 @@ function BottomNav({ activeController,selectedNav ,setSelectedNav , navWheelStyl
 
     clothes :  <Navbar id="bottom-navbar">
                 <Container id="bottom-navbar__container">
-                  <Nav id="bottom-navbar__nav" className="me-auto" variant="pills">
+                  <Nav id="bottom-navbar__nav" className="me-auto" variant="pills"
+                    onClick={()=>{activeController()}}>
                     <Nav.Link id="bottom-navbar__nav-link-02" eventKey="1" as={Link} to="/coco124/clothes/new"
-                    onClick={()=>{                      
+                    onClick={()=>{                                                           
                       setTargetCategory("new")
                       setTargetProduct("clothes");                    
                       }}>NEW~10%
@@ -66,7 +65,8 @@ function BottomNav({ activeController,selectedNav ,setSelectedNav , navWheelStyl
 
     shoes : <Navbar id="bottom-navbar">
               <Container id="bottom-navbar__container">
-                <Nav id="bottom-navbar__nav" className="me-auto" variant="pills">
+                <Nav id="bottom-navbar__nav" className="me-auto" variant="pills"
+                onClick={()=>{activeController()}}>
                   <Nav.Link id="bottom-navbar__nav-link-03" eventKey="1" as={Link} to="/coco124/shoes/new"
                     onClick={()=>{
                       setTargetCategory("new");
