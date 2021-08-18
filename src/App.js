@@ -64,6 +64,7 @@ function App() {
     else{
       setNavWheelStyle(false);
     }
+    console.log(navWheelStyle , totalHeight , viewportHeight)
   }
   
   const [allData , setAllData] = useState(_allData)
@@ -118,12 +119,6 @@ function App() {
       clothes.classList.remove("active");
       community.classList.remove("active");
     }
-    
-      
-    // const activeDetector = element => element.classList.contains("active")
-
-    // const activeChild = childArray.filter(activeDetector)
-    
   }
   
 
