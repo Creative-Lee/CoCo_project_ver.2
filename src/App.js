@@ -51,20 +51,18 @@ function App() {
   const [moreDivStyle,setMoreDivStyle] = useState(false);
 
   const [selectedNav,setSelectedNav] = useState("community");
-
   const [navWheelStyle,setNavWheelStyle] = useState(false);
-  const totalHeight = document.documentElement.scrollHeight
-  const viewportHeight = document.documentElement.clientHeight
-  const currentHeight = window.scrollY
-  
   const wheelUpDown = (e) => {
+    const totalHeight = document.documentElement.scrollHeight
+    const viewportHeight = document.documentElement.clientHeight
+  
     if(e.deltaY > 0 && (totalHeight !== viewportHeight)){
       setNavWheelStyle(true);
     }
     else{
       setNavWheelStyle(false);
     }
-    console.log(navWheelStyle , totalHeight , viewportHeight)
+    console.log(navWheelStyle , totalHeight , viewportHeight, e.deltaY)
   }
   
   const [allData , setAllData] = useState(_allData)
@@ -96,7 +94,7 @@ function App() {
     if(childArray[0].id === "bottom-navbar__nav-link-01"){
       if(community.classList.contains("active")){
         return;
-      }
+      }      
       community.classList.add("active");
       clothes.classList.remove("active");
       shoes.classList.remove("active");
@@ -123,7 +121,7 @@ function App() {
   
 
   useEffect(()=>{
-    setTopBanner(true);
+    setTopBanner(true);    
   },[])
     
 
@@ -141,6 +139,7 @@ function App() {
 
     <header className="header">
       <TopNav
+      activeController={activeController}
       setNavWheelStyle={setNavWheelStyle}
       setTargetCategory={setTargetCategory} 
       setTargetProduct={setTargetProduct} 

@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function TopNav({
+  activeController,
   setNavWheelStyle,
   hiddenMenuOpen,
   setSelectedNav,
@@ -30,6 +31,7 @@ function TopNav({
               onClick={()=>{
                 setSelectedNav("community");
                 setNavWheelStyle(false)
+                activeController()
               }}
               onMouseOver={()=>{
                 setSelectedNav("community")
@@ -43,6 +45,7 @@ function TopNav({
                 setTargetProduct("clothes");
                 setTargetCategory("new");
                 setNavWheelStyle(false)
+                activeController()
               }}
               onMouseOver={()=>{
                 setSelectedNav("clothes")
@@ -56,6 +59,7 @@ function TopNav({
                 setTargetProduct("shoes");
                 setTargetCategory("new");
                 setNavWheelStyle(false)
+                activeController()
               }}
               onMouseOver={()=>{
                 setSelectedNav("shoes")
