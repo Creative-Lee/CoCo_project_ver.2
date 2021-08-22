@@ -69,7 +69,7 @@ function App() {
 
   const mouseOverOut = ()=>{
     const heightFromTop = window.scrollY
-
+    
     if(heightFromTop > 0){
       if(bottomNavState=== true){
         setBottomNavState(false);
@@ -77,7 +77,7 @@ function App() {
       else{
         setBottomNavState(true);
       }
-    }   
+    }    
   }
 
   
@@ -157,7 +157,7 @@ function App() {
 
     <header className="header"
       onMouseOver={()=>{mouseOverOut()}}
-      onMouseOut={()=>{mouseOverOut()}}>
+      onMouseOut={()=>{ mouseOverOut()}}>
       <TopNav
       activeController={activeController}
       setBottomNavState={setBottomNavState}

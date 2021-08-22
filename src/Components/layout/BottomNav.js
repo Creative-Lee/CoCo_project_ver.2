@@ -107,7 +107,7 @@ function BottomNav({ activeController,topNavTheme , bottomNavState ,setBottomNav
 }
   return(
     <div className="bottom-navbar--wrap" 
-      style={bottomNavState == true ? {top : "-50px"} : null } >
+      style={bottomNavState == true ? {top : "-50px" } : null } >
       {bottomNav[topNavTheme]}
     </div>
   )
