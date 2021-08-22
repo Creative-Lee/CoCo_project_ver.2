@@ -3,9 +3,19 @@ import { Nav,Container,Navbar} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function BottomNav({ activeController,selectedNav ,setSelectedNav , navWheelStyle , targetCategory, setTargetCategory , setTargetProduct}){
-  
-  
+function BottomNav({ activeController,topNavTheme , bottomNavState ,setBottomNavState, setTargetCategory , setTargetProduct}){
+
+  const mouseOverOut = ()=>{
+    const heightFromTop = window.scrollY
+    if(heightFromTop > 0){
+      if(bottomNavState=== true){
+        setBottomNavState(false);
+      }
+      else{
+        setBottomNavState(true);
+      }
+    }   
+  }
     const bottomNav = {
     community : <Navbar id="bottom-navbar">
                   <Container id="bottom-navbar__container">
@@ -96,8 +106,9 @@ function BottomNav({ activeController,selectedNav ,setSelectedNav , navWheelStyl
             </Navbar>
 }
   return(
-    <div className="bottom-navbar--wrap" style={navWheelStyle == true ? {top : "-50px"} : null }>
-      {bottomNav[selectedNav]}
+    <div className="bottom-navbar--wrap" 
+      style={bottomNavState == true ? {top : "-50px"} : null } >
+      {bottomNav[topNavTheme]}
     </div>
   )
 }
