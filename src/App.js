@@ -53,33 +53,31 @@ function App() {
 
   const [topNavTheme,setTopNavTheme] = useState("community");
 
-  const [bottomNavState,setBottomNavState] = useState(false);
+  const [bottomNavState,setBottomNavState] = useState("show");
+  const [mouseOnHeader,setMouseOnHeader] = useState(false);
+
 
   const wheelUpDown = (e) => {
     const totalHeight = document.documentElement.scrollHeight
     const viewportHeight = document.documentElement.clientHeight
-  
-    if(e.deltaY > 0 && (totalHeight !== viewportHeight)){
-      setBottomNavState(true);
+    const isScrollDown = e.deltaY > 0
+
+    if(isScrollDown && (totalHeight !== viewportHeight) && !mouseOnHeader){
+      setBottomNavState("hide");
     }
-    else{
-      setBottomNavState(false);
+    else  {
+      setBottomNavState("show");
     }  
   }
 
-  const mouseOverOut = ()=>{
-    const heightFromTop = window.scrollY
-    
-    if(heightFromTop > 0){
-      if(bottomNavState=== true){
-        setBottomNavState(false);
-      }
-      else{
-        setBottomNavState(true);
-      }
-    }    
-  }
 
+
+  const mouseOut = ()=>{
+    const isAwayFromTop = window.scrollY > 0
+    if(isAwayFromTop){
+      setBottomNavState("hide");
+    }
+  }
   
 
   const [allData , setAllData] = useState(_allData)
@@ -156,8 +154,8 @@ function App() {
       } 
 
     <header className="header"
-      onMouseOver={()=>{mouseOverOut()}}
-      onMouseOut={()=>{ mouseOverOut()}}>
+      onMouseOver={()=>{setBottomNavState("show"); setMouseOnHeader(true);}}
+      onMouseOut={()=>{ mouseOut() ; setMouseOnHeader(false);}}>
       <TopNav
       activeController={activeController}
       setBottomNavState={setBottomNavState}

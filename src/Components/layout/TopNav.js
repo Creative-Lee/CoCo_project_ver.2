@@ -26,7 +26,7 @@ function TopNav({
             <Nav.Link id="top-navbar__nav-link-01" eventKey="1" as={Link} to="/coco124"
               onClick={()=>{
                 setTopNavTheme("community");
-                setBottomNavState(false)
+                setBottomNavState("show")
                 activeController()
               }}
               onMouseOver={()=>{
@@ -40,7 +40,7 @@ function TopNav({
                 setTopNavTheme("clothes");
                 setTargetProduct("clothes");
                 setTargetCategory("new");
-                setBottomNavState(false)
+                setBottomNavState("show")
                 activeController()
               }}
               onMouseOver={()=>{
@@ -54,7 +54,7 @@ function TopNav({
                 setTopNavTheme("shoes");
                 setTargetProduct("shoes");
                 setTargetCategory("new");
-                setBottomNavState(false)
+                setBottomNavState("show")
                 activeController()
               }}
               onMouseOver={()=>{
