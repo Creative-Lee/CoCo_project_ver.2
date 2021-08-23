@@ -53,22 +53,28 @@ function App() {
 
   const [topNavTheme,setTopNavTheme] = useState("community");
 
+
   const [bottomNavState,setBottomNavState] = useState("show");
   const [mouseOnHeader,setMouseOnHeader] = useState(false);
 
-
   const wheelUpDown = (e) => {
-    const totalHeight = document.documentElement.scrollHeight
-    const viewportHeight = document.documentElement.clientHeight
-    const isScrollDown = e.deltaY > 0
+    const isScrollDown = e.deltaY > 0 
 
-    if(isScrollDown && (totalHeight !== viewportHeight) && !mouseOnHeader){
+    if(isHide(isScrollDown)) {
       setBottomNavState("hide");
     }
-    else  {
+    else {
       setBottomNavState("show");
     }  
   }
+
+  const isHide = (isScrollDown) => {
+    const totalHeight = document.documentElement.scrollHeight;
+    const viewportHeight = document.documentElement.clientHeight;
+    
+    return (totalHeight !== viewportHeight) && isScrollDown && !mouseOnHeader 
+  }
+  
 
 
 
@@ -100,7 +106,7 @@ function App() {
   
 
   
-  function activeController(){
+  const activeController = () => {
     const community = document.getElementById("top-navbar__nav-link-01")
     const clothes = document.getElementById("top-navbar__nav-link-02")
     const shoes = document.getElementById("top-navbar__nav-link-03")
