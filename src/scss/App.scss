@@ -58,6 +58,13 @@
   width: 100%;
   margin: auto;
 }
+.header__down{
+  height: 80px;
+  margin-bottom: 80px;
+  position: sticky;
+  top: 0px;
+  z-index: 555;
+}
 
 .header {
   height: auto;

@@ -1,4 +1,11 @@
-.bottom-navbar--wrap {
+.bottom-navbar__wrap--down{
+  position: relative;
+  top: -50px;
+  z-index: 998;
+  transition: top ease 0.12s;  
+}
+
+.bottom-navbar__wrap {
   position: relative;
   top: 0px;
   z-index: 998;

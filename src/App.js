@@ -103,39 +103,75 @@ function App() {
 
   
   const activeController = () => {
-    const community = document.getElementById("top-navbar__nav-link-01")
-    const clothes = document.getElementById("top-navbar__nav-link-02")
-    const shoes = document.getElementById("top-navbar__nav-link-03")
-    const childArray =  [...document.getElementById("bottom-navbar__nav").children]
+    const community = document.getElementById("top-navbar__nav-link-01").classList
+    const clothes = document.getElementById("top-navbar__nav-link-02").classList
+    const shoes = document.getElementById("top-navbar__nav-link-03").classList
+    const childArray =  [...document.getElementById("bottom-navbar__nav").children][0].id
     
-    if(childArray[0].id === "bottom-navbar__nav-link-01"){
-      if(community.classList.contains("active")){
+    if(childArray === "bottom-navbar__nav-link-community"){
+      if(community.contains("active")){
         return;
       }      
-      community.classList.add("active");
-      clothes.classList.remove("active");
-      shoes.classList.remove("active");
+      community.add("active");
+      clothes.remove("active");
+      shoes.remove("active");
     }
 
-    if(childArray[0].id === "bottom-navbar__nav-link-02"){
-      if(clothes.classList.contains("active")){
+    if(childArray === "bottom-navbar__nav-link-clothes"){
+      if(clothes.contains("active")){
         return;
       }
-      clothes.classList.add("active");
-      community.classList.remove("active");
-      shoes.classList.remove("active");
+      clothes.add("active");
+      community.remove("active");
+      shoes.remove("active");
     }
 
-    if(childArray[0].id === "bottom-navbar__nav-link-03"){
-      if(shoes.classList.contains("active")){
+    if(childArray === "bottom-navbar__nav-link-shoes"){
+      if(shoes.contains("active")){
         return;
       }
-      shoes.classList.add("active");
-      clothes.classList.remove("active");
-      community.classList.remove("active");
+      shoes.add("active");
+      clothes.remove("active");
+      community.remove("active");
     }
   }
+  const whosChild = () => {  
+    const childId =  [...document.getElementById("bottom-navbar__nav").children][0].id
+  }
   
+  // const clickActiveController = () => {
+  //   const community = document.getElementById("top-navbar__nav-link-01")
+  //   const clothes = document.getElementById("top-navbar__nav-link-02")
+  //   const shoes = document.getElementById("top-navbar__nav-link-03")
+  //   const childArray =  [...document.getElementById("bottom-navbar__nav").children]
+    
+  //   if(childArray[0].id === "bottom-navbar__nav-link-01"){
+  //     if(community.classList.contains("active")){
+  //       return;
+  //     }      
+  //     community.classList.add("active");
+  //     clothes.classList.remove("active");
+  //     shoes.classList.remove("active");
+  //   }
+
+  //   if(childArray[0].id === "bottom-navbar__nav-link-02"){
+  //     if(clothes.classList.contains("active")){
+  //       return;
+  //     }
+  //     clothes.classList.add("active");
+  //     community.classList.remove("active");
+  //     shoes.classList.remove("active");
+  //   }
+
+  //   if(childArray[0].id === "bottom-navbar__nav-link-03"){
+  //     if(shoes.classList.contains("active")){
+  //       return;
+  //     }
+  //     shoes.classList.add("active");
+  //     clothes.classList.remove("active");
+  //     community.classList.remove("active");
+  //   }
+  // }
 
 
   useEffect(()=>{
@@ -156,28 +192,28 @@ function App() {
       } 
 
     <header className="header"
+      style={bottomNavState == "hide" ? {height : "80px", marginBottom: "80px" } : null }
       onMouseOver={()=>{setBottomNavState("show"); setMouseOnHeader(true);}}
       onMouseOut={()=>{ mouseOut() ; setMouseOnHeader(false);}}>
       <TopNav
-      activeController={activeController}
-      setBottomNavState={setBottomNavState}
-      setTargetCategory={setTargetCategory} 
-      setTargetProduct={setTargetProduct} 
-      bottomNavState={bottomNavState} 
-      hiddenMenuOpen={hiddenMenuOpen} 
-      setTopNavTheme={setTopNavTheme}
-      coconut={coconut}     
-      쩡로고2={쩡로고2}/>
+        activeController={activeController}
+        setBottomNavState={setBottomNavState}
+        setTargetCategory={setTargetCategory} 
+        setTargetProduct={setTargetProduct} 
+        bottomNavState={bottomNavState} 
+        hiddenMenuOpen={hiddenMenuOpen} 
+        setTopNavTheme={setTopNavTheme}
+        coconut={coconut}     
+        쩡로고2={쩡로고2}/>
       <BottomNav
-      activeController={activeController} 
-      setTargetProduct={setTargetProduct}
-      targetCategory={targetCategory}
-      setTargetCategory={setTargetCategory} 
-      bottomNavState={bottomNavState}
-      setBottomNavState={setBottomNavState}
-      topNavTheme={topNavTheme} 
-      setTopNavTheme={setTopNavTheme}
-      />
+        activeController={activeController} 
+        setTargetProduct={setTargetProduct}
+        targetCategory={targetCategory}
+        setTargetCategory={setTargetCategory} 
+        bottomNavState={bottomNavState}
+        setBottomNavState={setBottomNavState}
+        topNavTheme={topNavTheme} 
+        setTopNavTheme={setTopNavTheme}/>
     </header>
 
     <Offcanvas id="hidden-menu" show={hiddenMenuShow} onHide={hiddenMenuClose}>   {/* # 모바일네브 # */}

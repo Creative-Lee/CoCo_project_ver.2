@@ -207,7 +207,7 @@ const allData = {
 							title : "옷20",
 							price : 40000,
 							brand : "나이키 코리아"
-					},
+					},				
 					]			
 }
 export default allData;
