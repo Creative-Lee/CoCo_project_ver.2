@@ -100,84 +100,28 @@ function App() {
   const filterdShoes = allData.shoes.filter(category);
   // 각 상품군의 배열에서 필터링된 데이터가 담긴 배열들 
   // 이 배열에 map()을 사용해서 Product 컴포넌트를 반복시킨다.
-
-
-  const openController = () => {
-    const community = document.getElementById("top-navbar__nav-link-01").classList
-    const clothes = document.getElementById("top-navbar__nav-link-02").classList
-    const shoes = document.getElementById("top-navbar__nav-link-03").classList
-          
-    if(topNavTheme === "community"){
-      if(community.contains("active")){
-        return;
-      }      
-      community.add("active");
-      clothes.remove("active");
-      shoes.remove("active");
-    }
-
-    if(topNavTheme === "clothes"){
-      if(clothes.contains("active")){
-        return;
-      }
-      clothes.add("active");
-      community.remove("active");
-      shoes.remove("active");
-    }
-
-    if(topNavTheme === "shoes"){
-      if(shoes.contains("active")){
-        return;
-      }
-      shoes.add("active");
-      clothes.remove("active");
-      community.remove("active");
-    }
-  }
   
   const [topNavTheme,setTopNavTheme] = useState("community"); 
 
-  const activeController = () => {
-    const community = document.getElementById("top-navbar__nav-link-01").classList
-    const clothes = document.getElementById("top-navbar__nav-link-02").classList
-    const shoes = document.getElementById("top-navbar__nav-link-03").classList
-          
-    if(topNavTheme === "community"){
-      if(community.contains("active")){
-        return;
-      }      
-      community.add("active");
-      clothes.remove("active");
-      shoes.remove("active");
-    }
+  const activeController = () => { 
+    
+    switch (topNavTheme){    
+      case "community" :
+        
+      case "clothes" : 
 
-    if(topNavTheme === "clothes"){
-      if(clothes.contains("active")){
-        return;
-      }
-      clothes.add("active");
-      community.remove("active");
-      shoes.remove("active");
-    }
+      case "shoes" :
 
-    if(topNavTheme === "shoes"){
-      if(shoes.contains("active")){
-        return;
-      }
-      shoes.add("active");
-      clothes.remove("active");
-      community.remove("active");
     }
   }
-
+  
   const isAlreadyActived = () => {
+      
     const community = document.getElementById("top-navbar__nav-link-01").classList
     const clothes = document.getElementById("top-navbar__nav-link-02").classList
     const shoes = document.getElementById("top-navbar__nav-link-03").classList
 
-    if(community.contains("active")){
-      return;
-    }      
+    const activeTheme = [...community , ...clothes , ...shoes].findIndex()
   }
 
 
