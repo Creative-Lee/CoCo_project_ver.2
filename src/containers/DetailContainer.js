@@ -4,7 +4,7 @@ import Detail from '../Components/Detail'
 import { increase , decrease , quan_Initialize  } from '../modules/detailQuan';
 import { addData } from '../modules/cartQuan'
 
-function DetailContainer({allData , setAllData }){
+function DetailContainer({allData , setAllData, targetProduct}){
   // useSelector는 리덕스 스토어의 상태를 조회하는 Hook입니다.
   // state의 값은 store.getState() 함수를 호출했을 때 나타나는 결과물과 동일합니다.
   const detailQuan  = useSelector( state =>  state.detailQuan ) 
@@ -33,7 +33,7 @@ function DetailContainer({allData , setAllData }){
 
     allData={allData}
     setAllData={setAllData}   
-  
+    targetProduct={targetProduct}
     /> 
   )
 }

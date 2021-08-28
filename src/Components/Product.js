@@ -8,9 +8,9 @@ function Product({filterdData,targetProduct }){
 
   return(
     
-    <Col className="product" md='3' onClick={ ()=> { history.push(`/coco124/detail/${filterdData.id}`)} }>      
+    <Col className="product" md='3' onClick={ ()=> { history.push(`/coco124/detail/${targetProduct}/${filterdData.id}`)} }>      
       <div className="product__img-wrap">        
-        <img className="product__img" src={process.env.PUBLIC_URL + `/assets/${targetProduct}/${targetProduct}${filterdData.id + 1}.jpg`} alt="product"/>
+        <img className="product__img" src={process.env.PUBLIC_URL + `/assets/${targetProduct}/${targetProduct}_${filterdData.id}.jpg`} alt="product"/>
       </div> 
       <div className="product__text-wrap">
         <p className="product__text--brand">{filterdData.brand}</p>

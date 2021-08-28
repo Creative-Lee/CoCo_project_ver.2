@@ -89,54 +89,30 @@ function App() {
   const [targetProduct,setTargetProduct] = useState("clothes");
   // 타겟 상품군 /  "clothes" ,"shoes"    
   // 이미지를 위해 만듬 ㅡㅡㅡ  원래는 allData. 다음에 넣고싶었음
+  
 
   const [targetCategory,setTargetCategory] = useState(""); 
   // 타겟 상품 카테고리
 
   const category = product => product.category === targetCategory;
   // 데이터 파일 내 상품의 카테고리와 타겟 카테고리 일치 비교 콜백함수
+  const hi = allData.targetProduct
 
-  const filterdClothes = allData.clothes.filter(category);
-  const filterdShoes = allData.shoes.filter(category);
-  // 각 상품군의 배열에서 필터링된 데이터가 담긴 배열들 
+  const filterdProduct = allData[targetProduct].filter(category); 
+  // 각 상품군의 배열에서 필터링된 배열이 담긴 변수 
   // 이 배열에 map()을 사용해서 Product 컴포넌트를 반복시킨다.
 
+  const [topNavOpen , setTopNavOpen] = useState(false);
 
   const openController = () => {
     const community = document.getElementById("top-navbar__nav-link-01").classList
     const clothes = document.getElementById("top-navbar__nav-link-02").classList
     const shoes = document.getElementById("top-navbar__nav-link-03").classList
-          
-    if(topNavTheme === "community"){
-      if(community.contains("active")){
-        return;
-      }      
-      community.add("active");
-      clothes.remove("active");
-      shoes.remove("active");
-    }
-
-    if(topNavTheme === "clothes"){
-      if(clothes.contains("active")){
-        return;
-      }
-      clothes.add("active");
-      community.remove("active");
-      shoes.remove("active");
-    }
-
-    if(topNavTheme === "shoes"){
-      if(shoes.contains("active")){
-        return;
-      }
-      shoes.add("active");
-      clothes.remove("active");
-      community.remove("active");
-    }
   }
-  
-  const [topNavTheme,setTopNavTheme] = useState("community"); 
 
+  const [topNavTheme,setTopNavTheme] = useState("community"); 
+  // topnNavTheme에 따라 bottomNav 정해짐
+  
   const activeController = () => {
     const community = document.getElementById("top-navbar__nav-link-01").classList
     const clothes = document.getElementById("top-navbar__nav-link-02").classList
@@ -326,7 +302,7 @@ function App() {
       <Container>    
         <Row>
           {
-            filterdClothes.map((a,i)=>{
+            filterdProduct.map((a,i)=>{
               return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
             })  
           }
@@ -337,7 +313,7 @@ function App() {
       <Container>    
         <Row>
           {
-            filterdClothes.map((a,i)=>{
+            filterdProduct.map((a,i)=>{
               return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
             })  
           }
@@ -348,7 +324,7 @@ function App() {
       <Container>    
         <Row>
           {
-            filterdClothes.map((a,i)=>{
+            filterdProduct.map((a,i)=>{
               return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
             })  
           }
@@ -359,7 +335,7 @@ function App() {
       <Container>    
         <Row>
           {
-            filterdClothes.map((a,i)=>{
+            filterdProduct.map((a,i)=>{
               return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
             })  
           }
@@ -370,7 +346,7 @@ function App() {
       <Container>    
         <Row>
           {
-            filterdClothes.map((a,i)=>{
+            filterdProduct.map((a,i)=>{
               return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
             })  
           }
@@ -381,7 +357,7 @@ function App() {
       <Container>    
         <Row>
           {
-            filterdClothes.map((a,i)=>{
+            filterdProduct.map((a,i)=>{
               return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
             })  
           }
@@ -393,7 +369,7 @@ function App() {
         <Container>
           <Row>
             {
-              filterdShoes.map((a,i)=>{
+              filterdProduct.map((a,i)=>{
                 return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
               })  
             }
@@ -434,7 +410,7 @@ function App() {
       <Container>    
         <Row>
           {
-              filterdShoes.map((a,i)=>{
+              filterdProduct.map((a,i)=>{
               return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
             })  
           }
@@ -445,7 +421,7 @@ function App() {
       <Container>    
         <Row>
           {
-              filterdShoes.map((a,i)=>{
+              filterdProduct.map((a,i)=>{
               return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
             })  
           }
@@ -456,7 +432,7 @@ function App() {
       <Container>    
         <Row>
           {
-              filterdShoes.map((a,i)=>{
+              filterdProduct.map((a,i)=>{
               return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
             })  
           }
@@ -465,8 +441,18 @@ function App() {
     </Route>
 
 
-      <Route path="/coco124/detail/:data_id" basename="/coco124/detail/:data_id">
-        <DetailContainer allData={allData} setAllData={setAllData}/>
+      <Route path="/coco124/detail/shoes/:data_id" basename="/coco124/shoes/detail/:data_id">
+        <DetailContainer 
+          allData={allData} setAllData={setAllData} 
+          targetProduct={targetProduct}
+          />
+      </Route>
+
+      <Route path="/coco124/detail/clothes/:data_id" basename="/coco124/detail/clothes/:data_id">
+        <DetailContainer 
+          allData={allData} setAllData={setAllData} 
+          targetProduct={targetProduct}
+          />
       </Route>
 
       <Route path='/coco124/cart' basename="/coco124/cart">

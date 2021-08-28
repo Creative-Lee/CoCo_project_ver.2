@@ -4,13 +4,10 @@ import { useHistory, useParams } from 'react-router-dom';
 import { Navbar,Nav,CloseButton,Button,Container,Row,Col,Offcanvas,Carousel} from 'react-bootstrap';
 import { CSSTransition } from 'react-transition-group';
 
-
-
-
-
 function Detail({ detailQuan, 
   onQuan_Initialize, onIncrease, onDecrease, onAddData,
-  allData , setAllData 
+  allData , setAllData ,
+  targetProduct ,
 }){
 
   const [tap,setTap] = useState("info")
@@ -26,10 +23,11 @@ function Detail({ detailQuan,
     }
   },[]);
 
+
     let history = useHistory();
 
     const { data_id } = useParams();
-    let matchItems = allData.find( allData => allData.id == data_id)
+    let matchItems = allData[targetProduct].find( product => product.id == data_id)
     
     function question(){
         let result =  window.confirm("선택하신 상품이 장바구니에 담겼습니다.장바구니로 갈텨??")
@@ -43,7 +41,7 @@ function Detail({ detailQuan,
         <Row>        
           <Col md="6">
 						<div>
-              <img src={process.env.PUBLIC_URL + `/assets/shoe/shoe${matchItems.id + 1}.jpg`} width="100%" />
+              <img src={process.env.PUBLIC_URL + `/assets/${targetProduct}/${targetProduct}_${matchItems.id}.jpg`} width="100%" />
 						</div>
           </Col>  
           <Col md="6">
