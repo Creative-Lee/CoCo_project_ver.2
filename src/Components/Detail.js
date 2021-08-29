@@ -29,8 +29,8 @@ function Detail({ detailQuan,
     const { data_id } = useParams();
     let matchItems = allData[targetProduct].find( product => product.id == data_id)
     
-    function question(){
-        let result =  window.confirm("선택하신 상품이 장바구니에 담겼습니다.장바구니로 갈텨??")
+    const question = () => {
+        const result =  window.confirm("선택하신 상품이 장바구니에 담겼습니다.장바구니로 갈텨??")
         if(result){
             history.push('/coco124/cart')
         }       

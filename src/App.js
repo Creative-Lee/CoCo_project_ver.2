@@ -54,13 +54,13 @@ function App() {
 
   
 
-  const [bottomNavState,setBottomNavState] = useState("show");
+  const [bottomNavState,setBottomNavState] = useState("show");  
   const [mouseOnHeader,setMouseOnHeader] = useState(false);
   
   const wheelUpDown = (e) => {
-    const isScrollDown = e.deltaY > 0 ;
+    const isWheelDown = e.deltaY > 0 ;
 
-    if(isHide(isScrollDown)) {
+    if(isHide(isWheelDown)) {
       setBottomNavState("hide");
     }
     else {
@@ -68,16 +68,15 @@ function App() {
     }  
   }
 
-  const isHide = (isScrollDown) => {
+  const isHide = (isWheelDown) => {
     const totalHeight = document.documentElement.scrollHeight;
     const viewportHeight = document.documentElement.clientHeight;    
-    
-    return (totalHeight !== viewportHeight) && !mouseOnHeader && isScrollDown 
+    return (totalHeight !== viewportHeight) && !mouseOnHeader && isWheelDown 
   }
 
   const mouseOut = ()=>{
-    const isAwayFromTop = window.scrollY > 0
-    if(isAwayFromTop){
+    const scrollHeightFromTop = window.scrollY > 0
+    if(scrollHeightFromTop){
       setBottomNavState("hide");
     }
   }

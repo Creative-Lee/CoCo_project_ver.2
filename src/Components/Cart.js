@@ -14,8 +14,7 @@ function Cart({cartQuan , onIncrease, onDecrease, onDeleteData }) {
       <Container>
       <Table responsive="md">
         <thead>
-          <tr>
-            <th>품번</th>
+          <tr>            
             <th>상품명</th>
             <th>가격</th>
             <th>수량</th>
@@ -27,8 +26,7 @@ function Cart({cartQuan , onIncrease, onDecrease, onDeleteData }) {
         <tbody>
           {cartQuan.map((a, i) => {
             return (
-              <tr key={i}>
-                <td>{a.id}</td>
+              <tr key={i}>               
                 <td>{a.name}</td>
                 <td>{a.price}</td>
                 <td>{a.quan}</td>

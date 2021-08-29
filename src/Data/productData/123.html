@@ -14,7 +14,7 @@
 		<div style="position: sticky; top:20px; z-index: 2; height:30px; background-color: rgb(104, 161, 211);">
 			ㅎㅇ
 		</div>
-		<div style="margin: 0px; height:1000px; background-color: aquamarine;">
+		<div style="margin: 0px; width: 1500px; height:1000px; background-color: aquamarine;">
 			ㅎㅇ		
 		</div>
 </div>
@@ -25,9 +25,11 @@
 	let viewH = document.documentElement.clientHeight
 	let YYY = window.scrollY  
 	let 현재위치 =  (Math.round(YYY/(fullHeight-viewH) *100))
+	const windowHeight = window.innerHeight;
+  const viewportHeight = document.documentElement.clientHeight;    
 
 
-		console.log(YYY ,  fullHeight, viewH)
+		console.log(windowHeight, viewportHeight)
 	
 	
 		
