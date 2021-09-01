@@ -9,7 +9,7 @@ function TopNav({
   bottomNavState,
   setBottomNavState,
   hiddenMenuOpen,
-  setTopNavTheme,
+  setActiveTopNav,
   setTargetProduct,
   setTargetCategory, 
   coconut,쩡로고2}){
@@ -25,40 +25,39 @@ function TopNav({
           <Nav id="top-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills">
             <Nav.Link id="top-navbar__nav-link-01" eventKey="1" as={Link} to="/coco124"
               onClick={()=>{
-                setTopNavTheme("community");
+                setActiveTopNav("community");
                 setBottomNavState("show")
-                activeController()
               }}
               onMouseOver={()=>{
-                setTopNavTheme("community")
+                setActiveTopNav("community")
               }}>
                 community
             </Nav.Link>
 
             <Nav.Link id="top-navbar__nav-link-02" eventKey="2" as={Link} to="/coco124/clothes/new"
               onClick={()=>{
-                setTopNavTheme("clothes");
+                setActiveTopNav("clothes");
                 setTargetProduct("clothes");
                 setTargetCategory("new");
                 setBottomNavState("show")
-                activeController()
+                
               }}
               onMouseOver={()=>{
-                setTopNavTheme("clothes")
+                setActiveTopNav("clothes")
               }}>
                 clothes
             </Nav.Link>
 
             <Nav.Link id="top-navbar__nav-link-03" eventKey="3" as={Link} to="/coco124/shoes/new"
               onClick={()=>{
-                setTopNavTheme("shoes");
+                setActiveTopNav("shoes");
                 setTargetProduct("shoes");
                 setTargetCategory("new");
                 setBottomNavState("show")
-                activeController()
+                
               }}
               onMouseOver={()=>{
-                setTopNavTheme("shoes")
+                setActiveTopNav("shoes")
               }}>
                 shoes
             </Nav.Link>              

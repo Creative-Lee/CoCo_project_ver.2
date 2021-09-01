@@ -107,53 +107,13 @@ function App() {
     const community = document.getElementById("top-navbar__nav-link-01").classList
     const clothes = document.getElementById("top-navbar__nav-link-02").classList
     const shoes = document.getElementById("top-navbar__nav-link-03").classList
+
+
   }
 
-  const [topNavTheme,setTopNavTheme] = useState("community"); 
+
+  const [activeTopNav,setActiveTopNav] = useState("community"); 
   // topnNavTheme에 따라 bottomNav 정해짐
-  
-  const activeController = () => {
-    const community = document.getElementById("top-navbar__nav-link-01").classList
-    const clothes = document.getElementById("top-navbar__nav-link-02").classList
-    const shoes = document.getElementById("top-navbar__nav-link-03").classList
-          
-    if(topNavTheme === "community"){
-      if(community.contains("active")){
-        return;
-      }      
-      community.add("active");
-      clothes.remove("active");
-      shoes.remove("active");
-    }
-
-    if(topNavTheme === "clothes"){
-      if(clothes.contains("active")){
-        return;
-      }
-      clothes.add("active");
-      community.remove("active");
-      shoes.remove("active");
-    }
-
-    if(topNavTheme === "shoes"){
-      if(shoes.contains("active")){
-        return;
-      }
-      shoes.add("active");
-      clothes.remove("active");
-      community.remove("active");
-    }
-  }
-
-  const isAlreadyActived = () => {
-    const community = document.getElementById("top-navbar__nav-link-01").classList
-    const clothes = document.getElementById("top-navbar__nav-link-02").classList
-    const shoes = document.getElementById("top-navbar__nav-link-03").classList
-
-    if(community.contains("active")){
-      return;
-    }      
-  }
 
 
 
@@ -179,24 +139,24 @@ function App() {
       onMouseOver={()=>{setBottomNavState("show"); setMouseOnHeader(true);}}
       onMouseOut={()=>{ mouseOut() ; setMouseOnHeader(false);}}>
       <TopNav
-        activeController={activeController}
+        
         setBottomNavState={setBottomNavState}
         setTargetCategory={setTargetCategory} 
         setTargetProduct={setTargetProduct} 
         bottomNavState={bottomNavState} 
         hiddenMenuOpen={hiddenMenuOpen} 
-        setTopNavTheme={setTopNavTheme}
+        setActiveTopNav={setActiveTopNav}
         coconut={coconut}     
         쩡로고2={쩡로고2}/>
       <BottomNav
-        activeController={activeController} 
+         
         setTargetProduct={setTargetProduct}
         targetCategory={targetCategory}
         setTargetCategory={setTargetCategory} 
         bottomNavState={bottomNavState}
         setBottomNavState={setBottomNavState}
-        topNavTheme={topNavTheme} 
-        setTopNavTheme={setTopNavTheme}/>
+        activeTopNav={activeTopNav} 
+        setActiveTopNav={setActiveTopNav}/>
     </header>
 
     <Offcanvas id="hidden-menu" show={hiddenMenuShow} onHide={hiddenMenuClose}>   {/* # 모바일네브 # */}

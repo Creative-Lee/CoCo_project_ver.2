@@ -3,15 +3,15 @@ import { Nav,Container,Navbar} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function BottomNav({ activeController,topNavTheme ,setTopNavTheme, bottomNavState ,setBottomNavState, setTargetCategory , setTargetProduct}){
+function BottomNav({ activeController,activeTopNav ,setActiveTopNav, bottomNavState ,setBottomNavState, setTargetCategory , setTargetProduct}){
 
     const bottomNav = {
     community : <Navbar id="bottom-navbar">
                   <Container id="bottom-navbar__container">
-                    <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1" variant="pills"
+                    <Nav id="bottom-navbar__nav" className="me-auto"  variant="pills"
                       onClick={()=>{
-                        setTopNavTheme("community")
-                        activeController()}}
+                        setActiveTopNav("community")
+                        }}
                       >
                       <Nav.Link id="bottom-navbar__nav-link--community" eventKey="1" as={Link} to="/coco124">홈</Nav.Link>
                       <Nav.Link id="bottom-navbar__nav-link--community" eventKey="2" as={Link} to="/coco124/following">팔로잉</Nav.Link>
@@ -25,8 +25,8 @@ function BottomNav({ activeController,topNavTheme ,setTopNavTheme, bottomNavStat
                 <Container id="bottom-navbar__container">
                   <Nav id="bottom-navbar__nav" className="me-auto" variant="pills"
                     onClick={()=>{
-                      setTopNavTheme("clothes")
-                      activeController()}}>
+                      setActiveTopNav("clothes")
+                      }}>
                     <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="1" as={Link} to="/coco124/clothes/new"
                     onClick={()=>{                                                           
                       setTargetCategory("new")
@@ -71,8 +71,8 @@ function BottomNav({ activeController,topNavTheme ,setTopNavTheme, bottomNavStat
               <Container id="bottom-navbar__container">
                 <Nav id="bottom-navbar__nav" className="me-auto" variant="pills"
                 onClick={()=>{
-                  setTopNavTheme("shoes")
-                  activeController()}}>
+                  setActiveTopNav("shoes")
+                  }}>
                 <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="1" as={Link} to="/coco124/shoes/new"
                     onClick={()=>{
                       setTargetCategory("new");
@@ -104,7 +104,7 @@ function BottomNav({ activeController,topNavTheme ,setTopNavTheme, bottomNavStat
   return(
     <div className="bottom-navbar__wrap" 
       style={bottomNavState == "hide" ? {top : "-50px"} : null } >
-      {bottomNav[topNavTheme]}
+      {bottomNav[activeTopNav]}
     </div>
   )
 }
