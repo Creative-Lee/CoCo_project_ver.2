@@ -97,7 +97,7 @@ function App() {
   // 데이터 파일 내 상품의 카테고리와 타겟 카테고리 일치 비교 콜백함수
   const hi = allData.targetProduct
 
-  const filterdProduct = allData[targetProduct].filter(category); 
+  const filterdProduct = allData[targetProduct].filter(category);   
   // 각 상품군의 배열에서 필터링된 배열이 담긴 변수 
   // 이 배열에 map()을 사용해서 Product 컴포넌트를 반복시킨다.
 
@@ -107,20 +107,20 @@ function App() {
     const community = document.getElementById("top-navbar__nav-link-01").classList
     const clothes = document.getElementById("top-navbar__nav-link-02").classList
     const shoes = document.getElementById("top-navbar__nav-link-03").classList
-
+    
 
   }
 
-
   const [activeTopNav,setActiveTopNav] = useState("community"); 
-  // topnNavTheme에 따라 bottomNav 정해짐
+  // activeTopnav에 따라 bottomNav 정해짐
 
-
+  const initialScroll = () => {
+    window.scrollTo({top: 0, left:0, behavior:'instant'})
+  }
 
   useEffect(()=>{
-    setTopBanner(true);    
-  },[])
-    
+    setTopBanner(true); 
+  },[])  
 
   return (
     <div className="App" onWheel={wheelUpDown}>  
@@ -147,16 +147,21 @@ function App() {
         hiddenMenuOpen={hiddenMenuOpen} 
         setActiveTopNav={setActiveTopNav}
         coconut={coconut}     
-        쩡로고2={쩡로고2}/>
-      <BottomNav
-         
+        쩡로고2={쩡로고2}
+        initialScroll={initialScroll}
+        
+        />
+        
+      <BottomNav        
         setTargetProduct={setTargetProduct}
         targetCategory={targetCategory}
         setTargetCategory={setTargetCategory} 
         bottomNavState={bottomNavState}
         setBottomNavState={setBottomNavState}
         activeTopNav={activeTopNav} 
-        setActiveTopNav={setActiveTopNav}/>
+        setActiveTopNav={setActiveTopNav}
+        initialScroll={initialScroll}/>
+        
     </header>
 
     <Offcanvas id="hidden-menu" show={hiddenMenuShow} onHide={hiddenMenuClose}>   {/* # 모바일네브 # */}
