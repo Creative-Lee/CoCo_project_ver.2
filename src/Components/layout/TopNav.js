@@ -28,7 +28,8 @@ function TopNav({
           <Navbar.Brand id="top-navbar__brand" href="/coco124">
             <img src={쩡로고2} className="top-navbar__logo"/>
           </Navbar.Brand>
-          <Nav id="top-navbar__nav" className="me-auto" defaultActiveKey="1" onClick={()=>{initialScroll()}}>
+          <Nav id="top-navbar__nav" className="me-auto" defaultActiveKey="1" 
+          onClick={()=>{initialScroll()}}>
             <Nav.Link id="top-navbar__nav-link-01" eventKey="1" as={Link} to="/coco124"
               onClick={()=>{
                 setActiveTopNav("community");

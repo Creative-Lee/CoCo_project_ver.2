@@ -52,36 +52,6 @@ function App() {
 
   const [moreDivStyle,setMoreDivStyle] = useState(false);
 
-  
-
-  const [bottomNavState,setBottomNavState] = useState("show");  
-  const [mouseOnHeader,setMouseOnHeader] = useState(false);
-  
-  const wheelUpDown = (e) => {
-    const isWheelDown = e.deltaY > 0 ;
-
-    if(isHide(isWheelDown)) {
-      setBottomNavState("hide");
-    }
-    else {
-      setBottomNavState("show");
-    }  
-  }
-
-  const isHide = (isWheelDown) => {
-    const totalHeight = document.documentElement.scrollHeight;
-    const viewportHeight = document.documentElement.clientHeight;    
-    return (totalHeight !== viewportHeight) && !mouseOnHeader && isWheelDown 
-  }
-
-  const mouseOut = ()=>{
-    const scrollHeightFromTop = window.scrollY > 0
-    if(scrollHeightFromTop){
-      setBottomNavState("hide");
-    }
-  }
-  
-
   const [allData , setAllData] = useState(_allData)
    // 상품 전체 데이터
 
@@ -101,21 +71,53 @@ function App() {
   // 각 상품군의 배열에서 필터링된 배열이 담긴 변수 
   // 이 배열에 map()을 사용해서 Product 컴포넌트를 반복시킨다.
 
+
+
+  const [bottomNavState,setBottomNavState] = useState("show");  
+  const [mouseOnHeader,setMouseOnHeader] = useState(false);
+  
+
+  const totalHeight = document.documentElement.scrollHeight;
+  const viewportHeight = document.documentElement.clientHeight;
+  const isTop = window.scrollY = 0
+  
+  const wheelUpDown = (e) => {
+    const isWheelDown = e.deltaY > 0 ;
+
+    if(isHide(isWheelDown)) {
+      setBottomNavState("hide");
+    }
+    else {
+      setBottomNavState("show");
+    }  
+  }
+  const isHide = (isWheelDown) => {
+    return (totalHeight !== viewportHeight) && !mouseOnHeader && isWheelDown && !isTop
+  }
+
+
+  const headerMouseOut = ()=>{
+    const isAwayFromTop = window.scrollY > 0
+    if(isAwayFromTop){
+      setBottomNavState("hide");
+    }
+  }  
+ 
+
   const [topNavOpen , setTopNavOpen] = useState(false);
 
   const openController = () => {
     const community = document.getElementById("top-navbar__nav-link-01").classList
     const clothes = document.getElementById("top-navbar__nav-link-02").classList
     const shoes = document.getElementById("top-navbar__nav-link-03").classList
-    
-
   }
 
   const [activeTopNav,setActiveTopNav] = useState("community"); 
   // activeTopnav에 따라 bottomNav 정해짐
 
+
   const initialScroll = () => {
-    window.scrollTo({top: 0, left:0, behavior:'instant'})
+    window.scrollTo({top: 0, behavior:'instant'})
   }
 
   useEffect(()=>{
@@ -137,7 +139,7 @@ function App() {
     <header className="header"
       style={bottomNavState == "hide" ? {height : "80px", marginBottom: "80px" } : null }
       onMouseOver={()=>{setBottomNavState("show"); setMouseOnHeader(true);}}
-      onMouseOut={()=>{ mouseOut() ; setMouseOnHeader(false);}}>
+      onMouseOut={()=>{ headerMouseOut() ; setMouseOnHeader(false);}}>
       <TopNav
         
         setBottomNavState={setBottomNavState}
