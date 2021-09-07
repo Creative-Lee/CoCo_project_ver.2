@@ -76,11 +76,6 @@ function App() {
   const [bottomNavState,setBottomNavState] = useState("show");  
   const [mouseOnHeader,setMouseOnHeader] = useState(false);
   
-
-  const totalHeight = document.documentElement.scrollHeight;
-  const viewportHeight = document.documentElement.clientHeight;
-  const isTop = window.scrollY = 0
-  
   const wheelUpDown = (e) => {
     const isWheelDown = e.deltaY > 0 ;
 
@@ -92,7 +87,10 @@ function App() {
     }  
   }
   const isHide = (isWheelDown) => {
-    return (totalHeight !== viewportHeight) && !mouseOnHeader && isWheelDown && !isTop
+    const totalHeight = document.documentElement.scrollHeight;
+    const viewportHeight = document.documentElement.clientHeight; 
+
+    return (totalHeight !== viewportHeight) && !mouseOnHeader && isWheelDown 
   }
 
 
@@ -102,14 +100,19 @@ function App() {
       setBottomNavState("hide");
     }
   }  
- 
 
-  const [topNavOpen , setTopNavOpen] = useState(false);
+
+  
+
+  const [openTopNav, setOpenTopNav] = useState(false)
 
   const openController = () => {
+    const mother = [...document.getElementById("top-navbar__nav").children]
     const community = document.getElementById("top-navbar__nav-link-01").classList
     const clothes = document.getElementById("top-navbar__nav-link-02").classList
     const shoes = document.getElementById("top-navbar__nav-link-03").classList
+
+  
   }
 
   const [activeTopNav,setActiveTopNav] = useState("community"); 
@@ -124,6 +127,7 @@ function App() {
     setTopBanner(true); 
   },[])  
 
+  
   return (
     <div className="App" onWheel={wheelUpDown}>  
       {/* # 최상단 배너 # */} 
@@ -151,7 +155,7 @@ function App() {
         coconut={coconut}     
         쩡로고2={쩡로고2}
         initialScroll={initialScroll}
-        
+        setOpenTopNav={setOpenTopNav}
         />
         
       <BottomNav        
@@ -162,7 +166,9 @@ function App() {
         setBottomNavState={setBottomNavState}
         activeTopNav={activeTopNav} 
         setActiveTopNav={setActiveTopNav}
-        initialScroll={initialScroll}/>
+        initialScroll={initialScroll}
+        openTopNav={openTopNav}
+       />
         
     </header>
 

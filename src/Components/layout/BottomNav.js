@@ -3,18 +3,20 @@ import { Nav,Container,Navbar} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function BottomNav({ initialScroll,activeTopNav ,setActiveTopNav, bottomNavState ,setBottomNavState, setTargetCategory , setTargetProduct}){
+function BottomNav({openTopNav ,initialScroll,activeTopNav ,setActiveTopNav, bottomNavState ,setBottomNavState, setTargetCategory , setTargetProduct}){
 
+  const openOrActive = openTopNav || activeTopNav
+  
     const bottomNav = {
     community : <Navbar id="bottom-navbar">
                   <Container id="bottom-navbar__container">
-                    <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey="1"
+                    <Nav id="bottom-navbar__nav" className="me-auto" defaultActiveKey={1}                      
                       onClick={()=>{
                         setActiveTopNav("community")
                         initialScroll()
                         }}
                       >
-                      <Nav.Link id="bottom-navbar__nav-link--community" eventKey="1" as={Link} to="/coco124">홈</Nav.Link>
+                      <Nav.Link id="bottom-navbar__nav-link--community" eventKey={1} as={Link} to="/coco124">홈</Nav.Link>
                       <Nav.Link id="bottom-navbar__nav-link--community" eventKey="2" as={Link} to="/coco124/following">팔로잉</Nav.Link>
                       <Nav.Link id="bottom-navbar__nav-link--community" eventKey="3" as={Link} to="/coco124/picture">사진</Nav.Link>
                       <Nav.Link id="bottom-navbar__nav-link--community" eventKey="4" as={Link} to="/coco124/event" >Summer Event🔥</Nav.Link>              
@@ -71,7 +73,7 @@ function BottomNav({ initialScroll,activeTopNav ,setActiveTopNav, bottomNavState
 
     shoes : <Navbar id="bottom-navbar">
               <Container id="bottom-navbar__container">
-                <Nav id="bottom-navbar__nav" className="me-auto"    
+                <Nav id="bottom-navbar__nav" className="me-auto" 
                 onClick={()=>{
                   setActiveTopNav("shoes")
                   initialScroll()
@@ -107,7 +109,8 @@ function BottomNav({ initialScroll,activeTopNav ,setActiveTopNav, bottomNavState
   return(
     <div className="bottom-navbar__wrap" 
       style={bottomNavState == "hide" ? {top : "-50px"} : null } >
-      {bottomNav[activeTopNav]}
+        
+      {bottomNav[openOrActive]}
     </div>
   )
 }

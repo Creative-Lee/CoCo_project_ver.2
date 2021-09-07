@@ -14,7 +14,8 @@ function TopNav({
   setTargetProduct,
   setTargetCategory, 
   coconut,쩡로고2,
-  initialScroll
+  initialScroll,
+  setOpenTopNav
  }){
     
   const [bottomNavDefaultActive,setBottomNavDefaultActive] = useState("1")
@@ -36,8 +37,10 @@ function TopNav({
                 setBottomNavState("show")
               }}
               onMouseOver={()=>{
-                setActiveTopNav("community")
-              }}>
+                // setActiveTopNav("community")
+                setOpenTopNav("community");
+              }}
+              >
                 community
             </Nav.Link>
 
@@ -50,8 +53,10 @@ function TopNav({
                 
               }}
               onMouseOver={()=>{
-                setActiveTopNav("clothes")
-              }}>
+                // setActiveTopNav("clothes")
+                setOpenTopNav("clothes")
+              }}
+              >
                 clothes
             </Nav.Link>
 
@@ -64,8 +69,10 @@ function TopNav({
                 
               }}
               onMouseOver={()=>{
-                setActiveTopNav("shoes")
-              }}>
+                // setActiveTopNav("shoes")
+                setOpenTopNav("shoes")
+              }}
+              >
                 shoes
             </Nav.Link>              
           </Nav>          
