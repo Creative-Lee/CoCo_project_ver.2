@@ -37,7 +37,6 @@ function TopNav({
                 setBottomNavState("show")
               }}
               onMouseOver={()=>{
-                // setActiveTopNav("community")
                 setOpenTopNav("community");
               }}
               >
@@ -53,7 +52,6 @@ function TopNav({
                 
               }}
               onMouseOver={()=>{
-                // setActiveTopNav("clothes")
                 setOpenTopNav("clothes")
               }}
               >
@@ -69,7 +67,6 @@ function TopNav({
                 
               }}
               onMouseOver={()=>{
-                // setActiveTopNav("shoes")
                 setOpenTopNav("shoes")
               }}
               >

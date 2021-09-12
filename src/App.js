@@ -134,7 +134,7 @@ function App() {
       {
         topBanner === true &&
         <div className="top-banner">
-          <CloseButton variant="top-banner" onClick={()=>{setTopBanner(false)}}/>
+          <CloseButton variant="top-banner" onClick={()=>{setTopBanner(false)}}/> 
           <p className="top-banner__inner">🤑 Fromcoco 첫 구매라면 최대 10,000원 할인! 🤑</p>
           <p className="top-banner__inner-hidden">🤑 첫 구매라면 최대 10,000원 할인! 🤑</p>
         </div>
@@ -143,7 +143,8 @@ function App() {
     <header className="header"
       style={bottomNavState == "hide" ? {height : "80px", marginBottom: "80px" } : null }
       onMouseOver={()=>{setBottomNavState("show"); setMouseOnHeader(true);}}
-      onMouseOut={()=>{ headerMouseOut() ; setMouseOnHeader(false);}}>
+      onMouseOut={()=>{ headerMouseOut() ; setMouseOnHeader(false);}}
+      onMouseLeave={()=>{ setOpenTopNav(false)}}>
       <TopNav
         
         setBottomNavState={setBottomNavState}
