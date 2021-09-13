@@ -123,12 +123,18 @@ function App() {
     }
   }  
 
-  const [scrollY,setScrollY] = useState(0)
+  const [beforeScrollY,setBeforeScrollY] = useState(0)
 
-  const scrollUpDown = () => {
-    console.log("isScroll!")
-    const 
-    
+  const scrollUpDown = () => {    
+    const afterScrollY = document.documentElement.scrollTop
+    const ScrollDirection = afterScrollY - beforeScrollY >= 0 ? "down" : "up"
+    if(ScrollDirection==="down"){
+      setBottomNavState("hide");
+    }
+    else{
+      setBottomNavState("show");
+    }
+    setBeforeScrollY(afterScrollY)
   }
 
   useEffect(() => {
@@ -136,7 +142,7 @@ function App() {
     return () =>{
       window.removeEventListener("scroll", scrollUpDown)
     } 
-  },[])
+  })
 
 
   useEffect(()=>{
@@ -146,7 +152,7 @@ function App() {
   
   return (
     <div className="App"
-    onWheel={wheelUpDown}
+    // onWheel={wheelUpDown}
     onScroll={scrollUpDown}
     >  
       {/* # 최상단 배너 # */} 
