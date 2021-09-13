@@ -73,6 +73,28 @@ function App() {
 
 
 
+  
+
+ 
+
+  const [openTopNav, setOpenTopNav] = useState(false)
+
+  // const openController = () => {
+  //   const mother = [...document.getElementById("top-navbar__nav").children]
+  //   const community = document.getElementById("top-navbar__nav-link-01").classList
+  //   const clothes = document.getElementById("top-navbar__nav-link-02").classList
+  //   const shoes = document.getElementById("top-navbar__nav-link-03").classList
+  // }
+
+  const [activeTopNav,setActiveTopNav] = useState("community"); 
+  // activeTopnav에 따라 bottomNav 정해짐
+
+
+
+  const initialScroll = () => {
+    window.scrollTo({top: 0, behavior:'instant'})
+  }
+
   const [bottomNavState,setBottomNavState] = useState("show");  
   const [mouseOnHeader,setMouseOnHeader] = useState(false);
   
@@ -101,34 +123,32 @@ function App() {
     }
   }  
 
- 
+  const [scrollY,setScrollY] = useState(0)
 
-  const [openTopNav, setOpenTopNav] = useState(false)
-
-  const openController = () => {
-    const mother = [...document.getElementById("top-navbar__nav").children]
-    const community = document.getElementById("top-navbar__nav-link-01").classList
-    const clothes = document.getElementById("top-navbar__nav-link-02").classList
-    const shoes = document.getElementById("top-navbar__nav-link-03").classList
-
-  
+  const scrollUpDown = () => {
+    console.log("isScroll!")
+    const 
+    
   }
 
-  const [activeTopNav,setActiveTopNav] = useState("community"); 
-  // activeTopnav에 따라 bottomNav 정해짐
+  useEffect(() => {
+    window.addEventListener("scroll", scrollUpDown)
+    return () =>{
+      window.removeEventListener("scroll", scrollUpDown)
+    } 
+  },[])
 
-
-  const initialScroll = () => {
-    window.scrollTo({top: 0, behavior:'instant'})
-  }
 
   useEffect(()=>{
     setTopBanner(true); 
-  },[])  
+  },[])   
 
   
   return (
-    <div className="App" onWheel={wheelUpDown}>  
+    <div className="App"
+    onWheel={wheelUpDown}
+    onScroll={scrollUpDown}
+    >  
       {/* # 최상단 배너 # */} 
       {
         topBanner === true &&
