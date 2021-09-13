@@ -94,15 +94,14 @@ function App() {
   }
 
 
-  const headerMouseOut = ()=>{
+  const headerMouseOut = () => {
     const isAwayFromTop = window.scrollY > 0
     if(isAwayFromTop){
       setBottomNavState("hide");
     }
   }  
 
-
-  
+ 
 
   const [openTopNav, setOpenTopNav] = useState(false)
 
