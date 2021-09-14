@@ -6,9 +6,7 @@ import { CSSTransition } from 'react-transition-group';
 
 function Detail({ detailQuan, 
   onQuan_Initialize, onIncrease, onDecrease, onAddData,
-  allData , setAllData ,
-  targetProduct ,
-}){
+  allData ,targetProduct }){
 
   const [tap,setTap] = useState("info")
   const [aniState,setAniState] = useState(false); 

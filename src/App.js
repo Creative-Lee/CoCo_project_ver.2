@@ -31,8 +31,8 @@ import _allData from './Data/productData/allData.js'
 
 
 import axios from 'axios';
-
-import React, { useEffect, useState } from 'react';
+import {throttle, debounce} from 'lodash';
+import React, { useEffect, useState ,useMemo } from 'react';
 
 import { Link, Route, Switch, useHistory, }  from 'react-router-dom';
 import { Navbar,Nav,CloseButton,Button,Container,Row,Col,Offcanvas,Carousel} from 'react-bootstrap';
@@ -73,62 +73,67 @@ function App() {
 
 
 
-  const [bottomNavState,setBottomNavState] = useState("show");  
-  const [mouseOnHeader,setMouseOnHeader] = useState(false);
   
-  const wheelUpDown = (e) => {
-    const isWheelDown = e.deltaY > 0 ;
-
-    if(isHide(isWheelDown)) {
-      setBottomNavState("hide");
-    }
-    else {
-      setBottomNavState("show");
-    }  
-  }
-  const isHide = (isWheelDown) => {
-    const totalHeight = document.documentElement.scrollHeight;
-    const viewportHeight = document.documentElement.clientHeight; 
-
-    return (totalHeight !== viewportHeight) && !mouseOnHeader && isWheelDown 
-  }
-
-
-  const headerMouseOut = () => {
-    const isAwayFromTop = window.scrollY > 0
-    if(isAwayFromTop){
-      setBottomNavState("hide");
-    }
-  }  
 
  
 
   const [openTopNav, setOpenTopNav] = useState(false)
 
-  const openController = () => {
-    const mother = [...document.getElementById("top-navbar__nav").children]
-    const community = document.getElementById("top-navbar__nav-link-01").classList
-    const clothes = document.getElementById("top-navbar__nav-link-02").classList
-    const shoes = document.getElementById("top-navbar__nav-link-03").classList
-
-  
-  }
+  // const openController = () => {
+  //   const mother = [...document.getElementById("top-navbar__nav").children]
+  //   const community = document.getElementById("top-navbar__nav-link-01").classList
+  //   const clothes = document.getElementById("top-navbar__nav-link-02").classList
+  //   const shoes = document.getElementById("top-navbar__nav-link-03").classList
+  // }
 
   const [activeTopNav,setActiveTopNav] = useState("community"); 
   // activeTopnav에 따라 bottomNav 정해짐
+
 
 
   const initialScroll = () => {
     window.scrollTo({top: 0, behavior:'instant'})
   }
 
+  const mouseOutHeader = () => {
+    const isAwayFromTop = window.scrollY > 0
+    if(isAwayFromTop){
+      setBottomNavState("hide");
+    }
+  }  
+
+  const [bottomNavState,setBottomNavState] = useState("show");  
+  const [mouseOnHeader,setMouseOnHeader] = useState(false);
+  const [beforeScrollY,setBeforeScrollY] = useState(0)
+
+  const scrollUpDown = () => {    
+    const state = isScrollDown() ? "hide" : "show"
+    setBottomNavState(state);  
+  }
+
+  const isScrollDown = () => {
+    const afterScrollY = window.scrollY
+    const isGoingDown = afterScrollY - beforeScrollY >= 0
+    setBeforeScrollY(afterScrollY)  
+    
+    return isGoingDown && !mouseOnHeader
+  }
+  
+  useEffect(() => {
+    window.addEventListener("scroll",scrollUpDown)
+    return () =>{
+      window.removeEventListener("scroll", scrollUpDown)
+    } 
+  })
+
+
   useEffect(()=>{
     setTopBanner(true); 
-  },[])  
+  },[])   
 
   
   return (
-    <div className="App" onWheel={wheelUpDown}>  
+    <div className="App" onScroll={scrollUpDown}>  
       {/* # 최상단 배너 # */} 
       {
         topBanner === true &&
@@ -141,8 +146,8 @@ function App() {
 
     <header className="header"
       style={bottomNavState == "hide" ? {height : "80px", marginBottom: "80px" } : null }
-      onMouseOver={()=>{setBottomNavState("show"); setMouseOnHeader(true);}}
-      onMouseOut={()=>{ headerMouseOut() ; setMouseOnHeader(false);}}
+      onMouseOver={()=>{ setBottomNavState("show"); setMouseOnHeader(true);}}
+      onMouseOut={()=>{ mouseOutHeader() ; setMouseOnHeader(false);}}
       onMouseLeave={()=>{ setOpenTopNav(false)}}>
       <TopNav
         
