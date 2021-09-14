@@ -3,7 +3,10 @@ import { useHistory } from 'react-router';
 import {Col} from 'react-bootstrap';
 
 
-function Product({filterdData,targetProduct }){
+function Product({
+  filterdData,
+  targetProduct}){
+    
   let history = useHistory();
 
   return(

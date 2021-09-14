@@ -3,7 +3,14 @@ import { Nav,Container,Navbar} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function BottomNav({openTopNav ,initialScroll,activeTopNav ,setActiveTopNav, bottomNavState ,setBottomNavState, setTargetCategory , setTargetProduct}){
+function BottomNav({
+  openTopNav,
+  initialScroll,
+  activeTopNav,
+  setActiveTopNav,
+  bottomNavState,  
+  setTargetCategory,
+  setTargetProduct}){
 
   const openOrActive = openTopNav || activeTopNav
   

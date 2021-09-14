@@ -5,9 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-function TopNav({
-  activeController,
-  bottomNavState,
+function TopNav({  
   setBottomNavState,
   hiddenMenuOpen,
   setActiveTopNav,
@@ -15,11 +13,7 @@ function TopNav({
   setTargetCategory, 
   coconut,쩡로고2,
   initialScroll,
-  setOpenTopNav
- }){
-    
-  const [bottomNavDefaultActive,setBottomNavDefaultActive] = useState("1")
-
+  setOpenTopNav}){
 
   return (
     <div className="top-navbar--wrap">
