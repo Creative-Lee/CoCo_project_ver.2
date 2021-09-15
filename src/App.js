@@ -60,7 +60,7 @@ function App() {
   // 이미지를 위해 만듬 ㅡㅡㅡ  원래는 allData. 다음에 넣고싶었음
   
 
-  const [targetCategory,setTargetCategory] = useState(""); 
+  const [targetCategory,setTargetCategory] = useState("home"); 
   // 타겟 상품 카테고리
 
   const category = product => product.category === targetCategory;
@@ -71,24 +71,24 @@ function App() {
   // 각 상품군의 배열에서 필터링된 배열이 담긴 변수 
   // 이 배열에 map()을 사용해서 Product 컴포넌트를 반복시킨다.
 
-
-
   
 
- 
+  const defaultActiveKey = () => {
+    const topNavParents = [...document.getElementById("top-navbar__nav").children]
+    const community = document.getElementById("top-navbar__nav-link-01").classList
+    const clothes = document.getElementById("top-navbar__nav-link-02").classList
+    const shoes = document.getElementById("top-navbar__nav-link-03").classList
 
-  const [openTopNav, setOpenTopNav] = useState(false)
+    const bottomNavParents = [...document.getElementById("bottom__navbar__nav").children]
 
-  // const openController = () => {
-  //   const mother = [...document.getElementById("top-navbar__nav").children]
-  //   const community = document.getElementById("top-navbar__nav-link-01").classList
-  //   const clothes = document.getElementById("top-navbar__nav-link-02").classList
-  //   const shoes = document.getElementById("top-navbar__nav-link-03").classList
-  // }
+    
+  }
 
-  const [activeTopNav,setActiveTopNav] = useState("community"); 
-  // activeTopnav에 따라 bottomNav 정해짐
+  const [topNavOpenTheme, setTopNavOpenTheme] = useState(false)
+    // topNavOpenTheme에 따라 bottomNav 정해짐
 
+  const [topNavActiveTheme,setTopNavActiveTheme] = useState("community"); 
+  // topNavActiveTheme에 따라 bottomNav 정해짐 
 
 
   const initialScroll = () => {
@@ -96,7 +96,7 @@ function App() {
   }
 
   const mouseOutHeader = () => {
-    const isAwayFromTop = window.scrollY > 0
+    const isAwayFromTop = window.scrollY > 0  
     if(isAwayFromTop){
       setBottomNavState("hide");
     }
@@ -148,19 +148,19 @@ function App() {
       style={bottomNavState == "hide" ? {height : "80px", marginBottom: "80px" } : null }
       onMouseOver={()=>{ setBottomNavState("show"); setMouseOnHeader(true);}}
       onMouseOut={()=>{ mouseOutHeader() ; setMouseOnHeader(false);}}
-      onMouseLeave={()=>{ setOpenTopNav(false)}}>
-      <TopNav
-        
+      onMouseLeave={()=>{ setTopNavOpenTheme(false)}}>
+      <TopNav   
+        bottomNavState={bottomNavState}    
         setBottomNavState={setBottomNavState}
         setTargetCategory={setTargetCategory} 
-        setTargetProduct={setTargetProduct} 
-        bottomNavState={bottomNavState} 
+        setTargetProduct={setTargetProduct}         
         hiddenMenuOpen={hiddenMenuOpen} 
-        setActiveTopNav={setActiveTopNav}
+        topNavActiveTheme={topNavActiveTheme}
+        setTopNavActiveTheme={setTopNavActiveTheme}
         coconut={coconut}     
         쩡로고2={쩡로고2}
         initialScroll={initialScroll}
-        setOpenTopNav={setOpenTopNav}
+        setTopNavOpenTheme={setTopNavOpenTheme}
         />
         
       <BottomNav        
@@ -169,10 +169,10 @@ function App() {
         setTargetCategory={setTargetCategory} 
         bottomNavState={bottomNavState}
         setBottomNavState={setBottomNavState}
-        activeTopNav={activeTopNav} 
-        setActiveTopNav={setActiveTopNav}
+        topNavActiveTheme={topNavActiveTheme} 
+        setTopNavActiveTheme={setTopNavActiveTheme}
         initialScroll={initialScroll}
-        openTopNav={openTopNav}
+        topNavOpenTheme={topNavOpenTheme}
        />
         
     </header>

@@ -8,12 +8,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function TopNav({  
   setBottomNavState,
   hiddenMenuOpen,
-  setActiveTopNav,
+  topNavActiveTheme,
+  setTopNavActiveTheme,
   setTargetProduct,
   setTargetCategory, 
   coconut,쩡로고2,
   initialScroll,
-  setOpenTopNav}){
+  setTopNavOpenTheme}){
+
+  
 
   return (
     <div className="top-navbar--wrap">
@@ -23,45 +26,46 @@ function TopNav({
           <Navbar.Brand id="top-navbar__brand" href="/coco124">
             <img src={쩡로고2} className="top-navbar__logo"/>
           </Navbar.Brand>
-          <Nav id="top-navbar__nav" className="me-auto" defaultActiveKey="1" 
+          <Nav id="top-navbar__nav" className="me-auto" activeKey={topNavActiveTheme} 
           onClick={()=>{initialScroll()}}>
-            <Nav.Link id="top-navbar__nav-link-01" eventKey="1" as={Link} to="/coco124"
+            <Nav.Link id="top-navbar__nav-link-01" eventKey="community" as={Link} to="/coco124"
               onClick={()=>{
-                setActiveTopNav("community");
+                setTopNavActiveTheme("community");
                 setBottomNavState("show")
+                setTargetCategory("home")
               }}
               onMouseOver={()=>{
-                setOpenTopNav("community");
+                setTopNavOpenTheme("community");
               }}
               >
                 community
             </Nav.Link>
 
-            <Nav.Link id="top-navbar__nav-link-02" eventKey="2" as={Link} to="/coco124/clothes/new"
+            <Nav.Link id="top-navbar__nav-link-02" eventKey="clothes" as={Link} to="/coco124/clothes/new"
               onClick={()=>{
-                setActiveTopNav("clothes");
+                setTopNavActiveTheme("clothes");
                 setTargetProduct("clothes");
                 setTargetCategory("new");
                 setBottomNavState("show")
                 
               }}
               onMouseOver={()=>{
-                setOpenTopNav("clothes")
+                setTopNavOpenTheme("clothes")
               }}
               >
                 clothes
             </Nav.Link>
 
-            <Nav.Link id="top-navbar__nav-link-03" eventKey="3" as={Link} to="/coco124/shoes/new"
+            <Nav.Link id="top-navbar__nav-link-03" eventKey="shoes" as={Link} to="/coco124/shoes/new"
               onClick={()=>{
-                setActiveTopNav("shoes");
+                setTopNavActiveTheme("shoes");
                 setTargetProduct("shoes");
                 setTargetCategory("new");
                 setBottomNavState("show")
                 
               }}
               onMouseOver={()=>{
-                setOpenTopNav("shoes")
+                setTopNavOpenTheme("shoes")
               }}
               >
                 shoes
