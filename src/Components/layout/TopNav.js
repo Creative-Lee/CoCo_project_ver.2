@@ -45,7 +45,7 @@ function TopNav({
               onClick={()=>{
                 setTopNavActiveTheme("clothes");
                 setTargetProduct("clothes");
-                setTargetCategory("new");
+                setTargetCategory("new_clothes");
                 setBottomNavState("show")
                 
               }}
@@ -60,7 +60,7 @@ function TopNav({
               onClick={()=>{
                 setTopNavActiveTheme("shoes");
                 setTargetProduct("shoes");
-                setTargetCategory("new");
+                setTargetCategory("new_shoes");
                 setBottomNavState("show")
                 
               }}

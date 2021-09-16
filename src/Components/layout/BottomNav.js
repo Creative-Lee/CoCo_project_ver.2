@@ -47,9 +47,9 @@ function BottomNav({
                       setTopNavActiveTheme("clothes")
                       initialScroll()
                       }}>
-                    <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="new" as={Link} to="/coco124/clothes/new"
+                    <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="new_clothes" as={Link} to="/coco124/clothes/new"
                     onClick={()=>{                                                           
-                      setTargetCategory("new")
+                      setTargetCategory("new_clothes")
                                           
                       }}>NEW~10%
                     </Nav.Link>
@@ -95,9 +95,9 @@ function BottomNav({
                   setTopNavActiveTheme("shoes")
                   initialScroll()
                   }}>
-                <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="new" as={Link} to="/coco124/shoes/new"
+                <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="new_shoes" as={Link} to="/coco124/shoes/new"
                     onClick={()=>{
-                      setTargetCategory("new");
+                      setTargetCategory("new_shoes");
                       
                     }}>NEW~10%
                   </Nav.Link>

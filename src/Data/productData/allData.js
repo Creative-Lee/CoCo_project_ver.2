@@ -3,7 +3,7 @@ const allData = {
 			[
 					{
 							id : 0,
-							category : 'new',
+							category : 'new_shoes',
 							title : "신발1",
 							price : 10000,
 							brand : "나이키 코리아"
@@ -70,7 +70,7 @@ const allData = {
 	clothes	:    [
 						{
 							id : 0,
-							category : 'new',
+							category : 'new_clothes',
 							title : "옷1",
 							price : 10000,
 							brand : "나이키 코리아"
@@ -112,28 +112,28 @@ const allData = {
 					},
 					{
 							id : 6,
-							category : 'new',
+							category : 'new_clothes',
 							title : "옷7",
 							price : 40000,
 							brand : "나이키 코리아"
 					},
 					{
 							id : 7,
-							category : 'new',
+							category : 'new_clothes',
 							title : "옷8",
 							price : 40000,
 							brand : "나이키 코리아"
 					},
 					{
 							id : 8,
-							category : 'new',
+							category : 'new_clothes',
 							title : "옷9",
 							price : 40000,
 							brand : "나이키 코리아"
 					},
 					{
 							id : 9,
-							category : 'new',
+							category : 'new_clothes',
 							title : "옷10",
 							price : 40000,
 							brand : "나이키 코리아"

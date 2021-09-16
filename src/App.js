@@ -65,24 +65,10 @@ function App() {
 
   const category = product => product.category === targetCategory;
   // 데이터 파일 내 상품의 카테고리와 타겟 카테고리 일치 비교 콜백함수
-  const hi = allData.targetProduct
 
   const filterdProduct = allData[targetProduct].filter(category);   
   // 각 상품군의 배열에서 필터링된 배열이 담긴 변수 
   // 이 배열에 map()을 사용해서 Product 컴포넌트를 반복시킨다.
-
-  
-
-  const defaultActiveKey = () => {
-    const topNavParents = [...document.getElementById("top-navbar__nav").children]
-    const community = document.getElementById("top-navbar__nav-link-01").classList
-    const clothes = document.getElementById("top-navbar__nav-link-02").classList
-    const shoes = document.getElementById("top-navbar__nav-link-03").classList
-
-    const bottomNavParents = [...document.getElementById("bottom__navbar__nav").children]
-
-    
-  }
 
   const [topNavOpenTheme, setTopNavOpenTheme] = useState(false)
     // topNavOpenTheme에 따라 bottomNav 정해짐
