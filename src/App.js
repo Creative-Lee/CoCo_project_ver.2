@@ -1,6 +1,20 @@
 import './scss/App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import React, { useEffect, useState ,useMemo , lazy , Suspense } from 'react';
+import { Link, Route, Switch, useHistory }  from 'react-router-dom';
+import { Navbar,Nav,CloseButton,Button,Container,Row,Col,Offcanvas,Carousel} from 'react-bootstrap';
+
+import axios from 'axios';
+import {throttle, debounce} from 'lodash';
+
+import TopNav from './Components/layout/TopNav';
+import BottomNav from './Components/layout/BottomNav';
+import Footer from './Components/layout/Footer';
+
+import Product from './Components/Product';
+import _allData from './Data/productData/allData.js'
+
 import coconut from './img/coconut.jpg'
 import 직사각배너 from './img/직사각배너.jpg'
 import 정사각배너 from './img/정사각배너16.9.jpg'
@@ -13,34 +27,14 @@ import 바프4 from './img/바프16.9/바프4.jpg'
 import 바프5 from './img/바프16.9/바프5.jpg'
 import 바프6 from './img/바프16.9/바프6.jpg'
 import 바프7 from './img/바프16.9/바프7.jpg'
-import 코코로고 from './img/코코 로고.png'
-import 쩡로고1 from './img/쩡로고1.png'
 import 쩡로고2 from './img/쩡로고2.png'
 import 인스타로고 from './img/인스타로고.png'
 
-
-import CartContainer from './containers/CartContainer'; 
-import DetailContainer from './containers/DetailContainer';
-
-import TopNav from './Components/layout/TopNav';
-import BottomNav from './Components/layout/BottomNav';
-import Footer from './Components/layout/Footer';
-
-import Product from './Components/Product';
-import _allData from './Data/productData/allData.js'
-
-
-import axios from 'axios';
-import {throttle, debounce} from 'lodash';
-import React, { useEffect, useState ,useMemo } from 'react';
-
-import { Link, Route, Switch, useHistory, }  from 'react-router-dom';
-import { Navbar,Nav,CloseButton,Button,Container,Row,Col,Offcanvas,Carousel} from 'react-bootstrap';
-
-
+let CartContainer = lazy( ()=> import('./containers/CartContainer') );
+let DetailContainer = lazy( ()=>  import('./containers/DetailContainer') );
 
 function App() {
-
+  const headerInlineStyle = {height : "80px", marginBottom: "80px" }
   const [hiddenMenuShow, setHiddenMenuShow] = useState(false);
   const hiddenMenuClose = () => setHiddenMenuShow(false);
   const hiddenMenuOpen = () => setHiddenMenuShow(true);
@@ -51,6 +45,7 @@ function App() {
   const [topBanner,setTopBanner] = useState(false);
 
   const [moreDivStyle,setMoreDivStyle] = useState(false);
+  const moreDivInlineStyle = {backgroundColor : "white" , color: "black"} 
 
   const [allData , setAllData] = useState(_allData)
    // 상품 전체 데이터
@@ -118,6 +113,7 @@ function App() {
   },[])   
 
   
+
   return (
     <div className="App" onScroll={scrollUpDown}>  
       {/* # 최상단 배너 # */} 
@@ -131,7 +127,7 @@ function App() {
       } 
 
     <header className="header"
-      style={bottomNavState == "hide" ? {height : "80px", marginBottom: "80px" } : null }
+      style={bottomNavState == "hide" ? headerInlineStyle : null }
       onMouseOver={()=>{ setBottomNavState("show"); setMouseOnHeader(true);}}
       onMouseOut={()=>{ mouseOutHeader() ; setMouseOnHeader(false);}}
       onMouseLeave={()=>{ setTopNavOpenTheme(false)}}>
@@ -205,7 +201,7 @@ function App() {
                   <span className="main-content__text-03">__directed by Mr.Lee</span>  
                 </div>
                 <div className="main-content__text--more"
-                  style={ moreDivStyle == true ? {backgroundColor : "white" , color: "black"} :null }>
+                  style={ moreDivStyle == true ? moreDivInlineStyle :null }>
                   보러가기
                 </div>
               </div>
@@ -412,14 +408,18 @@ function App() {
       </Route>
 
       <Route path="/coco124/detail/clothes/:data_id" basename="/coco124/detail/clothes/:data_id">
+      <Suspense fallback={ <div>로딩중입니다~!</div> }>
         <DetailContainer 
           allData={allData} setAllData={setAllData} 
           targetProduct={targetProduct}
           />
+        </Suspense>
       </Route>
 
       <Route path='/coco124/cart' basename="/coco124/cart">
+      <Suspense fallback={ <div>로딩중입니다~!</div> }>
         <CartContainer/>
+      </Suspense>
       </Route>
     </Switch>
 

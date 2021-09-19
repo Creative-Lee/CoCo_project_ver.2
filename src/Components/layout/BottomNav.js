@@ -14,6 +14,8 @@ function BottomNav({
   setTargetProduct}){
 
   const openOrActive = topNavOpenTheme || topNavActiveTheme
+  const bottomNavInlineStyle = {transform: `translate(${0}px, ${-50}px)`}
+  
   
     const bottomNav = {
     community : <Navbar id="bottom-navbar">
@@ -125,7 +127,7 @@ function BottomNav({
 }
   return(
     <div className="bottom-navbar__wrap" 
-      style={bottomNavState == "hide" ? {top : "-50px"} : null } >
+      style={bottomNavState == "hide" ? bottomNavInlineStyle : null } >
         
       {bottomNav[openOrActive]}
     </div>
