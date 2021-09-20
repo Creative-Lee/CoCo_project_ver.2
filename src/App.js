@@ -30,8 +30,8 @@ import 바프7 from './img/바프16.9/바프7.jpg'
 import 쩡로고2 from './img/쩡로고2.png'
 import 인스타로고 from './img/인스타로고.png'
 
-let CartContainer = lazy( ()=> import('./containers/CartContainer') );
-let DetailContainer = lazy( ()=>  import('./containers/DetailContainer') );
+const CartContainer = lazy( ()=> import('./containers/CartContainer') );
+const DetailContainer = lazy( ()=>  import('./containers/DetailContainer') );
 
 function App() {
   const headerInlineStyle = {height : "80px", marginBottom: "80px" }
