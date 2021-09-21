@@ -7,7 +7,7 @@ function Product({
   filterdData,
   targetProduct}){
     
-  let history = useHistory();
+  const history = useHistory();
 
   return(
     

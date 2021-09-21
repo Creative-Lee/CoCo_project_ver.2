@@ -31,14 +31,29 @@
       .active {
         color: rgb(89, 203, 248);
         background: none;
-      }
-      .open {
-        color: rgb(89, 203, 248);
-        background: none;
-      }
+      }      
     }
   }
 }
 .top-navbar__hamburger {
   display: none;
+}
+
+.top-navbar__etc{
+  display: flex;  
+  flex-direction: row;
+  margin-left: auto;
+  flex : 0 0 auto;
+}
+.top-navbar__cart { 
+  width: 25px;
+  cursor: pointer;
+  margin-top: auto;
+}
+.top-navbar__search{   
+  font-size: 15px;
+  width: 250px;
+  height: 40px;
+  border: solid #dbdbdb 1px;
+  border-radius: 3px;
 }

@@ -1,6 +1,7 @@
 import React, { useEffect , useState} from 'react';
 import { Nav,Container,Navbar} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
+import { useHistory } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -12,11 +13,11 @@ function TopNav({
   setTopNavActiveTheme,
   setTargetProduct,
   setTargetCategory, 
-  coconut,쩡로고2,
+  coconut,쩡로고2,장바구니,
   initialScroll,
-  setTopNavOpenTheme}){
+  setTopNavOpenTheme,}){
 
-  
+  const history = useHistory();  
 
   return (
     <div className="top-navbar--wrap">
@@ -26,6 +27,7 @@ function TopNav({
           <Navbar.Brand id="top-navbar__brand" href="/coco124">
             <img src={쩡로고2} className="top-navbar__logo"/>
           </Navbar.Brand>
+          
           <Nav id="top-navbar__nav" className="me-auto" activeKey={topNavActiveTheme} 
           onClick={()=>{initialScroll()}}>
             <Nav.Link id="top-navbar__nav-link-01" eventKey="community" as={Link} to="/coco124"
@@ -70,7 +72,26 @@ function TopNav({
               >
                 shoes
             </Nav.Link>              
-          </Nav>          
+          </Nav>
+          <div className="top-navbar__etc"> 
+            <input type="text"  className="top-navbar__search" name="검색" placeholder="코코 통합검색" />       
+          
+            <div className="top-navbar__cart-wrap">
+              <img src={장바구니} alt="장바구니" className="top-navbar__cart"
+              onClick={()=> { history.push(`/coco124/cart`)}}/>   
+            </div>            
+            <Nav>
+              <Nav.Link as={Link} to="/coco124/login">
+                로그인
+              </Nav.Link>
+              <Nav.Link as={Link} to="/coco124/signup">
+                회원가입
+              </Nav.Link>
+              <Nav.Link as={Link} to="/coco124/cs">
+              고객센터
+              </Nav.Link>
+            </Nav>
+          </div>
         </Container>
       </Navbar>
     </div>

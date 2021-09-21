@@ -16,12 +16,8 @@ import Product from './Components/Product';
 import _allData from './Data/productData/allData.js'
 
 import coconut from './img/coconut.jpg'
-import 직사각배너 from './img/직사각배너.jpg'
 import 정사각배너 from './img/정사각배너16.9.jpg'
-import 나이뽀 from './img/형님사진/나이뽀.jpg'
-import 까리 from './img/형님사진/까리.jpg'
 import 까리2 from './img/형님사진/까리2.jpg'
-import 마술사 from './img/형님사진/마술사.jpg'
 import 바프2 from './img/바프16.9/바프2.jpg'
 import 바프4 from './img/바프16.9/바프4.jpg'
 import 바프5 from './img/바프16.9/바프5.jpg'
@@ -29,6 +25,8 @@ import 바프6 from './img/바프16.9/바프6.jpg'
 import 바프7 from './img/바프16.9/바프7.jpg'
 import 쩡로고2 from './img/쩡로고2.png'
 import 인스타로고 from './img/인스타로고.png'
+import 장바구니 from './img/장바구니.png'
+
 
 const CartContainer = lazy( ()=> import('./containers/CartContainer') );
 const DetailContainer = lazy( ()=>  import('./containers/DetailContainer') );
@@ -141,6 +139,7 @@ function App() {
         setTopNavActiveTheme={setTopNavActiveTheme}
         coconut={coconut}     
         쩡로고2={쩡로고2}
+        장바구니={장바구니}
         initialScroll={initialScroll}
         setTopNavOpenTheme={setTopNavOpenTheme}
         />
