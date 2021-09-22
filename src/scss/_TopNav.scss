@@ -21,6 +21,7 @@
     #top-navbar__nav {
       font-size: 20px;
       font-weight: 600;
+      margin-right: auto;
       a {
         color: rgb(83, 83, 83);
         margin-right: 15px;
@@ -41,10 +42,34 @@
 
 .top-navbar__etc{
   display: flex;  
-  flex-direction: row;
-  margin-left: auto;
+  flex-direction: row;  
   flex : 0 0 auto;
+  align-items: center;
+  justify-content:space-around;
+  width: 50%;
+
+ #top-navbar__etc-nav{
+  a {
+    color: rgb(83, 83, 83);   
+  }
+  a:hover {
+    color: rgb(89, 203, 248);
+  }
+  .active {
+    color: rgb(89, 203, 248);
+    background: none;
+  } 
+ }
 }
+  
+
+
+
+
+.top-navbar__cart-wrap{
+  width: auto;  
+}
+
 .top-navbar__cart { 
   width: 25px;
   cursor: pointer;
@@ -56,4 +81,7 @@
   height: 40px;
   border: solid #dbdbdb 1px;
   border-radius: 3px;
+  &:hover {
+    background-color: rgb(238, 238, 238);
+  }
 }

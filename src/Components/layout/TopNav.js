@@ -28,7 +28,7 @@ function TopNav({
             <img src={쩡로고2} className="top-navbar__logo"/>
           </Navbar.Brand>
           
-          <Nav id="top-navbar__nav" className="me-auto" activeKey={topNavActiveTheme} 
+          <Nav id="top-navbar__nav"  activeKey={topNavActiveTheme} 
           onClick={()=>{initialScroll()}}>
             <Nav.Link id="top-navbar__nav-link-01" eventKey="community" as={Link} to="/coco124"
               onClick={()=>{
@@ -80,7 +80,7 @@ function TopNav({
               <img src={장바구니} alt="장바구니" className="top-navbar__cart"
               onClick={()=> { history.push(`/coco124/cart`)}}/>   
             </div>            
-            <Nav>
+            <Nav id="top-navbar__etc-nav">
               <Nav.Link as={Link} to="/coco124/login">
                 로그인
               </Nav.Link>
