@@ -13,24 +13,24 @@ function TopNav({
   setTopNavActiveTheme,
   setTargetProduct,
   setTargetCategory, 
-  coconut,쩡로고2,장바구니,
+  coconut,쩡로고2,장바구니,돋보기,
   initialScroll,
   setTopNavOpenTheme,}){
 
   const history = useHistory();  
 
   return (
-    <div className="top-navbar--wrap">
-      <Navbar id="top-navbar">
+    <div id="top-navbar--wrap">
+      <Navbar className="top-navbar">
         <img src={coconut} alt="menu" className="top-navbar__hamburger" onClick={hiddenMenuOpen}></img>
-        <Container id="top-navbar__container">
-          <Navbar.Brand id="top-navbar__brand" href="/coco124">
+        <Container className="top-navbar__container">
+          <Navbar.Brand className="top-navbar__brand" href="/coco124">
             <img src={쩡로고2} className="top-navbar__logo"/>
           </Navbar.Brand>
           
-          <Nav id="top-navbar__nav"  activeKey={topNavActiveTheme} 
+          <Nav className="top-navbar__nav"  activeKey={topNavActiveTheme} 
           onClick={()=>{initialScroll()}}>
-            <Nav.Link id="top-navbar__nav-link-01" eventKey="community" as={Link} to="/coco124"
+            <Nav.Link className="top-navbar__nav-link-01" eventKey="community" as={Link} to="/coco124"
               onClick={()=>{
                 setTopNavActiveTheme("community");
                 setBottomNavState("show")
@@ -43,7 +43,7 @@ function TopNav({
                 community
             </Nav.Link>
 
-            <Nav.Link id="top-navbar__nav-link-02" eventKey="clothes" as={Link} to="/coco124/clothes/new"
+            <Nav.Link className="top-navbar__nav-link-02" eventKey="clothes" as={Link} to="/coco124/clothes/new"
               onClick={()=>{
                 setTopNavActiveTheme("clothes");
                 setTargetProduct("clothes");
@@ -58,7 +58,7 @@ function TopNav({
                 clothes
             </Nav.Link>
 
-            <Nav.Link id="top-navbar__nav-link-03" eventKey="shoes" as={Link} to="/coco124/shoes/new"
+            <Nav.Link className="top-navbar__nav-link-03" eventKey="shoes" as={Link} to="/coco124/shoes/new"
               onClick={()=>{
                 setTopNavActiveTheme("shoes");
                 setTargetProduct("shoes");
@@ -73,14 +73,17 @@ function TopNav({
                 shoes
             </Nav.Link>              
           </Nav>
-          <div className="top-navbar__etc"> 
-            <input type="text"  className="top-navbar__search" name="검색" placeholder="코코 통합검색" />       
+          <div className="top-navbar__etc">
+            <div className="top-navbar__search--wrap">
+              <input type="text"  className="top-navbar__search" placeholder="코코 통합검색" />       
+            <img className="top-navbar__search--icon" src={돋보기} alt="돋보기"></img>
+            </div> 
           
             <div className="top-navbar__cart-wrap">
               <img src={장바구니} alt="장바구니" className="top-navbar__cart"
               onClick={()=> { history.push(`/coco124/cart`)}}/>   
             </div>            
-            <Nav id="top-navbar__etc-nav">
+            <Nav className="top-navbar__etc-nav">
               <Nav.Link as={Link} to="/coco124/login">
                 로그인
               </Nav.Link>

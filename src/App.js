@@ -1,5 +1,6 @@
-import './scss/App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './scss/App.scss';
+
 
 import React, { useEffect, useState ,useMemo , lazy , Suspense } from 'react';
 import { Link, Route, Switch, useHistory }  from 'react-router-dom';
@@ -26,6 +27,7 @@ import 바프7 from './img/바프16.9/바프7.jpg'
 import 쩡로고2 from './img/쩡로고2.png'
 import 인스타로고 from './img/인스타로고.png'
 import 장바구니 from './img/장바구니.png'
+import 돋보기 from './img/돋보기.png'
 
 
 const CartContainer = lazy( ()=> import('./containers/CartContainer') );
@@ -140,6 +142,7 @@ function App() {
         coconut={coconut}     
         쩡로고2={쩡로고2}
         장바구니={장바구니}
+        돋보기={돋보기}
         initialScroll={initialScroll}
         setTopNavOpenTheme={setTopNavOpenTheme}
         />
