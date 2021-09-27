@@ -44,6 +44,9 @@ function Cart({cartQuan , onIncrease, onDecrease, onDeleteData }) {
         </tbody>
       </Table>
       </Container>
+      <div>
+        이곳은 최근본상품
+      </div>
   
       {
         discountAlert === true &&

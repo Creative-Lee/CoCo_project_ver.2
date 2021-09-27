@@ -21,15 +21,19 @@ function Detail({ detailQuan,
     }
   },[]);
 
+  useEffect(()=>{
+    localStorage.setItem("최근본상품",JSON.stringify([{id:`${matchItems.id}`},{}]));
+  })
+
 
     let history = useHistory();
 
     const { data_id } = useParams();
     let matchItems = allData[targetProduct].find( product => product.id == data_id)
     
-    const question = () => {
-        const result =  window.confirm("선택하신 상품이 장바구니에 담겼습니다.장바구니로 갈텨??")
-        if(result){
+    const cartQuestion = () => {
+        const isYes =  window.confirm("선택하신 상품이 장바구니에 담겼습니다.장바구니로 갈텨??")
+        if(isYes){
             history.push('/coco124/cart')
         }       
     }
@@ -56,7 +60,7 @@ function Detail({ detailQuan,
 
               <Button onClick={() => {
                   onAddData( {id: matchItems.id , name: matchItems.title , price: matchItems.price , quan: detailQuan});
-                  question();        
+                  cartQuestion();        
               }}> 장바구니 </Button> 
               <Button onClick={() => { history.goBack() }} >목록으로</Button> 
               

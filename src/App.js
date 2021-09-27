@@ -38,10 +38,7 @@ function App() {
   const [hiddenMenuShow, setHiddenMenuShow] = useState(false);
   const hiddenMenuClose = () => setHiddenMenuShow(false);
   const hiddenMenuOpen = () => setHiddenMenuShow(true);
-
   
-  let [wait,setWait] = useState(false);
-  let [buttonState,setButtonState] = useState(0);  
   const [topBanner,setTopBanner] = useState(false);
 
   const [moreDivStyle,setMoreDivStyle] = useState(false);
@@ -52,8 +49,6 @@ function App() {
 
   const [targetProduct,setTargetProduct] = useState("clothes");
   // 타겟 상품군 /  "clothes" ,"shoes"    
-  // 이미지를 위해 만듬 ㅡㅡㅡ  원래는 allData. 다음에 넣고싶었음
-  
 
   const [targetCategory,setTargetCategory] = useState("home"); 
   // 타겟 상품 카테고리
