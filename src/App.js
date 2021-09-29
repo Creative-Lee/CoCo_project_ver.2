@@ -1,20 +1,18 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './scss/App.scss';
-
-
 import React, { useEffect, useState ,useMemo , lazy , Suspense } from 'react';
 import { Link, Route, Switch, useHistory }  from 'react-router-dom';
 import { Navbar,Nav,CloseButton,Button,Container,Row,Col,Offcanvas,Carousel} from 'react-bootstrap';
 
-import axios from 'axios';
-import {throttle, debounce} from 'lodash';
+import firebase from './firebase';
 
 import TopNav from './Components/layout/TopNav';
 import BottomNav from './Components/layout/BottomNav';
 import Footer from './Components/layout/Footer';
-
 import Product from './Components/Product';
+
 import _allData from './Data/productData/allData.js'
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './scss/App.scss';
 
 import coconut from './img/coconut.jpg'
 import 정사각배너 from './img/정사각배너16.9.jpg'
@@ -29,6 +27,8 @@ import 인스타로고 from './img/인스타로고.png'
 import 장바구니 from './img/장바구니.png'
 import 돋보기 from './img/돋보기.png'
 
+import dotenv from 'dotenv'
+dotenv.config()
 
 const CartContainer = lazy( ()=> import('./containers/CartContainer') );
 const DetailContainer = lazy( ()=>  import('./containers/DetailContainer') );
@@ -107,7 +107,7 @@ function App() {
     setTopBanner(true); 
   },[])   
 
-  
+
 
   return (
     <div className="App" onScroll={scrollUpDown}>  
