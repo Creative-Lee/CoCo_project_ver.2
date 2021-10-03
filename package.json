@@ -3,6 +3,7 @@
   "homepage": " https://creative-lee.github.io/coco124/",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@babel/core": "7.12.3",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
@@ -38,6 +39,7 @@
     "eslint-webpack-plugin": "^2.5.2",
     "file-loader": "6.1.1",
     "firebase": "^9.1.0",
+    "firestore-export-import": "^0.17.0",
     "fs-extra": "^9.0.1",
     "gh-pages": "^3.2.3",
     "html-webpack-plugin": "4.5.0",
