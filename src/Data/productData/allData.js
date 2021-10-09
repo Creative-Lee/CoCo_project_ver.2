@@ -140,7 +140,7 @@ const allData = {
 					},
 					{
 							id : 10,
-							category : 'clothes',
+							category : 'new_clothes',
 							title : "옷11",
 							price : 40000,
 							brand : "나이키 코리아"
