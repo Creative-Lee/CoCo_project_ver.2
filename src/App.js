@@ -2,8 +2,7 @@ import React, { useEffect, useState ,useMemo , lazy , Suspense } from 'react';
 import { Link, Route, Switch, useHistory }  from 'react-router-dom';
 import { Navbar,Nav,CloseButton,Button,Container,Row,Col,Offcanvas,Carousel} from 'react-bootstrap';
 
-import firebase from './firebase';
-import firebase from './firebase';
+// import firebase from './firebase';
 
 import TopNav from './Components/layout/TopNav';
 import BottomNav from './Components/layout/BottomNav';
