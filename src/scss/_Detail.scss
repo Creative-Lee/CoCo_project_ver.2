@@ -1,0 +1,39 @@
+
+$이것은사스문법 : #F1F000;
+.red{
+    color: $이것은사스문법;
+}
+
+@mixin 기본틀() {
+    background: #eeeeee;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width:100%;
+    margin: auto;
+}
+
+.my-alert {
+    @include 기본틀();
+}
+
+.my-alert2 {
+    @extend .my-alert;
+    background: #ffe592;
+}
+
+
+.my-alert p {
+    margin-bottom: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.wow-enter{
+    opacity: 0;
+}
+
+.wow-enter-active {
+    opacity: 1;
+    transition: all 0.5s;
+}
