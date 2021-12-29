@@ -27,9 +27,6 @@ import 인스타로고 from './img/인스타로고.png'
 import 장바구니 from './img/장바구니.png'
 import 돋보기 from './img/돋보기.png'
 
-import dotenv from 'dotenv'
-dotenv.config()
-
 
 import CartContainer from './containers/CartContainer';
 import DetailContainer from './containers/DetailContainer';
