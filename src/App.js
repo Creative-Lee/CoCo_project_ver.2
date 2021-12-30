@@ -114,7 +114,7 @@ function App() {
       {
         topBanner === true &&
         <div className="top-banner">
-          <CloseButton variant="top-banner" onClick={()=>{setTopBanner(false)}}/> 
+          <CloseButton onClick={()=>{setTopBanner(false)}}/> 
           <p className="top-banner__inner">🤑 Fromcoco 첫 구매라면 최대 10,000원 할인! 🤑</p>
           <p className="top-banner__inner-hidden">🤑 첫 구매라면 최대 10,000원 할인! 🤑</p>
         </div>
@@ -397,25 +397,27 @@ function App() {
 
 
       <Route path="/coco124/detail/shoes/:data_id" basename="/coco124/shoes/detail/:data_id">
-        <DetailContainer 
-          allData={allData} setAllData={setAllData} 
-          targetProduct={targetProduct}
-          />
-      </Route>
-
-      <Route path="/coco124/detail/clothes/:data_id" basename="/coco124/detail/clothes/:data_id">
-      <Suspense fallback={ <div>로딩중입니다~!</div> }>
-        <DetailContainer 
-          allData={allData} setAllData={setAllData} 
-          targetProduct={targetProduct}
+        <Suspense fallback={ <div>로딩중입니다~!</div> }>
+          <DetailContainer 
+            allData={allData} setAllData={setAllData} 
+            targetProduct={targetProduct}
           />
         </Suspense>
       </Route>
 
+      <Route path="/coco124/detail/clothes/:data_id" basename="/coco124/detail/clothes/:data_id">
+        <Suspense fallback={ <div>로딩중입니다~!</div> }>
+          <DetailContainer 
+            allData={allData} setAllData={setAllData} 
+            targetProduct={targetProduct}
+          />
+          </Suspense>
+      </Route>  
+
       <Route path='/coco124/cart' basename="/coco124/cart">
-      <Suspense fallback={ <div>로딩중입니다~!</div> }>
-        <CartContainer/>
-      </Suspense>
+        <Suspense fallback={ <div>로딩중입니다~!</div> }>
+          <CartContainer/>
+        </Suspense>
       </Route>
     </Switch>
 

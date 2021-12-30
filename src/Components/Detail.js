@@ -13,27 +13,20 @@ function Detail({ detailQuan,
   const [alertState,setAlertState] = useState(true);
 
   useEffect(()=>{
-    let stockAlert = setTimeout(()=>{setAlertState(false)} , 2000);
-    
-		return ()=>{
-      clearTimeout(stockAlert);
+    localStorage.setItem("최근본상품",JSON.stringify([{id:`${matchItems.id}`},{}]));
+
+    return ()=>{
       onQuan_Initialize()
     }
-  },[]);
-
-  useEffect(()=>{
-    localStorage.setItem("최근본상품",JSON.stringify([{id:`${matchItems.id}`},{}]));
-  })
-
-
+  },[])
     let history = useHistory();
 
     const { data_id } = useParams();
     let matchItems = allData[targetProduct].find( product => product.id == data_id)
     
     const cartQuestion = () => {
-        const isYes =  window.confirm("선택하신 상품이 장바구니에 담겼습니다.장바구니로 갈텨??")
-        if(isYes){
+        const goCart =  window.confirm("선택하신 상품이 장바구니에 담겼습니다.장바구니로 갈텨??")
+        if(goCart){
             history.push('/coco124/cart')
         }       
     }
@@ -43,9 +36,10 @@ function Detail({ detailQuan,
         <Row>        
           <Col md="6">
 						<div>
-              <img src={process.env.PUBLIC_URL + `/assets/${targetProduct}/${targetProduct}_${matchItems.id}.jpg`} width="100%" />
+              <img src={`/assets/${targetProduct}/${targetProduct}_${matchItems.id}.jpg`} width="100%" />
 						</div>
           </Col>  
+
           <Col md="6">
 						<div>
 							<h4>{matchItems.title}</h4>
@@ -63,34 +57,24 @@ function Detail({ detailQuan,
                   cartQuestion();        
               }}> 장바구니 </Button> 
               <Button onClick={() => { history.goBack() }} >목록으로</Button> 
-              
-              {
-                alertState === true &&  
-                (<div className="my-alert">
-                    <p>낫 이너프 재고</p>
-                </div>)
-              }
+            </Col> 
 
-            </Col>  
           </Row>
-
-                <Nav className="mt-5" variant="tabs" defaultActiveKey="0">
-                <Nav.Item>
-                    <Nav.Link eventKey="0" onClick={() => { setTap("info"); setAniState(false) }}>상세정보</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="1" onClick={() => { setTap("review"); setAniState(false) }}>고객리뷰</Nav.Link>
-                </Nav.Item>    
-                <Nav.Item>
-                    <Nav.Link eventKey="2" onClick={() => { setTap("question"); setAniState(false) }}>문의사항</Nav.Link>
-                </Nav.Item>                  
-                </Nav>
-
-                <CSSTransition in={aniState} classNames="wow" timeout={500}>
-                <TabContent 
-                    tap={tap} setAniState={setAniState}
-                />
-                </CSSTransition>
+          <Row>
+            <Nav className="mt-5" variant="tabs" defaultActiveKey="0">
+            <Nav.Item>
+                <Nav.Link eventKey="0" onClick={() => { setTap("info"); setAniState(false) }}>상세정보👀</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link eventKey="1" onClick={() => { setTap("review"); setAniState(false) }}>고객리뷰👍</Nav.Link>
+            </Nav.Item>    
+            <Nav.Item>
+                <Nav.Link eventKey="2" onClick={() => { setTap("qna"); setAniState(false) }}>문의사항🤷‍♀️</Nav.Link>
+            </Nav.Item>                  
+            </Nav>
+           
+            <TabContent tap={tap} setAniState={setAniState}/>
+        </Row>
         </Container> 
     )
 }
@@ -100,7 +84,7 @@ function TabContent({tap , setAniState}){
     const tabUI = {
             info : <p>상세정보</p>,
             review : <p>고객리뷰</p>,
-            question : <p>문의사항</p>
+            qna : <p>문의사항</p>
     }
 
     useEffect(()=>{

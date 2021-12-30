@@ -22,6 +22,11 @@
   border-bottom: 1px solid #eeeeee;
   background: rgb(70, 198, 248);
   cursor: pointer;
+  
+  &:hover {
+    background: skyblue;
+  }
+  
 
   p {
     font-size: 17px;
@@ -35,19 +40,19 @@
   .top-banner__inner-hidden {
     display: none;
   }
+
+  .btn-close{
+    margin: 10px 10px 0 0;
+    float: right;
+  }
+  .btn-close:hover {
+    background-color: rgb(111, 170, 194);
+  }
+
 }
 
-.top-banner:hover {
-  background: skyblue;
-}
 
-.btn-close-top-banner {
-  margin: 10px 10px 0 0;
-  float: right;
-}
-.btn-close-top-banner:hover {
-  background-color: rgb(111, 170, 194);
-}
+
 
 .wait {
   background: #eeeeee;
@@ -359,41 +364,52 @@
       word-spacing: 1px;
       padding-top: 15px;
     }
+    .btn-close {
+      margin: 3px 3px 0 0;
+    }
   }
 
-  .btn-close-top-banner {
-    margin: 3px 3px 0 0;
+ 
+
+ 
+  #top-navbar--wrap {
+    .top-navbar__hamburger {
+      display: initial;
+      width: 30px;
+      height: 30px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .top-navbar__brand {
+      margin: 0 auto;
+    }
+  
+    .top-navbar__nav {
+      display: none;
+    }
+  
+    .top-navbar__container {
+      padding-left: 0;
+      padding-right: 25px;
+    }
+  
+    
+    
   }
 
-  .top-navbar__hamburger {
-    display: initial;
-    width: 30px;
-    height: 30px;
-    margin-left: 10px;
-    cursor: pointer;
-  }
-
-  #top-navbar__brand {
-    margin: 0 auto;
-  }
-
-  #top-navbar__nav {
-    display: none;
-  }
-
-  #top-navbar__container {
-    padding-left: 0;
-    padding-right: 25px;
-  }
 
   #hidden-menu {
-    width: 70%;
-  }
+      width: 70%;
+    }
 }
 // #================= md 끝 ===================#
 
 @media (max-width: 576px) {
-  #top-navbar__brand {
-    margin: 0 auto;
+  #top-navbar--wrap {
+    
+    .top-navbar__brand {
+      margin: 0 auto;
+    }
   }
 }
