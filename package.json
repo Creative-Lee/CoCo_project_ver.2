@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "rimraf dist && parcel ./public/index.html --open",
-    "build": "rimraf build && parcel build ./public/index.html --out-dir build --public-url https://creative-lee.github.io",
+    "build": "rimraf build && parcel build ./public/index.html --out-dir build --public-url https://creative-lee.github.io/CoCo_project_ver.2_build",
     "deploy": "gh-pages -d build"
   },
   "repository": {
