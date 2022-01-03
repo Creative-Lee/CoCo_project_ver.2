@@ -24,13 +24,13 @@ function TopNav({
       <Navbar className="top-navbar">
         <img src={coconut} alt="menu" className="top-navbar__hamburger" onClick={hiddenMenuOpen}></img>
         <Container className="top-navbar__container">
-          <Navbar.Brand className="top-navbar__brand" href="/coco124">
+          <Navbar.Brand className="top-navbar__brand" href="/CoCo_project_ver.2_build">
             <img src={쩡로고2} className="top-navbar__logo"/>
           </Navbar.Brand>
           
           <Nav className="top-navbar__nav"  activeKey={topNavActiveTheme} 
           onClick={()=>{initialScroll()}}>
-            <Nav.Link className="top-navbar__nav-link-01" eventKey="community" as={Link} to="/coco124"
+            <Nav.Link className="top-navbar__nav-link-01" eventKey="community" as={Link} to="/CoCo_project_ver.2_build"
               onClick={()=>{
                 setTopNavActiveTheme("community");
                 setBottomNavState("show")
@@ -43,7 +43,7 @@ function TopNav({
                 community
             </Nav.Link>
 
-            <Nav.Link className="top-navbar__nav-link-02" eventKey="clothes" as={Link} to="/coco124/clothes/new"
+            <Nav.Link className="top-navbar__nav-link-02" eventKey="clothes" as={Link} to="/CoCo_project_ver.2_build/clothes/new"
               onClick={()=>{
                 setTopNavActiveTheme("clothes");
                 setTargetProduct("clothes");
@@ -58,7 +58,7 @@ function TopNav({
                 clothes
             </Nav.Link>
 
-            <Nav.Link className="top-navbar__nav-link-03" eventKey="shoes" as={Link} to="/coco124/shoes/new"
+            <Nav.Link className="top-navbar__nav-link-03" eventKey="shoes" as={Link} to="/CoCo_project_ver.2_build/shoes/new"
               onClick={()=>{
                 setTopNavActiveTheme("shoes");
                 setTargetProduct("shoes");
@@ -81,16 +81,16 @@ function TopNav({
           
             <div className="top-navbar__cart-wrap">
               <img src={장바구니} alt="장바구니" className="top-navbar__cart"
-              onClick={()=> { history.push(`/coco124/cart`)}}/>   
+              onClick={()=> { history.push(`/CoCo_project_ver.2_build/cart`)}}/>   
             </div>            
             <Nav className="top-navbar__etc-nav">
-              <Nav.Link as={Link} to="/coco124/login">
+              <Nav.Link as={Link} to="/CoCo_project_ver.2_build/login">
                 로그인
               </Nav.Link>
-              <Nav.Link as={Link} to="/coco124/signup">
+              <Nav.Link as={Link} to="/CoCo_project_ver.2_build/signup">
                 회원가입
               </Nav.Link>
-              <Nav.Link as={Link} to="/coco124/cs">
+              <Nav.Link as={Link} to="/CoCo_project_ver.2_build/cs">
               고객센터
               </Nav.Link>
             </Nav>

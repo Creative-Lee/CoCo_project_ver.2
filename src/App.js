@@ -164,18 +164,18 @@ function App() {
         <Offcanvas.Body>
           <h1>여기에는 뭐든지 들어갑니다.</h1>
           <Nav id="hidden-menu__nav">
-              <Nav.Link as={Link} to="/coco124/detail/0">men</Nav.Link>
-              <Nav.Link as={Link} to="/coco124/detail/1">lady</Nav.Link>
-              <Nav.Link as={Link} to="/coco124/detail/2">unisex</Nav.Link>
-              <Nav.Link as={Link} to="/coco124/detail/2">unisex</Nav.Link>
-              <Nav.Link as={Link} to="/coco124/detail/2">unisex</Nav.Link>
-              <Nav.Link as={Link} to="/coco124/detail/2">unisex</Nav.Link>
+              <Nav.Link as={Link} to="/CoCo_project_ver.2_build/detail/0">men</Nav.Link>
+              <Nav.Link as={Link} to="/CoCo_project_ver.2_build/detail/1">lady</Nav.Link>
+              <Nav.Link as={Link} to="/CoCo_project_ver.2_build/detail/2">unisex</Nav.Link>
+              <Nav.Link as={Link} to="/CoCo_project_ver.2_build/detail/2">unisex</Nav.Link>
+              <Nav.Link as={Link} to="/CoCo_project_ver.2_build/detail/2">unisex</Nav.Link>
+              <Nav.Link as={Link} to="/CoCo_project_ver.2_build/detail/2">unisex</Nav.Link>
           </Nav>
         </Offcanvas.Body>
     </Offcanvas>
 
   <Switch> 
-  <Route exact path="/coco124" basename="/coco124"> {/*# 메인페이지 # */}
+  <Route exact path="/CoCo_project_ver.2_build" basename="/CoCo_project_ver.2_build"> {/*# 메인페이지 # */}
 
   <article className="home-header">
     <Container>    
@@ -253,7 +253,7 @@ function App() {
     </article>
   </Route>
 
-    <Route exact path="/coco124/clothes/new" basename="/coco124/clothes/new">
+    <Route exact path="/CoCo_project_ver.2_build/clothes/new" basename="/CoCo_project_ver.2_build/clothes/new">
       <Container>    
         <Row>
           {
@@ -264,7 +264,7 @@ function App() {
         </Row>
       </Container>
     </Route>
-    <Route exact path="/coco124/clothes/cityboy" basename="/coco124/clothes/cityboy">
+    <Route exact path="/CoCo_project_ver.2_build/clothes/cityboy" basename="/CoCo_project_ver.2_build/clothes/cityboy">
       <Container>    
         <Row>
           {
@@ -275,7 +275,7 @@ function App() {
         </Row>
       </Container>
     </Route>
-    <Route exact path="/coco124/clothes/amekaji" basename="/coco124/clothes/amekaji">
+    <Route exact path="/CoCo_project_ver.2_build/clothes/amekaji" basename="/CoCo_project_ver.2_build/clothes/amekaji">
       <Container>    
         <Row>
           {
@@ -286,7 +286,7 @@ function App() {
         </Row>
       </Container>
     </Route>
-    <Route exact path="/coco124/clothes/street" basename="/coco124/clothes/street">
+    <Route exact path="/CoCo_project_ver.2_build/clothes/street" basename="/CoCo_project_ver.2_build/clothes/street">
       <Container>    
         <Row>
           {
@@ -297,7 +297,7 @@ function App() {
         </Row>
       </Container>
     </Route>
-    <Route exact path="/coco124/clothes/minimal" basename="/coco124/clothes/minimal">
+    <Route exact path="/CoCo_project_ver.2_build/clothes/minimal" basename="/CoCo_project_ver.2_build/clothes/minimal">
       <Container>    
         <Row>
           {
@@ -308,7 +308,7 @@ function App() {
         </Row>
       </Container>
     </Route>
-    <Route exact path="/coco124/clothes/summer" basename="/coco124/clothes/summer">
+    <Route exact path="/CoCo_project_ver.2_build/clothes/summer" basename="/CoCo_project_ver.2_build/clothes/summer">
       <Container>    
         <Row>
           {
@@ -320,7 +320,7 @@ function App() {
       </Container>
     </Route>
 
-    <Route exact path="/coco124/shoes/new" basename="/coco124/shoes/new">
+    <Route exact path="/CoCo_project_ver.2_build/shoes/new" basename="/CoCo_project_ver.2_build/shoes/new">
         <Container>
           <Row>
             {
@@ -361,7 +361,7 @@ function App() {
           }  */}
         </Container>
       </Route>
-    <Route exact path="/coco124/shoes/sneakers" basename="/coco124/shoes/sneakers">
+    <Route exact path="/CoCo_project_ver.2_build/shoes/sneakers" basename="/CoCo_project_ver.2_build/shoes/sneakers">
       <Container>    
         <Row>
           {
@@ -372,7 +372,7 @@ function App() {
         </Row>
       </Container>
     </Route>
-    <Route exact path="/coco124/shoes/loafer" basename="/coco124/shoes/loafer">
+    <Route exact path="/CoCo_project_ver.2_build/shoes/loafer" basename="/CoCo_project_ver.2_build/shoes/loafer">
       <Container>    
         <Row>
           {
@@ -383,7 +383,7 @@ function App() {
         </Row>
       </Container>
     </Route>
-    <Route exact path="/coco124/shoes/oxford" basename="/coco124/shoes/oxford">
+    <Route exact path="/CoCo_project_ver.2_build/shoes/oxford" basename="/CoCo_project_ver.2_build/shoes/oxford">
       <Container>    
         <Row>
           {
@@ -396,7 +396,7 @@ function App() {
     </Route>
 
 
-      <Route path="/coco124/detail/shoes/:data_id" basename="/coco124/shoes/detail/:data_id">
+      <Route path="/CoCo_project_ver.2_build/detail/shoes/:data_id" basename="/CoCo_project_ver.2_build/shoes/detail/:data_id">
         <Suspense fallback={ <div>로딩중입니다~!</div> }>
           <DetailContainer 
             allData={allData} setAllData={setAllData} 
@@ -405,7 +405,7 @@ function App() {
         </Suspense>
       </Route>
 
-      <Route path="/coco124/detail/clothes/:data_id" basename="/coco124/detail/clothes/:data_id">
+      <Route path="/CoCo_project_ver.2_build/detail/clothes/:data_id" basename="/CoCo_project_ver.2_build/detail/clothes/:data_id">
         <Suspense fallback={ <div>로딩중입니다~!</div> }>
           <DetailContainer 
             allData={allData} setAllData={setAllData} 
@@ -414,7 +414,7 @@ function App() {
           </Suspense>
       </Route>  
 
-      <Route path='/coco124/cart' basename="/coco124/cart">
+      <Route path='/CoCo_project_ver.2_build/cart' basename="/CoCo_project_ver.2_build/cart">
         <Suspense fallback={ <div>로딩중입니다~!</div> }>
           <CartContainer/>
         </Suspense>

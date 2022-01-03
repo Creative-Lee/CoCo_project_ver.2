@@ -26,15 +26,15 @@ function BottomNav({
                         initialScroll()
                         }}
                       >
-                      <Nav.Link id="bottom-navbar__nav-link--community" eventKey="home" as={Link} to="/coco124"
+                      <Nav.Link id="bottom-navbar__nav-link--community" eventKey="home" as={Link} to="/CoCo_project_ver.2_build"
                         onClick={()=>{setTargetCategory("home")}}>홈
                       </Nav.Link>
-                      <Nav.Link id="bottom-navbar__nav-link--community" eventKey="following" as={Link} to="/coco124/following"
+                      <Nav.Link id="bottom-navbar__nav-link--community" eventKey="following" as={Link} to="/CoCo_project_ver.2_build/following"
                         onClick={()=>{setTargetCategory("following")}}>팔로잉
                       </Nav.Link>
-                      <Nav.Link id="bottom-navbar__nav-link--community" eventKey="picture" as={Link} to="/coco124/picture" 
+                      <Nav.Link id="bottom-navbar__nav-link--community" eventKey="picture" as={Link} to="/CoCo_project_ver.2_build/picture" 
                         onClick={()=>{setTargetCategory("picture")}}>사진</Nav.Link>
-                      <Nav.Link id="bottom-navbar__nav-link--community" eventKey="event" as={Link} to="/coco124/event" 
+                      <Nav.Link id="bottom-navbar__nav-link--community" eventKey="event" as={Link} to="/CoCo_project_ver.2_build/event" 
                         onClick={()=>{setTargetCategory("event")}}>Summer Event🔥
                       </Nav.Link>              
                     </Nav>          
@@ -49,37 +49,37 @@ function BottomNav({
                       setTopNavActiveTheme("clothes")
                       initialScroll()
                       }}>
-                    <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="new_clothes" as={Link} to="/coco124/clothes/new"
+                    <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="new_clothes" as={Link} to="/CoCo_project_ver.2_build/clothes/new"
                     onClick={()=>{                                                           
                       setTargetCategory("new_clothes")
                                           
                       }}>NEW~10%
                     </Nav.Link>
-                    <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="cityboy" as={Link} to="/coco124/clothes/cityboy"
+                    <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="cityboy" as={Link} to="/CoCo_project_ver.2_build/clothes/cityboy"
                     onClick={()=>{
                       setTargetCategory("cityboy")
                       
                       }}>시티보이
                     </Nav.Link>
-                    <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="amekaji" as={Link} to="/coco124/clothes/amekaji"
+                    <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="amekaji" as={Link} to="/CoCo_project_ver.2_build/clothes/amekaji"
                     onClick={()=>{
                       setTargetCategory("amekaji")
                       
                       }}>아메카지
                     </Nav.Link>
-                    <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="street" as={Link} to="/coco124/clothes/street"
+                    <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="street" as={Link} to="/CoCo_project_ver.2_build/clothes/street"
                     onClick={()=>{
                       setTargetCategory("street")
                       
                       }}>스트릿
                     </Nav.Link>              
-                    <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="minimal" as={Link} to="/coco124/clothes/minimal"
+                    <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="minimal" as={Link} to="/CoCo_project_ver.2_build/clothes/minimal"
                     onClick={()=>{
                       setTargetCategory("minimal")
                       
                       }}>미니멀
                     </Nav.Link>              
-                    <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="summer" as={Link} to="/coco124/clothes/summer"
+                    <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="summer" as={Link} to="/CoCo_project_ver.2_build/clothes/summer"
                     onClick={()=>{
                       setTargetCategory("summer")
                       
@@ -97,25 +97,25 @@ function BottomNav({
                   setTopNavActiveTheme("shoes")
                   initialScroll()
                   }}>
-                <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="new_shoes" as={Link} to="/coco124/shoes/new"
+                <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="new_shoes" as={Link} to="/CoCo_project_ver.2_build/shoes/new"
                     onClick={()=>{
                       setTargetCategory("new_shoes");
                       
                     }}>NEW~10%
                   </Nav.Link>
-                  <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="sneakers" as={Link} to="/coco124/shoes/sneakers"
+                  <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="sneakers" as={Link} to="/CoCo_project_ver.2_build/shoes/sneakers"
                     onClick={()=>{
                       setTargetCategory("sneakers");
                       
                     }}>스니커즈
                   </Nav.Link>
-                  <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="loafer" as={Link} to="/coco124/shoes/loafer"
+                  <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="loafer" as={Link} to="/CoCo_project_ver.2_build/shoes/loafer"
                     onClick={()=>{
                       setTargetCategory("loafer");
                       
                     }}>로퍼
                   </Nav.Link>
-                  <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="oxford" as={Link} to="/coco124/shoes/oxford"
+                  <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="oxford" as={Link} to="/CoCo_project_ver.2_build/shoes/oxford"
                     onClick={()=>{
                       setTargetCategory("oxford");
                       

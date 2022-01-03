@@ -27,7 +27,7 @@ function Detail({ detailQuan,
     const cartQuestion = () => {
         const goCart =  window.confirm("선택하신 상품이 장바구니에 담겼습니다.장바구니로 갈텨??")
         if(goCart){
-            history.push('/coco124/cart')
+            history.push('/CoCo_project_ver.2_build/cart')
         }       
     }
 		
