@@ -30,13 +30,24 @@ function Detail({ detailQuan,
             history.push('/CoCo_project_ver.2_build/cart')
         }       
     }
+
+    const publicDirImg = () =>{
+      const path = `/assets/${targetProduct}/${targetProduct}_${matchItems.id}.jpg`
+      const homepage = `https://creative-lee.github.io/CoCo_project_ver.2_build`
+      switch (process.env.NODE_ENV){
+        case 'production' :
+          return homepage+path      
+        case 'development' :
+          return path
+      }
+    }
 		
     return (
       <Container>
         <Row>        
           <Col md="6">
 						<div>
-              <img src={`/assets/${targetProduct}/${targetProduct}_${matchItems.id}.jpg`} width="100%" />
+              <img src={publicDirImg()} width="100%" />
 						</div>
           </Col>  
 

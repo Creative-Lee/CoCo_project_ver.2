@@ -106,8 +106,6 @@ function App() {
     setTopBanner(true); 
   },[])   
 
-
-
   return (
     <div className="App" onScroll={scrollUpDown}>  
       {/* # 최상단 배너 # */} 

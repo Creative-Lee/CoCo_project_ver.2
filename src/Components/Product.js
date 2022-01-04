@@ -5,13 +5,24 @@ import {Col} from 'react-bootstrap';
 
 function Product({filterdData,targetProduct}){
     
+  const publicDirImg = () =>{
+    const path = `/assets/${targetProduct}/${targetProduct}_${filterdData.id}.jpg`
+    const homepage = `https://creative-lee.github.io/CoCo_project_ver.2_build`
+    switch (process.env.NODE_ENV){
+      case 'production' :
+        return homepage+path      
+      case 'development' :
+        return path
+    }
+  }
+
   const history = useHistory();
-  
+
   return(
     
     <Col className="product" md='3' onClick={ ()=> { history.push(`/CoCo_project_ver.2_build/detail/${targetProduct}/${filterdData.id}`)} }>      
       <div className="product__img-wrap">        
-        <img className="product__img" src={`/assets/${targetProduct}/${targetProduct}_${filterdData.id}.jpg`} alt="product"/>
+        <img className="product__img" src={publicDirImg()} alt="product"/>
       </div> 
       <div className="product__text-wrap">
         <p className="product__text--brand">{filterdData.brand}</p>
