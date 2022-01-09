@@ -65,6 +65,7 @@ function App() {
   const [topNavActiveTheme,setTopNavActiveTheme] = useState("community"); 
   // topNavActiveTheme에 따라 bottomNav 정해짐 
 
+  
 
   const initialScroll = () => {
     window.scrollTo({top: 0, behavior:'instant'})

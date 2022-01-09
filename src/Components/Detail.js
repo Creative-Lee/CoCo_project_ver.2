@@ -14,11 +14,14 @@ function Detail({ detailQuan,
 
   useEffect(()=>{
     localStorage.setItem("최근본상품",JSON.stringify([{id:`${matchItems.id}`},{}]));
+  },[])
 
+  useEffect(()=>{    
     return ()=>{
       onQuan_Initialize()
     }
   },[])
+
     let history = useHistory();
 
     const { data_id } = useParams();
@@ -27,27 +30,29 @@ function Detail({ detailQuan,
     const cartQuestion = () => {
         const goCart =  window.confirm("선택하신 상품이 장바구니에 담겼습니다.장바구니로 갈텨??")
         if(goCart){
-            history.push('/CoCo_project_ver.2_build/cart')
+          history.push('/CoCo_project_ver.2_build/cart')
         }       
     }
 
-    const publicDirImg = () =>{
-      const path = `/assets/${targetProduct}/${targetProduct}_${matchItems.id}.jpg`
-      const homepage = `https://creative-lee.github.io/CoCo_project_ver.2_build`
-      switch (process.env.NODE_ENV){
-        case 'production' :
-          return homepage+path      
-        case 'development' :
-          return path
-      }
-    }
+    // const publicDirImg = () =>{
+    //   const path = `/assets/${targetProduct}/${targetProduct}_${matchItems.id}.jpg`
+    //   const homepage = `https://creative-lee.github.io/CoCo_project_ver.2_build`
+    //   switch (process.env.NODE_ENV){
+    //     case 'production' :
+    //       return homepage+path      
+    //     case 'development' :
+    //       return path
+    //   }
+    // }
 		
+    const ASSET_IMG_URL = `${process.env.IMG_URL}/assets/${targetProduct}/${targetProduct}_${matchItems.id}.jpg`
+
     return (
       <Container>
         <Row>        
           <Col md="6">
 						<div>
-              <img src={publicDirImg()} width="100%" />
+              <img src={ASSET_IMG_URL} alt='img' width="100%" />
 						</div>
           </Col>  
 

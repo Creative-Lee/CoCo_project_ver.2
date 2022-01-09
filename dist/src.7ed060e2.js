@@ -52170,7 +52170,7 @@ function TopNav(_ref) {
     className: "top-navbar__container"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Brand, {
     className: "top-navbar__brand",
-    href: "/coco124"
+    href: "/CoCo_project_ver.2_build"
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: 쩡로고2,
     className: "top-navbar__logo"
@@ -52184,7 +52184,7 @@ function TopNav(_ref) {
     className: "top-navbar__nav-link-01",
     eventKey: "community",
     as: _reactRouterDom.Link,
-    to: "/coco124",
+    to: "/CoCo_project_ver.2_build",
     onClick: function onClick() {
       setTopNavActiveTheme("community");
       setBottomNavState("show");
@@ -52197,7 +52197,7 @@ function TopNav(_ref) {
     className: "top-navbar__nav-link-02",
     eventKey: "clothes",
     as: _reactRouterDom.Link,
-    to: "/coco124/clothes/new",
+    to: "/CoCo_project_ver.2_build/clothes/new",
     onClick: function onClick() {
       setTopNavActiveTheme("clothes");
       setTargetProduct("clothes");
@@ -52211,7 +52211,7 @@ function TopNav(_ref) {
     className: "top-navbar__nav-link-03",
     eventKey: "shoes",
     as: _reactRouterDom.Link,
-    to: "/coco124/shoes/new",
+    to: "/CoCo_project_ver.2_build/shoes/new",
     onClick: function onClick() {
       setTopNavActiveTheme("shoes");
       setTargetProduct("shoes");
@@ -52240,19 +52240,19 @@ function TopNav(_ref) {
     alt: "\uC7A5\uBC14\uAD6C\uB2C8",
     className: "top-navbar__cart",
     onClick: function onClick() {
-      history.push("/coco124/cart");
+      history.push("/CoCo_project_ver.2_build/cart");
     }
   })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav, {
     className: "top-navbar__etc-nav"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
     as: _reactRouterDom.Link,
-    to: "/coco124/login"
+    to: "/CoCo_project_ver.2_build/login"
   }, "\uB85C\uADF8\uC778"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
     as: _reactRouterDom.Link,
-    to: "/coco124/signup"
+    to: "/CoCo_project_ver.2_build/signup"
   }, "\uD68C\uC6D0\uAC00\uC785"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
     as: _reactRouterDom.Link,
-    to: "/coco124/cs"
+    to: "/CoCo_project_ver.2_build/cs"
   }, "\uACE0\uAC1D\uC13C\uD130"))))));
 }
 
@@ -52308,7 +52308,7 @@ function BottomNav(_ref) {
       id: "bottom-navbar__nav-link--community",
       eventKey: "home",
       as: _reactRouterDom.Link,
-      to: "/coco124",
+      to: "/CoCo_project_ver.2_build",
       onClick: function onClick() {
         setTargetCategory("home");
       }
@@ -52316,7 +52316,7 @@ function BottomNav(_ref) {
       id: "bottom-navbar__nav-link--community",
       eventKey: "following",
       as: _reactRouterDom.Link,
-      to: "/coco124/following",
+      to: "/CoCo_project_ver.2_build/following",
       onClick: function onClick() {
         setTargetCategory("following");
       }
@@ -52324,7 +52324,7 @@ function BottomNav(_ref) {
       id: "bottom-navbar__nav-link--community",
       eventKey: "picture",
       as: _reactRouterDom.Link,
-      to: "/coco124/picture",
+      to: "/CoCo_project_ver.2_build/picture",
       onClick: function onClick() {
         setTargetCategory("picture");
       }
@@ -52332,7 +52332,7 @@ function BottomNav(_ref) {
       id: "bottom-navbar__nav-link--community",
       eventKey: "event",
       as: _reactRouterDom.Link,
-      to: "/coco124/event",
+      to: "/CoCo_project_ver.2_build/event",
       onClick: function onClick() {
         setTargetCategory("event");
       }
@@ -52354,7 +52354,7 @@ function BottomNav(_ref) {
       id: "bottom-navbar__nav-link--clothes",
       eventKey: "new_clothes",
       as: _reactRouterDom.Link,
-      to: "/coco124/clothes/new",
+      to: "/CoCo_project_ver.2_build/clothes/new",
       onClick: function onClick() {
         setTargetCategory("new_clothes");
       }
@@ -52362,7 +52362,7 @@ function BottomNav(_ref) {
       id: "bottom-navbar__nav-link--clothes",
       eventKey: "cityboy",
       as: _reactRouterDom.Link,
-      to: "/coco124/clothes/cityboy",
+      to: "/CoCo_project_ver.2_build/clothes/cityboy",
       onClick: function onClick() {
         setTargetCategory("cityboy");
       }
@@ -52370,7 +52370,7 @@ function BottomNav(_ref) {
       id: "bottom-navbar__nav-link--clothes",
       eventKey: "amekaji",
       as: _reactRouterDom.Link,
-      to: "/coco124/clothes/amekaji",
+      to: "/CoCo_project_ver.2_build/clothes/amekaji",
       onClick: function onClick() {
         setTargetCategory("amekaji");
       }
@@ -52378,7 +52378,7 @@ function BottomNav(_ref) {
       id: "bottom-navbar__nav-link--clothes",
       eventKey: "street",
       as: _reactRouterDom.Link,
-      to: "/coco124/clothes/street",
+      to: "/CoCo_project_ver.2_build/clothes/street",
       onClick: function onClick() {
         setTargetCategory("street");
       }
@@ -52386,7 +52386,7 @@ function BottomNav(_ref) {
       id: "bottom-navbar__nav-link--clothes",
       eventKey: "minimal",
       as: _reactRouterDom.Link,
-      to: "/coco124/clothes/minimal",
+      to: "/CoCo_project_ver.2_build/clothes/minimal",
       onClick: function onClick() {
         setTargetCategory("minimal");
       }
@@ -52394,7 +52394,7 @@ function BottomNav(_ref) {
       id: "bottom-navbar__nav-link--clothes",
       eventKey: "summer",
       as: _reactRouterDom.Link,
-      to: "/coco124/clothes/summer",
+      to: "/CoCo_project_ver.2_build/clothes/summer",
       onClick: function onClick() {
         setTargetCategory("summer");
       }
@@ -52416,7 +52416,7 @@ function BottomNav(_ref) {
       id: "bottom-navbar__nav-link--shoes",
       eventKey: "new_shoes",
       as: _reactRouterDom.Link,
-      to: "/coco124/shoes/new",
+      to: "/CoCo_project_ver.2_build/shoes/new",
       onClick: function onClick() {
         setTargetCategory("new_shoes");
       }
@@ -52424,7 +52424,7 @@ function BottomNav(_ref) {
       id: "bottom-navbar__nav-link--shoes",
       eventKey: "sneakers",
       as: _reactRouterDom.Link,
-      to: "/coco124/shoes/sneakers",
+      to: "/CoCo_project_ver.2_build/shoes/sneakers",
       onClick: function onClick() {
         setTargetCategory("sneakers");
       }
@@ -52432,7 +52432,7 @@ function BottomNav(_ref) {
       id: "bottom-navbar__nav-link--shoes",
       eventKey: "loafer",
       as: _reactRouterDom.Link,
-      to: "/coco124/shoes/loafer",
+      to: "/CoCo_project_ver.2_build/shoes/loafer",
       onClick: function onClick() {
         setTargetCategory("loafer");
       }
@@ -52440,7 +52440,7 @@ function BottomNav(_ref) {
       id: "bottom-navbar__nav-link--shoes",
       eventKey: "oxford",
       as: _reactRouterDom.Link,
-      to: "/coco124/shoes/oxford",
+      to: "/CoCo_project_ver.2_build/shoes/oxford",
       onClick: function onClick() {
         setTargetCategory("oxford");
       }
@@ -52589,18 +52589,29 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function Product(_ref) {
   var filterdData = _ref.filterdData,
       targetProduct = _ref.targetProduct;
+  // const publicDirImg = () =>{
+  //   const path = `/assets/${targetProduct}/${targetProduct}_${filterdData.id}.jpg`
+  //   const homepage = `https://creative-lee.github.io/CoCo_project_ver.2_build`
+  //   switch (process.env.NODE_ENV){
+  //     case 'production' :
+  //       return homepage+path      
+  //     case 'development' :
+  //       return path
+  //   }
+  // }
   var history = (0, _reactRouter.useHistory)();
+  var ASSET_IMG_URL = "".concat("", "/assets/").concat(targetProduct, "/").concat(targetProduct, "_").concat(filterdData.id, ".jpg");
   return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
     className: "product",
     md: "3",
     onClick: function onClick() {
-      history.push("/coco124/detail/".concat(targetProduct, "/").concat(filterdData.id));
+      history.push("/CoCo_project_ver.2_build/detail/".concat(targetProduct, "/").concat(filterdData.id));
     }
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "product__img-wrap"
   }, /*#__PURE__*/_react.default.createElement("img", {
     className: "product__img",
-    src: "/assets/".concat(targetProduct, "/").concat(targetProduct, "_").concat(filterdData.id, ".jpg"),
+    src: ASSET_IMG_URL,
     alt: "product"
   })), /*#__PURE__*/_react.default.createElement("div", {
     className: "product__text-wrap"
@@ -56374,6 +56385,8 @@ function Detail(_ref) {
     localStorage.setItem("최근본상품", JSON.stringify([{
       id: "".concat(matchItems.id)
     }, {}]));
+  }, []);
+  (0, _react.useEffect)(function () {
     return function () {
       onQuan_Initialize();
     };
@@ -56391,14 +56404,26 @@ function Detail(_ref) {
     var goCart = window.confirm("선택하신 상품이 장바구니에 담겼습니다.장바구니로 갈텨??");
 
     if (goCart) {
-      history.push('/coco124/cart');
+      history.push('/CoCo_project_ver.2_build/cart');
     }
-  };
+  }; // const publicDirImg = () =>{
+  //   const path = `/assets/${targetProduct}/${targetProduct}_${matchItems.id}.jpg`
+  //   const homepage = `https://creative-lee.github.io/CoCo_project_ver.2_build`
+  //   switch (process.env.NODE_ENV){
+  //     case 'production' :
+  //       return homepage+path      
+  //     case 'development' :
+  //       return path
+  //   }
+  // }
 
+
+  var ASSET_IMG_URL = "".concat("", "/assets/").concat(targetProduct, "/").concat(targetProduct, "_").concat(matchItems.id, ".jpg");
   return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
     md: "6"
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
-    src: "/assets/".concat(targetProduct, "/").concat(targetProduct, "_").concat(matchItems.id, ".jpg"),
+    src: ASSET_IMG_URL,
+    alt: "img",
     width: "100%"
   }))), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
     md: "6"
@@ -56863,26 +56888,26 @@ function App() {
     id: "hidden-menu__nav"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
     as: _reactRouterDom.Link,
-    to: "/coco124/detail/0"
+    to: "/CoCo_project_ver.2_build/detail/0"
   }, "men"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
     as: _reactRouterDom.Link,
-    to: "/coco124/detail/1"
+    to: "/CoCo_project_ver.2_build/detail/1"
   }, "lady"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
     as: _reactRouterDom.Link,
-    to: "/coco124/detail/2"
+    to: "/CoCo_project_ver.2_build/detail/2"
   }, "unisex"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
     as: _reactRouterDom.Link,
-    to: "/coco124/detail/2"
+    to: "/CoCo_project_ver.2_build/detail/2"
   }, "unisex"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
     as: _reactRouterDom.Link,
-    to: "/coco124/detail/2"
+    to: "/CoCo_project_ver.2_build/detail/2"
   }, "unisex"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
     as: _reactRouterDom.Link,
-    to: "/coco124/detail/2"
+    to: "/CoCo_project_ver.2_build/detail/2"
   }, "unisex")))), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
-    path: "/coco124",
-    basename: "/coco124"
+    path: "/CoCo_project_ver.2_build",
+    basename: "/CoCo_project_ver.2_build"
   }, " ", /*#__PURE__*/_react.default.createElement("article", {
     className: "home-header"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
@@ -56946,8 +56971,8 @@ function App() {
     src: _정사각배너.default
   })))))))), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
-    path: "/coco124/clothes/new",
-    basename: "/coco124/clothes/new"
+    path: "/CoCo_project_ver.2_build/clothes/new",
+    basename: "/CoCo_project_ver.2_build/clothes/new"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, filterdProduct.map(function (a, i) {
     return /*#__PURE__*/_react.default.createElement(_Product.default, {
       targetProduct: targetProduct,
@@ -56957,8 +56982,8 @@ function App() {
     });
   })))), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
-    path: "/coco124/clothes/cityboy",
-    basename: "/coco124/clothes/cityboy"
+    path: "/CoCo_project_ver.2_build/clothes/cityboy",
+    basename: "/CoCo_project_ver.2_build/clothes/cityboy"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, filterdProduct.map(function (a, i) {
     return /*#__PURE__*/_react.default.createElement(_Product.default, {
       targetProduct: targetProduct,
@@ -56968,8 +56993,8 @@ function App() {
     });
   })))), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
-    path: "/coco124/clothes/amekaji",
-    basename: "/coco124/clothes/amekaji"
+    path: "/CoCo_project_ver.2_build/clothes/amekaji",
+    basename: "/CoCo_project_ver.2_build/clothes/amekaji"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, filterdProduct.map(function (a, i) {
     return /*#__PURE__*/_react.default.createElement(_Product.default, {
       targetProduct: targetProduct,
@@ -56979,8 +57004,8 @@ function App() {
     });
   })))), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
-    path: "/coco124/clothes/street",
-    basename: "/coco124/clothes/street"
+    path: "/CoCo_project_ver.2_build/clothes/street",
+    basename: "/CoCo_project_ver.2_build/clothes/street"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, filterdProduct.map(function (a, i) {
     return /*#__PURE__*/_react.default.createElement(_Product.default, {
       targetProduct: targetProduct,
@@ -56990,8 +57015,8 @@ function App() {
     });
   })))), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
-    path: "/coco124/clothes/minimal",
-    basename: "/coco124/clothes/minimal"
+    path: "/CoCo_project_ver.2_build/clothes/minimal",
+    basename: "/CoCo_project_ver.2_build/clothes/minimal"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, filterdProduct.map(function (a, i) {
     return /*#__PURE__*/_react.default.createElement(_Product.default, {
       targetProduct: targetProduct,
@@ -57001,8 +57026,8 @@ function App() {
     });
   })))), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
-    path: "/coco124/clothes/summer",
-    basename: "/coco124/clothes/summer"
+    path: "/CoCo_project_ver.2_build/clothes/summer",
+    basename: "/CoCo_project_ver.2_build/clothes/summer"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, filterdProduct.map(function (a, i) {
     return /*#__PURE__*/_react.default.createElement(_Product.default, {
       targetProduct: targetProduct,
@@ -57012,8 +57037,8 @@ function App() {
     });
   })))), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
-    path: "/coco124/shoes/new",
-    basename: "/coco124/shoes/new"
+    path: "/CoCo_project_ver.2_build/shoes/new",
+    basename: "/CoCo_project_ver.2_build/shoes/new"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, filterdProduct.map(function (a, i) {
     return /*#__PURE__*/_react.default.createElement(_Product.default, {
       targetProduct: targetProduct,
@@ -57023,8 +57048,8 @@ function App() {
     });
   })))), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
-    path: "/coco124/shoes/sneakers",
-    basename: "/coco124/shoes/sneakers"
+    path: "/CoCo_project_ver.2_build/shoes/sneakers",
+    basename: "/CoCo_project_ver.2_build/shoes/sneakers"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, filterdProduct.map(function (a, i) {
     return /*#__PURE__*/_react.default.createElement(_Product.default, {
       targetProduct: targetProduct,
@@ -57034,8 +57059,8 @@ function App() {
     });
   })))), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
-    path: "/coco124/shoes/loafer",
-    basename: "/coco124/shoes/loafer"
+    path: "/CoCo_project_ver.2_build/shoes/loafer",
+    basename: "/CoCo_project_ver.2_build/shoes/loafer"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, filterdProduct.map(function (a, i) {
     return /*#__PURE__*/_react.default.createElement(_Product.default, {
       targetProduct: targetProduct,
@@ -57045,8 +57070,8 @@ function App() {
     });
   })))), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
-    path: "/coco124/shoes/oxford",
-    basename: "/coco124/shoes/oxford"
+    path: "/CoCo_project_ver.2_build/shoes/oxford",
+    basename: "/CoCo_project_ver.2_build/shoes/oxford"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, filterdProduct.map(function (a, i) {
     return /*#__PURE__*/_react.default.createElement(_Product.default, {
       targetProduct: targetProduct,
@@ -57055,8 +57080,8 @@ function App() {
       key: i
     });
   })))), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-    path: "/coco124/detail/shoes/:data_id",
-    basename: "/coco124/shoes/detail/:data_id"
+    path: "/CoCo_project_ver.2_build/detail/shoes/:data_id",
+    basename: "/CoCo_project_ver.2_build/shoes/detail/:data_id"
   }, /*#__PURE__*/_react.default.createElement(_react.Suspense, {
     fallback: /*#__PURE__*/_react.default.createElement("div", null, "\uB85C\uB529\uC911\uC785\uB2C8\uB2E4~!")
   }, /*#__PURE__*/_react.default.createElement(_DetailContainer.default, {
@@ -57064,8 +57089,8 @@ function App() {
     setAllData: setAllData,
     targetProduct: targetProduct
   }))), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-    path: "/coco124/detail/clothes/:data_id",
-    basename: "/coco124/detail/clothes/:data_id"
+    path: "/CoCo_project_ver.2_build/detail/clothes/:data_id",
+    basename: "/CoCo_project_ver.2_build/detail/clothes/:data_id"
   }, /*#__PURE__*/_react.default.createElement(_react.Suspense, {
     fallback: /*#__PURE__*/_react.default.createElement("div", null, "\uB85C\uB529\uC911\uC785\uB2C8\uB2E4~!")
   }, /*#__PURE__*/_react.default.createElement(_DetailContainer.default, {
@@ -57073,8 +57098,8 @@ function App() {
     setAllData: setAllData,
     targetProduct: targetProduct
   }))), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-    path: "/coco124/cart",
-    basename: "/coco124/cart"
+    path: "/CoCo_project_ver.2_build/cart",
+    basename: "/CoCo_project_ver.2_build/cart"
   }, /*#__PURE__*/_react.default.createElement(_react.Suspense, {
     fallback: /*#__PURE__*/_react.default.createElement("div", null, "\uB85C\uB529\uC911\uC785\uB2C8\uB2E4~!")
   }, /*#__PURE__*/_react.default.createElement(_CartContainer.default, null)))), /*#__PURE__*/_react.default.createElement(_Footer.default, {
@@ -57928,7 +57953,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51147" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63796" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
