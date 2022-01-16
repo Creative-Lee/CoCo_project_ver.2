@@ -52,5 +52,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "음모를 꾸미는 음침한 곳 입니다.🤐",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Creative-Lee/CoCo_project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Creative-Lee/CoCo_project/issues"
   }
 }
