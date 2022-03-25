@@ -16,7 +16,7 @@ function Product({filterdData,targetProduct}){
   // }
 
   const history = useHistory();
-  const ASSET_IMG_URL = `${process.env.IMG_URL}/public/assets/${targetProduct}/${targetProduct}_${filterdData.id}.jpg`
+  const ASSET_IMG_URL = `${process.env.IMG_URL}/assets/${targetProduct}/${targetProduct}_${filterdData.id}.jpg`
 
   return(
     
