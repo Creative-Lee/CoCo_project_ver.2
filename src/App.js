@@ -15,17 +15,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/App.scss';
 
 import coconut from './img/coconut.jpg'
-import 정사각배너 from './img/정사각배너16.9.jpg'
-import 까리2 from './img/형님사진/까리2.jpg'
-import 바프2 from './img/바프16.9/바프2.jpg'
-import 바프4 from './img/바프16.9/바프4.jpg'
-import 바프5 from './img/바프16.9/바프5.jpg'
-import 바프6 from './img/바프16.9/바프6.jpg'
-import 바프7 from './img/바프16.9/바프7.jpg'
-import 쩡로고2 from './img/쩡로고2.png'
-import 인스타로고 from './img/인스타로고.png'
-import 장바구니 from './img/장바구니.png'
-import 돋보기 from './img/돋보기.png'
+import discountBanner from './img/discountBanner.jpg'
+import brother2 from './img/brother/brother2.jpg'
+import profile2 from './img/profile16.9/profile2.jpg'
+import profile4 from './img/profile16.9/profile4.jpg'
+import profile5 from './img/profile16.9/profile5.jpg'
+import profile6 from './img/profile16.9/profile6.jpg'
+import profile7 from './img/profile16.9/profile7.jpg'
+import jjongLogo2 from './img/jjongLogo2.png'
+import instaIcon from './img/instaIcon.png'
+import cartIcon from './img/cartIcon.png'
+import searchIcon from './img/searchIcon.png'
 
 
 import CartContainer from './containers/CartContainer';
@@ -33,7 +33,7 @@ import DetailContainer from './containers/DetailContainer';
 
 
 function App() {
-  const headerInlineStyle = {height : "80px", marginBottom: "80px" }
+  const headerInlineStyle = {height : "80px", marginBottom: "80px"}
   const [hiddenMenuShow, setHiddenMenuShow] = useState(false);
   const hiddenMenuClose = () => setHiddenMenuShow(false);
   const hiddenMenuOpen = () => setHiddenMenuShow(true);
@@ -133,9 +133,9 @@ function App() {
         topNavActiveTheme={topNavActiveTheme}
         setTopNavActiveTheme={setTopNavActiveTheme}
         coconut={coconut}     
-        쩡로고2={쩡로고2}
-        장바구니={장바구니}
-        돋보기={돋보기}
+        jjongLogo2={jjongLogo2}
+        cartIcon={cartIcon}
+        searchIcon={searchIcon}
         initialScroll={initialScroll}
         setTopNavOpenTheme={setTopNavOpenTheme}
         />
@@ -185,7 +185,7 @@ function App() {
               <div className="main-content__img-wrap"
                 onMouseOver={()=>{setMoreDivStyle(true)}}
                 onMouseOut={()=>{setMoreDivStyle(false)}}>
-                  <img className="main-content__img" src={까리2} alt="big brother"/> 
+                  <img className="main-content__img" src={brother2} alt="big brother"/> 
               </div>
 
               <div className="main-content__text-wrap">
@@ -208,42 +208,42 @@ function App() {
         <Carousel className="right-carousel">           
           <Carousel.Item>
             <img 
-              src={바프2}
+              src={profile2}
               alt="1th slide"
             />
           </Carousel.Item>
 
           <Carousel.Item>
             <img 
-              src={바프4}
+              src={profile4}
               alt="2nd slide"
             />
           </Carousel.Item>
 
           <Carousel.Item>
             <img 
-              src={바프5}
+              src={profile5}
               alt="3rd slide"
             />
           </Carousel.Item>
 
           <Carousel.Item>
             <img 
-              src={바프6}
+              src={profile6}
               alt="4th slide"
             />
           </Carousel.Item>
 
           <Carousel.Item>
             <img 
-              src={바프7}
+              src={profile7}
               alt="5th slide"
             />
             </Carousel.Item>
           </Carousel>
         <div className="mini">
           <div className="mini-banner__img-wrap">
-            <img className="mini-banner__img" src={정사각배너}/>
+            <img className="mini-banner__img" src={discountBanner}/>
           </div>
         </div>
         </Col>
@@ -420,7 +420,7 @@ function App() {
       </Route>
     </Switch>
 
-      <Footer 인스타로고={인스타로고}/> 
+      <Footer instaIcon={instaIcon}/> 
         
     </div>
   );

@@ -13,7 +13,7 @@ function TopNav({
   setTopNavActiveTheme,
   setTargetProduct,
   setTargetCategory, 
-  coconut,쩡로고2,장바구니,돋보기,
+  coconut,jjongLogo2,cartIcon,searchIcon,
   initialScroll,
   setTopNavOpenTheme,}){
 
@@ -25,7 +25,7 @@ function TopNav({
         <img src={coconut} alt="menu" className="top-navbar__hamburger" onClick={hiddenMenuOpen}></img>
         <Container className="top-navbar__container">
           <Navbar.Brand className="top-navbar__brand" href="/CoCo_project_ver.2_build">
-            <img src={쩡로고2} className="top-navbar__logo"/>
+            <img src={jjongLogo2} className="top-navbar__logo"/>
           </Navbar.Brand>
           
           <Nav className="top-navbar__nav"  activeKey={topNavActiveTheme} 
@@ -76,11 +76,11 @@ function TopNav({
           <div className="top-navbar__etc">
             <div className="top-navbar__search--wrap">
               <input type="text"  className="top-navbar__search" placeholder="코코 통합검색" />       
-            <img className="top-navbar__search--icon" src={돋보기} alt="돋보기"></img>
+            <img className="top-navbar__search--icon" src={searchIcon} alt="searchIcon"></img>
             </div> 
           
             <div className="top-navbar__cart-wrap">
-              <img src={장바구니} alt="장바구니" className="top-navbar__cart"
+              <img src={cartIcon} alt="cartIcon" className="top-navbar__cart"
               onClick={()=> { history.push(`/CoCo_project_ver.2_build/cart`)}}/>   
             </div>            
             <Nav className="top-navbar__etc-nav">

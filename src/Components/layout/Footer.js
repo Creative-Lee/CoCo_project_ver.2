@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {Container,Row,Col,Nav} from 'react-bootstrap';
 
-  function Footer({인스타로고}){
+  function Footer({instaIcon}){
 
     return(
       <footer className="footer">
@@ -19,7 +19,7 @@ import {Container,Row,Col,Nav} from 'react-bootstrap';
                 <div className="footer-inner__top-instar">
                     <div className="footer-inner__top-instar-01">주인장의 사생활이 궁금하다면👀</div>   
                     <a href="https://www.instagram.com/minsunki6613/" target="_blank">
-                      <span>minsunki6613</span>{' '} <img src={인스타로고}/>
+                      <span>minsunki6613</span>{' '} <img src={instaIcon}/>
                     </a> 
                 </div>
               </div>

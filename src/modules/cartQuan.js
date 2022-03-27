@@ -35,7 +35,6 @@ export default function cartQuan(state = initState, action ) {
     let copyState = [...state];
 
     switch (action.type){
-
         case ADD_DATA:
             let overlapNum = state.findIndex((a)=>{ return a.id === action.payload.id} )
             if(overlapNum >= 0){
