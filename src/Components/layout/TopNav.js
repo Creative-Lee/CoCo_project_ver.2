@@ -4,10 +4,8 @@ import {Link} from 'react-router-dom'
 import { useHistory } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-
 function TopNav({  
-  setBottomNavState,
+  setIsBottomNavShow,
   hiddenMenuOpen,
   topNavActiveTheme,
   setTopNavActiveTheme,
@@ -33,7 +31,7 @@ function TopNav({
             <Nav.Link className="top-navbar__nav-link-01" eventKey="community" as={Link} to="/CoCo_project_ver.2_build"
               onClick={()=>{
                 setTopNavActiveTheme("community");
-                setBottomNavState("show")
+                setIsBottomNavShow(true)
                 setTargetCategory("home")
               }}
               onMouseOver={()=>{
@@ -48,8 +46,7 @@ function TopNav({
                 setTopNavActiveTheme("clothes");
                 setTargetProduct("clothes");
                 setTargetCategory("new_clothes");
-                setBottomNavState("show")
-                
+                setIsBottomNavShow(true)                
               }}
               onMouseOver={()=>{
                 setTopNavOpenTheme("clothes")
@@ -63,7 +60,7 @@ function TopNav({
                 setTopNavActiveTheme("shoes");
                 setTargetProduct("shoes");
                 setTargetCategory("new_shoes");
-                setBottomNavState("show")
+                setIsBottomNavShow(true)
                 
               }}
               onMouseOver={()=>{

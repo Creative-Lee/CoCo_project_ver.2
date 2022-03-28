@@ -71,44 +71,51 @@ function App() {
     window.scrollTo({top: 0, behavior:'instant'})
   }
 
-  const mouseOutHeader = () => {
-    const isAwayFromTop = window.scrollY > 0  
-    if(isAwayFromTop){
-      setBottomNavState("hide");
-    }
+  
+
+  const [isBottomNavShow,setIsBottomNavShow] = useState(true);  
+  const [isMouseOnHeader,setIsMouseOnHeader] = useState(false);
+  const [beforeScrollY,setBeforeScrollY] = useState(0)  
+
+  const setBottomNavState = () => {    
+    if(isMouseOnHeader || !isScrollDown()){
+      setIsBottomNavShow(true); 
+    } 
+    else{
+      setIsBottomNavShow(false)
+    }   
   }  
-
-  const [bottomNavState,setBottomNavState] = useState("show");  
-  const [mouseOnHeader,setMouseOnHeader] = useState(false);
-  const [beforeScrollY,setBeforeScrollY] = useState(0)
-
-  const scrollUpDown = () => {    
-    const state = isScrollDown() ? "hide" : "show"
-    setBottomNavState(state);  
-  }
-
+  
   const isScrollDown = () => {
     const afterScrollY = window.scrollY
-    const isGoingDown = afterScrollY - beforeScrollY >= 0
+    const _isScrollDown = afterScrollY - beforeScrollY >= 0
+    
     setBeforeScrollY(afterScrollY)  
     
-    return isGoingDown && !mouseOnHeader
+    return _isScrollDown
   }
+
+  const hideBottomNav = () => {
+    const isScrollTop = window.scrollY === 0  
+
+    if(!isScrollTop){
+      setIsBottomNavShow(false);
+    }
+  }  
   
-  useEffect(() => {
-    window.addEventListener("scroll",scrollUpDown)
+  useEffect(() => {   
+    window.addEventListener("scroll", setBottomNavState)
     return () =>{
-      window.removeEventListener("scroll", scrollUpDown)
+      window.removeEventListener("scroll", setBottomNavState)
     } 
   })
-
 
   useEffect(()=>{
     setTopBanner(true); 
   },[])   
 
   return (
-    <div className="App" onScroll={scrollUpDown}>  
+    <div className="App">  
       {/* # 최상단 배너 # */} 
       {
         topBanner === true &&
@@ -120,13 +127,13 @@ function App() {
       } 
 
     <header className="header"
-      style={bottomNavState == "hide" ? headerInlineStyle : null }
-      onMouseOver={()=>{ setBottomNavState("show"); setMouseOnHeader(true);}}
-      onMouseOut={()=>{ mouseOutHeader() ; setMouseOnHeader(false);}}
+      style={isBottomNavShow === false ? headerInlineStyle : null }
+      onMouseOver={()=>{ setIsBottomNavShow(true); setIsMouseOnHeader(true);}}
+      onMouseOut={()=>{ hideBottomNav() ; setIsMouseOnHeader(false);}}
       onMouseLeave={()=>{ setTopNavOpenTheme(false)}}>
       <TopNav   
-        bottomNavState={bottomNavState}    
-        setBottomNavState={setBottomNavState}
+        isBottomNavShow={isBottomNavShow}    
+        setIsBottomNavShow={setIsBottomNavShow}
         setTargetCategory={setTargetCategory} 
         setTargetProduct={setTargetProduct}         
         hiddenMenuOpen={hiddenMenuOpen} 
@@ -144,8 +151,8 @@ function App() {
         setTargetProduct={setTargetProduct}
         targetCategory={targetCategory}
         setTargetCategory={setTargetCategory} 
-        bottomNavState={bottomNavState}
-        setBottomNavState={setBottomNavState}
+        isBottomNavShow={isBottomNavShow}
+        setIsBottomNavShow={setIsBottomNavShow}
         topNavActiveTheme={topNavActiveTheme} 
         setTopNavActiveTheme={setTopNavActiveTheme}
         initialScroll={initialScroll}
