@@ -1,6 +1,6 @@
-const allData = {
-	shoes :
-			[
+const productData = {
+	community : [],
+	shoes : [
 					{
 							id : 0,
 							category : 'new_shoes',
@@ -67,7 +67,7 @@ const allData = {
 							brand : "나이키 코리아"
 					},
 				],
-	clothes	:    [
+	clothes	: [
 						{
 							id : 0,
 							category : 'new_clothes',
@@ -210,4 +210,4 @@ const allData = {
 					},				
 					]			
 }
-export default allData;
+export default productData;

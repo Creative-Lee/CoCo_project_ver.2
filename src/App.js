@@ -9,7 +9,7 @@ import BottomNav from './Components/layout/BottomNav';
 import Footer from './Components/layout/Footer';
 import Product from './Components/Product';
 
-import _allData from './Data/productData/allData.js'
+import productData from './Data/productData/allData.js'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/App.scss';
@@ -43,36 +43,20 @@ function App() {
   const [moreDivStyle,setMoreDivStyle] = useState(false);
   const moreDivInlineStyle = {backgroundColor : "white" , color: "black"} 
 
-  const [allData , setAllData] = useState(_allData)
-   // 상품 전체 데이터
+  const [allData , setAllData] = useState(productData)  
 
-  const [targetProduct,setTargetProduct] = useState("clothes");
-  // 타겟 상품군 /  "clothes" ,"shoes"    
+  const [topNavActiveTap,setTopNavActiveTap] = useState("community");
+  const [topNavOpenTap, setTopNavOpenTap] = useState(false) 
+  const [bottomNavActiveTap,setBottomNavActiveTap] = useState("home"); 
 
-  const [targetCategory,setTargetCategory] = useState("home"); 
-  // 타겟 상품 카테고리
-
-  const category = product => product.category === targetCategory;
+  const category = product => product.category === bottomNavActiveTap;
   // 데이터 파일 내 상품의 카테고리와 타겟 카테고리 일치 비교 콜백함수
 
-  const filterdProduct = allData[targetProduct].filter(category);   
+  const filterdProduct = allData[topNavActiveTap].filter(category);   
   // 각 상품군의 배열에서 필터링된 배열이 담긴 변수 
   // 이 배열에 map()을 사용해서 Product 컴포넌트를 반복시킨다.
 
-  const [topNavOpenTheme, setTopNavOpenTheme] = useState(false)
-    // topNavOpenTheme에 따라 bottomNav 정해짐
-
-  const [topNavActiveTheme,setTopNavActiveTheme] = useState("community"); 
-  // topNavActiveTheme에 따라 bottomNav 정해짐 
-
-  
-
-  const initialScroll = () => {
-    window.scrollTo({top: 0, behavior:'instant'})
-  }
-
-  
-
+  /* BottomNav show, hide 관련 */
   const [isBottomNavShow,setIsBottomNavShow] = useState(true);  
   const [isMouseOnHeader,setIsMouseOnHeader] = useState(false);
   const [beforeScrollY,setBeforeScrollY] = useState(0)  
@@ -102,6 +86,10 @@ function App() {
       setIsBottomNavShow(false);
     }
   }  
+
+  const initialScroll = () => {
+    window.scrollTo({top: 0, behavior:'instant'})
+  }
   
   useEffect(() => {   
     window.addEventListener("scroll", setBottomNavState)
@@ -109,6 +97,8 @@ function App() {
       window.removeEventListener("scroll", setBottomNavState)
     } 
   })
+  /* BottomNav show, hide 관련 */
+
 
   useEffect(()=>{
     setTopBanner(true); 
@@ -130,33 +120,31 @@ function App() {
       style={isBottomNavShow === false ? headerInlineStyle : null }
       onMouseOver={()=>{ setIsBottomNavShow(true); setIsMouseOnHeader(true);}}
       onMouseOut={()=>{ hideBottomNav() ; setIsMouseOnHeader(false);}}
-      onMouseLeave={()=>{ setTopNavOpenTheme(false)}}>
+      onMouseLeave={()=>{ setTopNavOpenTap(false)}}>
       <TopNav   
         isBottomNavShow={isBottomNavShow}    
         setIsBottomNavShow={setIsBottomNavShow}
-        setTargetCategory={setTargetCategory} 
-        setTargetProduct={setTargetProduct}         
+        setBottomNavActiveTap={setBottomNavActiveTap} 
         hiddenMenuOpen={hiddenMenuOpen} 
-        topNavActiveTheme={topNavActiveTheme}
-        setTopNavActiveTheme={setTopNavActiveTheme}
+        topNavActiveTap={topNavActiveTap}
+        setTopNavActiveTap={setTopNavActiveTap}
         coconut={coconut}     
         jjongLogo2={jjongLogo2}
         cartIcon={cartIcon}
         searchIcon={searchIcon}
         initialScroll={initialScroll}
-        setTopNavOpenTheme={setTopNavOpenTheme}
+        setTopNavOpenTap={setTopNavOpenTap}
         />
         
       <BottomNav        
-        setTargetProduct={setTargetProduct}
-        targetCategory={targetCategory}
-        setTargetCategory={setTargetCategory} 
+        bottomNavActiveTap={bottomNavActiveTap}
+        setBottomNavActiveTap={setBottomNavActiveTap} 
         isBottomNavShow={isBottomNavShow}
         setIsBottomNavShow={setIsBottomNavShow}
-        topNavActiveTheme={topNavActiveTheme} 
-        setTopNavActiveTheme={setTopNavActiveTheme}
+        topNavActiveTap={topNavActiveTap} 
+        setTopNavActiveTap={setTopNavActiveTap}
         initialScroll={initialScroll}
-        topNavOpenTheme={topNavOpenTheme}
+        topNavOpenTap={topNavOpenTap}
        />
         
     </header>
@@ -264,7 +252,7 @@ function App() {
         <Row>
           {
             filterdProduct.map((a,i)=>{
-              return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+              return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
             })  
           }
         </Row>
@@ -275,7 +263,7 @@ function App() {
         <Row>
           {
             filterdProduct.map((a,i)=>{
-              return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+              return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
             })  
           }
         </Row>
@@ -286,7 +274,7 @@ function App() {
         <Row>
           {
             filterdProduct.map((a,i)=>{
-              return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+              return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
             })  
           }
         </Row>
@@ -297,7 +285,7 @@ function App() {
         <Row>
           {
             filterdProduct.map((a,i)=>{
-              return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+              return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
             })  
           }
         </Row>
@@ -308,7 +296,7 @@ function App() {
         <Row>
           {
             filterdProduct.map((a,i)=>{
-              return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+              return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
             })  
           }
         </Row>
@@ -319,7 +307,7 @@ function App() {
         <Row>
           {
             filterdProduct.map((a,i)=>{
-              return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+              return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
             })  
           }
         </Row>
@@ -331,7 +319,7 @@ function App() {
           <Row>
             {
               filterdProduct.map((a,i)=>{
-                return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+                return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
               })  
             }
           </Row>
@@ -357,9 +345,9 @@ function App() {
             }}>더보기</button> )
 
             :null          
-          } */}
+          } 
 
-          {/* { 
+          { 
             wait === true && 
             <div className="wait"> 
               <p>로딩중입니댱</p> 
@@ -372,7 +360,7 @@ function App() {
         <Row>
           {
               filterdProduct.map((a,i)=>{
-              return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+              return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
             })  
           }
         </Row>
@@ -383,7 +371,7 @@ function App() {
         <Row>
           {
               filterdProduct.map((a,i)=>{
-              return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+              return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
             })  
           }
         </Row>
@@ -394,7 +382,7 @@ function App() {
         <Row>
           {
               filterdProduct.map((a,i)=>{
-              return (<Product targetProduct={targetProduct} filterdData={a} i={i} key={i}/>)
+              return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
             })  
           }
         </Row>
@@ -406,7 +394,7 @@ function App() {
         <Suspense fallback={ <div>로딩중입니다~!</div> }>
           <DetailContainer 
             allData={allData} setAllData={setAllData} 
-            targetProduct={targetProduct}
+            topNavActiveTap={topNavActiveTap}
           />
         </Suspense>
       </Route>
@@ -415,7 +403,7 @@ function App() {
         <Suspense fallback={ <div>로딩중입니다~!</div> }>
           <DetailContainer 
             allData={allData} setAllData={setAllData} 
-            targetProduct={targetProduct}
+            topNavActiveTap={topNavActiveTap}
           />
           </Suspense>
       </Route>  

@@ -6,7 +6,7 @@ import { CSSTransition } from 'react-transition-group';
 
 function Detail({ detailQuan, 
   onQuan_Initialize, onIncrease, onDecrease, onAddData,
-  allData ,targetProduct }){
+  allData ,topNavActiveTap }){
 
   const [tap,setTap] = useState("info")
   const [aniState,setAniState] = useState(false); 
@@ -25,7 +25,7 @@ function Detail({ detailQuan,
     let history = useHistory();
 
     const { data_id } = useParams();
-    let matchItems = allData[targetProduct].find( product => product.id == data_id)
+    let matchItems = allData[topNavActiveTap].find( product => product.id == data_id)
     
     const cartQuestion = () => {
         const goCart =  window.confirm("선택하신 상품이 장바구니에 담겼습니다.장바구니로 갈텨??")
@@ -35,7 +35,7 @@ function Detail({ detailQuan,
     }
 
     // const publicDirImg = () =>{
-    //   const path = `/assets/${targetProduct}/${targetProduct}_${matchItems.id}.jpg`
+    //   const path = `/assets/${topNavActiveTap}/${topNavActiveTap}_${matchItems.id}.jpg`
     //   const homepage = `https://creative-lee.github.io/CoCo_project_ver.2_build`
     //   switch (process.env.NODE_ENV){
     //     case 'production' :
@@ -45,7 +45,7 @@ function Detail({ detailQuan,
     //   }
     // }
 		
-    const ASSET_IMG_URL = `${process.env.IMG_URL}/assets/${targetProduct}/${targetProduct}_${matchItems.id}.jpg`
+    const ASSET_IMG_URL = `${process.env.IMG_URL}/assets/${topNavActiveTap}/${topNavActiveTap}_${matchItems.id}.jpg`
 
     return (
       <Container>

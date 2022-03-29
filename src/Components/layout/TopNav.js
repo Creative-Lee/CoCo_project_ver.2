@@ -7,13 +7,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function TopNav({  
   setIsBottomNavShow,
   hiddenMenuOpen,
-  topNavActiveTheme,
-  setTopNavActiveTheme,
-  setTargetProduct,
-  setTargetCategory, 
+  topNavActiveTap,
+  setTopNavActiveTap,
+  setBottomNavActiveTap, 
   coconut,jjongLogo2,cartIcon,searchIcon,
   initialScroll,
-  setTopNavOpenTheme,}){
+  setTopNavOpenTap,}){
 
   const history = useHistory();  
 
@@ -25,17 +24,16 @@ function TopNav({
           <Navbar.Brand className="top-navbar__brand" href="/CoCo_project_ver.2_build">
             <img src={jjongLogo2} className="top-navbar__logo"/>
           </Navbar.Brand>
-          
-          <Nav className="top-navbar__nav"  activeKey={topNavActiveTheme} 
-          onClick={()=>{initialScroll()}}>
+                    
+          <Nav className="top-navbar__nav"  activeKey={topNavActiveTap} onClick={()=>{initialScroll()}}>
             <Nav.Link className="top-navbar__nav-link-01" eventKey="community" as={Link} to="/CoCo_project_ver.2_build"
               onClick={()=>{
-                setTopNavActiveTheme("community");
+                setTopNavActiveTap("community");
                 setIsBottomNavShow(true)
-                setTargetCategory("home")
+                setBottomNavActiveTap("home")
               }}
               onMouseOver={()=>{
-                setTopNavOpenTheme("community");
+                setTopNavOpenTap("community");
               }}
               >
                 community
@@ -43,13 +41,12 @@ function TopNav({
 
             <Nav.Link className="top-navbar__nav-link-02" eventKey="clothes" as={Link} to="/CoCo_project_ver.2_build/clothes/new"
               onClick={()=>{
-                setTopNavActiveTheme("clothes");
-                setTargetProduct("clothes");
-                setTargetCategory("new_clothes");
+                setTopNavActiveTap("clothes");                
+                setBottomNavActiveTap("new_clothes");
                 setIsBottomNavShow(true)                
               }}
               onMouseOver={()=>{
-                setTopNavOpenTheme("clothes")
+                setTopNavOpenTap("clothes")
               }}
               >
                 clothes
@@ -57,14 +54,13 @@ function TopNav({
 
             <Nav.Link className="top-navbar__nav-link-03" eventKey="shoes" as={Link} to="/CoCo_project_ver.2_build/shoes/new"
               onClick={()=>{
-                setTopNavActiveTheme("shoes");
-                setTargetProduct("shoes");
-                setTargetCategory("new_shoes");
+                setTopNavActiveTap("shoes");
+                setBottomNavActiveTap("new_shoes");
                 setIsBottomNavShow(true)
                 
               }}
               onMouseOver={()=>{
-                setTopNavOpenTheme("shoes")
+                setTopNavOpenTap("shoes")
               }}
               >
                 shoes
@@ -72,7 +68,7 @@ function TopNav({
           </Nav>
           <div className="top-navbar__etc">
             <div className="top-navbar__search--wrap">
-              <input type="text"  className="top-navbar__search" placeholder="코코 통합검색" />       
+              <input type="text" className="top-navbar__search" placeholder="코코 통합검색" />       
             <img className="top-navbar__search--icon" src={searchIcon} alt="searchIcon"></img>
             </div> 
           
@@ -88,7 +84,7 @@ function TopNav({
                 회원가입
               </Nav.Link>
               <Nav.Link as={Link} to="/CoCo_project_ver.2_build/cs">
-              고객센터
+                고객센터
               </Nav.Link>
             </Nav>
           </div>

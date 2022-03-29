@@ -2,10 +2,10 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import {Col} from 'react-bootstrap';
 
-function Product({filterdData,targetProduct}){
+function Product({filterdData,topNavActiveTap}){
     
   // const publicDirImg = () =>{
-  //   const path = `/assets/${targetProduct}/${targetProduct}_${filterdData.id}.jpg`
+  //   const path = `/assets/${topNavActiveTap}/${topNavActiveTap}_${filterdData.id}.jpg`
   //   const homepage = `https://creative-lee.github.io/CoCo_project_ver.2_build`
   //   switch (process.env.NODE_ENV){
   //     case 'production' :
@@ -16,11 +16,11 @@ function Product({filterdData,targetProduct}){
   // }
 
   const history = useHistory();
-  const ASSET_IMG_URL = `${process.env.IMG_URL}/assets/${targetProduct}/${targetProduct}_${filterdData.id}.jpg`
+  const ASSET_IMG_URL = `${process.env.IMG_URL}/assets/${topNavActiveTap}/${topNavActiveTap}_${filterdData.id}.jpg`
 
   return(
     
-    <Col className="product" md='3' onClick={ ()=> { history.push(`/CoCo_project_ver.2_build/detail/${targetProduct}/${filterdData.id}`)} }>      
+    <Col className="product" md='3' onClick={ ()=> { history.push(`/CoCo_project_ver.2_build/detail/${topNavActiveTap}/${filterdData.id}`)} }>      
       <div className="product__img-wrap">        
         <img className="product__img" src={ASSET_IMG_URL} alt="product"/>
       </div> 
