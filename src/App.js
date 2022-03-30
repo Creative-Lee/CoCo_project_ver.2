@@ -32,6 +32,7 @@ import searchIcon from './img/searchIcon.png'
 
 import CartContainer from './containers/CartContainer';
 import DetailContainer from './containers/DetailContainer';
+import { result } from 'lodash';
 
 
 function App() {
@@ -97,13 +98,17 @@ function App() {
     const clothesCol = collection(firestore,'clothes')
     const clothesDoc = await getDocs(clothesCol) 
     const clothesList = clothesDoc.docs.map(doc => doc.data()) 
-    console.log(clothesList)
-    // .forEach((doc) => {
-    //   console.log( doc.id , doc.data());
-    // });
-  }
-    
+  
+    return clothesList
+  }   
 
+  const getShoes = async (firestore) => {
+    const shoesCol = collection(firestore, 'shoes');
+    const shoesDoc = await getDocs(shoesCol);
+    const shoesList = shoesDoc.docs.map(doc => doc.data())
+    
+    return shoesList
+  }   
   
   useEffect(() => {   
     window.addEventListener("scroll", setBottomNavState)
@@ -120,9 +125,7 @@ function App() {
   
   
   return (
-    <div className="App">   
-    <input type="button" onClick={()=>{getClothes(firestore)}}></input> 
-      
+    <div className="App">      
       {/* # 최상단 배너 # */} 
       {
         topBanner === true &&
@@ -151,7 +154,7 @@ function App() {
         searchIcon={searchIcon}
         initialScroll={initialScroll}
         setTopNavOpenTap={setTopNavOpenTap}
-        />
+      />
         
       <BottomNav        
         bottomNavActiveTap={bottomNavActiveTap}
@@ -162,7 +165,7 @@ function App() {
         setTopNavActiveTap={setTopNavActiveTap}
         initialScroll={initialScroll}
         topNavOpenTap={topNavOpenTap}
-       />
+      />
         
     </header>
 
@@ -186,7 +189,7 @@ function App() {
     </Offcanvas>
 
   <Switch> 
-  <Route exact path="/CoCo_project_ver.2_build" basename="/CoCo_project_ver.2_build"> {/*# 메인페이지 # */}
+    <Route exact path="/CoCo_project_ver.2_build" basename="/CoCo_project_ver.2_build"> {/*# 메인페이지 # */}
 
   <article className="home-header">
     <Container>    
@@ -262,175 +265,165 @@ function App() {
       </Row>
       </Container>
     </article>
+    </Route>
+
+  <Route exact path="/CoCo_project_ver.2_build/clothes/all" basename="/CoCo_project_ver.2_build/clothes/all">
+    <Container>    
+      <Row>       
+        {
+          <input type="button" onClick={()=>{            
+          }}/>
+        }
+
+        {/* {
+          filterdProduct.map((a,i)=>{
+            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
+          })  
+        } */}
+      </Row>
+    </Container>
   </Route>
 
-    <Route exact path="/CoCo_project_ver.2_build/clothes/new" basename="/CoCo_project_ver.2_build/clothes/new">
-      <Container>    
-        <Row>
-          {
+    
+  <Route exact path="/CoCo_project_ver.2_build/clothes/cityboy" basename="/CoCo_project_ver.2_build/clothes/cityboy">
+    <Container>    
+      <Row>
+        {
+          filterdProduct.map((a,i)=>{
+            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
+          })  
+        }
+      </Row>
+    </Container>
+  </Route>
+  <Route exact path="/CoCo_project_ver.2_build/clothes/amekaji" basename="/CoCo_project_ver.2_build/clothes/amekaji">
+    <Container>    
+      <Row>
+        {
+          filterdProduct.map((a,i)=>{
+            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
+          })  
+        }
+      </Row>
+    </Container>
+  </Route>
+  <Route exact path="/CoCo_project_ver.2_build/clothes/street" basename="/CoCo_project_ver.2_build/clothes/street">
+    <Container>    
+      <Row>
+        {
+          filterdProduct.map((a,i)=>{
+            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
+          })  
+        }
+      </Row>
+    </Container>
+  </Route>
+  <Route exact path="/CoCo_project_ver.2_build/clothes/minimal" basename="/CoCo_project_ver.2_build/clothes/minimal">
+    <Container>    
+      <Row>
+        {
+          filterdProduct.map((a,i)=>{
+            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
+          })  
+        }
+      </Row>
+    </Container>
+  </Route>
+  <Route exact path="/CoCo_project_ver.2_build/clothes/new" basename="/CoCo_project_ver.2_build/clothes/new">
+    <Container>    
+      <Row>
+        {
+          filterdProduct.map((a,i)=>{
+            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
+          })  
+        }
+      </Row>
+    </Container>
+  </Route>
+  
+  <Route exact path="/CoCo_project_ver.2_build/shoes/all" basename="/CoCo_project_ver.2_build/shoes/all">
+    <Container>    
+      <Row>
+        {
             filterdProduct.map((a,i)=>{
-              return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
-            })  
-          }
-        </Row>
-      </Container>
-    </Route>
-    <Route exact path="/CoCo_project_ver.2_build/clothes/cityboy" basename="/CoCo_project_ver.2_build/clothes/cityboy">
-      <Container>    
-        <Row>
-          {
+            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
+          })  
+        }
+      </Row>
+    </Container>
+  </Route>
+
+  <Route exact path="/CoCo_project_ver.2_build/shoes/sneakers" basename="/CoCo_project_ver.2_build/shoes/sneakers">
+    <Container>    
+      <Row>
+        {
             filterdProduct.map((a,i)=>{
-              return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
-            })  
-          }
-        </Row>
-      </Container>
-    </Route>
-    <Route exact path="/CoCo_project_ver.2_build/clothes/amekaji" basename="/CoCo_project_ver.2_build/clothes/amekaji">
-      <Container>    
-        <Row>
-          {
+            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
+          })  
+        }
+      </Row>
+    </Container>
+  </Route>
+  <Route exact path="/CoCo_project_ver.2_build/shoes/loafer" basename="/CoCo_project_ver.2_build/shoes/loafer">
+    <Container>    
+      <Row>
+        {
             filterdProduct.map((a,i)=>{
-              return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
-            })  
-          }
-        </Row>
-      </Container>
-    </Route>
-    <Route exact path="/CoCo_project_ver.2_build/clothes/street" basename="/CoCo_project_ver.2_build/clothes/street">
-      <Container>    
-        <Row>
-          {
+            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
+          })  
+        }
+      </Row>
+    </Container>
+  </Route>
+  <Route exact path="/CoCo_project_ver.2_build/shoes/oxford" basename="/CoCo_project_ver.2_build/shoes/oxford">
+    <Container>    
+      <Row>
+        {
             filterdProduct.map((a,i)=>{
-              return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
-            })  
-          }
-        </Row>
-      </Container>
-    </Route>
-    <Route exact path="/CoCo_project_ver.2_build/clothes/minimal" basename="/CoCo_project_ver.2_build/clothes/minimal">
-      <Container>    
-        <Row>
-          {
-            filterdProduct.map((a,i)=>{
-              return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
-            })  
-          }
-        </Row>
-      </Container>
-    </Route>
-    <Route exact path="/CoCo_project_ver.2_build/clothes/summer" basename="/CoCo_project_ver.2_build/clothes/summer">
-      <Container>    
-        <Row>
-          {
-            filterdProduct.map((a,i)=>{
-              return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
-            })  
-          }
-        </Row>
-      </Container>
-    </Route>
+            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
+          })  
+        }
+      </Row>
+    </Container>
+  </Route>
 
-    <Route exact path="/CoCo_project_ver.2_build/shoes/new" basename="/CoCo_project_ver.2_build/shoes/new">
-        <Container>
-          <Row>
-            {
-              filterdProduct.map((a,i)=>{
-                return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
-              })  
-            }
-          </Row>
+  <Route exact path="/CoCo_project_ver.2_build/shoes/new" basename="/CoCo_project_ver.2_build/shoes/new">
+    <Container>
+      <Row>
+        {
+          filterdProduct.map((a,i)=>{
+            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
+          })  
+        }
+      </Row>
+    </Container>
+  </Route>
 
-          {/* {
-            buttonState < 1 
-            ? (<button className="btn btn-primary" onClick={()=>{
-              setWait(true);
-              setButtonState(buttonState+1);
-              axios.get('https://codingapple1.github.io/shop/data2.json')
+  <Route path="/CoCo_project_ver.2_build/detail/shoes/:data_id" basename="/CoCo_project_ver.2_build/shoes/detail/:data_id">
+    <Suspense fallback={ <div>로딩중입니다~!</div> }>
+      <DetailContainer 
+        allData={allData} setAllData={setAllData} 
+        topNavActiveTap={topNavActiveTap}
+      />
+    </Suspense>
+  </Route>
 
-              //성공시
-              .then((result)=>{ 
-                setWait(false);
-                setshoesData([...shoesData , ...result.data]);
-              }) 
-              
-              //실패시
-              .catch(()=>{
-                setWait(false);                
-              }) 
-              
-            }}>더보기</button> )
+  <Route path="/CoCo_project_ver.2_build/detail/clothes/:data_id" basename="/CoCo_project_ver.2_build/detail/clothes/:data_id">
+    <Suspense fallback={ <div>로딩중입니다~!</div> }>
+      <DetailContainer 
+        allData={allData} setAllData={setAllData} 
+        topNavActiveTap={topNavActiveTap}
+      />
+      </Suspense>
+  </Route>  
 
-            :null          
-          } 
+  <Route path='/CoCo_project_ver.2_build/cart' basename="/CoCo_project_ver.2_build/cart">
+    <Suspense fallback={ <div>로딩중입니다~!</div> }>
+      <CartContainer/>
+    </Suspense>
+  </Route>
 
-          { 
-            wait === true && 
-            <div className="wait"> 
-              <p>로딩중입니댱</p> 
-            </div>  
-          }  */}
-        </Container>
-      </Route>
-    <Route exact path="/CoCo_project_ver.2_build/shoes/sneakers" basename="/CoCo_project_ver.2_build/shoes/sneakers">
-      <Container>    
-        <Row>
-          {
-              filterdProduct.map((a,i)=>{
-              return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
-            })  
-          }
-        </Row>
-      </Container>
-    </Route>
-    <Route exact path="/CoCo_project_ver.2_build/shoes/loafer" basename="/CoCo_project_ver.2_build/shoes/loafer">
-      <Container>    
-        <Row>
-          {
-              filterdProduct.map((a,i)=>{
-              return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
-            })  
-          }
-        </Row>
-      </Container>
-    </Route>
-    <Route exact path="/CoCo_project_ver.2_build/shoes/oxford" basename="/CoCo_project_ver.2_build/shoes/oxford">
-      <Container>    
-        <Row>
-          {
-              filterdProduct.map((a,i)=>{
-              return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
-            })  
-          }
-        </Row>
-      </Container>
-    </Route>
-
-
-      <Route path="/CoCo_project_ver.2_build/detail/shoes/:data_id" basename="/CoCo_project_ver.2_build/shoes/detail/:data_id">
-        <Suspense fallback={ <div>로딩중입니다~!</div> }>
-          <DetailContainer 
-            allData={allData} setAllData={setAllData} 
-            topNavActiveTap={topNavActiveTap}
-          />
-        </Suspense>
-      </Route>
-
-      <Route path="/CoCo_project_ver.2_build/detail/clothes/:data_id" basename="/CoCo_project_ver.2_build/detail/clothes/:data_id">
-        <Suspense fallback={ <div>로딩중입니다~!</div> }>
-          <DetailContainer 
-            allData={allData} setAllData={setAllData} 
-            topNavActiveTap={topNavActiveTap}
-          />
-          </Suspense>
-      </Route>  
-
-      <Route path='/CoCo_project_ver.2_build/cart' basename="/CoCo_project_ver.2_build/cart">
-        <Suspense fallback={ <div>로딩중입니다~!</div> }>
-          <CartContainer/>
-        </Suspense>
-      </Route>
-    </Switch>
+  </Switch>
 
       <Footer instaIcon={instaIcon}/> 
         

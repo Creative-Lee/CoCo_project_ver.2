@@ -39,7 +39,7 @@ function TopNav({
                 community
             </Nav.Link>
 
-            <Nav.Link className="top-navbar__nav-link-02" eventKey="clothes" as={Link} to="/CoCo_project_ver.2_build/clothes/new"
+            <Nav.Link className="top-navbar__nav-link-02" eventKey="clothes" as={Link} to="/CoCo_project_ver.2_build/clothes/all"
               onClick={()=>{
                 setTopNavActiveTap("clothes");                
                 setBottomNavActiveTap("all");
@@ -52,7 +52,7 @@ function TopNav({
                 clothes
             </Nav.Link>
 
-            <Nav.Link className="top-navbar__nav-link-03" eventKey="shoes" as={Link} to="/CoCo_project_ver.2_build/shoes/new"
+            <Nav.Link className="top-navbar__nav-link-03" eventKey="shoes" as={Link} to="/CoCo_project_ver.2_build/shoes/all"
               onClick={()=>{
                 setTopNavActiveTap("shoes");
                 setBottomNavActiveTap("all");
