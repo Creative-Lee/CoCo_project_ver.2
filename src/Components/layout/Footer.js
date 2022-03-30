@@ -51,7 +51,7 @@ import {Container,Row,Col,Nav} from 'react-bootstrap';
               </div>
 
               <div className="footer-inner__copyright">
-                <p>Copyright 2021. Fromcoco 124th, Co. Ltd. All rights reserved</p>
+                <p>Copyright 2021. Fromcoco 124th, Co. Ltd. All rights reserved</p>                
               </div>
             </div>
           </Col>

@@ -42,7 +42,7 @@ function TopNav({
             <Nav.Link className="top-navbar__nav-link-02" eventKey="clothes" as={Link} to="/CoCo_project_ver.2_build/clothes/new"
               onClick={()=>{
                 setTopNavActiveTap("clothes");                
-                setBottomNavActiveTap("new_clothes");
+                setBottomNavActiveTap("all");
                 setIsBottomNavShow(true)                
               }}
               onMouseOver={()=>{
@@ -55,7 +55,7 @@ function TopNav({
             <Nav.Link className="top-navbar__nav-link-03" eventKey="shoes" as={Link} to="/CoCo_project_ver.2_build/shoes/new"
               onClick={()=>{
                 setTopNavActiveTap("shoes");
-                setBottomNavActiveTap("new_shoes");
+                setBottomNavActiveTap("all");
                 setIsBottomNavShow(true)
                 
               }}

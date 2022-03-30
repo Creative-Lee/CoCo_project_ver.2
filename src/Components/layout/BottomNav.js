@@ -48,13 +48,13 @@ function BottomNav({
               setTopNavActiveTap("clothes")
               initialScroll()
             }}>
-              
-            <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="new_clothes" as={Link} to="/CoCo_project_ver.2_build/clothes/new"
-            onClick={()=>{                                                           
-              setBottomNavActiveTap("new_clothes")                                  
-              }}>NEW~10%
+
+            <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="all" as={Link} to="/CoCo_project_ver.2_build/clothes/all"
+            onClick={()=>{
+              setBottomNavActiveTap("all")              
+              }}>ALL
             </Nav.Link>
-            
+
             <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="cityboy" as={Link} to="/CoCo_project_ver.2_build/clothes/cityboy"
             onClick={()=>{
               setBottomNavActiveTap("cityboy")              
@@ -79,11 +79,12 @@ function BottomNav({
               }}>미니멀
             </Nav.Link>  
 
-            <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="summer" as={Link} to="/CoCo_project_ver.2_build/clothes/summer"
-            onClick={()=>{
-              setBottomNavActiveTap("summer")              
-              }}>hot summer🔥
-            </Nav.Link>              
+            <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="new_clothes" as={Link} to="/CoCo_project_ver.2_build/clothes/new"
+            onClick={()=>{                                                           
+              setBottomNavActiveTap("new_clothes")                                  
+              }}>NEW~10%
+            </Nav.Link>
+
           </Nav>          
         </Container>
       </Navbar>,
@@ -96,30 +97,37 @@ function BottomNav({
             setTopNavActiveTap("shoes")
             initialScroll()
             }}>
-            <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="new_shoes" as={Link} to="/CoCo_project_ver.2_build/shoes/new"
+
+            <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="all" as={Link} to="/CoCo_project_ver.2_build/shoes/all"
               onClick={()=>{
-                setBottomNavActiveTap("new_shoes");
-                
-              }}>NEW~10%
+                setBottomNavActiveTap("all");                
+              }}>ALL
             </Nav.Link>
+
             <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="sneakers" as={Link} to="/CoCo_project_ver.2_build/shoes/sneakers"
               onClick={()=>{
-                setBottomNavActiveTap("sneakers");
-                
+                setBottomNavActiveTap("sneakers");                
               }}>스니커즈
             </Nav.Link>
+
             <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="loafer" as={Link} to="/CoCo_project_ver.2_build/shoes/loafer"
               onClick={()=>{
-                setBottomNavActiveTap("loafer");
-                
-              }}>로퍼
+                setBottomNavActiveTap("loafer");                
+              }}>로퍼              
             </Nav.Link>
+
             <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="oxford" as={Link} to="/CoCo_project_ver.2_build/shoes/oxford"
               onClick={()=>{
-                setBottomNavActiveTap("oxford");
-                
+                setBottomNavActiveTap("oxford");                
               }}>옥스퍼드
-            </Nav.Link>              
+            </Nav.Link>     
+
+            <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="new_shoes" as={Link} to="/CoCo_project_ver.2_build/shoes/new"
+              onClick={()=>{
+                setBottomNavActiveTap("new_shoes");                
+              }}>NEW~10%
+            </Nav.Link>
+
           </Nav>          
         </Container>
       </Navbar>

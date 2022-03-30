@@ -2,7 +2,9 @@ import React, { useEffect, useState ,useMemo , lazy , Suspense } from 'react';
 import { Link, Route, Switch, useHistory }  from 'react-router-dom';
 import { Navbar,Nav,CloseButton,Button,Container,Row,Col,Offcanvas,Carousel} from 'react-bootstrap';
 
-// import firebase from './firebase';
+import {firestore, storage} from './firebase';
+import {collection, getDocs} from 'firebase/firestore';
+
 
 import TopNav from './Components/layout/TopNav';
 import BottomNav from './Components/layout/BottomNav';
@@ -90,6 +92,18 @@ function App() {
   const initialScroll = () => {
     window.scrollTo({top: 0, behavior:'instant'})
   }
+
+  async function getClothes(firestore){
+    const clothesCol = collection(firestore,'clothes')
+    const clothesDoc = await getDocs(clothesCol) 
+    const clothesList = clothesDoc.docs.map(doc => doc.data()) 
+    console.log(clothesList)
+    // .forEach((doc) => {
+    //   console.log( doc.id , doc.data());
+    // });
+  }
+    
+
   
   useEffect(() => {   
     window.addEventListener("scroll", setBottomNavState)
@@ -102,10 +116,13 @@ function App() {
 
   useEffect(()=>{
     setTopBanner(true); 
-  },[])   
-
+  },[]) 
+  
+  
   return (
-    <div className="App">  
+    <div className="App">   
+    <input type="button" onClick={()=>{getClothes(firestore)}}></input> 
+      
       {/* # 최상단 배너 # */} 
       {
         topBanner === true &&
