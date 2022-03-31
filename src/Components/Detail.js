@@ -32,18 +32,7 @@ function Detail({ detailQuan,
         if(goCart){
           history.push('/CoCo_project_ver.2_build/cart')
         }       
-    }
-
-    // const publicDirImg = () =>{
-    //   const path = `/assets/${topNavActiveTap}/${topNavActiveTap}_${matchItems.id}.jpg`
-    //   const homepage = `https://creative-lee.github.io/CoCo_project_ver.2_build`
-    //   switch (process.env.NODE_ENV){
-    //     case 'production' :
-    //       return homepage+path      
-    //     case 'development' :
-    //       return path
-    //   }
-    // }
+    }  
 		
     const ASSET_IMG_URL = `${process.env.IMG_URL}/assets/${topNavActiveTap}/${topNavActiveTap}_${matchItems.id}.jpg`
 

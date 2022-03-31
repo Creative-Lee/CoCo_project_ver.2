@@ -9,7 +9,7 @@ function Product({clothes,topNavActiveTap}){
 
   return(
     
-    <Col className="product" md='3' onClick={ ()=> { history.push(`/CoCo_project_ver.2_build/detail/${topNavActiveTap}/${clothes.id}`)} }>      
+    <Col className="product" md='3' onClick={()=> { history.push(`/CoCo_project_ver.2_build/detail/${topNavActiveTap}/${clothes.id}`)} }>      
       <div className="product__img-wrap">        
         <img className="product__img" src={ASSET_IMG_URL} alt="product"/>
       </div> 

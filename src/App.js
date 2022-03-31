@@ -29,11 +29,8 @@ import instaIcon from './img/instaIcon.png'
 import cartIcon from './img/cartIcon.png'
 import searchIcon from './img/searchIcon.png'
 
-
 import CartContainer from './containers/CartContainer';
 import DetailContainer from './containers/DetailContainer';
-import { result } from 'lodash';
-
 
 function App() {
   const headerInlineStyle = {height : "80px", marginBottom: "80px"}
@@ -94,22 +91,31 @@ function App() {
     window.scrollTo({top: 0, behavior:'instant'})
   }
 
-  async function getClothes(firestore){
+  const [clothesList, setClothesList] = useState([])
+  const [shoesList, setShoesList] = useState([])
+
+  async function getClothesList(firestore){
     const clothesCol = collection(firestore,'clothes')
     const clothesDoc = await getDocs(clothesCol) 
-    const clothesList = clothesDoc.docs.map(doc => doc.data()) 
-  
-    return clothesList
-  }   
-
-  const getShoes = async (firestore) => {
+    const clothesList = clothesDoc.docs.map(doc => doc.data())    
+    
+    setClothesList(clothesList.splice(0))
+  }  
+    
+  const getShoesList = async (firestore) => {
     const shoesCol = collection(firestore, 'shoes');
     const shoesDoc = await getDocs(shoesCol);
     const shoesList = shoesDoc.docs.map(doc => doc.data())
     
-    return shoesList
+    setShoesList(shoesList.splice(0))
   }   
   
+  useEffect(()=>{
+    getClothesList(firestore);
+    getShoesList(firestore);
+  },[])
+  
+
   useEffect(() => {   
     window.addEventListener("scroll", setBottomNavState)
     return () =>{
@@ -118,11 +124,9 @@ function App() {
   })
   /* BottomNav show, hide 관련 */
 
-
   useEffect(()=>{
     setTopBanner(true); 
   },[]) 
-  
   
   return (
     <div className="App">      
@@ -270,16 +274,11 @@ function App() {
   <Route exact path="/CoCo_project_ver.2_build/clothes/all" basename="/CoCo_project_ver.2_build/clothes/all">
     <Container>    
       <Row>       
-        {
-          <input type="button" onClick={()=>{            
-          }}/>
-        }
-
-        {/* {
-          filterdProduct.map((a,i)=>{
-            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
-          })  
-        } */}
+        {              
+          clothesList.map((clothes,index)=>{            
+            return (<Product topNavActiveTap={topNavActiveTap} clothes={clothes} key={index}/>)
+          })        
+        }      
       </Row>
     </Container>
   </Route>
@@ -399,7 +398,7 @@ function App() {
     </Container>
   </Route>
 
-  <Route path="/CoCo_project_ver.2_build/detail/shoes/:data_id" basename="/CoCo_project_ver.2_build/shoes/detail/:data_id">
+  <Route path="/CoCo_project_ver.2_build/detail/shoes/:data_id" basename="/CoCo_project_ver.2_build/detail/shoes/:data_id">
     <Suspense fallback={ <div>로딩중입니다~!</div> }>
       <DetailContainer 
         allData={allData} setAllData={setAllData} 
