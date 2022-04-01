@@ -11,8 +11,6 @@ import BottomNav from './Components/layout/BottomNav';
 import Footer from './Components/layout/Footer';
 import Product from './Components/Product';
 
-import productData from './Data/productData/allData.js'
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/App.scss';
 
@@ -43,18 +41,9 @@ function App() {
   const [moreDivStyle,setMoreDivStyle] = useState(false);
   const moreDivInlineStyle = {backgroundColor : "white" , color: "black"} 
 
-  const [allData , setAllData] = useState(productData)  
-
   const [topNavActiveTap,setTopNavActiveTap] = useState("community");
   const [topNavOpenTap, setTopNavOpenTap] = useState(false) 
   const [bottomNavActiveTap,setBottomNavActiveTap] = useState("home"); 
-
-  const category = product => product.category === bottomNavActiveTap;
-  // 데이터 파일 내 상품의 카테고리와 타겟 카테고리 일치 비교 콜백함수
-
-  const filterdProduct = allData[topNavActiveTap].filter(category);   
-  // 각 상품군의 배열에서 필터링된 배열이 담긴 변수 
-  // 이 배열에 map()을 사용해서 Product 컴포넌트를 반복시킨다.
 
   /* BottomNav show, hide 관련 */
   const [isBottomNavShow,setIsBottomNavShow] = useState(true);  
@@ -94,20 +83,20 @@ function App() {
   const [clothesList, setClothesList] = useState([])
   const [shoesList, setShoesList] = useState([])
 
-  async function getClothesList(firestore){
+  const getClothesList = async (firestore) => {
     const clothesCol = collection(firestore,'clothes')
-    const clothesDoc = await getDocs(clothesCol) 
-    const clothesList = clothesDoc.docs.map(doc => doc.data())    
-    
-    setClothesList(clothesList.splice(0))
+    const clothesDoc = await getDocs(clothesCol)
+    const clothesList = [...clothesDoc.docs.map(doc => doc.data())]
+        
+    setClothesList(clothesList)
   }  
     
   const getShoesList = async (firestore) => {
     const shoesCol = collection(firestore, 'shoes');
     const shoesDoc = await getDocs(shoesCol);
-    const shoesList = shoesDoc.docs.map(doc => doc.data())
+    const shoesList = [...shoesDoc.docs.map(doc => doc.data())]
     
-    setShoesList(shoesList.splice(0))
+    setShoesList(shoesList)
   }   
   
   useEffect(()=>{
@@ -282,14 +271,15 @@ function App() {
       </Row>
     </Container>
   </Route>
-
     
   <Route exact path="/CoCo_project_ver.2_build/clothes/cityboy" basename="/CoCo_project_ver.2_build/clothes/cityboy">
     <Container>    
       <Row>
         {
-          filterdProduct.map((a,i)=>{
-            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
+          clothesList
+          .filter(clothes => clothes.category === 'cityboy')
+          .map((clothes,index)=>{            
+            return (<Product topNavActiveTap={topNavActiveTap} clothes={clothes} key={index}/>)
           })  
         }
       </Row>
@@ -299,8 +289,10 @@ function App() {
     <Container>    
       <Row>
         {
-          filterdProduct.map((a,i)=>{
-            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
+          clothesList
+          .filter(clothes => clothes.category === 'amekaji')
+          .map((clothes,index)=>{            
+            return (<Product topNavActiveTap={topNavActiveTap} clothes={clothes} key={index}/>)
           })  
         }
       </Row>
@@ -310,8 +302,10 @@ function App() {
     <Container>    
       <Row>
         {
-          filterdProduct.map((a,i)=>{
-            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
+          clothesList
+          .filter(clothes => clothes.category === 'street')
+          .map((clothes,index)=>{            
+            return (<Product topNavActiveTap={topNavActiveTap} clothes={clothes} key={index}/>)
           })  
         }
       </Row>
@@ -321,20 +315,25 @@ function App() {
     <Container>    
       <Row>
         {
-          filterdProduct.map((a,i)=>{
-            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
+          clothesList
+          .filter(clothes => clothes.category === 'minimal')
+          .map((clothes,index)=>{            
+            return (<Product topNavActiveTap={topNavActiveTap} clothes={clothes} key={index}/>)
           })  
         }
       </Row>
     </Container>
   </Route>
+
   <Route exact path="/CoCo_project_ver.2_build/clothes/new" basename="/CoCo_project_ver.2_build/clothes/new">
     <Container>    
       <Row>
         {
-          filterdProduct.map((a,i)=>{
-            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
-          })  
+          clothesList
+          .filter(clothes => clothes.category === 'new')
+          .map((clothes,index)=>{            
+            return (<Product topNavActiveTap={topNavActiveTap} clothes={clothes} key={index}/>)
+          }) 
         }
       </Row>
     </Container>
@@ -344,8 +343,9 @@ function App() {
     <Container>    
       <Row>
         {
-            filterdProduct.map((a,i)=>{
-            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
+          shoesList          
+          .map((shoes,index)=>{            
+            return (<Product topNavActiveTap={topNavActiveTap} shoes={shoes} key={index}/>)
           })  
         }
       </Row>
@@ -356,9 +356,11 @@ function App() {
     <Container>    
       <Row>
         {
-            filterdProduct.map((a,i)=>{
-            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
-          })  
+          shoesList
+          .filter(shoes => shoes.category === 'sneakers')
+          .map((shoes,index)=>{            
+            return (<Product topNavActiveTap={topNavActiveTap} shoes={shoes} key={index}/>)
+          }) 
         }
       </Row>
     </Container>
@@ -367,9 +369,11 @@ function App() {
     <Container>    
       <Row>
         {
-            filterdProduct.map((a,i)=>{
-            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
-          })  
+          shoesList
+          .filter(shoes => shoes.category === 'loafer')
+          .map((shoes,index)=>{            
+            return (<Product topNavActiveTap={topNavActiveTap} shoes={shoes} key={index}/>)
+          })   
         }
       </Row>
     </Container>
@@ -378,9 +382,11 @@ function App() {
     <Container>    
       <Row>
         {
-            filterdProduct.map((a,i)=>{
-            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
-          })  
+          shoesList
+          .filter(shoes => shoes.category === 'oxford')
+          .map((shoes,index)=>{            
+            return (<Product topNavActiveTap={topNavActiveTap} shoes={shoes} key={index}/>)
+          })   
         }
       </Row>
     </Container>
@@ -390,9 +396,11 @@ function App() {
     <Container>
       <Row>
         {
-          filterdProduct.map((a,i)=>{
-            return (<Product topNavActiveTap={topNavActiveTap} filterdData={a} i={i} key={i}/>)
-          })  
+          shoesList
+          .filter(shoes => shoes.category === 'new')
+          .map((shoes,index)=>{            
+            return (<Product topNavActiveTap={topNavActiveTap} shoes={shoes} key={index}/>)
+          })   
         }
       </Row>
     </Container>
