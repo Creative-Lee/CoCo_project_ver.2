@@ -21,7 +21,8 @@ export default function Detail({ detailQuan,
       }       
   }  
 	
-  const ASSET_IMG_URL = `${process.env.IMG_URL}/assets/${topNavActiveTap}/${topNavActiveTap}_${matchProduct.id}.jpg`
+  const MATCH_PRODUCT_IMG = `${process.env.IMG_URL}/assets/${topNavActiveTap}/${topNavActiveTap}_${matchProduct.id}.jpg`
+  const MATCH_PRODUCT_MAIN_IMG = `${process.env.IMG_URL}/assets/${topNavActiveTap}/${topNavActiveTap}_main_${matchProduct.id}.jpg`
 
   useEffect(()=>{
     localStorage.setItem("최근본상품",JSON.stringify([{id:`${matchProduct.id}`},{}]));
@@ -38,7 +39,7 @@ export default function Detail({ detailQuan,
       <Row>        
         <Col md="6">
 					<div>
-            <img src={ASSET_IMG_URL} alt='img' width="100%" />
+            <img src={MATCH_PRODUCT_IMG} alt='product' width="100%" />
 					</div>
         </Col>  
 
@@ -63,29 +64,46 @@ export default function Detail({ detailQuan,
 
       </Row>
       <Row>
-        <Nav className="mt-5" variant="tabs" defaultActiveKey="0">
+        <Nav className="mt-5" variant="tabs" defaultActiveKey="info">
         <Nav.Item>
-            <Nav.Link eventKey="0" onClick={() => { setTap("info"); setAniState(false) }}>상세정보👀</Nav.Link>
+            <Nav.Link eventKey="0" onClick={() => { setTap("info")}}>상세정보👀</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-            <Nav.Link eventKey="1" onClick={() => { setTap("review"); setAniState(false) }}>고객리뷰👍</Nav.Link>
+            <Nav.Link eventKey="1" onClick={() => { setTap("review")}}>고객리뷰👍</Nav.Link>
         </Nav.Item>    
         <Nav.Item>
-            <Nav.Link eventKey="2" onClick={() => { setTap("qna"); setAniState(false) }}>문의사항🤷‍♀️</Nav.Link>
+            <Nav.Link eventKey="2" onClick={() => { setTap("qna")}}>문의사항🤷‍♀️</Nav.Link>
         </Nav.Item>                  
-        </Nav>
+        </Nav>   
       
-        <TabContent tap={tap}/>
+      </Row>
+
+      <Row>
+        <TabContent tap={tap} MATCH_PRODUCT_MAIN_IMG={MATCH_PRODUCT_MAIN_IMG}/>
       </Row>
     </Container> 
   )
 }
 
-
-function TabContent({tap}){
+function TabContent({tap, MATCH_PRODUCT_MAIN_IMG}){
   const tabUI = {
-    info : <p>상세정보</p>,
+    info : 
+    <div>
+      <h3>
+        상세정보 
+      </h3>
+      <span>
+        놀라지 마세요
+        상상도 못한 정체
+      </span>
+      <div>
+        <img src={MATCH_PRODUCT_MAIN_IMG} alt='product' width="100%" />
+			</div>
+      
+    </div>,
+
     review : <p>고객리뷰</p>,
+
     qna : <p>문의사항</p>
   }    
 
