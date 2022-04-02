@@ -50,7 +50,7 @@ function App() {
   const [isMouseOnHeader,setIsMouseOnHeader] = useState(false);
   const [beforeScrollY,setBeforeScrollY] = useState(0)  
 
-  const setBottomNavState = () => {    
+  const changeBottomNavState = () => {    
     if(isMouseOnHeader || !isScrollDown()){
       setIsBottomNavShow(true); 
     } 
@@ -81,46 +81,45 @@ function App() {
   }
 
   const [clothesList, setClothesList] = useState([])
-  const [shoesList, setShoesList] = useState([])
+  const [shoesList, setShoesList] = useState([])  
 
   const getClothesList = async (firestore) => {
     const clothesCol = collection(firestore,'clothes')
     const clothesDoc = await getDocs(clothesCol)
-    const clothesList = [...clothesDoc.docs.map(doc => doc.data())]
+    const clothesList = clothesDoc.docs.map(doc => doc.data())
         
-    setClothesList(clothesList)
+    setClothesList([...clothesList])
   }  
     
   const getShoesList = async (firestore) => {
     const shoesCol = collection(firestore, 'shoes');
     const shoesDoc = await getDocs(shoesCol);
-    const shoesList = [...shoesDoc.docs.map(doc => doc.data())]
+    const shoesList = shoesDoc.docs.map(doc => doc.data())
     
-    setShoesList(shoesList)
-  }   
+    setShoesList([...shoesList])
+  }  
   
   useEffect(()=>{
     getClothesList(firestore);
-    getShoesList(firestore);
-  },[])
-  
+    getShoesList(firestore);    
+  },[]) 
 
   useEffect(() => {   
-    window.addEventListener("scroll", setBottomNavState)
+    window.addEventListener("scroll", changeBottomNavState)
+    
     return () =>{
-      window.removeEventListener("scroll", setBottomNavState)
+      window.removeEventListener("scroll", changeBottomNavState)
     } 
   })
-  /* BottomNav show, hide 관련 */
 
   useEffect(()=>{
     setTopBanner(true); 
   },[]) 
   
   return (
-    <div className="App">      
-      {/* # 최상단 배너 # */} 
+    <div className="App">          
       {
+        /* # 최상단 배너 # */
         topBanner === true &&
         <div className="top-banner">
           <CloseButton onClick={()=>{setTopBanner(false)}}/> 
@@ -406,23 +405,21 @@ function App() {
     </Container>
   </Route>
 
-  <Route path="/CoCo_project_ver.2_build/detail/shoes/:data_id" basename="/CoCo_project_ver.2_build/detail/shoes/:data_id">
+  <Route path="/CoCo_project_ver.2_build/detail/:product_id" basename="/CoCo_project_ver.2_build/detail/:product_id">
     <Suspense fallback={ <div>로딩중입니다~!</div> }>
       <DetailContainer 
-        allData={allData} setAllData={setAllData} 
-        topNavActiveTap={topNavActiveTap}
+        clothesList={clothesList} shoesList={shoesList} topNavActiveTap={topNavActiveTap}
       />
     </Suspense>
   </Route>
 
-  <Route path="/CoCo_project_ver.2_build/detail/clothes/:data_id" basename="/CoCo_project_ver.2_build/detail/clothes/:data_id">
+  {/* <Route path="/CoCo_project_ver.2_build/detail/clothes/:product_id" basename="/CoCo_project_ver.2_build/detail/clothes/:product_id">
     <Suspense fallback={ <div>로딩중입니다~!</div> }>
       <DetailContainer 
-        allData={allData} setAllData={setAllData} 
-        topNavActiveTap={topNavActiveTap}
+        allProductList={allProductList}
       />
       </Suspense>
-  </Route>  
+  </Route>   */}
 
   <Route path='/CoCo_project_ver.2_build/cart' basename="/CoCo_project_ver.2_build/cart">
     <Suspense fallback={ <div>로딩중입니다~!</div> }>

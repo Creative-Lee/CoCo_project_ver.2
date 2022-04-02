@@ -17,27 +17,24 @@ const initState = 1
     /* 리듀서 선언 */   
 // 리듀서는 export default 로 내보내주세요.
 export default function detailQuan(state = initState, action){
+  switch (action.type){        
+    case INCREASE:        
+      state++;
+      return state
 
-    switch (action.type){
-        
-      case INCREASE:        
-        state++;
+    case DECREASE:
+      if( state === 1 ){
         return state
+      }
 
-      case DECREASE:
-        if( state === 1 ){
-          return state
-        }
-        else{
-          state--;
-          return state
-        }
-
-      case QUAN_INITIALIZE:
-        state = 1;
-        return state;
-              
-      default: 
-        return state;
+      state--;
+      return state
+      
+    case QUAN_INITIALIZE:
+      state = 1;
+      return state;
+            
+    default: 
+      return state;
     } 
 }

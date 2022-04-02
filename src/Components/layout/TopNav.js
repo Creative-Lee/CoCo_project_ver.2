@@ -30,7 +30,7 @@ function TopNav({
               onClick={()=>{
                 setTopNavActiveTap("community");
                 setIsBottomNavShow(true)
-                setBottomNavActiveTap("home")
+                setBottomNavActiveTap("home")                
               }}
               onMouseOver={()=>{
                 setTopNavOpenTap("community");

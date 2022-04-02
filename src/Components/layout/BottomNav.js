@@ -82,7 +82,7 @@ function BottomNav({
             <Nav.Link id="bottom-navbar__nav-link--clothes" eventKey="new_clothes" as={Link} to="/CoCo_project_ver.2_build/clothes/new"
             onClick={()=>{                                                           
               setBottomNavActiveTap("new_clothes")                                  
-              }}>NEW~10%
+              }}>NEW~10%🤙
             </Nav.Link>
 
           </Nav>          
@@ -125,7 +125,7 @@ function BottomNav({
             <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="new_shoes" as={Link} to="/CoCo_project_ver.2_build/shoes/new"
               onClick={()=>{
                 setBottomNavActiveTap("new_shoes");                
-              }}>NEW~10%
+              }}>NEW~10%🤙
             </Nav.Link>
 
           </Nav>          
