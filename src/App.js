@@ -1,5 +1,5 @@
 import React, { useEffect, useState ,useMemo , lazy , Suspense } from 'react';
-import { Link, Route, Switch, useHistory }  from 'react-router-dom';
+import { Link, Route,Routes }  from 'react-router-dom';
 import { Navbar,Nav,CloseButton,Button,Container,Row,Col,Offcanvas,Carousel} from 'react-bootstrap';
 
 import {firestore, storage} from './firebase';
@@ -30,7 +30,7 @@ import searchIcon from './img/searchIcon.png'
 import CartContainer from './containers/CartContainer';
 import DetailContainer from './containers/DetailContainer';
 
-function App() {
+export default function App() {
   const headerInlineStyle = {height : "80px", marginBottom: "80px"}
   const [hiddenMenuShow, setHiddenMenuShow] = useState(false);
   const hiddenMenuClose = () => setHiddenMenuShow(false);
@@ -180,87 +180,88 @@ function App() {
         </Offcanvas.Body>
     </Offcanvas>
 
-  <Switch> 
-    <Route exact path="/CoCo_project_ver.2_build" basename="/CoCo_project_ver.2_build"> {/*# 메인페이지 # */}
-
-  <article className="home-header">
-    <Container>    
-      <Row>
-        <Col md="9">
-          <div className="main-content" >
-            <a className="main-content__link" href="https://www.instagram.com/minsunki6613/" target="_blank"> 
-              <div className="main-content__img-wrap"
-                onMouseOver={()=>{setMoreDivStyle(true)}}
-                onMouseOut={()=>{setMoreDivStyle(false)}}>
-                  <img className="main-content__img" src={brother2} alt="big brother"/> 
-              </div>
-
-              <div className="main-content__text-wrap">
-                <div className="main-content__text">
-                  <span className="main-content__text-01">무한매력의 코코상!</span>          
-                  <span className="main-content__text-02">CEO 코코상 그의 성공비결을 취재하다</span>          
-                  <br/>
-                  <span className="main-content__text-03">__directed by Mr.Lee</span>  
+  <Routes basename="CoCo_project_ver.2_build"> 
+    
+    <Route path="/CoCo_project_ver.2_build" element={
+      <article className="home-header">
+      <Container>    
+        <Row>
+          <Col md="9">
+            <div className="main-content" >
+              <a className="main-content__link" href="https://www.instagram.com/minsunki6613/" target="_blank"> 
+                <div className="main-content__img-wrap"
+                  onMouseOver={()=>{setMoreDivStyle(true)}}
+                  onMouseOut={()=>{setMoreDivStyle(false)}}>
+                    <img className="main-content__img" src={brother2} alt="big brother"/> 
                 </div>
-                <div className="main-content__text--more"
-                  style={ moreDivStyle == true ? moreDivInlineStyle :null }>
-                  보러가기
+  
+                <div className="main-content__text-wrap">
+                  <div className="main-content__text">
+                    <span className="main-content__text-01">무한매력의 코코상!</span>          
+                    <span className="main-content__text-02">CEO 코코상 그의 성공비결을 취재하다</span>          
+                    <br/>
+                    <span className="main-content__text-03">__directed by Mr.Lee</span>  
+                  </div>
+                  <div className="main-content__text--more"
+                    style={ moreDivStyle == true ? moreDivInlineStyle :null }>
+                    보러가기
+                  </div>
                 </div>
-              </div>
-            </a> 
-          </div>
-        </Col>
-
-        <Col md="3">
-        <Carousel className="right-carousel">           
-          <Carousel.Item>
-            <img 
-              src={profile2}
-              alt="1th slide"
-            />
-          </Carousel.Item>
-
-          <Carousel.Item>
-            <img 
-              src={profile4}
-              alt="2nd slide"
-            />
-          </Carousel.Item>
-
-          <Carousel.Item>
-            <img 
-              src={profile5}
-              alt="3rd slide"
-            />
-          </Carousel.Item>
-
-          <Carousel.Item>
-            <img 
-              src={profile6}
-              alt="4th slide"
-            />
-          </Carousel.Item>
-
-          <Carousel.Item>
-            <img 
-              src={profile7}
-              alt="5th slide"
-            />
+              </a> 
+            </div>
+          </Col>
+  
+          <Col md="3">
+          <Carousel className="right-carousel">           
+            <Carousel.Item>
+              <img 
+                src={profile2}
+                alt="1th slide"
+              />
             </Carousel.Item>
-          </Carousel>
-        <div className="mini">
-          <div className="mini-banner__img-wrap">
-            <img className="mini-banner__img" src={discountBanner}/>
+  
+            <Carousel.Item>
+              <img 
+                src={profile4}
+                alt="2nd slide"
+              />
+            </Carousel.Item>
+  
+            <Carousel.Item>
+              <img 
+                src={profile5}
+                alt="3rd slide"
+              />
+            </Carousel.Item>
+  
+            <Carousel.Item>
+              <img 
+                src={profile6}
+                alt="4th slide"
+              />
+            </Carousel.Item>
+  
+            <Carousel.Item>
+              <img 
+                src={profile7}
+                alt="5th slide"
+              />
+              </Carousel.Item>
+            </Carousel>
+          <div className="mini">
+            <div className="mini-banner__img-wrap">
+              <img className="mini-banner__img" src={discountBanner}/>
+            </div>
           </div>
-        </div>
-        </Col>
-      </Row>
-      </Container>
-    </article>
-    </Route>
+          </Col>
+        </Row>
+        </Container>
+      </article>    
+    }/>    
+    
 
-  <Route exact path="/CoCo_project_ver.2_build/clothes/all" basename="/CoCo_project_ver.2_build/clothes/all">
-    <Container>    
+    <Route path="CoCo_project_ver.2_build/clothes/all" element={
+      <Container>    
       <Row>       
         {              
           clothesList.map((clothes,index)=>{            
@@ -269,10 +270,10 @@ function App() {
         }      
       </Row>
     </Container>
-  </Route>
+    }/>   
     
-  <Route exact path="/CoCo_project_ver.2_build/clothes/cityboy" basename="/CoCo_project_ver.2_build/clothes/cityboy">
-    <Container>    
+    <Route path="CoCo_project_ver.2_build/clothes/cityboy" element={
+      <Container>    
       <Row>
         {
           clothesList
@@ -283,9 +284,11 @@ function App() {
         }
       </Row>
     </Container>
-  </Route>
-  <Route exact path="/CoCo_project_ver.2_build/clothes/amekaji" basename="/CoCo_project_ver.2_build/clothes/amekaji">
-    <Container>    
+    }/>
+    
+    
+    <Route path="CoCo_project_ver.2_build/clothes/amekaji" element={
+      <Container>    
       <Row>
         {
           clothesList
@@ -296,9 +299,11 @@ function App() {
         }
       </Row>
     </Container>
-  </Route>
-  <Route exact path="/CoCo_project_ver.2_build/clothes/street" basename="/CoCo_project_ver.2_build/clothes/street">
-    <Container>    
+    }/>
+    
+    
+    <Route path="CoCo_project_ver.2_build/clothes/street" element={
+      <Container>    
       <Row>
         {
           clothesList
@@ -309,9 +314,11 @@ function App() {
         }
       </Row>
     </Container>
-  </Route>
-  <Route exact path="/CoCo_project_ver.2_build/clothes/minimal" basename="/CoCo_project_ver.2_build/clothes/minimal">
-    <Container>    
+    }/>
+    
+    
+    <Route path="CoCo_project_ver.2_build/clothes/minimal" element={
+      <Container>    
       <Row>
         {
           clothesList
@@ -322,10 +329,11 @@ function App() {
         }
       </Row>
     </Container>
-  </Route>
+    }/>
+    
 
-  <Route exact path="/CoCo_project_ver.2_build/clothes/new" basename="/CoCo_project_ver.2_build/clothes/new">
-    <Container>    
+    <Route path="CoCo_project_ver.2_build/clothes/new" element={
+      <Container>    
       <Row>
         {
           clothesList
@@ -336,10 +344,10 @@ function App() {
         }
       </Row>
     </Container>
-  </Route>
-  
-  <Route exact path="/CoCo_project_ver.2_build/shoes/all" basename="/CoCo_project_ver.2_build/shoes/all">
-    <Container>    
+    }/>
+    
+    <Route path="CoCo_project_ver.2_build/shoes/all" element={
+      <Container>    
       <Row>
         {
           shoesList          
@@ -349,10 +357,10 @@ function App() {
         }
       </Row>
     </Container>
-  </Route>
-
-  <Route exact path="/CoCo_project_ver.2_build/shoes/sneakers" basename="/CoCo_project_ver.2_build/shoes/sneakers">
-    <Container>    
+    }/>
+    
+    <Route path="CoCo_project_ver.2_build/shoes/sneakers" element={
+      <Container>    
       <Row>
         {
           shoesList
@@ -363,9 +371,11 @@ function App() {
         }
       </Row>
     </Container>
-  </Route>
-  <Route exact path="/CoCo_project_ver.2_build/shoes/loafer" basename="/CoCo_project_ver.2_build/shoes/loafer">
-    <Container>    
+    
+    }/>
+    
+    <Route path="CoCo_project_ver.2_build/shoes/loafer" element={
+      <Container>    
       <Row>
         {
           shoesList
@@ -376,9 +386,10 @@ function App() {
         }
       </Row>
     </Container>
-  </Route>
-  <Route exact path="/CoCo_project_ver.2_build/shoes/oxford" basename="/CoCo_project_ver.2_build/shoes/oxford">
-    <Container>    
+    }/>
+    
+    <Route path="CoCo_project_ver.2_build/shoes/oxford" element={
+      <Container>    
       <Row>
         {
           shoesList
@@ -389,10 +400,10 @@ function App() {
         }
       </Row>
     </Container>
-  </Route>
-
-  <Route exact path="/CoCo_project_ver.2_build/shoes/new" basename="/CoCo_project_ver.2_build/shoes/new">
-    <Container>
+    }/>
+    
+    <Route path="CoCo_project_ver.2_build/shoes/new" element={
+      <Container>
       <Row>
         {
           shoesList
@@ -403,37 +414,25 @@ function App() {
         }
       </Row>
     </Container>
-  </Route>
+    }/>
 
-  <Route path="/CoCo_project_ver.2_build/detail/:product_id" basename="/CoCo_project_ver.2_build/detail/:product_id">
-    <Suspense fallback={ <div>로딩중입니다~!</div> }>
+    <Route path="CoCo_project_ver.2_build/detail/:product_id" element={
+      <Suspense fallback={ <div>로딩중입니다~!</div> }>
       <DetailContainer 
         clothesList={clothesList} shoesList={shoesList} topNavActiveTap={topNavActiveTap}
       />
     </Suspense>
-  </Route>
-
-  {/* <Route path="/CoCo_project_ver.2_build/detail/clothes/:product_id" basename="/CoCo_project_ver.2_build/detail/clothes/:product_id">
-    <Suspense fallback={ <div>로딩중입니다~!</div> }>
-      <DetailContainer 
-        allProductList={allProductList}
-      />
-      </Suspense>
-  </Route>   */}
-
-  <Route path='/CoCo_project_ver.2_build/cart' basename="/CoCo_project_ver.2_build/cart">
-    <Suspense fallback={ <div>로딩중입니다~!</div> }>
+    }/>
+    
+    <Route path='CoCo_project_ver.2_build/cart' element={
+      <Suspense fallback={ <div>로딩중입니다~!</div> }>
       <CartContainer/>
     </Suspense>
-  </Route>
+    }/>
+    
+  </Routes>
 
-  </Switch>
-
-      <Footer instaIcon={instaIcon}/> 
-        
-    </div>
-  );
-  
+    <Footer instaIcon={instaIcon}/> 
+  </div>
+  );  
 } 
-
-export default App;

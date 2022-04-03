@@ -1,23 +1,24 @@
 import React, { useState , useEffect } from 'react'
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useNavigate, useParams } from 'react-router-dom';
 
 import {Nav , Button, Container, Row, Col} from 'react-bootstrap';
 
 export default function Detail({ detailQuan, 
   onQuan_Initialize, onIncrease, onDecrease, onAddData,
   topNavActiveTap, clothesList, shoesList }){
+    
+  const navigate = useNavigate();
+  const { product_id } = useParams();
 
   const [tap,setTap] = useState("info")
   const allProductList = [...clothesList, ...shoesList]  
 
-  let history = useHistory();
-  const { product_id } = useParams();
   const matchProduct = allProductList.find(product => product.id == product_id)
   
   const cartQuestion = () => {
       const goCart =  window.confirm("선택하신 상품이 장바구니에 담겼습니다.장바구니로 이동할까요??")
       if(goCart){
-        history.push('/CoCo_project_ver.2_build/cart')
+        navigate('/CoCo_project_ver.2_build/cart')
       }       
   }  
 	

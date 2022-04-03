@@ -1,10 +1,10 @@
 import React from 'react';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import {Col} from 'react-bootstrap';
 
 function Product({clothes,shoes,topNavActiveTap}){
 
-  const history = useHistory();
+  const navigate = useNavigate();
   
   const target = () => {
     return topNavActiveTap === 'clothes' ? clothes : shoes
@@ -14,7 +14,7 @@ function Product({clothes,shoes,topNavActiveTap}){
   
 
   return(    
-    <Col className="product" md='3' onClick={()=> { history.push(`/CoCo_project_ver.2_build/detail/${target().id}`)} }>      
+    <Col className="product" md='3' onClick={()=> { navigate(`/CoCo_project_ver.2_build/detail/${target().id}`)} }>      
       <div className="product__img-wrap">        
         <img className="product__img" src={ASSET_IMG_URL} alt="product"/>
       </div> 

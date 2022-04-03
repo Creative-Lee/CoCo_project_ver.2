@@ -1,8 +1,7 @@
 import React, { useEffect , useState} from 'react';
 import { Nav,Container,Navbar} from 'react-bootstrap';
-import {Link} from 'react-router-dom'
-import { useHistory } from 'react-router';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import {useNavigate, Link} from 'react-router-dom'
+
 
 function TopNav({  
   setIsBottomNavShow,
@@ -14,7 +13,7 @@ function TopNav({
   initialScroll,
   setTopNavOpenTap,}){
 
-  const history = useHistory();  
+  const navigate = useNavigate();  
 
   return (
     <div id="top-navbar--wrap">
@@ -74,7 +73,7 @@ function TopNav({
           
             <div className="top-navbar__cart-wrap">
               <img src={cartIcon} alt="cartIcon" className="top-navbar__cart"
-              onClick={()=> { history.push(`/CoCo_project_ver.2_build/cart`)}}/>   
+              onClick={()=> { navigate(`/CoCo_project_ver.2_build/cart`)}}/>   
             </div>            
             <Nav className="top-navbar__etc-nav">
               <Nav.Link as={Link} to="/CoCo_project_ver.2_build/login">

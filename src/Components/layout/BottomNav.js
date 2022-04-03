@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Nav,Container,Navbar} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function BottomNav({
   topNavOpenTap,
