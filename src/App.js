@@ -420,6 +420,7 @@ export default function App() {
       <Suspense fallback={ <div>로딩중입니다~!</div> }>
       <DetailContainer 
         clothesList={clothesList} shoesList={shoesList} topNavActiveTap={topNavActiveTap}
+        initialScroll={initialScroll}
       />
     </Suspense>
     }/>

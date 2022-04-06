@@ -3,9 +3,10 @@ import { useNavigate, useNavigate, useParams } from 'react-router-dom';
 
 import {Nav , Button, Container, Row, Col} from 'react-bootstrap';
 
-export default function Detail({ detailQuan, 
+export default function Detail({ 
+  detailQuan, 
   onQuan_Initialize, onIncrease, onDecrease, onAddData,
-  topNavActiveTap, clothesList, shoesList }){
+  topNavActiveTap, clothesList, shoesList, initialScroll }){
     
   const navigate = useNavigate();
   const { product_id } = useParams();
@@ -25,13 +26,12 @@ export default function Detail({ detailQuan,
   const MATCH_PRODUCT_IMG = `${process.env.IMG_URL}/assets/${topNavActiveTap}/${topNavActiveTap}_${matchProduct.id}.jpg`
   const MATCH_PRODUCT_MAIN_IMG = `${process.env.IMG_URL}/assets/${topNavActiveTap}/${topNavActiveTap}_main_${matchProduct.id}.jpg`
 
-  useEffect(()=>{
-    localStorage.setItem("최근본상품",JSON.stringify([{id:`${matchProduct.id}`},{}]));
-  },[])
+  useEffect(()=>{  
+    localStorage.setItem("최근 본 상품",JSON.stringify({id:`${matchProduct.id}`}))
+    initialScroll();  
 
-  useEffect(()=>{    
     return ()=>{
-      onQuan_Initialize()
+      onQuan_Initialize();      
     }    
   },[])
 

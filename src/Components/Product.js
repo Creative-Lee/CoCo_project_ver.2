@@ -4,17 +4,16 @@ import {Col} from 'react-bootstrap';
 
 function Product({clothes,shoes,topNavActiveTap}){
 
-  const navigate = useNavigate();
+  const navigate = useNavigate();  
   
-  const target = () => {
+  const target = () => { 
     return topNavActiveTap === 'clothes' ? clothes : shoes
-  }
+  }  
 
   const ASSET_IMG_URL = `${process.env.IMG_URL}/assets/${topNavActiveTap}/${topNavActiveTap}_${target().id}.jpg`
-  
 
   return(    
-    <Col className="product" md='3' onClick={()=> { navigate(`/CoCo_project_ver.2/detail/${target().id}`)} }>      
+    <Col id="product" md='3' onClick={()=> { navigate(`/CoCo_project_ver.2/detail/${target().id}`)}}>      
       <div className="product__img-wrap">        
         <img className="product__img" src={ASSET_IMG_URL} alt="product"/>
       </div> 
