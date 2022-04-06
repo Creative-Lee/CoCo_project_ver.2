@@ -18,7 +18,7 @@ export default function Detail({ detailQuan,
   const cartQuestion = () => {
       const goCart =  window.confirm("선택하신 상품이 장바구니에 담겼습니다.장바구니로 이동할까요??")
       if(goCart){
-        navigate('/CoCo_project_ver.2_build/cart')
+        navigate('/CoCo_project_ver.2/cart')
       }       
   }  
 	

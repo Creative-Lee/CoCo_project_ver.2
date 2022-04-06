@@ -170,19 +170,19 @@ export default function App() {
         <Offcanvas.Body>
           <h1>여기에는 뭐든지 들어갑니다.</h1>
           <Nav id="hidden-menu__nav">
-              <Nav.Link as={Link} to="/CoCo_project_ver.2_build/detail/0">men</Nav.Link>
-              <Nav.Link as={Link} to="/CoCo_project_ver.2_build/detail/1">lady</Nav.Link>
-              <Nav.Link as={Link} to="/CoCo_project_ver.2_build/detail/2">unisex</Nav.Link>
-              <Nav.Link as={Link} to="/CoCo_project_ver.2_build/detail/2">unisex</Nav.Link>
-              <Nav.Link as={Link} to="/CoCo_project_ver.2_build/detail/2">unisex</Nav.Link>
-              <Nav.Link as={Link} to="/CoCo_project_ver.2_build/detail/2">unisex</Nav.Link>
+              <Nav.Link as={Link} to="/CoCo_project_ver.2/detail/0">men</Nav.Link>
+              <Nav.Link as={Link} to="/CoCo_project_ver.2/detail/1">lady</Nav.Link>
+              <Nav.Link as={Link} to="/CoCo_project_ver.2/detail/2">unisex</Nav.Link>
+              <Nav.Link as={Link} to="/CoCo_project_ver.2/detail/2">unisex</Nav.Link>
+              <Nav.Link as={Link} to="/CoCo_project_ver.2/detail/2">unisex</Nav.Link>
+              <Nav.Link as={Link} to="/CoCo_project_ver.2/detail/2">unisex</Nav.Link>
           </Nav>
         </Offcanvas.Body>
     </Offcanvas>
 
-  <Routes basename="CoCo_project_ver.2_build"> 
+  <Routes basename="CoCo_project_ver.2"> 
     
-    <Route path="/CoCo_project_ver.2_build" element={
+    <Route path="/CoCo_project_ver.2" element={
       <article className="home-header">
       <Container>    
         <Row>
@@ -260,7 +260,7 @@ export default function App() {
     }/>    
     
 
-    <Route path="CoCo_project_ver.2_build/clothes/all" element={
+    <Route path="CoCo_project_ver.2/clothes/all" element={
       <Container>    
       <Row>       
         {              
@@ -272,7 +272,7 @@ export default function App() {
     </Container>
     }/>   
     
-    <Route path="CoCo_project_ver.2_build/clothes/cityboy" element={
+    <Route path="CoCo_project_ver.2/clothes/cityboy" element={
       <Container>    
       <Row>
         {
@@ -287,7 +287,7 @@ export default function App() {
     }/>
     
     
-    <Route path="CoCo_project_ver.2_build/clothes/amekaji" element={
+    <Route path="CoCo_project_ver.2/clothes/amekaji" element={
       <Container>    
       <Row>
         {
@@ -302,7 +302,7 @@ export default function App() {
     }/>
     
     
-    <Route path="CoCo_project_ver.2_build/clothes/street" element={
+    <Route path="CoCo_project_ver.2/clothes/street" element={
       <Container>    
       <Row>
         {
@@ -317,7 +317,7 @@ export default function App() {
     }/>
     
     
-    <Route path="CoCo_project_ver.2_build/clothes/minimal" element={
+    <Route path="CoCo_project_ver.2/clothes/minimal" element={
       <Container>    
       <Row>
         {
@@ -332,7 +332,7 @@ export default function App() {
     }/>
     
 
-    <Route path="CoCo_project_ver.2_build/clothes/new" element={
+    <Route path="CoCo_project_ver.2/clothes/new" element={
       <Container>    
       <Row>
         {
@@ -346,7 +346,7 @@ export default function App() {
     </Container>
     }/>
     
-    <Route path="CoCo_project_ver.2_build/shoes/all" element={
+    <Route path="CoCo_project_ver.2/shoes/all" element={
       <Container>    
       <Row>
         {
@@ -359,7 +359,7 @@ export default function App() {
     </Container>
     }/>
     
-    <Route path="CoCo_project_ver.2_build/shoes/sneakers" element={
+    <Route path="CoCo_project_ver.2/shoes/sneakers" element={
       <Container>    
       <Row>
         {
@@ -374,7 +374,7 @@ export default function App() {
     
     }/>
     
-    <Route path="CoCo_project_ver.2_build/shoes/loafer" element={
+    <Route path="CoCo_project_ver.2/shoes/loafer" element={
       <Container>    
       <Row>
         {
@@ -388,7 +388,7 @@ export default function App() {
     </Container>
     }/>
     
-    <Route path="CoCo_project_ver.2_build/shoes/oxford" element={
+    <Route path="CoCo_project_ver.2/shoes/oxford" element={
       <Container>    
       <Row>
         {
@@ -402,7 +402,7 @@ export default function App() {
     </Container>
     }/>
     
-    <Route path="CoCo_project_ver.2_build/shoes/new" element={
+    <Route path="CoCo_project_ver.2/shoes/new" element={
       <Container>
       <Row>
         {
@@ -416,7 +416,7 @@ export default function App() {
     </Container>
     }/>
 
-    <Route path="CoCo_project_ver.2_build/detail/:product_id" element={
+    <Route path="CoCo_project_ver.2/detail/:product_id" element={
       <Suspense fallback={ <div>로딩중입니다~!</div> }>
       <DetailContainer 
         clothesList={clothesList} shoesList={shoesList} topNavActiveTap={topNavActiveTap}
@@ -424,7 +424,7 @@ export default function App() {
     </Suspense>
     }/>
     
-    <Route path='CoCo_project_ver.2_build/cart' element={
+    <Route path='CoCo_project_ver.2/cart' element={
       <Suspense fallback={ <div>로딩중입니다~!</div> }>
       <CartContainer/>
     </Suspense>

@@ -14,7 +14,7 @@ function Product({clothes,shoes,topNavActiveTap}){
   
 
   return(    
-    <Col className="product" md='3' onClick={()=> { navigate(`/CoCo_project_ver.2_build/detail/${target().id}`)} }>      
+    <Col className="product" md='3' onClick={()=> { navigate(`/CoCo_project_ver.2/detail/${target().id}`)} }>      
       <div className="product__img-wrap">        
         <img className="product__img" src={ASSET_IMG_URL} alt="product"/>
       </div> 
