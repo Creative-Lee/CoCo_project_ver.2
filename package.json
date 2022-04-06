@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "rimraf dist && rimraf .parcel-cache && parcel ./public/index.html --open",
-    "build": "rimraf dist && rimraf build && parcel build ./public/index.html --dist-dir build --public-url https://creative-lee.github.io/CoCo_project_ver.2_build",
+    "build": "rimraf dist && rimraf build && parcel build ./public/index.html --dist-dir build --public-url https://creative-lee.github.io/CoCo_project_ver.2",
     "deploy": "gh-pages -d build"
   },
   "repository": {
@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/Creative-Lee/CoCo_project_ver.2/issues"
   },
-  "homepage": "https://creative-lee.github.io/CoCo_project_ver.2_build",
+  "homepage": "https://creative-lee.github.io/CoCo_project_ver.2",
   "dependencies": {
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
