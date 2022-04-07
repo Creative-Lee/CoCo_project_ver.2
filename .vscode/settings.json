@@ -1,3 +1,5 @@
 {
-  "editor.foldingMaximumRegions": 10000
+  "editor.foldingMaximumRegions": 10000,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }
