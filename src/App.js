@@ -29,6 +29,7 @@ import searchIcon from './img/searchIcon.png'
 
 import CartContainer from './containers/CartContainer';
 import DetailContainer from './containers/DetailContainer';
+import ProductList from './Components/ProductList'
 
 export default function App() {
   const headerInlineStyle = {height : "80px", marginBottom: "80px"}
@@ -260,161 +261,10 @@ export default function App() {
     }/>    
     
 
-    <Route path="CoCo_project_ver.2/clothes/all" element={
-      <Container>    
-      <Row>       
-        {              
-          clothesList.map((clothes,index)=>{            
-            return (<Product topNavActiveTap={topNavActiveTap} clothes={clothes} key={index}/>)
-          })        
-        }      
-      </Row>
-    </Container>
-    }/>   
-    
-    <Route path="CoCo_project_ver.2/clothes/cityboy" element={
-      <Container>    
-      <Row>
-        {
-          clothesList
-          .filter(clothes => clothes.category === 'cityboy')
-          .map((clothes,index)=>{            
-            return (<Product topNavActiveTap={topNavActiveTap} clothes={clothes} key={index}/>)
-          })  
-        }
-      </Row>
-    </Container>
+    <Route path="CoCo_project_ver.2/:product_param/:category_param" element={
+      <ProductList clothesList={clothesList} shoesList={shoesList} topNavActiveTap={topNavActiveTap}/>
     }/>
     
-    
-    <Route path="CoCo_project_ver.2/clothes/amekaji" element={
-      <Container>    
-      <Row>
-        {
-          clothesList
-          .filter(clothes => clothes.category === 'amekaji')
-          .map((clothes,index)=>{            
-            return (<Product topNavActiveTap={topNavActiveTap} clothes={clothes} key={index}/>)
-          })  
-        }
-      </Row>
-    </Container>
-    }/>
-    
-    
-    <Route path="CoCo_project_ver.2/clothes/street" element={
-      <Container>    
-      <Row>
-        {
-          clothesList
-          .filter(clothes => clothes.category === 'street')
-          .map((clothes,index)=>{            
-            return (<Product topNavActiveTap={topNavActiveTap} clothes={clothes} key={index}/>)
-          })  
-        }
-      </Row>
-    </Container>
-    }/>
-    
-    
-    <Route path="CoCo_project_ver.2/clothes/minimal" element={
-      <Container>    
-      <Row>
-        {
-          clothesList
-          .filter(clothes => clothes.category === 'minimal')
-          .map((clothes,index)=>{            
-            return (<Product topNavActiveTap={topNavActiveTap} clothes={clothes} key={index}/>)
-          })  
-        }
-      </Row>
-    </Container>
-    }/>
-    
-
-    <Route path="CoCo_project_ver.2/clothes/new" element={
-      <Container>    
-      <Row>
-        {
-          clothesList
-          .filter(clothes => clothes.category === 'new')
-          .map((clothes,index)=>{            
-            return (<Product topNavActiveTap={topNavActiveTap} clothes={clothes} key={index}/>)
-          }) 
-        }
-      </Row>
-    </Container>
-    }/>
-    
-    <Route path="CoCo_project_ver.2/shoes/all" element={
-      <Container>    
-      <Row>
-        {
-          shoesList          
-          .map((shoes,index)=>{            
-            return (<Product topNavActiveTap={topNavActiveTap} shoes={shoes} key={index}/>)
-          })  
-        }
-      </Row>
-    </Container>
-    }/>
-    
-    <Route path="CoCo_project_ver.2/shoes/sneakers" element={
-      <Container>    
-      <Row>
-        {
-          shoesList
-          .filter(shoes => shoes.category === 'sneakers')
-          .map((shoes,index)=>{            
-            return (<Product topNavActiveTap={topNavActiveTap} shoes={shoes} key={index}/>)
-          }) 
-        }
-      </Row>
-    </Container>
-    
-    }/>
-    
-    <Route path="CoCo_project_ver.2/shoes/loafer" element={
-      <Container>    
-      <Row>
-        {
-          shoesList
-          .filter(shoes => shoes.category === 'loafer')
-          .map((shoes,index)=>{            
-            return (<Product topNavActiveTap={topNavActiveTap} shoes={shoes} key={index}/>)
-          })   
-        }
-      </Row>
-    </Container>
-    }/>
-    
-    <Route path="CoCo_project_ver.2/shoes/oxford" element={
-      <Container>    
-      <Row>
-        {
-          shoesList
-          .filter(shoes => shoes.category === 'oxford')
-          .map((shoes,index)=>{            
-            return (<Product topNavActiveTap={topNavActiveTap} shoes={shoes} key={index}/>)
-          })   
-        }
-      </Row>
-    </Container>
-    }/>
-    
-    <Route path="CoCo_project_ver.2/shoes/new" element={
-      <Container>
-      <Row>
-        {
-          shoesList
-          .filter(shoes => shoes.category === 'new')
-          .map((shoes,index)=>{            
-            return (<Product topNavActiveTap={topNavActiveTap} shoes={shoes} key={index}/>)
-          })   
-        }
-      </Row>
-    </Container>
-    }/>
 
     <Route path="CoCo_project_ver.2/detail/:product_id" element={
       <Suspense fallback={ <div>로딩중입니다~!</div> }>
