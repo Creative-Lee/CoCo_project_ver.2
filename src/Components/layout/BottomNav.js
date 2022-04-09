@@ -103,6 +103,12 @@ function BottomNav({
               }}>ALL
             </Nav.Link>
 
+            <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="flat" as={Link} to="/CoCo_project_ver.2/shoes/flat"
+              onClick={()=>{
+                setBottomNavActiveTap("flat");                
+              }}>플랫 슈즈
+            </Nav.Link>     
+
             <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="sneakers" as={Link} to="/CoCo_project_ver.2/shoes/sneakers"
               onClick={()=>{
                 setBottomNavActiveTap("sneakers");                
@@ -114,12 +120,6 @@ function BottomNav({
                 setBottomNavActiveTap("loafer");                
               }}>로퍼              
             </Nav.Link>
-
-            <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="oxford" as={Link} to="/CoCo_project_ver.2/shoes/oxford"
-              onClick={()=>{
-                setBottomNavActiveTap("oxford");                
-              }}>옥스퍼드
-            </Nav.Link>     
 
             <Nav.Link id="bottom-navbar__nav-link--shoes" eventKey="new_shoes" as={Link} to="/CoCo_project_ver.2/shoes/new"
               onClick={()=>{

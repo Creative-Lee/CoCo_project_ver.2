@@ -33,6 +33,7 @@ import ProductList from './Components/ProductList'
 
 export default function App() {
   const headerInlineStyle = {height : "80px", marginBottom: "80px"}
+
   const [hiddenMenuShow, setHiddenMenuShow] = useState(false);
   const hiddenMenuClose = () => setHiddenMenuShow(false);
   const hiddenMenuOpen = () => setHiddenMenuShow(true);
@@ -102,7 +103,8 @@ export default function App() {
   
   useEffect(()=>{
     getClothesList(firestore);
-    getShoesList(firestore);    
+    getShoesList(firestore);
+    setTopBanner(true);    
   },[]) 
 
   useEffect(() => {   
@@ -113,10 +115,6 @@ export default function App() {
     } 
   })
 
-  useEffect(()=>{
-    setTopBanner(true); 
-  },[]) 
-  
   return (
     <div className="App">          
       {
@@ -262,9 +260,9 @@ export default function App() {
     
 
     <Route path="CoCo_project_ver.2/:product_param/:category_param" element={
-      <ProductList clothesList={clothesList} shoesList={shoesList} topNavActiveTap={topNavActiveTap}/>
+      <ProductList clothesList={clothesList} shoesList={shoesList} 
+      setTopNavActiveTap={setTopNavActiveTap} setBottomNavActiveTap={setBottomNavActiveTap}/>
     }/>
-    
 
     <Route path="CoCo_project_ver.2/detail/:product_id" element={
       <Suspense fallback={ <div>로딩중입니다~!</div> }>

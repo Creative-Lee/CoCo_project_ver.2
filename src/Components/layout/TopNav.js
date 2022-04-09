@@ -28,8 +28,8 @@ function TopNav({
             <Nav.Link className="top-navbar__nav-link-01" eventKey="community" as={Link} to="/CoCo_project_ver.2"
               onClick={()=>{
                 setTopNavActiveTap("community");
-                setIsBottomNavShow(true)
                 setBottomNavActiveTap("home")                
+                setIsBottomNavShow(true)
               }}
               onMouseOver={()=>{
                 setTopNavOpenTap("community");

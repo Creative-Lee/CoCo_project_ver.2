@@ -1,28 +1,25 @@
 import React, {useEffect} from 'react';
-import {useParams} from 'react-router-dom'
+import {useParams, useLocation} from 'react-router-dom'
 import Product from './Product';
 import {Container, Row} from 'react-bootstrap'
 
 export default function ProductList({
-  clothesList, shoesList}){
-
-  useEffect(()=>{
-    console.log('Visit')
-  },[])
+  clothesList, shoesList, setTopNavActiveTap, setBottomNavActiveTap}){
 
   const {product_param, category_param} = useParams()
-  
-  const getJSXOfProductList = () => {
+  const location = useLocation()
+
+  const getProductComponent = () => {
     switch(category_param){
       case "all" :
         return productList.all
       
       default :
-        return productList.filterd
+        return productList.sorted
     }
   }
 
-  const getTargetList = () => {
+  const getTargetProductList = () => {
     switch(product_param){
       case 'clothes' :
         return clothesList
@@ -37,28 +34,34 @@ export default function ProductList({
       <Container>    
         <Row>
           {              
-            getTargetList().map((product,index)=>{            
-              return (<Product product={product} key={index}/>)
+            getTargetProductList()
+            .map((eachProduct,index)=>{            
+              return (<Product eachProduct={eachProduct} key={index}/>)
             })                 
           } 
         </Row>
       </Container>
     ,
-    filterd :
+    sorted :
       <Container>    
         <Row>
           {              
-            getTargetList()
-            .filter(product => product.category === category_param)
-            .map((product,index)=>{                  
-              return (<Product product={product} key={index}/>)
+            getTargetProductList()
+            .filter(eachProduct => eachProduct.category === category_param)
+            .map((eachProduct,index)=>{                  
+              return (<Product eachProduct={eachProduct} key={index}/>)
             })                 
           } 
         </Row>
       </Container>
   }
 
+  useEffect(()=>{
+    setTopNavActiveTap(product_param)
+    setBottomNavActiveTap(category_param)
+  },[location])
+
   return (
-    getJSXOfProductList()
+    getProductComponent()
   )
 }
