@@ -179,7 +179,7 @@ export default function App() {
         </Offcanvas.Body>
     </Offcanvas>
 
-  <Routes basename="CoCo_project_ver.2"> 
+  <Routes> 
     
     <Route path="/CoCo_project_ver.2" element={
       <article className="home-header">
@@ -258,25 +258,31 @@ export default function App() {
       </article>    
     }/>    
     
-
     <Route path="CoCo_project_ver.2/:product_param/:category_param" element={
-      <ProductList clothesList={clothesList} shoesList={shoesList} 
-      setTopNavActiveTap={setTopNavActiveTap} setBottomNavActiveTap={setBottomNavActiveTap}/>
+      <Suspense fallback={ <div>로딩중입니다~!</div> }>
+        <ProductList 
+        clothesList={clothesList} shoesList={shoesList} 
+        setTopNavActiveTap={setTopNavActiveTap} setBottomNavActiveTap={setBottomNavActiveTap}/>
+      </Suspense>
     }/>
 
     <Route path="CoCo_project_ver.2/detail/:product_id" element={
       <Suspense fallback={ <div>로딩중입니다~!</div> }>
-      <DetailContainer 
-        clothesList={clothesList} shoesList={shoesList} topNavActiveTap={topNavActiveTap}
-        initialScroll={initialScroll}
-      />
-    </Suspense>
+        <DetailContainer 
+          clothesList={clothesList} shoesList={shoesList} topNavActiveTap={topNavActiveTap}
+          initialScroll={initialScroll}
+        />
+      </Suspense>
     }/>
     
     <Route path='CoCo_project_ver.2/cart' element={
       <Suspense fallback={ <div>로딩중입니다~!</div> }>
-      <CartContainer/>
-    </Suspense>
+        <CartContainer/>
+      </Suspense>
+    }/>
+
+    <Route path='CoCo_project_ver.2/sign_in' element={
+      <div>아직 미구현입니다.</div>
     }/>
     
   </Routes>

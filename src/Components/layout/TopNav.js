@@ -76,7 +76,7 @@ function TopNav({
               onClick={()=> { navigate(`/CoCo_project_ver.2/cart`)}}/>   
             </div>            
             <Nav className="top-navbar__etc-nav">
-              <Nav.Link as={Link} to="/CoCo_project_ver.2/login">
+              <Nav.Link as={Link} to="/CoCo_project_ver.2/sign_in">
                 로그인
               </Nav.Link>
               <Nav.Link as={Link} to="/CoCo_project_ver.2/signup">
