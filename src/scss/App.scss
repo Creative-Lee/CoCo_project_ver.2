@@ -4,6 +4,7 @@
 @import './_Product.scss';
 @import './_TopNav.scss';
 @import './_BottomNav.scss';
+@import './_MainPage.scss';
 
 .App {
   text-align: center;
@@ -76,179 +77,6 @@
   top: 0px;
   z-index: 555;
 }
-
-
-
-.home-header {
-  margin-top: 30px;
-}
-
-.main-content {
-  border-radius: 7px;
-  overflow: hidden;
-  position: relative;
-  display: block;
-  z-index: 1;
-}
-
-.main-content::after {
-  content: '';
-  position: absolute;
-  z-index: 1;
-  top: auto;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 200px;
-  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.8));
-  pointer-events: none;
-}
-
-.main-content__img-wrap {
-  position: relative;
-  z-index: 1;
-  transform: scale(1);
-  transition: transform ease 0.2s;
-}
-.main-content__img-wrap:hover {
-  transform: scale(1.08);
-  transition: transform ease 0.15s;
-}
-
-.main-content__img-wrap::before {
-  content: '';
-  display: block;
-  padding-bottom: calc(100% / 4 * 3);
-}
-
-.main-content__img {
-  border-radius: 7px;
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.main-content__text-wrap {
-  z-index: 2;
-  display: flex;
-  align-items: flex-end;
-  position: absolute;
-  text-align: left;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  padding: 40px;
-  pointer-events: none;
-
-  .main-content__text {
-    flex: 1 1 auto;
-    z-index: 1;
-  }
-  .main-content__text-01 {
-    color: white;
-    font-size: 15px;
-    font-weight: 500;
-    word-spacing: 1px;
-    display: block;
-  }
-  .main-content__text-02 {
-    color: white;
-    font-size: 30px;
-    font-weight: 600;
-    word-spacing: 1px;
-    display: block;
-  }
-
-  .main-content__text-03 {
-    color: white;
-    font-size: 12px;
-    font-weight: 500;
-    word-spacing: 1px;
-    display: block;
-  }
-  .main-content__text--more {
-    display: block;
-
-    text-align: center;
-    color: white;
-    font-size: 15px;
-    font-weight: 500;
-    word-spacing: 1px;
-
-    width: 140px;
-    border-radius: 5px;
-    border: solid 1px white;
-    padding: 18px 0 17px 0;
-    margin-left: 15px;
-    z-index: 999;
-    transition: background, color ease 0.2s;
-  }
-}
-
-.right-carousel {  
-  img {
-    width: 100%;
-    transform: scale(1);
-    transition: transform ease 0.3s;
-  }    
-
-  img:hover {
-    transform: scale(1.1);
-    transition: transform ease 0.3s;
-  }
-  .carousel-inner {  
-    width: 100%;    
-    height: 100% ;
-    border-radius: 7px;
-
-  }
-  .carousel-item {
-    width: 100%;    
-    height: 100% ;
-    transition: transform ease 0.5s;
-  }
-  
-  
-
-
-}
-
-.mini {
-  position: relative;
-  margin-top: 12px;
-  border-radius: 7px;
-  width: 100%;
-  overflow: hidden;
-  bottom: 0;
-}
-.mini-banner__img-wrap::before {
-  content: '';
-  display: block;
-  padding-bottom: calc(100% / 16 * 9);
-}
-.mini-banner__img-wrap {
-  position: relative;
-  transform: scale(1);
-  transition: transform ease 0.2s;
-}
-.mini-banner__img-wrap:hover {
-  transform: scale(1.08);
-  transition: transform ease 0.15s;
-}
-
-.mini-banner__img {
-  position: absolute;
-  left: 0;
-  top: auto;
-  bottom: 0;
-  width: 100%;
-  border-radius: 7px;
-}
-
-
 
 .footer {
   background-color: #fafafa;
@@ -401,7 +229,7 @@
 
   #hidden-menu {
       width: 70%;
-    }
+  }
 }
 // #================= md 끝 ===================#
 

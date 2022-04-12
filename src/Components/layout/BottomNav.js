@@ -27,12 +27,12 @@ function BottomNav({
           <Nav.Link id="bottom-navbar__nav-link--community" eventKey="home" as={Link} to="/CoCo_project_ver.2"
             onClick={()=>{setBottomNavActiveTap("home")}}>홈
           </Nav.Link>
-          <Nav.Link id="bottom-navbar__nav-link--community" eventKey="following" as={Link} to="/CoCo_project_ver.2/following"
+          <Nav.Link id="bottom-navbar__nav-link--community" eventKey="following" as={Link} to="/CoCo_project_ver.2/community/following"
             onClick={()=>{setBottomNavActiveTap("following")}}>팔로잉
           </Nav.Link>
-          <Nav.Link id="bottom-navbar__nav-link--community" eventKey="picture" as={Link} to="/CoCo_project_ver.2/picture" 
+          <Nav.Link id="bottom-navbar__nav-link--community" eventKey="picture" as={Link} to="/CoCo_project_ver.2/community/picture" 
             onClick={()=>{setBottomNavActiveTap("picture")}}>사진</Nav.Link>
-          <Nav.Link id="bottom-navbar__nav-link--community" eventKey="event" as={Link} to="/CoCo_project_ver.2/event" 
+          <Nav.Link id="bottom-navbar__nav-link--community" eventKey="event" as={Link} to="/CoCo_project_ver.2/community/event" 
             onClick={()=>{setBottomNavActiveTap("event")}}>Summer Event🔥
           </Nav.Link>              
         </Nav>          

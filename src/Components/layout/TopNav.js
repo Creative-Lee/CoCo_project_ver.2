@@ -79,7 +79,7 @@ function TopNav({
               <Nav.Link as={Link} to="/CoCo_project_ver.2/sign_in">
                 로그인
               </Nav.Link>
-              <Nav.Link as={Link} to="/CoCo_project_ver.2/signup">
+              <Nav.Link as={Link} to="/CoCo_project_ver.2/sign_up">
                 회원가입
               </Nav.Link>
               <Nav.Link as={Link} to="/CoCo_project_ver.2/cs">

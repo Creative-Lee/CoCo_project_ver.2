@@ -1,18 +1,22 @@
 import React, { useEffect, useState ,useMemo , lazy , Suspense } from 'react';
 import { Link, Route,Routes }  from 'react-router-dom';
 import { Navbar,Nav,CloseButton,Button,Container,Row,Col,Offcanvas,Carousel} from 'react-bootstrap';
-
-import {firestore, storage} from './firebase';
+import {firestore, storage, auth} from './firebase';
 import {collection, getDocs} from 'firebase/firestore';
-
+import { createUserWithEmailAndPassword , signInWithEmailAndPassword , onAuthStateChanged } from 'firebase/auth';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './scss/App.scss';
 
 import TopNav from './Components/layout/TopNav';
 import BottomNav from './Components/layout/BottomNav';
 import Footer from './Components/layout/Footer';
-import Product from './Components/Product';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './scss/App.scss';
+import ProductList from './Components/ProductList'
+import Mainpage from './Components/MainPage';
+import Community from './Components/Comunnity';
+import SignIn from './Components/SignIn';
+import SignUp from './Components/SignUp';
+import CartContainer from './containers/CartContainer';
+import DetailContainer from './containers/DetailContainer';
 
 import coconut from './img/coconut.jpg'
 import discountBanner from './img/discountBanner.jpg'
@@ -27,10 +31,6 @@ import instaIcon from './img/instaIcon.png'
 import cartIcon from './img/cartIcon.png'
 import searchIcon from './img/searchIcon.png'
 
-import CartContainer from './containers/CartContainer';
-import DetailContainer from './containers/DetailContainer';
-import ProductList from './Components/ProductList'
-
 export default function App() {
   const headerInlineStyle = {height : "80px", marginBottom: "80px"}
 
@@ -40,8 +40,7 @@ export default function App() {
   
   const [topBanner,setTopBanner] = useState(false);
 
-  const [moreDivStyle,setMoreDivStyle] = useState(false);
-  const moreDivInlineStyle = {backgroundColor : "white" , color: "black"} 
+
 
   const [topNavActiveTap,setTopNavActiveTap] = useState("community");
   const [topNavOpenTap, setTopNavOpenTap] = useState(false) 
@@ -80,6 +79,42 @@ export default function App() {
 
   const initialScroll = () => {
     window.scrollTo({top: 0, behavior:'instant'})
+  }
+
+  const signUpEmail = (email, password) => {
+    createUserWithEmailAndPassword(auth, email, password)
+    .then(userCredential => {    
+      const user = userCredential.user;
+
+      console.log(user)   
+      alert('회원가입 성공') 
+    })
+    .catch(error => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    
+      console.log(errorCode)
+      console.log(errorMessage)
+      alert('회원가입 실패') 
+    });
+  }
+
+  const signInEmail = (email, password) => {
+    signInWithEmailAndPassword(auth, email, password)
+    .then(userCredential => {
+      const user = userCredential.user;
+
+      console.log(user);
+      alert('로그인 성공')
+    })
+    .catch(error => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      
+      console.log(errorCode)
+      console.log(errorMessage)
+      alert('로그인 실패')
+    });
   }
 
   const [clothesList, setClothesList] = useState([])
@@ -182,81 +217,14 @@ export default function App() {
   <Routes> 
     
     <Route path="/CoCo_project_ver.2" element={
-      <article className="home-header">
-      <Container>    
-        <Row>
-          <Col md="9">
-            <div className="main-content" >
-              <a className="main-content__link" href="https://www.instagram.com/minsunki6613/" target="_blank"> 
-                <div className="main-content__img-wrap"
-                  onMouseOver={()=>{setMoreDivStyle(true)}}
-                  onMouseOut={()=>{setMoreDivStyle(false)}}>
-                    <img className="main-content__img" src={brother2} alt="big brother"/> 
-                </div>
-  
-                <div className="main-content__text-wrap">
-                  <div className="main-content__text">
-                    <span className="main-content__text-01">무한매력의 코코상!</span>          
-                    <span className="main-content__text-02">CEO 코코상 그의 성공비결을 취재하다</span>          
-                    <br/>
-                    <span className="main-content__text-03">__directed by Mr.Lee</span>  
-                  </div>
-                  <div className="main-content__text--more"
-                    style={ moreDivStyle == true ? moreDivInlineStyle :null }>
-                    보러가기
-                  </div>
-                </div>
-              </a> 
-            </div>
-          </Col>
-  
-          <Col md="3">
-          <Carousel className="right-carousel">           
-            <Carousel.Item>
-              <img 
-                src={profile2}
-                alt="1th slide"
-              />
-            </Carousel.Item>
-  
-            <Carousel.Item>
-              <img 
-                src={profile4}
-                alt="2nd slide"
-              />
-            </Carousel.Item>
-  
-            <Carousel.Item>
-              <img 
-                src={profile5}
-                alt="3rd slide"
-              />
-            </Carousel.Item>
-  
-            <Carousel.Item>
-              <img 
-                src={profile6}
-                alt="4th slide"
-              />
-            </Carousel.Item>
-  
-            <Carousel.Item>
-              <img 
-                src={profile7}
-                alt="5th slide"
-              />
-              </Carousel.Item>
-            </Carousel>
-          <div className="mini">
-            <div className="mini-banner__img-wrap">
-              <img className="mini-banner__img" src={discountBanner}/>
-            </div>
-          </div>
-          </Col>
-        </Row>
-        </Container>
-      </article>    
-    }/>    
+      <Mainpage setTopNavActiveTap={setTopNavActiveTap} setBottomNavActiveTap={setBottomNavActiveTap}
+      discountBanner={discountBanner} brother2={brother2} 
+      profile2={profile2} profile4={profile4} profile5={profile5} profile6={profile6} profile7={profile7}/>
+    }/> 
+
+    <Route path="/CoCo_project_ver.2/community/:community_category_param" element={
+      <Community setTopNavActiveTap={setTopNavActiveTap} setBottomNavActiveTap={setBottomNavActiveTap}/>
+    }/>  
     
     <Route path="CoCo_project_ver.2/:product_param/:category_param" element={
       <Suspense fallback={ <div>로딩중입니다~!</div> }>
@@ -282,7 +250,11 @@ export default function App() {
     }/>
 
     <Route path='CoCo_project_ver.2/sign_in' element={
-      <div>아직 미구현입니다.</div>
+      <SignIn signInEmail={signInEmail} />
+    }/>
+
+    <Route path='CoCo_project_ver.2/sign_up' element={
+      <SignUp signUpEmail={signUpEmail} />
     }/>
     
   </Routes>
