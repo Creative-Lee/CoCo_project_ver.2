@@ -1,9 +1,9 @@
 import React, { useEffect, useState ,useMemo , lazy , Suspense } from 'react';
-import { Link, Route,Routes }  from 'react-router-dom';
+import { Link, Route,Routes ,useNavigate }  from 'react-router-dom';
 import { Navbar,Nav,CloseButton,Button,Container,Row,Col,Offcanvas,Carousel} from 'react-bootstrap';
 import {firestore, storage, auth} from './firebase';
 import {collection, getDocs} from 'firebase/firestore';
-import { createUserWithEmailAndPassword , signInWithEmailAndPassword , onAuthStateChanged } from 'firebase/auth';
+import { createUserWithEmailAndPassword , signInWithEmailAndPassword , onAuthStateChanged, signOut } from 'firebase/auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/App.scss';
 
@@ -32,6 +32,8 @@ import cartIcon from './img/cartIcon.png'
 import searchIcon from './img/searchIcon.png'
 
 export default function App() {
+  const navigate = useNavigate();
+
   const headerInlineStyle = {height : "80px", marginBottom: "80px"}
 
   const [hiddenMenuShow, setHiddenMenuShow] = useState(false);
@@ -39,8 +41,6 @@ export default function App() {
   const hiddenMenuOpen = () => setHiddenMenuShow(true);
   
   const [topBanner,setTopBanner] = useState(false);
-
-
 
   const [topNavActiveTap,setTopNavActiveTap] = useState("community");
   const [topNavOpenTap, setTopNavOpenTap] = useState(false) 
@@ -83,38 +83,83 @@ export default function App() {
 
   const signUpEmail = (email, password) => {
     createUserWithEmailAndPassword(auth, email, password)
-    .then(userCredential => {    
-      const user = userCredential.user;
-
-      console.log(user)   
-      alert('회원가입 성공') 
+    .then(() => {  
+      setIsAuthenticated(true);  
+      navigate('/CoCo_project_ver.2/auth/thanks')
     })
     .catch(error => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      const errorCode = error.code
     
-      console.log(errorCode)
-      console.log(errorMessage)
-      alert('회원가입 실패') 
+      switch(errorCode){
+        case 'auth/email-already-in-use' :
+          alert('이미 사용중인 이메일 입니다!')
+          break;
+
+        case 'auth/weak-password' :
+          alert('비밀번호는 최소 6글자 이상이여야 합니다!')
+          break;          
+
+        case 'auth/invalid-email' :
+          alert('유효하지 않은 이메일 형식입니다!')
+          break;
+
+        default : alert('회원가입 실패')
+      }      
     });
   }
 
   const signInEmail = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
-    .then(userCredential => {
-      const user = userCredential.user;
+    .then(() => {
+      setIsAuthenticated(true)  
+      navigate(-1)
+    })
+    .catch(error => {    
+      const errorCode = error.code;
+    
+      switch(errorCode){
+        case 'auth/wrong-password' :
+          alert('비밀번호가 틀립니다!')
+          break;
 
-      console.log(user);
-      alert('로그인 성공')
+        case 'auth/user-not-found' :
+          alert('존재하지 않는 이메일입니다!')
+          break;          
+
+        case 'auth/invalid-email' :
+          alert('유효하지 않은 이메일 형식입니다!')
+          break;
+
+        default : alert('로그인 실패')
+      } 
+    });
+  }
+
+  const signOutAccount = () => {
+    signOut(auth)
+    .then(()=>{
+      navigate('/CoCo_project_ver.2')
+      setIsAuthenticated(false);
     })
     .catch(error => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      
-      console.log(errorCode)
-      console.log(errorMessage)
-      alert('로그인 실패')
-    });
+      alert('로그아웃 실패')
+      console.log(error)
+    })
+  }
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+  const getAuthState = () => {
+    onAuthStateChanged(auth, user => {
+      if(user){
+        console.log('로그인 상태')
+        setIsAuthenticated(true)
+      }
+      else{
+        console.log('로그아웃 상태')
+        setIsAuthenticated(false)
+      }
+    })
   }
 
   const [clothesList, setClothesList] = useState([])
@@ -140,6 +185,7 @@ export default function App() {
     getClothesList(firestore);
     getShoesList(firestore);
     setTopBanner(true);    
+    getAuthState();
   },[]) 
 
   useEffect(() => {   
@@ -180,6 +226,8 @@ export default function App() {
         searchIcon={searchIcon}
         initialScroll={initialScroll}
         setTopNavOpenTap={setTopNavOpenTap}
+        isAuthenticated={isAuthenticated}
+        signOutAccount={signOutAccount}        
       />
         
       <BottomNav        
@@ -215,7 +263,7 @@ export default function App() {
     </Offcanvas>
 
   <Routes> 
-    
+    ㅇㄴㄹㄴㅇ러ㅟㄴ어리ㅏ넝ㄹ
     <Route path="/CoCo_project_ver.2" element={
       <Mainpage setTopNavActiveTap={setTopNavActiveTap} setBottomNavActiveTap={setBottomNavActiveTap}
       discountBanner={discountBanner} brother2={brother2} 
@@ -249,14 +297,21 @@ export default function App() {
       </Suspense>
     }/>
 
-    <Route path='CoCo_project_ver.2/sign_in' element={
+    <Route path='CoCo_project_ver.2/auth/sign_in' element={
       <SignIn signInEmail={signInEmail} />
     }/>
 
-    <Route path='CoCo_project_ver.2/sign_up' element={
+    <Route path='CoCo_project_ver.2/auth/sign_up' element={
       <SignUp signUpEmail={signUpEmail} />
     }/>
     
+    <Route path='CoCo_project_ver.2/mypage' element={
+      <div>마이페이지</div>
+    }/>
+
+    <Route path='CoCo_project_ver.2/auth/thanks' element={
+      <div> 고마워요~ </div>
+    }/>
   </Routes>
 
     <Footer instaIcon={instaIcon}/> 

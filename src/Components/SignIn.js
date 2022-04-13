@@ -18,9 +18,7 @@ export default function SignIn({signInEmail}){
               <Form.Label>이메일</Form.Label>
               <Form.Control type="email" placeholder="Enter email" onChange={e => setInputEmail(e.target.value)} />             
             </Form.Group>            
-            <div>
-              {inputEmail}
-              {inputPassword}
+            <div>              
             </div>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>비밀번호</Form.Label>

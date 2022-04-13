@@ -1,5 +1,5 @@
 import React, { useEffect , useState} from 'react';
-import { Nav,Container,Navbar} from 'react-bootstrap';
+import { Nav,Container,Navbar, Dropdown, Button} from 'react-bootstrap';
 import {useNavigate, Link} from 'react-router-dom'
 
 
@@ -11,9 +11,43 @@ function TopNav({
   setBottomNavActiveTap, 
   coconut,jjongLogo2,cartIcon,searchIcon,
   initialScroll,
-  setTopNavOpenTap,}){
+  setTopNavOpenTap,
+  isAuthenticated , signOutAccount}){
 
   const navigate = useNavigate();  
+
+  const authUi = {
+    true : 
+      <Nav className="top-navbar__etc-nav">       
+        <Dropdown>
+          <Dropdown.Toggle style={{background : 'white' , color : 'gray' , borderColor : 'white'}}>
+            my menu            
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item as={Link} to="/CoCo_project_ver.2/mypage">마이페이지</Dropdown.Item>
+            <Dropdown.Item as={Button} onClick={()=>{signOutAccount()}}>로그아웃</Dropdown.Item>
+                  
+          </Dropdown.Menu>
+        </Dropdown>
+        <Nav.Link as={Link} to="/CoCo_project_ver.2/cs">
+          고객센터
+        </Nav.Link>
+      </Nav>,
+    
+    false : 
+      <Nav className="top-navbar__etc-nav">
+        <Nav.Link as={Link} to="/CoCo_project_ver.2/auth/sign_in">
+          로그인
+        </Nav.Link>
+        <Nav.Link as={Link} to="/CoCo_project_ver.2/auth/sign_up">
+          회원가입
+        </Nav.Link>
+        <Nav.Link as={Link} to="/CoCo_project_ver.2/cs">
+          고객센터
+        </Nav.Link>
+      </Nav>
+  }
 
   return (
     <div id="top-navbar--wrap">
@@ -75,17 +109,7 @@ function TopNav({
               <img src={cartIcon} alt="cartIcon" className="top-navbar__cart"
               onClick={()=> { navigate(`/CoCo_project_ver.2/cart`)}}/>   
             </div>            
-            <Nav className="top-navbar__etc-nav">
-              <Nav.Link as={Link} to="/CoCo_project_ver.2/sign_in">
-                로그인
-              </Nav.Link>
-              <Nav.Link as={Link} to="/CoCo_project_ver.2/sign_up">
-                회원가입
-              </Nav.Link>
-              <Nav.Link as={Link} to="/CoCo_project_ver.2/cs">
-                고객센터
-              </Nav.Link>
-            </Nav>
+            {authUi[isAuthenticated]}
           </div>
         </Container>
       </Navbar>
