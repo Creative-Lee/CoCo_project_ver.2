@@ -262,8 +262,7 @@ export default function App() {
         </Offcanvas.Body>
     </Offcanvas>
 
-  <Routes> 
-    ㅇㄴㄹㄴㅇ러ㅟㄴ어리ㅏ넝ㄹ
+  <Routes>     
     <Route path="/CoCo_project_ver.2" element={
       <Mainpage setTopNavActiveTap={setTopNavActiveTap} setBottomNavActiveTap={setBottomNavActiveTap}
       discountBanner={discountBanner} brother2={brother2} 
