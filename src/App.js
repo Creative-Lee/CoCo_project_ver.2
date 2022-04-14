@@ -1,4 +1,4 @@
-import React, { useEffect, useState ,useMemo , lazy , Suspense } from 'react';
+import React, { useEffect, useState , Suspense } from 'react';
 import { Link, Route,Routes ,useNavigate }  from 'react-router-dom';
 import { Navbar,Nav,CloseButton,Button,Container,Row,Col,Offcanvas,Carousel} from 'react-bootstrap';
 import {firestore, storage, auth} from './firebase';
@@ -7,9 +7,7 @@ import { createUserWithEmailAndPassword , signInWithEmailAndPassword , onAuthSta
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/App.scss';
 
-import TopNav from './Components/layout/TopNav';
-import BottomNav from './Components/layout/BottomNav';
-import Footer from './Components/layout/Footer';
+import Layout from './Components/Layout'
 import ProductList from './Components/ProductList'
 import Mainpage from './Components/MainPage';
 import Community from './Components/Comunnity';
@@ -34,13 +32,9 @@ import searchIcon from './img/searchIcon.png'
 export default function App() {
   const navigate = useNavigate();
 
-  const headerInlineStyle = {height : "80px", marginBottom: "80px"}
+  const [isOffCanvasShow, setIsOffCanvasShow] = useState(false);
 
-  const [hiddenMenuShow, setHiddenMenuShow] = useState(false);
-  const hiddenMenuClose = () => setHiddenMenuShow(false);
-  const hiddenMenuOpen = () => setHiddenMenuShow(true);
-  
-  const [topBanner,setTopBanner] = useState(false);
+  const [isTopBannerAdsShow,setIsTopBannerAdsShow] = useState(false);
 
   const [topNavActiveTap,setTopNavActiveTap] = useState("community");
   const [topNavOpenTap, setTopNavOpenTap] = useState(false) 
@@ -184,7 +178,7 @@ export default function App() {
   useEffect(()=>{
     getClothesList(firestore);
     getShoesList(firestore);
-    setTopBanner(true);    
+    setIsTopBannerAdsShow(true);    
     getAuthState();
   },[]) 
 
@@ -197,123 +191,61 @@ export default function App() {
   })
 
   return (
-    <div className="App">          
-      {
-        /* # 최상단 배너 # */
-        topBanner === true &&
-        <div className="top-banner">
-          <CloseButton onClick={()=>{setTopBanner(false)}}/> 
-          <p className="top-banner__inner">🤑 Fromcoco 첫 구매라면 최대 10,000원 할인! 🤑</p>
-          <p className="top-banner__inner-hidden">🤑 첫 구매라면 최대 10,000원 할인! 🤑</p>
-        </div>
-      } 
+    <Routes>
 
-    <header className="header"
-      style={isBottomNavShow === false ? headerInlineStyle : null }
-      onMouseOver={()=>{ setIsBottomNavShow(true); setIsMouseOnHeader(true);}}
-      onMouseOut={()=>{ hideBottomNav() ; setIsMouseOnHeader(false);}}
-      onMouseLeave={()=>{ setTopNavOpenTap(false)}}>
-      <TopNav   
-        isBottomNavShow={isBottomNavShow}    
-        setIsBottomNavShow={setIsBottomNavShow}
-        setBottomNavActiveTap={setBottomNavActiveTap} 
-        hiddenMenuOpen={hiddenMenuOpen} 
-        topNavActiveTap={topNavActiveTap}
-        setTopNavActiveTap={setTopNavActiveTap}
-        coconut={coconut}     
-        jjongLogo2={jjongLogo2}
-        cartIcon={cartIcon}
-        searchIcon={searchIcon}
-        initialScroll={initialScroll}
-        setTopNavOpenTap={setTopNavOpenTap}
-        isAuthenticated={isAuthenticated}
-        signOutAccount={signOutAccount}        
-      />
-        
-      <BottomNav        
-        bottomNavActiveTap={bottomNavActiveTap}
-        setBottomNavActiveTap={setBottomNavActiveTap} 
-        isBottomNavShow={isBottomNavShow}
-        setIsBottomNavShow={setIsBottomNavShow}
-        topNavActiveTap={topNavActiveTap} 
-        setTopNavActiveTap={setTopNavActiveTap}
-        initialScroll={initialScroll}
-        topNavOpenTap={topNavOpenTap}
-      />
-        
-    </header>
+      <Route path='/CoCo_project_ver.2' element={<Layout
+      isTopBannerAdsShow={isTopBannerAdsShow} setIsTopBannerAdsShow={setIsTopBannerAdsShow}  
+      isBottomNavShow={isBottomNavShow} setIsBottomNavShow={setIsBottomNavShow}
+      bottomNavActiveTap={bottomNavActiveTap} setBottomNavActiveTap={setBottomNavActiveTap}        
+      topNavActiveTap={topNavActiveTap} setTopNavActiveTap={setTopNavActiveTap}
+      topNavOpenTap={topNavOpenTap} setTopNavOpenTap={setTopNavOpenTap}
+      coconut={coconut} jjongLogo2={jjongLogo2} cartIcon={cartIcon} searchIcon={searchIcon} instaIcon={instaIcon} 
+      isAuthenticated={isAuthenticated} signOutAccount={signOutAccount} 
+      isOffCanvasShow={isOffCanvasShow} setIsOffCanvasShow={setIsOffCanvasShow}
 
-    <Offcanvas id="hidden-menu" show={hiddenMenuShow} onHide={hiddenMenuClose}>   {/* # 모바일네브 # */}
+      setIsMouseOnHeader={setIsMouseOnHeader}
+      hideBottomNav={hideBottomNav}
+      initialScroll={initialScroll}
+      />  
+      }>
 
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Fromcoco 124th</Offcanvas.Title>
-        </Offcanvas.Header>
+        <Route index element={<Mainpage
+          setTopNavActiveTap={setTopNavActiveTap} setBottomNavActiveTap={setBottomNavActiveTap}
+          discountBanner={discountBanner} brother2={brother2} 
+          profile2={profile2} profile4={profile4} profile5={profile5} profile6={profile6} profile7={profile7}/>
+        }/> 
 
-        <Offcanvas.Body>
-          <h1>여기에는 뭐든지 들어갑니다.</h1>
-          <Nav id="hidden-menu__nav">
-              <Nav.Link as={Link} to="/CoCo_project_ver.2/detail/0">men</Nav.Link>
-              <Nav.Link as={Link} to="/CoCo_project_ver.2/detail/1">lady</Nav.Link>
-              <Nav.Link as={Link} to="/CoCo_project_ver.2/detail/2">unisex</Nav.Link>
-              <Nav.Link as={Link} to="/CoCo_project_ver.2/detail/2">unisex</Nav.Link>
-              <Nav.Link as={Link} to="/CoCo_project_ver.2/detail/2">unisex</Nav.Link>
-              <Nav.Link as={Link} to="/CoCo_project_ver.2/detail/2">unisex</Nav.Link>
-          </Nav>
-        </Offcanvas.Body>
-    </Offcanvas>
+        <Route path="community/:community_category_param" element={<Community
+          setTopNavActiveTap={setTopNavActiveTap} setBottomNavActiveTap={setBottomNavActiveTap}/>
+        }/>  
+      
+        <Route path=":product_param/:category_param" element={<ProductList 
+          clothesList={clothesList} shoesList={shoesList} 
+          setTopNavActiveTap={setTopNavActiveTap} setBottomNavActiveTap={setBottomNavActiveTap}/>
+        }/>
 
-  <Routes>     
-    <Route path="/CoCo_project_ver.2" element={
-      <Mainpage setTopNavActiveTap={setTopNavActiveTap} setBottomNavActiveTap={setBottomNavActiveTap}
-      discountBanner={discountBanner} brother2={brother2} 
-      profile2={profile2} profile4={profile4} profile5={profile5} profile6={profile6} profile7={profile7}/>
-    }/> 
-
-    <Route path="/CoCo_project_ver.2/community/:community_category_param" element={
-      <Community setTopNavActiveTap={setTopNavActiveTap} setBottomNavActiveTap={setBottomNavActiveTap}/>
-    }/>  
-    
-    <Route path="CoCo_project_ver.2/:product_param/:category_param" element={
-      <Suspense fallback={ <div>로딩중입니다~!</div> }>
-        <ProductList 
-        clothesList={clothesList} shoesList={shoesList} 
-        setTopNavActiveTap={setTopNavActiveTap} setBottomNavActiveTap={setBottomNavActiveTap}/>
-      </Suspense>
-    }/>
-
-    <Route path="CoCo_project_ver.2/detail/:product_id" element={
-      <Suspense fallback={ <div>로딩중입니다~!</div> }>
-        <DetailContainer 
+        <Route path="detail/:product_id" element={<DetailContainer
           clothesList={clothesList} shoesList={shoesList} topNavActiveTap={topNavActiveTap}
-          initialScroll={initialScroll}
-        />
-      </Suspense>
-    }/>
-    
-    <Route path='CoCo_project_ver.2/cart' element={
-      <Suspense fallback={ <div>로딩중입니다~!</div> }>
-        <CartContainer/>
-      </Suspense>
-    }/>
+          initialScroll={initialScroll}/>            
+        }/>
+      
+        <Route path='cart' element={<CartContainer/>}/>
 
-    <Route path='CoCo_project_ver.2/auth/sign_in' element={
-      <SignIn signInEmail={signInEmail} />
-    }/>
+        <Route path='mypage' element={<div>마이페이지</div>}/>
+      </Route>
 
-    <Route path='CoCo_project_ver.2/auth/sign_up' element={
-      <SignUp signUpEmail={signUpEmail} />
-    }/>
-    
-    <Route path='CoCo_project_ver.2/mypage' element={
-      <div>마이페이지</div>
-    }/>
 
-    <Route path='CoCo_project_ver.2/auth/thanks' element={
-      <div> 고마워요~ </div>
-    }/>
-  </Routes>
+      <Route path='/CoCo_project_ver.2/auth/sign_in' element={<SignIn 
+        signInEmail={signInEmail} />
+      }/>
 
-    <Footer instaIcon={instaIcon}/> 
-  </div>
+      <Route path='/CoCo_project_ver.2/auth/sign_up' element={<SignUp
+        signUpEmail={signUpEmail} />
+      }/>
+
+      <Route path='/CoCo_project_ver.2/auth/thanks' element={<div> 고마워요~ </div>}/>
+
+    </Routes>     
+  
   );  
-} 
+}

@@ -3,9 +3,9 @@ import { Nav,Container,Navbar, Dropdown, Button} from 'react-bootstrap';
 import {useNavigate, Link} from 'react-router-dom'
 
 
-function TopNav({  
+function TopNav({ 
   setIsBottomNavShow,
-  hiddenMenuOpen,
+  setIsOffCanvasShow,
   topNavActiveTap,
   setTopNavActiveTap,
   setBottomNavActiveTap, 
@@ -52,7 +52,7 @@ function TopNav({
   return (
     <div id="top-navbar--wrap">
       <Navbar className="top-navbar">
-        <img src={coconut} alt="menu" className="top-navbar__hamburger" onClick={hiddenMenuOpen}></img>
+        <img src={coconut} alt="menu" className="top-navbar__hamburger" onClick={()=>{setIsOffCanvasShow(true)}}></img>
         <Container className="top-navbar__container">
           <Navbar.Brand className="top-navbar__brand" href="/CoCo_project_ver.2">
             <img src={jjongLogo2} className="top-navbar__logo"/>
@@ -108,8 +108,10 @@ function TopNav({
             <div className="top-navbar__cart-wrap">
               <img src={cartIcon} alt="cartIcon" className="top-navbar__cart"
               onClick={()=> { navigate(`/CoCo_project_ver.2/cart`)}}/>   
-            </div>            
+            </div>
+
             {authUi[isAuthenticated]}
+
           </div>
         </Container>
       </Navbar>

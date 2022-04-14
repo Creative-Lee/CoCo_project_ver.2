@@ -6,9 +6,19 @@ import {Container, Row} from 'react-bootstrap'
 export default function ProductList({
   clothesList, shoesList, setTopNavActiveTap, setBottomNavActiveTap}){
 
-  const {product_param, category_param} = useParams()
   const location = useLocation()
-
+  const {product_param, category_param} = useParams()
+  
+  const getTargetProductList = () => {
+    switch(product_param){
+      case 'clothes' :
+        return clothesList
+      
+      case 'shoes' :
+        return shoesList
+    }
+  }
+  
   const getProductComponent = () => {
     switch(category_param){
       case "all" :
@@ -19,15 +29,6 @@ export default function ProductList({
     }
   }
 
-  const getTargetProductList = () => {
-    switch(product_param){
-      case 'clothes' :
-        return clothesList
-      
-      case 'shoes' :
-        return shoesList
-    }
-  }
 
   const productList = {
     all :
