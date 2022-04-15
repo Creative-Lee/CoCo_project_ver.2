@@ -1,0 +1,6 @@
+export { default as cartIcon } from './cartIcon.png'
+export { default as coconut } from './coconut.jpg'
+export { default as discountBanner } from './discountBanner.jpg'
+export { default as instaIcon } from './instaIcon.png'
+export { default as jjongLogo2 } from './jjongLogo2.png'
+export { default as searchIcon } from './searchIcon.png'

@@ -1,11 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-import TopBannerAds from './LayoutComponents/TopBannerAds'
-import TopNav from './LayoutComponents/TopNav';
-import BottomNav from './LayoutComponents/BottomNav';
-import OffCanvasForMobile from './LayoutComponents/OffCanvasForMobile'
-import Footer from './LayoutComponents/Footer';
+import { TopBannerAds, TopNav, BottomNav, OffCanvasForMobile, Footer } from './layoutComponents/index'
 
 export default function Layout({
   isTopBannerAdsShow,

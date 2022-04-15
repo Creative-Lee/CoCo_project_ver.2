@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Detail from '../Components/Detail'
+import Detail from '../components/Detail'
 import { increase , decrease , quan_Initialize  } from '../modules/detailQuan';
 import { addData } from '../modules/cartQuan'
 

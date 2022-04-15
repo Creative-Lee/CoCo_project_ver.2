@@ -1,33 +1,19 @@
-import React, { useEffect, useState , Suspense } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Route,Routes ,useNavigate }  from 'react-router-dom';
-import { Navbar,Nav,CloseButton,Button,Container,Row,Col,Offcanvas,Carousel} from 'react-bootstrap';
-import {firestore, storage, auth} from './firebase';
-import {collection, getDocs} from 'firebase/firestore';
+import { firestore, storage, auth } from './firebase';
+import { collection, getDocs } from 'firebase/firestore';
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword , onAuthStateChanged, signOut } from 'firebase/auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/App.scss';
 
-import Layout from './Components/Layout'
-import ProductList from './Components/ProductList'
-import Mainpage from './Components/MainPage';
-import Community from './Components/Comunnity';
-import SignIn from './Components/SignIn';
-import SignUp from './Components/SignUp';
+import { Layout, ProductList, Home, Community, SignUp, SignIn } from './components'
 import CartContainer from './containers/CartContainer';
 import DetailContainer from './containers/DetailContainer';
 
-import coconut from './img/coconut.jpg'
-import discountBanner from './img/discountBanner.jpg'
+import { cartIcon, coconut, discountBanner, instaIcon, jjongLogo2, searchIcon } from './img/useful'
+import { profile2, profile4, profile5, profile6, profile7 } from './img/profile16.9'
 import brother2 from './img/brother/brother2.jpg'
-import profile2 from './img/profile16.9/profile2.jpg'
-import profile4 from './img/profile16.9/profile4.jpg'
-import profile5 from './img/profile16.9/profile5.jpg'
-import profile6 from './img/profile16.9/profile6.jpg'
-import profile7 from './img/profile16.9/profile7.jpg'
-import jjongLogo2 from './img/jjongLogo2.png'
-import instaIcon from './img/instaIcon.png'
-import cartIcon from './img/cartIcon.png'
-import searchIcon from './img/searchIcon.png'
+
 
 export default function App() {
   const navigate = useNavigate();
@@ -209,7 +195,7 @@ export default function App() {
       />  
       }>
 
-        <Route index element={<Mainpage
+        <Route index element={<Home
           setTopNavActiveTap={setTopNavActiveTap} setBottomNavActiveTap={setBottomNavActiveTap}
           discountBanner={discountBanner} brother2={brother2} 
           profile2={profile2} profile4={profile4} profile5={profile5} profile6={profile6} profile7={profile7}/>

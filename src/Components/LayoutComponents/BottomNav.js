@@ -15,7 +15,7 @@ function BottomNav({
   const bottomNavInlineStyle = {transform: `translate(${0}px, ${-50}px)`}
   
   const bottomNav = {
-    none : <div></div>,
+    none : <></>,
 
     community : 
     <Navbar id="bottom-navbar">

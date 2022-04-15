@@ -1,13 +1,30 @@
 import React, {useEffect} from 'react';
-import {useParams, useLocation} from 'react-router-dom'
-import Product from './Product';
-import {Container, Row} from 'react-bootstrap'
+import {useParams, useLocation, useNavigate} from 'react-router-dom'
+import {Container, Row, Col} from 'react-bootstrap'
 
 export default function ProductList({
   clothesList, shoesList, setTopNavActiveTap, setBottomNavActiveTap}){
 
   const location = useLocation()
+  const navigate = useNavigate();
   const {product_param, category_param} = useParams()
+
+  const Product = ({eachProduct}) => {
+    const ASSET_IMG_URL = `${process.env.IMG_URL}/assets/${product_param}/${product_param}_${eachProduct.id}.jpg`
+
+    return (
+    <Col id="product" md='3' onClick={()=> { navigate(`/CoCo_project_ver.2/detail/${eachProduct.id}`)}}>      
+    <div className="product__img-wrap">        
+      <img className="product__img" src={ASSET_IMG_URL} alt="product"/>
+    </div> 
+    <div className="product__text-wrap">
+      <p className="product__text--brand">{eachProduct.brand}</p>
+      <h1 className="product__text--title">{eachProduct.title}</h1> 
+      <p className="product__text--price">{eachProduct.price}￦</p>
+    </div>
+    </Col>
+    )
+  }  
   
   const getTargetProductList = () => {
     switch(product_param){
@@ -28,7 +45,6 @@ export default function ProductList({
         return productList.sorted
     }
   }
-
 
   const productList = {
     all :
