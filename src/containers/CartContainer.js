@@ -4,7 +4,7 @@ import Cart from '../components/Cart'
 import { increase , decrease , deleteData} from '../modules/cartQuan';
 
 
-function CartContainer(){
+function CartContainer({setTopNavActiveTap , setBottomNavActiveTap}){
   // useSelector는 리덕스 스토어의 상태를 조회하는 Hook입니다.
   // state의 값은 store.getState() 함수를 호출했을 때 나타나는 결과물과 동일합니다.
   const cartQuan  = useSelector( state =>  state.cartQuan ) 
@@ -24,6 +24,9 @@ function CartContainer(){
     onIncrease={onIncrease}
     onDecrease={onDecrease}
     onDeleteData={onDeleteData}
+
+    setTopNavActiveTap={setTopNavActiveTap}
+    setBottomNavActiveTap={setBottomNavActiveTap}
     /> 
   )
 }

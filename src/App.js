@@ -6,7 +6,7 @@ import { createUserWithEmailAndPassword , signInWithEmailAndPassword , onAuthSta
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/App.scss';
 
-import { Layout, ProductList, Home, Community, SignUp, SignIn } from './components'
+import { Layout, ProductList, Home, Community, SignUp, SignIn, Mypage } from './components'
 import CartContainer from './containers/CartContainer';
 import DetailContainer from './containers/DetailContainer';
 
@@ -178,7 +178,6 @@ export default function App() {
 
   return (
     <Routes>
-
       <Route path='/CoCo_project_ver.2' element={<Layout
       isTopBannerAdsShow={isTopBannerAdsShow} setIsTopBannerAdsShow={setIsTopBannerAdsShow}  
       isBottomNavShow={isBottomNavShow} setIsBottomNavShow={setIsBottomNavShow}
@@ -215,18 +214,21 @@ export default function App() {
           initialScroll={initialScroll}/>            
         }/>
       
-        <Route path='cart' element={<CartContainer/>}/>
+        <Route path='cart' element={<CartContainer 
+        setTopNavActiveTap={setTopNavActiveTap} setBottomNavActiveTap={setBottomNavActiveTap} />}
+        />
 
-        <Route path='mypage' element={<div>마이페이지</div>}/>
+        <Route path='mypage' element={<Mypage
+        setTopNavActiveTap={setTopNavActiveTap} setBottomNavActiveTap={setBottomNavActiveTap} />}
+        />
       </Route>
 
-
       <Route path='/CoCo_project_ver.2/auth/sign_in' element={<SignIn 
-        signInEmail={signInEmail} />
+        signInEmail={signInEmail} jjongLogo2={jjongLogo2} />
       }/>
 
       <Route path='/CoCo_project_ver.2/auth/sign_up' element={<SignUp
-        signUpEmail={signUpEmail} />
+        signUpEmail={signUpEmail} jjongLogo2={jjongLogo2} />
       }/>
 
       <Route path='/CoCo_project_ver.2/auth/thanks' element={<div> 고마워요~ </div>}/>

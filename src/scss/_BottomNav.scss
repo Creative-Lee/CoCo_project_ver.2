@@ -1,24 +1,25 @@
 
-.bottom-navbar__wrap {
+#bottom-navbar__wrap {
   position: relative;
   top: 0px;
   z-index: 998;
   transition: transform ease 0.12s;
     
 
-  #bottom-navbar {
+  .bottom-navbar {
     height: 50px;
     background: white;
     border-bottom: solid 1px #eeeeee;
 
-    #bottom-navbar__container {
+    .bottom-navbar__container {
       padding: 0;
       margin-top: 0;
     }
 
-    #bottom-navbar__nav {
+    .bottom-navbar__nav {
       font-size: 15px;
       font-weight: 599;
+      
 
       a {
         color: rgb(83, 83, 83);

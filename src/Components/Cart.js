@@ -1,7 +1,13 @@
 import React, {useState , useEffect} from "react";
 import { Table,Container } from "react-bootstrap";
 
-function Cart({cartQuan , onIncrease, onDecrease, onDeleteData }) {  
+function Cart({cartQuan , onIncrease, onDecrease, onDeleteData,
+setTopNavActiveTap, setBottomNavActiveTap}) {  
+
+  useEffect(()=>{
+    setTopNavActiveTap('none')
+    setBottomNavActiveTap('none')
+  },[])
 
   return (
     <div>

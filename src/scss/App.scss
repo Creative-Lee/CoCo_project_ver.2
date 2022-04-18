@@ -1,12 +1,20 @@
-@import './_fonts.scss';
-@import './_reset.scss';
-@import './_Detail.scss';
-@import './_Product.scss';
-@import './_TopNav.scss';
-@import './_BottomNav.scss';
-@import './_MainPage.scss';
-@import './_TopBannerAds.scss';
-@import './_Footer.scss';
+@import './_fonts';
+@import './_reset';
+@import './_Detail';
+@import './_Product';
+@import './_TopNav';
+@import './_BottomNav';
+@import './_MainPage';
+@import './_TopBannerAds';
+@import './_Footer';
+@import './_SignIn';
+@import './_SignUp';
+
+#root,
+html,
+body{
+  height:100%;
+}
 
 .App {
   text-align: center;
