@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import {Link,useNavigate} from 'react-router-dom'
 
 import {Form, Button, Container, Row, Col} from 'react-bootstrap'
+import { set } from 'lodash';
 
 export default function SignUp({signUpEmail, jjongLogo2}){
   
@@ -10,7 +11,44 @@ export default function SignUp({signUpEmail, jjongLogo2}){
   const [inputPassword, setInputPassword] = useState('') 
   const [inputPasswordAgain, setInputPasswordAgain] = useState('') 
 
+
+  const [checkedBoxIdList, setCheckedBoxIdList] = useState([])
   
+  const onCheckedAllAgreeCheckBox = (isChecked) => { 
+    let idList = [];
+
+    if(isChecked){
+      checkboxDataList.forEach(dataList => idList.push(dataList.id))
+      setCheckedBoxIdList(idList)
+    }
+    else{
+      setCheckedBoxIdList([]);
+    }
+  }
+  const allAgreeCheckBoxHandler = ()=> {
+    let isEachCheckboxAllChecked = checkedBoxIdList.length === checkboxDataList.length
+    return isEachCheckboxAllChecked
+  }
+
+  const onCheckedEachCheckBox = (isChecked, list) => {
+    if(isChecked){
+      setCheckedBoxIdList([...checkedBoxIdList, list.id])
+    }
+    else{
+      setCheckedBoxIdList(checkedBoxIdList.filter(checkedBoxId => checkedBoxId !== list.id))
+    }
+  }
+  const eachCheckboxHandler = list =>{
+    let isIdListIncludeId = checkedBoxIdList.includes(list.id)
+    
+    return isIdListIncludeId
+  }
+
+  const checkboxDataList = [
+    { id: 1 , label: '선량한 시민입니다.' , span : '(필수)'},
+    { id: 2 , label: '개인정보수집 및 이용동의', span : '(필수)'},
+    { id: 3 , label: '이벤트, 프로모션 알림 메일 및 SMS 수신', span : '(선택)'}
+  ]
 
   return (    
     <Container id="sign-up__container">
@@ -25,7 +63,7 @@ export default function SignUp({signUpEmail, jjongLogo2}){
 
       <Form className="sign-up__form-container">
         <Form.Group className='form__email'>
-          <Form.Label className='form__lable'>이메일</Form.Label>
+          <Form.Label className='form__label'>이메일</Form.Label>
           <div className="form__email-input">
             <span className="email-input__local">
               <Form.Control type="email" placeholder="이메일"
@@ -46,56 +84,50 @@ export default function SignUp({signUpEmail, jjongLogo2}){
         </Form.Group>
 
         <Form.Group className='form__password'>
-          <Form.Label className='form__lable'>비밀번호</Form.Label>
+          <Form.Label className='form__label'>비밀번호</Form.Label>
           <p className="form__password-rule">6자 이상의 비밀번호를 입력해주세요.</p>
           <Form.Control className="form__password-input" type="password" placeholder="비밀번호" 
             onChange={e => setInputPassword(e.target.value)} />
         </Form.Group>
 
         <Form.Group className='form__password-check'>
-          <Form.Label className='form__lable'>비밀번호 확인</Form.Label>
+          <Form.Label className='form__label'>비밀번호 확인</Form.Label>
           <Form.Control className="form__password-check-input" type="password" placeholder="비밀번호 확인" 
             onChange={e => setInputPasswordAgain(e.target.value)} />
         </Form.Group>
 
         <Form.Group className='form__TOS'>
-          <Form.Label className='form__lable'>약관 동의</Form.Label>
-          <div className='form__TOS-checkbox'>            
-            <Form.Check className='TOS-checkbox__all'>
-              <div>
-                <Form.Check.Input type="checkbox"  />
+          <Form.Label className='form__label'>약관 동의</Form.Label>
+          <div className='form__TOS-checkbox'>   
+            <Form.Check className='TOS-checkbox__all' >
+              <div className='checkbox-input-container'>
+                <Form.Check.Input type="checkbox" className="checkbox-input"
+                onChange={e => onCheckedAllAgreeCheckBox(e.target.checked)}
+                checked={allAgreeCheckBoxHandler()}
+                />
+                
               </div>
               <div>
-                <Form.Check.Label className="checkbox-lable">전체동의</Form.Check.Label>
+                <Form.Check.Label className="checkbox-label" >전체동의</Form.Check.Label>
               </div>
             </Form.Check>
-
-            <Form.Check className='TOS-checkbox__1'>
-              <div> 
-                <Form.Check.Input type="checkbox"  />
-              </div>
-              <div>
-                <Form.Check.Label className="checkbox-lable">선량한 시민입니다. </Form.Check.Label><span> (필수)</span>
-              </div>
-            </Form.Check>
-
-            <Form.Check className='TOS-checkbox__2'>
-            <div>
-              <Form.Check.Input type="checkbox" />
-            </div>
-            <div>
-              <Form.Check.Label className="checkbox-lable">개인정보수집 및 이용동의 </Form.Check.Label><span> (필수)</span>
-            </div>
-            </Form.Check>
-
-            <Form.Check className='TOS-checkbox__3'>
-              <div>
-                <Form.Check.Input type="checkbox" />
-              </div>
-              <div>
-                <Form.Check.Label className="checkbox-lable">이벤트, 프로모션 알림 메일 및 SMS 수신 </Form.Check.Label><span> (선택)</span>
-              </div>
-            </Form.Check>
+            {
+            checkboxDataList.map((list, index )=> {
+              return (
+                <Form.Check className={`TOS-checkbox__${list.id}`} key={index}>
+                <div className='checkbox-input-container'> 
+                  <Form.Check.Input type="checkbox" className="checkbox-input" 
+                  onChange={e => onCheckedEachCheckBox(e.target.checked, list)}
+                  checked={eachCheckboxHandler(list)}
+                  />
+                </div>
+                <div>
+                  <Form.Check.Label className="checkbox-label">{list.label}</Form.Check.Label><span> {list.span}</span>
+                </div>
+                </Form.Check>
+              )         
+            })
+            }   
           </div>
         </Form.Group>
 

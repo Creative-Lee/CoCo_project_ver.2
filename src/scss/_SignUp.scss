@@ -1,12 +1,20 @@
 @import './main';
 
-
 #sign-up__container{
   font-family: 'Spoqa Han Sans Neo';
   font-weight: 700;
   padding: 50px 0 50px 0; 
   max-width: 360px;
   min-height: 100%; 
+
+  .sign-up__logo-wrap{   
+    width: 320px;
+    margin: 0 auto 40px auto;
+    
+    .sign-up__logo{
+      width: 100%;
+    }
+  }
 
   .sign-up__title{
     padding-bottom: 20px;
@@ -16,15 +24,6 @@
       font-size: 20px;
       font-weight : 700;
       margin: 0;
-    }
-  }
-  
-  .sign-up__logo-wrap{   
-    width: 320px;
-    margin: 0 auto 40px auto;
-    
-    .sign-up__logo{
-      width: 100%;
     }
   }
 
@@ -38,90 +37,113 @@
       font-size: 15px;
     }  
     
-    .form__lable{
+    .form__label{
       display: block;
       font-size: 15px;
       margin: 30px 0 8px 0;
     }
 
-    .form__email-input{      
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 40px;
-      
-      .email-input__local{
-        flex : 1 1 0px;
-        height: 100%;
-      }
-
-      .email-input__separator{
-        text-align: center;
-        font-weight: 500;
-        color: $폰트연한회색;
-        flex : 0 0 20px;
-      }
-
-      .email-input__domain{
-        flex : 1 1 0px;
-      }
-    }
-
-    .form__password-rule{
-      font-size : 13px;
-      font-weight: 500;
-      color: #a09f9f;
-      margin-bottom: 8px;
-      word-spacing: 1px;
-    }
-
-    .form__password-input{
-      height: 40px;
-      font-size: 14px;
-    }
-
-    .form__password-check-input{
-      height: 40px;
-      font-size: 14px;
-    }
-
-    .form__TOS-checkbox{
-      border : solid 1px #cfcfcf;
-      padding : 10px 20px 10px 20px;
-
-      .checkbox-lable{
-        padding: 0;
-      }
-
-      .TOS-checkbox__all{
+    .form__email{
+      .form__email-input{      
         display: flex;
+        flex-direction: row;
         align-items: center;
+        justify-content: space-between;
+        min-height: 40px;
+        
+        .email-input__local{
+          flex : 1 1 0px;
+          height: 100%;
+        }
+  
+        .email-input__separator{
+          text-align: center;
+          font-weight: 500;
+          color: $폰트연한회색;
+          flex : 0 0 20px;
+        }
+  
+        .email-input__domain{
+          flex : 1 1 0px;
+        }
+      }  
+    }
+
+    .form__password{
+      .form__password-rule{
+        font-size : 13px;
+        font-weight: 500;
+        color: #a09f9f;
+        margin-bottom: 8px;
+        word-spacing: 1px;
+      }
+  
+      .form__password-input{
+        height: 40px;
         font-size: 14px;
+      }
+  
+  
+    }
+    .form__password-check{      
+      .form__password-check-input{
+        height: 40px;
+        font-size: 14px;
+      }
+    }
+
+    .form__TOS{
+      span{
+        color: $오늘하늘;
+        font-size: 12px;  
+      }
+            
+      .form__TOS-checkbox{
+        border : solid 1px #cfcfcf;
+        padding : 10px 20px 5px 15px ;
+  
+        .checkbox-label{
+          padding: 0;
+        }
         
-        padding-bottom: 10px;
-        border-bottom : solid 1px #cfcfcf;
+        .checkbox-input{
+          padding : 10px;
+          margin : 0;   
+        }
         
-        :nth-child(1){
-          padding: 10px;
-          margin: 0;
+        .checkbox-input-container{
+          padding : 10px;
+        }
+      
+        
+
+        .TOS-checkbox__all{
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+          height: 70px;
+          
+          padding-bottom: 10px;
+          border-bottom : solid 1px #cfcfcf;
+        }
+        
+        .TOS-checkbox__1,
+        .TOS-checkbox__2,
+        .TOS-checkbox__3{
+          display: flex;
+          align-items: center;
+          
+          font-size: 14px;
+          font-weight: 500;
+        }
+
+        .TOS-checkbox__3{
+          span{
+            color: #c3c3c3;
+          }
         }
       }
-      
-      .TOS-checkbox__1,
-      .TOS-checkbox__2,
-      .TOS-checkbox__3{
-        display: inline-flex;
-        align-items: center;
-        
-        font-size: 14px;
-        font-weight: 500;
-
-        :nth-child(1){
-          padding: 10px;
-          margin: 0;
-        }               
-      }
+  
     }
 
     .sign-up__button{
