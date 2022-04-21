@@ -2,15 +2,30 @@ import React,{useState} from 'react';
 import {Link,useNavigate} from 'react-router-dom'
 
 import {Form, Button, Container, Row, Col} from 'react-bootstrap'
-import { set } from 'lodash';
 
 export default function SignUp({signUpEmail, jjongLogo2}){
   
-  const [inputEmail, setInputEmail] = useState('') 
-  const [inputEmailDomain, setInputEmailDomain] = useState('') 
+  const [inputLocalEmail, setInputLocalEmail] = useState('') 
+  const [inputDomainEmail, setInputDomainEmail] = useState('') 
   const [inputPassword, setInputPassword] = useState('') 
-  const [inputPasswordAgain, setInputPasswordAgain] = useState('') 
+  const [inputPasswordCheck, setInputPasswordCheck] = useState('') 
 
+  const [isEmailInputEmpty, setIsEmailInputEmpty] = useState(false)
+  const [isPasswordInputEmpty, setIsPasswordInputEmpty] = useState(false)
+  const [isPasswordCheckInputEmpty, setIsPasswordCheckInputEmpty] = useState(false)
+
+  const emptyErrorStyleController = (input, inputName, setStateFuncOfTarget) => {
+    const targetForm = document.getElementsByClassName(`form__${inputName}`)
+
+    if(input){
+      setStateFuncOfTarget(false)
+      targetForm[0].classList.remove('errored')
+    }
+    else{
+      setStateFuncOfTarget(true)
+      targetForm[0].classList.add('errored')
+    }
+  }
 
   const [checkedBoxIdList, setCheckedBoxIdList] = useState([])
   
@@ -29,7 +44,6 @@ export default function SignUp({signUpEmail, jjongLogo2}){
     let isEachCheckboxAllChecked = checkedBoxIdList.length === checkboxDataList.length
     return isEachCheckboxAllChecked
   }
-
   const onCheckedEachCheckBox = (isChecked, list) => {
     if(isChecked){
       setCheckedBoxIdList([...checkedBoxIdList, list.id])
@@ -67,12 +81,17 @@ export default function SignUp({signUpEmail, jjongLogo2}){
           <div className="form__email-input">
             <span className="email-input__local">
               <Form.Control type="email" placeholder="이메일"
-                onChange={e => setInputEmail(e.target.value)} />
+                onChange={e => setInputLocalEmail(e.target.value)}
+                onBlur={e => emptyErrorStyleController(inputLocalEmail, 'email', setIsEmailInputEmpty)}
+              />  
             </span>
             <span className='email-input__separator'>@</span>
+
             <span className='email-input__domain'>
               <Form.Select defaultValue='선택해주세요' 
-              onChange={e => setInputEmailDomain(e.target.value)}>
+              onChange={e => setInputDomainEmail(e.target.value)}
+              onBlur={e => emptyErrorStyleController(inputDomainEmail,'email', setIsEmailInputEmpty)}
+              >
                 <option value="선택해주세요" disabled>선택해주세요</option>
                 <option value="naver.com">naver.com</option>
                 <option value="daum.net">daum.net</option>
@@ -80,20 +99,40 @@ export default function SignUp({signUpEmail, jjongLogo2}){
                 <option value="직접 입력">직접 입력</option>
               </Form.Select>  
             </span>
-          </div>         
+          </div>
+          {
+            isEmailInputEmpty&& (
+            <div className='empty-error-div'>
+              필수 입력 항목입니다.
+            </div>) 
+          }
         </Form.Group>
-
+      
         <Form.Group className='form__password'>
           <Form.Label className='form__label'>비밀번호</Form.Label>
           <p className="form__password-rule">6자 이상의 비밀번호를 입력해주세요.</p>
           <Form.Control className="form__password-input" type="password" placeholder="비밀번호" 
-            onChange={e => setInputPassword(e.target.value)} />
+            onChange={e => setInputPassword(e.target.value)} 
+            onBlur={() => emptyErrorStyleController(inputPassword,'password', setIsPasswordInputEmpty)}/>
+          {
+            isPasswordInputEmpty && (
+            <div className='empty-error-div'>
+              필수 입력 항목입니다.
+            </div>) 
+          }
         </Form.Group>
 
         <Form.Group className='form__password-check'>
           <Form.Label className='form__label'>비밀번호 확인</Form.Label>
           <Form.Control className="form__password-check-input" type="password" placeholder="비밀번호 확인" 
-            onChange={e => setInputPasswordAgain(e.target.value)} />
+            onChange={e => setInputPasswordCheck(e.target.value)} 
+            onBlur={() => emptyErrorStyleController(inputPasswordCheck,'password-check', setIsPasswordCheckInputEmpty)}/>
+          {
+            isPasswordCheckInputEmpty && (
+            <div className='empty-error-div'>
+              확인을 위해 비밀번호를 한 번 더 입력해주세요.
+            </div>) 
+          }
         </Form.Group>
 
         <Form.Group className='form__TOS'>
@@ -101,14 +140,13 @@ export default function SignUp({signUpEmail, jjongLogo2}){
           <div className='form__TOS-checkbox'>   
             <Form.Check className='TOS-checkbox__all' >
               <div className='checkbox-input-container'>
-                <Form.Check.Input type="checkbox" className="checkbox-input"
+                <Form.Check.Input type="checkbox" id="TOS_all" className="checkbox-input"
                 onChange={e => onCheckedAllAgreeCheckBox(e.target.checked)}
                 checked={allAgreeCheckBoxHandler()}
-                />
-                
+                />                
               </div>
               <div>
-                <Form.Check.Label className="checkbox-label" >전체동의</Form.Check.Label>
+                <Form.Check.Label htmlFor="TOS_all" className="checkbox-label" >전체동의</Form.Check.Label>
               </div>
             </Form.Check>
             {
@@ -116,13 +154,13 @@ export default function SignUp({signUpEmail, jjongLogo2}){
               return (
                 <Form.Check className={`TOS-checkbox__${list.id}`} key={index}>
                 <div className='checkbox-input-container'> 
-                  <Form.Check.Input type="checkbox" className="checkbox-input" 
+                  <Form.Check.Input type="checkbox" id={`TOS_${list.id}`} className="checkbox-input" 
                   onChange={e => onCheckedEachCheckBox(e.target.checked, list)}
                   checked={eachCheckboxHandler(list)}
                   />
                 </div>
                 <div>
-                  <Form.Check.Label className="checkbox-label">{list.label}</Form.Check.Label><span> {list.span}</span>
+                  <Form.Check.Label htmlFor={`TOS_${list.id}`} className="checkbox-label" >{list.label}</Form.Check.Label><span> {list.span}</span>
                 </div>
                 </Form.Check>
               )         
@@ -131,7 +169,7 @@ export default function SignUp({signUpEmail, jjongLogo2}){
           </div>
         </Form.Group>
 
-        <Button className="sign-up__button" onClick={()=>{ signUpEmail(`${inputEmail}@${inputEmailDomain}`, inputPassword)}}>
+        <Button className="sign-up__button" onClick={()=>{ signUpEmail(`${inputLocalEmail}@${inputDomainEmail}`, inputPassword)}}>
           회원가입하기
         </Button>      
       </Form>  

@@ -27,15 +27,52 @@
     }
   }
 
-  .sign-up__form-container{   
-
-    input::placeholder{
-      font-size: 15px;
-      color : $폰트연한회색;
-    }
+  .sign-up__form-container{
+    input,
     select{
       font-size: 15px;
-    }  
+      padding: 0 0.75rem;
+      line-height: 2.55;
+      
+      &:hover{
+        background-color: #f8f8f8
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(130,224,250 ,50%) ;
+        border: solid 1px #e2e2e2;
+      }
+
+      &::placeholder{
+        font-size: 14px;
+        color : $폰트연한회색;     
+      }
+    } 
+    
+    .errored{
+      label{
+        color : #f77;
+      }
+      
+      input,
+      select{
+        border: solid 1px #f77;
+      }
+
+      input,
+      select{
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 0 2px rgba(255,119,119 ,50%) ;
+        }
+      }
+    }
+    .empty-error-div{
+      padding-top: 10px;
+      font-size: 13px;
+      color: rgb(255, 119, 119);
+    }
     
     .form__label{
       display: block;
@@ -43,7 +80,8 @@
       margin: 30px 0 8px 0;
     }
 
-    .form__email{
+    .form__email{    
+
       .form__email-input{      
         display: flex;
         flex-direction: row;
@@ -65,8 +103,8 @@
   
         .email-input__domain{
           flex : 1 1 0px;
-        }
-      }  
+        }       
+      }     
     }
 
     .form__password{
@@ -96,6 +134,21 @@
       span{
         color: $오늘하늘;
         font-size: 12px;  
+      }
+
+      input{
+        &:checked {
+          background-color: $오늘하늘;
+          border: solid 1px $오늘하늘;    
+        }
+
+        &:hover{
+          background-color: none;
+        }
+        &:focus{
+          outline: none;
+          box-shadow: none;          
+        }
       }
             
       .form__TOS-checkbox{
