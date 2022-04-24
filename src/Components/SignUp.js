@@ -29,24 +29,29 @@ export default function SignUp({signUpEmail, jjongLogo2}){
   }))
 
   const errorStyleHandler = (inputState, inputName) => {
-    // const eachInputErrorList = Object.values(everyInputErrorList.getIn([input]).toJS())
-    // const isIncludeError = eachInputErrorList.includes(true)
-
     const targetForm = document.getElementsByClassName(inputName)
 
-    // console.log(targetForm)
-    // console.log(everyInputErrorList.getIn([input]).toJS())
-    // console.log(isIncludeError)  
-    // 원하는게 아닌데 ......
-    // 이건 인풋 엠티에만 한정됨
-    // 나는 어떤 에러든 true 상태로 있으면 에러스타일 적용되길 바람
-    // 근데 onBlur로 에러가상태가 true로 업데이트 되는 순간에는 true가 include가 아님...
-    // 고로 2번 onBlur해야 원하는대로 동작함
     if(inputState) {
       targetForm[0].classList.remove('errored')
     }
     else {
       targetForm[0].classList.add('errored')
+    }
+  }
+
+  const errorStyleHandler2 = (inputName) => {
+    const eachInputErrorList = Object.values(everyInputErrorList.getIn([inputName]).toJS())
+    const isIncludeError = eachInputErrorList.includes(true)
+
+    const targetForm = document.getElementsByClassName(inputName)
+
+    console.log(eachInputErrorList, isIncludeError)
+
+    if(isIncludeError) {
+      targetForm[0].classList.add('errored')
+    }
+    else {
+      targetForm[0].classList.remove('errored')
     }
   }
 
@@ -59,7 +64,7 @@ export default function SignUp({signUpEmail, jjongLogo2}){
     else{
       changedList = everyInputErrorList.setIn([inputName,'emptyError'], true) 
       setEveryInputErrorList(changedList) 
-    }
+    }    
   }
 
 
@@ -117,25 +122,30 @@ export default function SignUp({signUpEmail, jjongLogo2}){
           <Form.Label className='form__label'>이메일</Form.Label>
           <div className="form__email-input">
             <span className="email-input__local">
-              <Form.Control type="email" placeholder="이메일"
-                onChange={e => setInputLocalEmail(e.target.value)}
+              <Form.Control type="email" placeholder="이메일" name="localEmail"
+                onChange={e => {
+                  setInputLocalEmail(e.target.value);                  
+                }}
+                onFocus={e => {
+                }}
                 onBlur={e => {
-                  emptyErrorHandler(inputLocalEmail, 'localEmail');
-                  errorStyleHandler(inputLocalEmail,'localEmail')
+                  emptyErrorHandler(inputLocalEmail, e.target.name );
+                  // errorStyleHandler2(e.target.name)
+                  // errorStyleHandler(inputLocalEmail,'localEmail')
                 }}
               />  
             </span>
             <span className='email-input__separator'>@</span>
 
             <span className='email-input__domain'>
-              <Form.Select type="email" defaultValue='선택해주세요' 
+              <Form.Select type="email" defaultValue='선택해주세요' name="domainEmail" 
               onChange={e => {
                 setInputDomainEmail(e.target.value);
                 }}
               onBlur={e => {
-                emptyErrorHandler(inputDomainEmail, 'domainEmail');
-                errorStyleHandler(inputDomainEmail,'domainEmail')}}
-              >
+                emptyErrorHandler(inputDomainEmail, e.target.name);
+                // errorStyleHandler(inputDomainEmail,'domainEmail')
+              }}>
                 <option value="선택해주세요" disabled>선택해주세요</option>
                 <option value="naver.com">naver.com</option>  
                 <option value="daum.net">daum.net</option>
@@ -155,11 +165,12 @@ export default function SignUp({signUpEmail, jjongLogo2}){
         <Form.Group className='form__password password'>
           <Form.Label className='form__label'>비밀번호</Form.Label>
           <p className="form__password-rule">6자 이상의 비밀번호를 입력해주세요.</p>
-            <Form.Control className="form__password-input" type="password" placeholder="비밀번호" 
+            <Form.Control className="form__password-input" type="password" placeholder="비밀번호" name="password" 
               onChange={e => setInputPassword(e.target.value)} 
               onBlur={e => {
-                emptyErrorHandler(inputPassword, 'password');
-                errorStyleHandler(inputPassword, 'password')}} 
+                emptyErrorHandler(inputPassword, e.target.name);
+                // errorStyleHandler(inputPassword, 'password')
+              }}
             />
             {
               everyInputErrorList.getIn(['password', 'emptyError'])  && (
@@ -177,11 +188,12 @@ export default function SignUp({signUpEmail, jjongLogo2}){
 
         <Form.Group className='form__password-check passwordCheck'>
           <Form.Label className='form__label'>비밀번호 확인</Form.Label>
-          <Form.Control className="form__password-check-input" type="password" placeholder="비밀번호 확인" 
+          <Form.Control className="form__password-check-input" type="password" placeholder="비밀번호 확인" name="passwordCheck" 
             onChange={e => setInputPasswordCheck(e.target.value)} 
             onBlur={e => {
-              emptyErrorHandler(inputPasswordCheck, 'passwordCheck');
-              errorStyleHandler(inputPasswordCheck, 'passwordCheck')}} 
+              emptyErrorHandler(inputPasswordCheck, e.target.name);
+              // errorStyleHandler(inputPasswordCheck, 'passwordCheck')
+            }} 
             />
           {
             everyInputErrorList.getIn(['passwordCheck', 'emptyError']) && (
