@@ -1,16 +1,20 @@
-import React,{useState} from 'react';
+import React,{useState , useEffect, useRef} from 'react';
 import {Link,useNavigate} from 'react-router-dom'
-import { Map ,fromJS ,toJS, set, setIn, get, getIn} from 'immutable';
+import { Map ,fromJS ,toJS, set, setIn, get, getIn, update, updateIn} from 'immutable';
 
 import {Form, Button, Container, Row, Col} from 'react-bootstrap'
 
 export default function SignUp({signUpEmail, jjongLogo2}){
   
-  const [inputLocalEmail, setInputLocalEmail] = useState('') 
-  const [inputDomainEmail, setInputDomainEmail] = useState('') 
-  const [inputPassword, setInputPassword] = useState('') 
-  const [inputPasswordCheck, setInputPasswordCheck] = useState('') 
+  const inputRefList = useRef({});
 
+  const [everyInputList, setEveryInputList] = useState({
+    localEmail: '',
+    domainEmail: '',
+    password : '',
+    passwordCheck : '',
+  })
+  
   const [everyInputErrorList ,setEveryInputErrorList] = useState(fromJS({
     localEmail : {
       emptyError : false
@@ -28,45 +32,56 @@ export default function SignUp({signUpEmail, jjongLogo2}){
     }
   }))
 
-  const errorStyleHandler = (inputState, inputName) => {
-    const targetForm = document.getElementsByClassName(inputName)
-
-    if(inputState) {
-      targetForm[0].classList.remove('errored')
-    }
-    else {
-      targetForm[0].classList.add('errored')
-    }
-  }
-
-  const errorStyleHandler2 = (inputName) => {
-    const eachInputErrorList = Object.values(everyInputErrorList.getIn([inputName]).toJS())
-    const isIncludeError = eachInputErrorList.includes(true)
-
-    const targetForm = document.getElementsByClassName(inputName)
-
-    console.log(eachInputErrorList, isIncludeError)
-
+  const [focusedInput, setFocusedInput] = useState('localEmail')
+  
+  const errorStyleHandler = (inputName) => {
+    const eachInputErrorValueList = Object.values(everyInputErrorList.getIn([inputName]).toJS())
+    const isIncludeError = eachInputErrorValueList.includes(true)
+    
+    const targetForm = inputRefList.current[inputName]  
+      
     if(isIncludeError) {
-      targetForm[0].classList.add('errored')
+      targetForm.classList.add('errored')
     }
     else {
-      targetForm[0].classList.remove('errored')
+      targetForm.classList.remove('errored')
     }
   }
+
+  useEffect(()=>{
+    errorStyleHandler(focusedInput)
+    console.log(everyInputErrorList.getIn([focusedInput, 'emptyError']))
+    console.log(everyInputErrorList.getIn([focusedInput, 'shortError']))
+  },[everyInputErrorList])
 
   const emptyErrorHandler = (inputState , inputName) => {
     let changedList
-    if(inputState){
-      changedList = everyInputErrorList.setIn([inputName,'emptyError'], false) 
+    const isEmptyInput = inputState === ''
+
+    if(isEmptyInput) {
+      changedList = everyInputErrorList.setIn([inputName,'emptyError'], true) 
       setEveryInputErrorList(changedList)
     }
     else{
-      changedList = everyInputErrorList.setIn([inputName,'emptyError'], true) 
+      changedList = everyInputErrorList.setIn([inputName,'emptyError'], false)
+      setEveryInputErrorList(changedList) 
+    }
+
+  }
+
+  const shortErrorHandler = (inputState , inputName) => {
+    let changedList
+    const isShortInput = inputState.length  <= 5
+
+    if(isShortInput){
+      changedList = everyInputErrorList.setIn([inputName,'shortError'], true)
+      setEveryInputErrorList(changedList) 
+    }
+    else{
+      changedList = everyInputErrorList.setIn([inputName,'shortError'], false)
       setEveryInputErrorList(changedList) 
     }    
   }
-
 
   const [checkedBoxIdList, setCheckedBoxIdList] = useState([])
   
@@ -105,8 +120,7 @@ export default function SignUp({signUpEmail, jjongLogo2}){
     { id: 3 , label: '이벤트, 프로모션 알림 메일 및 SMS 수신', span : '(선택)'}
   ]
 
-  return (  
-      
+  return (        
     <Container id="sign-up__container">
       <Link to='/CoCo_project_ver.2' >
         <div className='sign-up__logo-wrap'>
@@ -117,21 +131,24 @@ export default function SignUp({signUpEmail, jjongLogo2}){
         <h1>회원가입</h1>  
       </div>
 
+    
       <Form className="sign-up__form-container">
-        <Form.Group className='form__email localEmail domainEmail'>
+        <Form.Group className='form__email'
+          ref={ref => {
+          inputRefList.current.localEmail = ref
+          inputRefList.current.domainEmail = ref}}>
           <Form.Label className='form__label'>이메일</Form.Label>
           <div className="form__email-input">
             <span className="email-input__local">
-              <Form.Control type="email" placeholder="이메일" name="localEmail"
-                onChange={e => {
-                  setInputLocalEmail(e.target.value);                  
+              <Form.Control type="email" placeholder="이메일" name="localEmail"                
+                onChange={e => {                   
+                  setEveryInputList({...everyInputList, [e.target.name] : e.target.value})                
                 }}
                 onFocus={e => {
+                  setFocusedInput(e.target.name)
                 }}
                 onBlur={e => {
-                  emptyErrorHandler(inputLocalEmail, e.target.name );
-                  // errorStyleHandler2(e.target.name)
-                  // errorStyleHandler(inputLocalEmail,'localEmail')
+                  emptyErrorHandler(everyInputList.localEmail , e.target.name );
                 }}
               />  
             </span>
@@ -139,12 +156,9 @@ export default function SignUp({signUpEmail, jjongLogo2}){
 
             <span className='email-input__domain'>
               <Form.Select type="email" defaultValue='선택해주세요' name="domainEmail" 
-              onChange={e => {
-                setInputDomainEmail(e.target.value);
-                }}
-              onBlur={e => {
-                emptyErrorHandler(inputDomainEmail, e.target.name);
-                // errorStyleHandler(inputDomainEmail,'domainEmail')
+              onChange={e => {setEveryInputList({...everyInputList, [e.target.name] : e.target.value})}}
+              onFocus={e => {setFocusedInput(e.target.name)}}
+              onBlur={e => {emptyErrorHandler(everyInputList.domainEmail, e.target.name)
               }}>
                 <option value="선택해주세요" disabled>선택해주세요</option>
                 <option value="naver.com">naver.com</option>  
@@ -162,18 +176,25 @@ export default function SignUp({signUpEmail, jjongLogo2}){
           }         
         </Form.Group>
       
-        <Form.Group className='form__password password'>
+        <Form.Group className='form__password' ref={ref => inputRefList.current.password = ref}>
           <Form.Label className='form__label'>비밀번호</Form.Label>
           <p className="form__password-rule">6자 이상의 비밀번호를 입력해주세요.</p>
             <Form.Control className="form__password-input" type="password" placeholder="비밀번호" name="password" 
-              onChange={e => setInputPassword(e.target.value)} 
-              onBlur={e => {
-                emptyErrorHandler(inputPassword, e.target.name);
-                // errorStyleHandler(inputPassword, 'password')
+              onChange={e => {
+                setEveryInputList({...everyInputList, [e.target.name] : e.target.value})
+                emptyErrorHandler(everyInputList.password , e.target.name); 
+                shortErrorHandler(everyInputList.password , e.target.name);
+              }}
+              onFocus={e => {
+                setFocusedInput(e.target.name)
+              }}
+              onBlur={e => {                
+                emptyErrorHandler(everyInputList.password , e.target.name);  
+                shortErrorHandler(everyInputList.password , e.target.name);    
               }}
             />
             {
-              everyInputErrorList.getIn(['password', 'emptyError'])  && (
+              everyInputErrorList.getIn(['password', 'emptyError']) && (
               <div className='input-error-div'>
                 필수 입력 항목입니다.
               </div>) 
@@ -186,14 +207,12 @@ export default function SignUp({signUpEmail, jjongLogo2}){
             }
         </Form.Group>
 
-        <Form.Group className='form__password-check passwordCheck'>
+        <Form.Group className='form__password-check' ref={ref => inputRefList.current.passwordCheck = ref}>
           <Form.Label className='form__label'>비밀번호 확인</Form.Label>
           <Form.Control className="form__password-check-input" type="password" placeholder="비밀번호 확인" name="passwordCheck" 
-            onChange={e => setInputPasswordCheck(e.target.value)} 
-            onBlur={e => {
-              emptyErrorHandler(inputPasswordCheck, e.target.name);
-              // errorStyleHandler(inputPasswordCheck, 'passwordCheck')
-            }} 
+            onChange={e => {setEveryInputList({...everyInputList, [e.target.name] : e.target.value})}} 
+            onFocus={e => {setFocusedInput(e.target.name)}}
+            onBlur={e => {emptyErrorHandler(everyInputList.passwordCheck, e.target.name)}} 
             />
           {
             everyInputErrorList.getIn(['passwordCheck', 'emptyError']) && (
