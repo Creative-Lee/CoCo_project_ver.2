@@ -1,6 +1,6 @@
-import React,{useState , useEffect, useRef} from 'react';
+import React,{useState , useEffect, useRef , useCallback} from 'react';
 import {Link,useNavigate} from 'react-router-dom'
-import { Map ,fromJS ,toJS, set, setIn, get, getIn, update, updateIn} from 'immutable';
+import { Map ,fromJS ,toJS, set, setIn, get, getIn, update, updateIn, mergeDeep} from 'immutable';
 
 import {Form, Button, Container, Row, Col} from 'react-bootstrap'
 
@@ -48,41 +48,80 @@ export default function SignUp({signUpEmail, jjongLogo2}){
     }
   }
 
-  useEffect(()=>{
-    errorStyleHandler(focusedInput)
-    console.log(everyInputErrorList.getIn([focusedInput, 'emptyError']))
-    console.log(everyInputErrorList.getIn([focusedInput, 'shortError']))
-  },[everyInputErrorList])
-
   const emptyErrorHandler = (inputState , inputName) => {
     let changedList
     const isEmptyInput = inputState === ''
 
     if(isEmptyInput) {
       changedList = everyInputErrorList.setIn([inputName,'emptyError'], true) 
-      setEveryInputErrorList(changedList)
+      setEveryInputErrorList(beforeList => beforeList.mergeDeep(changedList))
     }
     else{
       changedList = everyInputErrorList.setIn([inputName,'emptyError'], false)
-      setEveryInputErrorList(changedList) 
+      setEveryInputErrorList(beforeList => beforeList.mergeDeep(changedList)) 
     }
+  }  
 
-  }
-
-  const shortErrorHandler = (inputState , inputName) => {
+  const shortErrorHandler = () => {
     let changedList
-    const isShortInput = inputState.length  <= 5
+    const isShortInput = everyInputList.password.length  < 6
 
     if(isShortInput){
-      changedList = everyInputErrorList.setIn([inputName,'shortError'], true)
-      setEveryInputErrorList(changedList) 
+      changedList = everyInputErrorList.setIn(['password','shortError'], true)
+      setEveryInputErrorList((beforeList) => beforeList.mergeDeep(changedList)) 
     }
     else{
-      changedList = everyInputErrorList.setIn([inputName,'shortError'], false)
-      setEveryInputErrorList(changedList) 
+      changedList = everyInputErrorList.setIn(['password','shortError'], false)
+      setEveryInputErrorList((beforeList) => beforeList.mergeDeep(changedList)) 
     }    
+  } 
+
+  const notMatchErrorHandler = () => {
+    let changedList
+    const isNotMatchInput = everyInputList.passwordCheck !== everyInputList.password
+
+    if(isNotMatchInput){
+      changedList = everyInputErrorList.setIn(['passwordCheck','notMatchError'], true)
+      setEveryInputErrorList((beforeList) => beforeList.mergeDeep(changedList)) 
+    }
+    else{
+      changedList = everyInputErrorList.setIn(['passwordCheck','notMatchError'], false)
+      setEveryInputErrorList((beforeList) => beforeList.mergeDeep(changedList)) 
+    } 
   }
 
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(()=>{
+    if(isMounted){
+      errorStyleHandler(focusedInput) 
+    }    
+    setIsMounted(true)
+    
+  },[everyInputErrorList])
+
+  useEffect(()=>{
+    if(isMounted){
+      emptyErrorHandler(everyInputList[focusedInput], focusedInput)   
+      console.log('앰티 이펙트')  
+    }    
+  },[everyInputList,everyInputList.password,everyInputList.passwordCheck])
+
+  useEffect(()=>{
+    if(isMounted){
+      shortErrorHandler()
+      console.log('쇼츠 이펙트')  
+    }    
+  },[everyInputList.password])
+  
+  useEffect(()=>{
+    if(isMounted){
+      notMatchErrorHandler()
+      console.log('낫매치 이펙트')  
+    }    
+  },[everyInputList.passwordCheck])
+
+  
   const [checkedBoxIdList, setCheckedBoxIdList] = useState([])
   
   const onCheckedAllAgreeCheckBox = (isChecked) => { 
@@ -129,9 +168,7 @@ export default function SignUp({signUpEmail, jjongLogo2}){
       </Link>
       <div className='sign-up__title'>
         <h1>회원가입</h1>  
-      </div>
-
-    
+      </div>    
       <Form className="sign-up__form-container">
         <Form.Group className='form__email'
           ref={ref => {
@@ -140,15 +177,15 @@ export default function SignUp({signUpEmail, jjongLogo2}){
           <Form.Label className='form__label'>이메일</Form.Label>
           <div className="form__email-input">
             <span className="email-input__local">
-              <Form.Control type="email" placeholder="이메일" name="localEmail"                
+              <Form.Control type="email" placeholder="이메일" name="localEmail"       
                 onChange={e => {                   
-                  setEveryInputList({...everyInputList, [e.target.name] : e.target.value})                
+                  setEveryInputList({...everyInputList , [e.target.name] : e.target.value})
                 }}
                 onFocus={e => {
                   setFocusedInput(e.target.name)
                 }}
                 onBlur={e => {
-                  emptyErrorHandler(everyInputList.localEmail , e.target.name );
+                  emptyErrorHandler(everyInputList[e.target.name], e.target.name);
                 }}
               />  
             </span>
@@ -156,9 +193,14 @@ export default function SignUp({signUpEmail, jjongLogo2}){
 
             <span className='email-input__domain'>
               <Form.Select type="email" defaultValue='선택해주세요' name="domainEmail" 
-              onChange={e => {setEveryInputList({...everyInputList, [e.target.name] : e.target.value})}}
-              onFocus={e => {setFocusedInput(e.target.name)}}
-              onBlur={e => {emptyErrorHandler(everyInputList.domainEmail, e.target.name)
+              onChange={e => {
+                setEveryInputList(beforeList=> ({...beforeList , [e.target.name] : e.target.value}))
+              }}
+              onFocus={e => {
+                setFocusedInput(e.target.name)
+              }}
+              onBlur={e => {
+                emptyErrorHandler(everyInputList[e.target.name], e.target.name)
               }}>
                 <option value="선택해주세요" disabled>선택해주세요</option>
                 <option value="naver.com">naver.com</option>  
@@ -181,16 +223,13 @@ export default function SignUp({signUpEmail, jjongLogo2}){
           <p className="form__password-rule">6자 이상의 비밀번호를 입력해주세요.</p>
             <Form.Control className="form__password-input" type="password" placeholder="비밀번호" name="password" 
               onChange={e => {
-                setEveryInputList({...everyInputList, [e.target.name] : e.target.value})
-                emptyErrorHandler(everyInputList.password , e.target.name); 
-                shortErrorHandler(everyInputList.password , e.target.name);
-              }}
+                setEveryInputList(beforeList => ({...beforeList , [e.target.name] : e.target.value}))
+              }}          
               onFocus={e => {
                 setFocusedInput(e.target.name)
-              }}
-              onBlur={e => {                
-                emptyErrorHandler(everyInputList.password , e.target.name);  
-                shortErrorHandler(everyInputList.password , e.target.name);    
+              }}             
+              onBlur={e => {
+                emptyErrorHandler(everyInputList[e.target.name], e.target.name)
               }}
             />
             {
@@ -210,9 +249,15 @@ export default function SignUp({signUpEmail, jjongLogo2}){
         <Form.Group className='form__password-check' ref={ref => inputRefList.current.passwordCheck = ref}>
           <Form.Label className='form__label'>비밀번호 확인</Form.Label>
           <Form.Control className="form__password-check-input" type="password" placeholder="비밀번호 확인" name="passwordCheck" 
-            onChange={e => {setEveryInputList({...everyInputList, [e.target.name] : e.target.value})}} 
-            onFocus={e => {setFocusedInput(e.target.name)}}
-            onBlur={e => {emptyErrorHandler(everyInputList.passwordCheck, e.target.name)}} 
+            onChange={e => {
+              setEveryInputList(beforeList => ({...beforeList , [e.target.name] : e.target.value}))
+            }} 
+            onFocus={e => {
+              setFocusedInput(e.target.name)
+            }}
+            onBlur={e => {
+              emptyErrorHandler(everyInputList[e.target.name], e.target.name)
+            }} 
             />
           {
             everyInputErrorList.getIn(['passwordCheck', 'emptyError']) && (
