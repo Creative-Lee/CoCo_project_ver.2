@@ -68,6 +68,10 @@
         }
       }
     }
+    
+
+    
+    
     .input-error-div{
       padding-top: 10px;
       font-size: 13px;
@@ -130,7 +134,27 @@
       }
     }
 
+    .form__TOS.errored{
+      label{
+        color : black;
+      }
+      input{
+        border: solid 1px #acacac;
+      }
+      .form__label{
+        color : #f77;
+      } 
+      
+      .TOS-checkbox__1,
+      .TOS-checkbox__2{
+        input{
+          border: solid 1px #f77;
+        }       
+      }
+    }
+
     .form__TOS{
+      
       span{
         color: $오늘하늘;
         font-size: 12px;  
@@ -159,7 +183,10 @@
           padding: 0;
         }
         
-        .checkbox-input{
+        .checkbox-input__0,
+        .checkbox-input__1,
+        .checkbox-input__2,
+        .checkbox-input__3{
           padding : 10px;
           margin : 0;   
         }
@@ -198,6 +225,8 @@
       }
   
     }
+
+   
 
     .sign-up__button{
       width: 100%;

@@ -2,5 +2,6 @@
   "editor.foldingMaximumRegions": 10000,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "editor.linkedEditing": true
+  "editor.linkedEditing": true,
+  "editor.tabSize": 2
 }

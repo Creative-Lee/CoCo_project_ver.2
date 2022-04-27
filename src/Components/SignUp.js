@@ -1,10 +1,23 @@
-import React,{useState , useEffect, useRef , useCallback} from 'react';
+import React,{useState , useEffect, useRef , useCallback, useLayoutEffect} from 'react';
 import {Link,useNavigate} from 'react-router-dom'
 import { Map ,fromJS ,toJS, set, setIn, get, getIn, update, updateIn, mergeDeep} from 'immutable';
 
 import {Form, Button, Container, Row, Col} from 'react-bootstrap'
 
 export default function SignUp({signUpEmail, jjongLogo2}){
+  
+  const lastFormCheckForSignUp = () => {
+    const passwordIncludesSixCharacters = everyInputList.password.length >= 6
+    const passwordConfirmed = everyInputList.password === everyInputList.passwordCheck
+    const everyCheckboxChecked = everyInputList.checkbox1 && everyInputList.checkbox2
+
+    if(passwordIncludesSixCharacters && passwordConfirmed && everyCheckboxChecked){
+      signUpEmail(`${everyInputList.localEmail}@${everyInputList.domainEmail}`, everyInputList.password)
+    }
+    else{
+      alert('필수 입력 항목을 채워주세요!')
+    }
+  }
   
   const inputRefList = useRef({});
 
@@ -13,6 +26,9 @@ export default function SignUp({signUpEmail, jjongLogo2}){
     domainEmail: '',
     password : '',
     passwordCheck : '',
+    checkbox1 : false,
+    checkbox2 : false,
+    checkbox3 : false,
   })
   
   const [everyInputErrorList ,setEveryInputErrorList] = useState(fromJS({
@@ -29,6 +45,15 @@ export default function SignUp({signUpEmail, jjongLogo2}){
     passwordCheck : {
       emptyError : false,
       notMatchError : false,
+    },
+    checkbox1 : {
+      notCheckedError: false
+    },
+    checkbox2 : {
+      notCheckedError: false
+    },
+    checkbox3 : {
+      notCheckedError: false
     }
   }))
 
@@ -38,8 +63,19 @@ export default function SignUp({signUpEmail, jjongLogo2}){
     const eachInputErrorValueList = Object.values(everyInputErrorList.getIn([inputName]).toJS())
     const isIncludeError = eachInputErrorValueList.includes(true)
     
-    const targetForm = inputRefList.current[inputName]  
-      
+    let targetForm
+    
+    switch(inputName) {        
+      case 'checkbox1':
+      case 'checkbox2':
+        targetForm = inputRefList.current.checkbox
+        break
+
+      case 'checkbox3': return
+
+      default : targetForm = inputRefList.current[inputName] 
+    }
+
     if(isIncludeError) {
       targetForm.classList.add('errored')
     }
@@ -50,7 +86,7 @@ export default function SignUp({signUpEmail, jjongLogo2}){
 
   const emptyErrorHandler = (inputState , inputName) => {
     let changedList
-    const isEmptyInput = inputState === ''
+    const isEmptyInput = inputState === '' 
 
     if(isEmptyInput) {
       changedList = everyInputErrorList.setIn([inputName,'emptyError'], true) 
@@ -66,29 +102,43 @@ export default function SignUp({signUpEmail, jjongLogo2}){
     let changedList
     const isShortInput = everyInputList.password.length  < 6
 
-    if(isShortInput){
+    if(isShortInput && everyInputList.password){
       changedList = everyInputErrorList.setIn(['password','shortError'], true)
-      setEveryInputErrorList((beforeList) => beforeList.mergeDeep(changedList)) 
+      setEveryInputErrorList(beforeList => beforeList.mergeDeep(changedList)) 
+      return 
     }
-    else{
-      changedList = everyInputErrorList.setIn(['password','shortError'], false)
-      setEveryInputErrorList((beforeList) => beforeList.mergeDeep(changedList)) 
-    }    
+
+    changedList = everyInputErrorList.setIn(['password','shortError'], false)
+    setEveryInputErrorList(beforeList => beforeList.mergeDeep(changedList)) 
   } 
 
   const notMatchErrorHandler = () => {
     let changedList
     const isNotMatchInput = everyInputList.passwordCheck !== everyInputList.password
 
-    if(isNotMatchInput){
+    if(isNotMatchInput && everyInputList.passwordCheck){
       changedList = everyInputErrorList.setIn(['passwordCheck','notMatchError'], true)
-      setEveryInputErrorList((beforeList) => beforeList.mergeDeep(changedList)) 
+      setEveryInputErrorList((beforeList) => beforeList.mergeDeep(changedList))
+      return 
+    }
+
+    changedList = everyInputErrorList.setIn(['passwordCheck','notMatchError'], false)
+    setEveryInputErrorList((beforeList) => beforeList.mergeDeep(changedList)) 
+  }
+
+  const notCheckedErrorHandler = (inputState, inputName) => {
+    let changedList
+    const isNotChecked = inputState === false
+
+    if(isNotChecked) {
+      changedList = everyInputErrorList.setIn([inputName,'notCheckedError'], true) 
+      setEveryInputErrorList(beforeList => beforeList.mergeDeep(changedList))
     }
     else{
-      changedList = everyInputErrorList.setIn(['passwordCheck','notMatchError'], false)
-      setEveryInputErrorList((beforeList) => beforeList.mergeDeep(changedList)) 
-    } 
-  }
+      changedList = everyInputErrorList.setIn([inputName,'notCheckedError'], false)
+      setEveryInputErrorList(beforeList => beforeList.mergeDeep(changedList)) 
+    }
+  }  
 
   const [isMounted, setIsMounted] = useState(false)
 
@@ -103,15 +153,16 @@ export default function SignUp({signUpEmail, jjongLogo2}){
   useEffect(()=>{
     if(isMounted){
       emptyErrorHandler(everyInputList[focusedInput], focusedInput)   
-      console.log('앰티 이펙트')  
-    }    
-  },[everyInputList,everyInputList.password,everyInputList.passwordCheck])
+      console.log('엠티 이펙트')   
+    }
+  },[everyInputList.domainEmail , everyInputList.localEmail])
 
   useEffect(()=>{
     if(isMounted){
-      shortErrorHandler()
+      shortErrorHandler()     
       console.log('쇼츠 이펙트')  
-    }    
+    }
+
   },[everyInputList.password])
   
   useEffect(()=>{
@@ -121,6 +172,18 @@ export default function SignUp({signUpEmail, jjongLogo2}){
     }    
   },[everyInputList.passwordCheck])
 
+  useEffect(()=>{
+    if(isMounted){
+      notCheckedErrorHandler(everyInputList[focusedInput], focusedInput)
+    }
+  },[everyInputList.checkbox1, everyInputList.checkbox2])
+
+  useLayoutEffect(()=>{
+    if(isMounted){
+      emptyErrorHandler(everyInputList[focusedInput], focusedInput)
+      console.log('엠티 레이아웃 이펙트')
+    }
+  },[everyInputErrorList])
   
   const [checkedBoxIdList, setCheckedBoxIdList] = useState([])
   
@@ -271,30 +334,39 @@ export default function SignUp({signUpEmail, jjongLogo2}){
               비밀번호가 일치하지 않습니다.
             </div>) 
           }
-        </Form.Group>
+        </Form.Group> 
 
-        <Form.Group className='form__TOS'>
+        <Form.Group className='form__TOS' ref={ref => inputRefList.current.checkbox = ref}>
           <Form.Label className='form__label'>약관 동의</Form.Label>
           <div className='form__TOS-checkbox'>   
             <Form.Check className='TOS-checkbox__all' >
               <div className='checkbox-input-container'>
-                <Form.Check.Input type="checkbox" id="TOS_all" className="checkbox-input"
-                onChange={e => onCheckedAllAgreeCheckBox(e.target.checked)}
+                <Form.Check.Input type="checkbox" id="TOS_all" className="checkbox-input__0"
+                onChange={e => {
+                  onCheckedAllAgreeCheckBox(e.target.checked)
+                  setEveryInputList({...everyInputList , checkbox1 : e.target.checked , checkbox2 : e.target.checked})
+                }}
                 checked={allAgreeCheckBoxHandler()}
                 />                
               </div>
               <div>
-                <Form.Check.Label htmlFor="TOS_all" className="checkbox-label" >전체동의</Form.Check.Label>
+                <Form.Check.Label htmlFor="TOS_all" className="checkbox-label">전체동의</Form.Check.Label>
               </div>
             </Form.Check>
             {
             checkboxDataList.map((list, index )=> {
               return (
                 <Form.Check className={`TOS-checkbox__${list.id}`} key={index}>
-                <div className='checkbox-input-container'> 
-                  <Form.Check.Input type="checkbox" id={`TOS_${list.id}`} className="checkbox-input" 
-                  onChange={e => onCheckedEachCheckBox(e.target.checked, list)}
-                  checked={eachCheckboxHandler(list)}
+                <div className='checkbox-input-container' > 
+                  <Form.Check.Input type="checkbox" id={`TOS_${list.id}`} className={`checkbox-input__${list.id}`} name={`checkbox${list.id}`}
+                  onChange={e => {
+                    onCheckedEachCheckBox(e.target.checked, list)
+                    setEveryInputList({...everyInputList , [e.target.name] : e.target.checked})                    
+                  }}
+                  onFocus={e => {
+                    setFocusedInput(e.target.name)
+                  }}
+                  checked={eachCheckboxHandler(list)}  
                   />
                 </div>
                 <div>
@@ -305,9 +377,17 @@ export default function SignUp({signUpEmail, jjongLogo2}){
             })
             }   
           </div>
+          {
+            (everyInputErrorList.getIn(['checkbox1', 'notCheckedError']) || everyInputErrorList.getIn(['checkbox2', 'notCheckedError'])) && (
+              <div className='input-error-div'>
+              필수 동의 항목입니다.
+            </div>) 
+          }  
+          
         </Form.Group>
+      
 
-        <Button className="sign-up__button" onClick={()=>{ signUpEmail(`${inputLocalEmail}@${inputDomainEmail}`, inputPassword)}}>
+        <Button className="sign-up__button" onClick={()=>{lastFormCheckForSignUp()}}>
           회원가입하기
         </Button>      
       </Form>  
