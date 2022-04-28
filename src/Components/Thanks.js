@@ -12,9 +12,9 @@ export default function Thanks({jjongLogo2 , poster}) {
         <video className='video' src={MP4_URL} poster={poster} muted autoPlay loop ></video>
       </div>
       <Container className='logo-container'>
-        {/* <div className='logo-wrap'>
+        <div className='logo-wrap'>
           <img src={jjongLogo2} className='logo'></img>
-        </div>   */}
+        </div>  
       </Container>      
         
       <Container className="message-container"> 
