@@ -10,7 +10,7 @@ import { Layout, ProductList, Home, Community, SignUp, SignIn, Mypage , Thanks }
 import CartContainer from './containers/CartContainer';
 import DetailContainer from './containers/DetailContainer';
 
-import { cartIcon, coconut, discountBanner, instaIcon, jjongLogo2, searchIcon } from './img/useful'
+import { cartIcon, coconut, discountBanner, instaIcon, jjongLogo2, searchIcon, poster } from './img/useful'
 import { profile2, profile4, profile5, profile6, profile7 } from './img/profile16.9'
 import brother2 from './img/brother/brother2.jpg'
 
@@ -234,7 +234,8 @@ export default function App() {
         signUpEmail={signUpEmail} jjongLogo2={jjongLogo2} />
       }/>
 
-      <Route path='/CoCo_project_ver.2/auth/thanks' element={<Thanks jjongLogo2={jjongLogo2}/>
+      <Route path='/CoCo_project_ver.2/auth/thanks' element={<Thanks
+        jjongLogo2={jjongLogo2} poster={poster}/>
     }/>  
 
     </Routes>     

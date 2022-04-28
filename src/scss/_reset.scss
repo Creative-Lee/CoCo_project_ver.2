@@ -1,3 +1,16 @@
+*{
+  margin: 0; 
+  padding: 0; 
+  font: inherit; 
+  color: inherit;
+}
+
 div{
     box-sizing: border-box;
+}
+
+#root,
+html,
+body{
+  height:100%;  
 }
