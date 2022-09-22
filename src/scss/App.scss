@@ -10,14 +10,12 @@
 @import './_SignIn';
 @import './_SignUp';
 @import './_Thanks';
-
-
-
+@import './Cart';
 .App {
   text-align: center;
   font-family: 'Spoqa Han Sans Neo';
   height: auto;
-  
+
   .container {
     max-width: 1140px;
     width: calc(100% - 80px);
@@ -34,10 +32,8 @@
 
 // #================= md ===================#
 @media (max-width: 768px) {
- 
 }
 // #================= md 끝 ===================#
 
 @media (max-width: 576px) {
-
 }

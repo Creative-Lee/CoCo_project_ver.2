@@ -1,39 +1,47 @@
+@import './main';
+#detail {
+  .detail-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-$이것은사스문법 : #F1F000;
-.red{
-    color: $이것은사스문법;
-}
+    .cart-button {
+      width: 30%;
+      height: 40px;
+      background-color: $오늘하늘;
+      margin-top: 30px;
 
-@mixin 기본틀() {
-    background: #eeeeee;
-    padding: 20px;
-    border-radius: 5px;
-    max-width: 500px;
-    width:100%;
-    margin: auto;
-}
+      border-radius: 6px;
+      border: none;
 
-.my-alert {
-    @include 기본틀();
-}
-
-.my-alert2 {
-    @extend .my-alert;
-    background: #ffe592;
-}
-
-
-.my-alert p {
-    margin-bottom: 0;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.wow-enter{
-    opacity: 0;
-}
-
-.wow-enter-active {
-    opacity: 1;
-    transition: all 0.5s;
+      &:hover {
+        background-color: $오늘하늘호버;
+        border: none;
+        transition: background-color 0.3s ease;
+      }
+    }
+    .info__quantity-wrap {
+      width: 30%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .info__quantity-button-wrap {
+        display: flex;
+        justify-content: space-between;
+      }
+      button {
+        width: 25px;
+        height: 25px;
+        border: solid 1px #fff;
+        color: white;
+        background-color: $오늘하늘;
+        &:hover {
+          background-color: $오늘하늘호버;
+          border: none;
+          transition: background-color 0.3s ease;
+        }
+      }
+    }
+  }
 }

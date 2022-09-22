@@ -1,0 +1,30 @@
+#cart {
+  .info__quantity-button-wrap {
+    button {
+      width: 25px;
+      height: 25px;
+      border: solid 1px #fff;
+      color: white;
+      background-color: $오늘하늘;
+      &:hover {
+        background-color: $오늘하늘호버;
+        border: none;
+        transition: background-color 0.3s ease;
+      }
+    }
+  }
+  .info__delete-button-wrap {
+    button {
+      width: 25px;
+      height: 25px;
+      border: solid 1px #fff;
+      color: white;
+      background-color: $오늘하늘;
+      &:hover {
+        background-color: $오늘하늘호버;
+        border: none;
+        transition: background-color 0.3s ease;
+      }
+    }
+  }
+}

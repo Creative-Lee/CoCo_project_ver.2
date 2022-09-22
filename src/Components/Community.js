@@ -1,38 +1,41 @@
-import React,{useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-export default function Community({setTopNavActiveTap, setBottomNavActiveTap}){
-
-  const {community_category_param} = useParams();
+export default function Community({
+  setTopNavActiveTap,
+  setBottomNavActiveTap,
+}) {
+  const { community_category_param } = useParams();
 
   const category = {
-    following : 
+    following: (
       <>
-        <span>나는 팔로잉!</span>
-      </>,
-    
-    picture : 
-      <>
-        <span>나는 사진!</span>
-      </>,
+        <span></span>
+      </>
+    ),
 
-    event : 
+    picture: (
       <>
-        <span>나는 Summer Event!</span>
-      </>,
-  }
+        <span></span>
+      </>
+    ),
 
-  useEffect(()=>{
+    event: (
+      <>
+        <span></span>
+      </>
+    ),
+  };
+
+  useEffect(() => {
     setTopNavActiveTap('community');
     setBottomNavActiveTap(community_category_param);
-  })
+  });
 
-  return(
+  return (
     <div>
-      <h4>객체에 컴포넌트 넣고 뽑아쓰기!</h4>
-      {
-        category[community_category_param]
-      }
+      <h4></h4>
+      {category[community_category_param]}
     </div>
-  )
+  );
 }
