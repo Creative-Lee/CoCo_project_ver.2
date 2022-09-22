@@ -1,0 +1,67 @@
+{
+  "name": "coco",
+  "version": "0.1.0",
+  "homepage": " https://creative-lee.github.io/coco124/",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.1",
+    "bootstrap": "^5.0.1",
+    "dotenv": "^8.2.0",
+    "firebase": "^9.1.0",
+    "firestore-export-import": "^0.17.0",
+    "gh-pages": "^3.2.3",
+    "jest": "26.6.0",
+    "lodash": "^4.17.21",
+    "node": "^17.3.0",
+    "npm-check-updates": "^12.0.5",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.0.0-beta.4",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "react-transition-group": "^4.4.2",
+    "redux": "^4.1.0",
+    "sass": "^1.45.1",
+    "web-vitals": "^1.1.2",
+    "webpack": "^4.44.2"
+  },
+  "scripts": {
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "description": "음모를 꾸미는 음침한 곳 입니다.🤐",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Creative-Lee/CoCo_project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Creative-Lee/CoCo_project/issues"
+  }
+}

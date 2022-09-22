@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body id="hi">
+	<div style="height: auto;">
+		<div style="position: sticky; top:0; z-index: 3; height: 50px; background-color:pink;">
+			ㅎㅇ
+		</div>
+		<div style="position: sticky; top:20px; z-index: 2; height:30px; background-color: rgb(104, 161, 211);">
+			ㅎㅇ
+		</div>
+		<div style="margin: 0px; width: 1500px; height:1000px; background-color: aquamarine;">
+			ㅎㅇ		
+		</div>
+</div>
+	
+
+	<script>
+	let fullHeight = document.documentElement.scrollHeight
+	let viewH = document.documentElement.clientHeight
+	let YYY = window.scrollY  
+	let 현재위치 =  (Math.round(YYY/(fullHeight-viewH) *100))
+	const windowHeight = window.innerHeight;
+  const viewportHeight = document.documentElement.clientHeight;    
+
+
+		console.log(windowHeight, viewportHeight)
+	
+	
+		
+		
+
+	</script>
+</body>
+</html>
